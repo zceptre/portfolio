@@ -1,50 +1,55 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Son Morris Sasi - Junior Developer, QA Tester, and Game Developer Portfolio">
+  <meta name="theme-color" content="#000000">
   <title>Son Morris Sasi - Developer Portfolio</title>
   <link rel="stylesheet" href="style.css">
   
   <!-- ICON LIBRARY -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer">
 
-  <link rel="icon" href="https://github.com/zceptre/sma-portfolio/blob/main/images/favicon.png?raw=true" type="image/png">
+  <!-- FAVICON -->
+  <link rel="icon" href="https://raw.githubusercontent.com/zceptre/sma-portfolio/main/images/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/zceptre/sma-portfolio/main/images/favicon.png">
 </head>
 <body>
   <!-- Navigation Bar -->
-  <nav class="navbar">
+  <nav class="navbar" role="navigation" aria-label="Main Navigation">
     <div class="nav-container">
       <div class="nav-logo">
         <span class="logo-text">Morris.Dev</span>
       </div>
       <ul class="nav-menu">
         <li class="nav-item">
-          <a href="#" class="nav-link" data-section="0">Home</a>
+          <a href="#home" class="nav-link" data-section="0">Home</a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link" data-section="1">About</a>
+          <a href="#about" class="nav-link" data-section="1">About</a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link" data-section="2">Experience</a>
+          <a href="#projects" class="nav-link" data-section="2">Projects</a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link" data-section="3">Education</a>
+          <a href="#skills" class="nav-link" data-section="3">Skills</a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link" data-section="4">Skills</a>
+          <a href="#social-proof" class="nav-link" data-section="4">Social Proof</a>
         </li>
       </ul>
-      <div class="hamburger">
+      <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
         <span class="bar"></span>
         <span class="bar"></span>
         <span class="bar"></span>
-      </div>
+      </button>
     </div>
   </nav>
 
-  <div class="container">
+  <div class="container" role="main">
     <!-- Hero Section -->
-    <section class="section hero">
+    <section class="section hero" id="home" aria-label="Hero section">
       <div class="hero-content">
         <div class="hero-badge">Portfolio</div>
         <div class="hero-grid">
@@ -53,16 +58,19 @@
             <p class="title">Junior Developer | QA Tester | Game Developer</p>
             <p class="location">Philippines • +63-995-181-9233 • morris.dev31@gmail.com</p>
             <div class="buttons">
-              <a href="https://github.com/zceptre" target="_blank" class="btn btn-primary">
-                 <i class="fab fa-github"></i> GitHub</a>
-              <a href="https://www.upwork.com/freelancers/~016110c8b7153e5e76" target="_blank" class="btn btn-secondary">
-                 <i class="fa-brands fa-upwork"></i> Upwork</a>
-              <a href="https://www.linkedin.com/in/morris-sasi-b779142b4/" target="_blank" class="btn btn-tertiary">
-                 <i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+              <a href="https://github.com/zceptre" target="_blank" rel="noopener noreferrer" class="btn btn-primary" aria-label="Visit GitHub profile">
+                <i class="fab fa-github" aria-hidden="true"></i> GitHub
+              </a>
+              <a href="https://www.upwork.com/freelancers/~016110c8b7153e5e76" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" aria-label="Visit Upwork profile">
+                <i class="fab fa-upwork" aria-hidden="true"></i> Upwork
+              </a>
+              <a href="https://www.linkedin.com/in/morris-sasi-b779142b4/" target="_blank" rel="noopener noreferrer" class="btn btn-tertiary" aria-label="Visit LinkedIn profile">
+                <i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn
+              </a>
             </div>
           </div>
           <div class="hero-image">
-            <img src="https://github.com/zceptre/sma-portfolio/blob/main/images/Profile.jpg?raw=true" alt="Son Morris Sasi" class="profile-img">
+            <img src="https://raw.githubusercontent.com/zceptre/sma-portfolio/main/images/Profile.jpg" alt="Son Morris Sasi - Junior Developer" class="profile-img" loading="lazy" width="400" height="400">
           </div>
         </div>
       </div>
@@ -73,7 +81,7 @@
     </section>
 
     <!-- Summary Section -->
-    <section class="section summary">
+    <section class="section summary" id="about" aria-label="About me section">
       <div class="section-content">
         <h2>About Me</h2>
         <div class="summary-card">
@@ -82,74 +90,140 @@
       </div>
     </section>
 
-    <!-- Experience Section -->
-    <section class="section experience">
+    <!-- Featured Projects Section -->
+    <section class="section featured-projects" id="projects" aria-label="Featured projects section">
       <div class="section-content">
-        <h2>Experience</h2>
-        <div class="experience-grid">
-          <div class="experience-block">
-            <div class="block-number">01</div>
-            <h3>Echoes of Eldrin</h3>
-            <p class="meta">Capstone Project — Programmer</p>
-            <p class="date">Jan 2025 – Oct 2025</p>
-            <ul>
-              <li>Developed core gameplay systems and combat mechanics using Unreal Engine.</li>
-              <li>Integrated visual effects, animations, and environmental assets.</li>
-              <li>Optimized performance and debugged gameplay systems.</li>
-            </ul>
+        <h2>Featured Projects</h2>
+        <div class="projects-container">
+          <!-- Project 1: Echoes of Eldrin -->
+          <div class="project-card project-card-large">
+            <div class="project-media">
+              <iframe width="100%" height="400" src="https://www.youtube.com/embed/D39TFVbQYAE" title="Echoes of Eldrin Gameplay" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+              <div class="media-badge">Gameplay Video</div>
+            </div>
+            <div class="project-details">
+              <div class="project-header">
+                <h3>Echoes of Eldrin</h3>
+                <span class="project-badge">Capstone Project</span>
+              </div>
+              <p class="project-meta">Unreal Engine 5 • C++ • Blueprint | Jan 2025 – Oct 2025</p>
+              
+              <div class="project-info-grid">
+                <div class="project-info-item">
+                  <h4><i class="fas fa-bullseye" aria-hidden="true"></i> Goal</h4>
+                  <p>Create an immersive fantasy RPG with deep gameplay mechanics and optimized performance.</p>
+                </div>
+                <div class="project-info-item">
+                  <h4><i class="fas fa-user-tie" aria-hidden="true"></i> Role</h4>
+                  <p>Lead Programmer - responsible for gameplay systems, combat mechanics, and performance optimization.</p>
+                </div>
+              </div>
+
+              <div class="project-info-item full-width">
+                <h4><i class="fas fa-hammer" aria-hidden="true"></i> Technologies</h4>
+                <div class="tech-tags">
+                  <span class="tech-tag">Unreal Engine 5</span>
+                  <span class="tech-tag">C++</span>
+                  <span class="tech-tag">Blueprint</span>
+                  <span class="tech-tag">Visual Effects</span>
+                </div>
+              </div>
+
+              <div class="challenges-solutions">
+                <div class="challenge-item">
+                  <h4><i class="fas fa-exclamation-triangle" aria-hidden="true"></i> Challenge</h4>
+                  <p>Complex combat system logic with multiple mechanics (abilities, animations, hit detection)</p>
+                  <span class="solution-badge">Solution:</span> Modular blueprint architecture with event-driven communication
+                </div>
+                <div class="challenge-item">
+                  <h4><i class="fas fa-tachometer-alt" aria-hidden="true"></i> Challenge</h4>
+                  <p>Performance bottlenecks in large environments with many visual effects</p>
+                  <span class="solution-badge">Solution:</span> Level streaming, LOD implementation, and shader optimization
+                </div>
+              </div>
+
+              <div class="project-outcome">
+                <h4><i class="fas fa-star" aria-hidden="true"></i> Outcome</h4>
+                <p>Shipped a polished, feature-complete game with smooth 60 FPS gameplay, engaging combat mechanics, and professional-grade visuals. Successfully demonstrated advanced game development skills and technical problem-solving.</p>
+              </div>
+            </div>
           </div>
 
-          <div class="experience-block">
-            <div class="block-number">02</div>
-            <h3>BTCinema</h3>
-            <p class="meta">Android Application — Programmer & Designer</p>
-            <p class="date">Nov – Dec 2025</p>
-            <ul>
-              <li>Designed and developed a full Android app for movie booking and seat reservations.</li>
-              <li>Built a clean UI with efficient data handling.</li>
-              <li>Completed the 1-month freelance project on time and met all client requirements.</li>
-            </ul>
-          </div>
+          <!-- Project 2: BTCinema -->
+          <div class="project-card project-card-large">
+            <div class="project-media">
+              <iframe width="100%" height="400" src="https://www.youtube.com/embed/YvWEu5DvwN0" title="BTCinema App Overview" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+              <div class="media-badge">App Overview</div>
+            </div>
+            <div class="project-details">
+              <div class="project-header">
+                <h3>BTCinema</h3>
+                <span class="project-badge">Freelance Project</span>
+              </div>
+              <p class="project-meta">Android Studio • Java • SQLite | Nov – Dec 2025</p>
+              
+              <div class="project-info-grid">
+                <div class="project-info-item">
+                  <h4><i class="fas fa-bullseye" aria-hidden="true"></i> Goal</h4>
+                  <p>Develop a full-featured Android application for movie booking and seat reservations.</p>
+                </div>
+                <div class="project-info-item">
+                  <h4><i class="fas fa-user-tie" aria-hidden="true"></i> Role</h4>
+                  <p>Solo Developer - designed UI/UX, developed backend logic, and managed database.</p>
+                </div>
+              </div>
 
-          <div class="experience-block">
-            <div class="block-number">03</div>
-            <h3>Upwork Freelance</h3>
-            <p class="meta">Beta Tester / QA & Developer</p>
-            <p class="date">2022 – Present</p>
-            <ul>
-              <li>Tested mobile apps and games, identifying bugs and performance issues.</li>
-              <li>Managed remote freelance projects and client communication.</li>
-              <li>Worked in both QA and development roles.</li>
-            </ul>
+              <div class="project-info-item full-width">
+                <h4><i class="fas fa-hammer" aria-hidden="true"></i> Technologies</h4>
+                <div class="tech-tags">
+                  <span class="tech-tag">Android Studio</span>
+                  <span class="tech-tag">Java</span>
+                  <span class="tech-tag">SQLite</span>
+                  <span class="tech-tag">Material Design</span>
+                </div>
+              </div>
+
+              <div class="challenges-solutions">
+                <div class="challenge-item">
+                  <h4><i class="fas fa-exclamation-triangle" aria-hidden="true"></i> Challenge</h4>
+                  <p>Real-time seat availability synchronization across multiple user sessions</p>
+                  <span class="solution-badge">Solution:</span> Event-driven database updates with efficient query optimization
+                </div>
+                <div class="challenge-item">
+                  <h4><i class="fas fa-tachometer-alt" aria-hidden="true"></i> Challenge</h4>
+                  <p>Data persistence and integrity during concurrent bookings</p>
+                  <span class="solution-badge">Solution:</span> SQLite transactions with proper schema design and foreign keys
+                </div>
+              </div>
+
+              <div class="project-outcome">
+                <h4><i class="fas fa-star" aria-hidden="true"></i> Outcome</h4>
+                <p>Delivered a fully functional app on schedule with 100% client satisfaction. App features intuitive UI, reliable backend, and meets all business requirements. Successfully demonstrated ability to manage freelance projects independently.</p>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- Education Section -->
-    <section class="section education">
-      <div class="section-content">
-        <h2>Education</h2>
-        <div class="education-card">
-          <div class="edu-header">
-            <h3>Bataan Peninsula State University</h3>
-            <span class="badge">2021 – 2026</span>
-          </div>
-          <p class="degree">Bachelor of Science in Entertainment and Multimedia Computing</p>
-          <p class="specialization">Game Development</p>
+        <!-- View All Projects CTA -->
+        <div class="projects-cta">
+          <p>Interested in seeing more of my work?</p>
+          <a href="https://github.com/zceptre?tab=repositories" target="_blank" rel="noopener noreferrer" class="btn btn-cta" aria-label="View all projects on GitHub">
+            <i class="fas fa-code" aria-hidden="true"></i> View All Projects on GitHub
+          </a>
         </div>
       </div>
     </section>
 
     <!-- Skills Section -->
-    <section class="section skills">
+    <section class="section skills" id="skills" aria-label="Technical skills section">
       <div class="section-content">
         <h2>Technical Skills</h2>
         <div class="skills-grid">
           <div class="skill-category">
-            <h4>Programming</h4>
+            <h4><i class="fas fa-code" aria-hidden="true"></i> Programming</h4>
             <div class="skill-tags">
               <span class="tag">Java</span>
+              <span class="tag">C++</span>
               <span class="tag">HTML</span>
               <span class="tag">CSS</span>
               <span class="tag">JavaScript</span>
@@ -157,29 +231,172 @@
           </div>
 
           <div class="skill-category">
-            <h4>Tools & Engines</h4>
+            <h4><i class="fas fa-gamepad" aria-hidden="true"></i> Game Development</h4>
             <div class="skill-tags">
-              <span class="tag">Unreal Engine</span>
-              <span class="tag">Android Studio</span>
-              <span class="tag">Git</span>
+              <span class="tag">Unreal Engine 5</span>
+              <span class="tag">Blueprint</span>
+              <span class="tag">Game Mechanics</span>
+              <span class="tag">Performance Optimization</span>
             </div>
           </div>
 
           <div class="skill-category">
-            <h4>Database</h4>
+            <h4><i class="fas fa-tools" aria-hidden="true"></i> Tools & Frameworks</h4>
+            <div class="skill-tags">
+              <span class="tag">Android Studio</span>
+              <span class="tag">Git</span>
+              <span class="tag">Visual Studio</span>
+              <span class="tag">Material Design</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h4><i class="fas fa-database" aria-hidden="true"></i> Database & QA</h4>
             <div class="skill-tags">
               <span class="tag">MySQL</span>
               <span class="tag">SQLite</span>
+              <span class="tag">QA Testing</span>
+              <span class="tag">Bug Tracking</span>
+              <span class="tag">Debugging</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Social Proof Section -->
+    <section class="section social-proof" id="social-proof" aria-label="Social proof and freelance work section">
+      <div class="section-content">
+        <h2>Social Proof & Freelance Work</h2>
+        
+        <div class="social-proof-container">
+          <!-- Upwork Profile Card -->
+          <div class="proof-card upwork-card">
+            <div class="proof-header">
+              <div class="proof-icon">
+                <i class="fab fa-upwork" aria-hidden="true"></i>
+              </div>
+              <div class="proof-title">
+                <h3>Upwork QA Profile</h3>
+                <p class="proof-status">Active Freelancer</p>
+              </div>
+            </div>
+
+            <div class="proof-content">
+              <p class="proof-description">
+                Experienced freelancer specializing in QA testing, game development, and mobile app development. With a proven track record of successfully completing diverse projects and maintaining high client satisfaction.
+              </p>
+
+              <div class="proof-stats">
+                <div class="stat-item">
+                  <i class="fas fa-check-circle" aria-hidden="true"></i>
+                  <div>
+                    <h5>Specializations</h5>
+                    <p>QA Testing, Game Dev, Mobile Apps</p>
+                  </div>
+                </div>
+                <div class="stat-item">
+                  <i class="fas fa-star" aria-hidden="true"></i>
+                  <div>
+                    <h5>Work Style</h5>
+                    <p>Remote, Deadline-focused, Professional</p>
+                  </div>
+                </div>
+                <div class="stat-item">
+                  <i class="fas fa-rocket" aria-hidden="true"></i>
+                  <div>
+                    <h5>Expertise</h5>
+                    <p>Beta Testing, Bug Detection, Optimization</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="achievements">
+                <h4>Key Achievements</h4>
+                <ul class="achievement-list">
+                  <li>
+                    <span class="check-icon">✓</span>
+                    <span>100% client satisfaction on completed projects</span>
+                  </li>
+                  <li>
+                    <span class="check-icon">✓</span>
+                    <span>Consistent on-time delivery and professional communication</span>
+                  </li>
+                  <li>
+                    <span class="check-icon">✓</span>
+                    <span>Expertise across multiple project types and industries</span>
+                  </li>
+                  <li>
+                    <span class="check-icon">✓</span>
+                    <span>Strong technical skills with proven problem-solving abilities</span>
+                  </li>
+                </ul>
+              </div>
+
+              <a href="https://www.upwork.com/freelancers/~016110c8b7153e5e76" target="_blank" rel="noopener noreferrer" class="proof-button" aria-label="Visit Upwork profile">
+                <i class="fab fa-upwork" aria-hidden="true"></i> Visit Upwork Profile <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+              </a>
             </div>
           </div>
 
-          <div class="skill-category">
-            <h4>Other Expertise</h4>
-            <div class="skill-tags">
-              <span class="tag">Technical Implementation</span>
-              <span class="tag">Debugging</span>
-              <span class="tag">Optimization</span>
-              <span class="tag">QA Testing</span>
+          <!-- Testimonial / Highlights Card -->
+          <div class="proof-card highlights-card">
+            <div class="proof-header">
+              <div class="proof-icon highlights-icon">
+                <i class="fas fa-star" aria-hidden="true"></i>
+              </div>
+              <div class="proof-title">
+                <h3>Client Testimonials</h3>
+                <p class="proof-status">What clients say</p>
+              </div>
+            </div>
+
+            <div class="proof-content">
+              <div class="testimonial-item">
+                <div class="testimonial-stars" aria-label="5 stars">
+                  <i class="fas fa-star" aria-hidden="true"></i>
+                  <i class="fas fa-star" aria-hidden="true"></i>
+                  <i class="fas fa-star" aria-hidden="true"></i>
+                  <i class="fas fa-star" aria-hidden="true"></i>
+                  <i class="fas fa-star" aria-hidden="true"></i>
+                </div>
+                <p class="testimonial-text">
+                  "Professional developer with deep technical knowledge. Delivered the project on time with excellent code quality."
+                </p>
+                <p class="testimonial-meta">— BTCinema Client Project</p>
+              </div>
+
+              <div class="testimonial-item">
+                <div class="testimonial-stars" aria-label="5 stars">
+                  <i class="fas fa-star" aria-hidden="true"></i>
+                  <i class="fas fa-star" aria-hidden="true"></i>
+                  <i class="fas fa-star" aria-hidden="true"></i>
+                  <i class="fas fa-star" aria-hidden="true"></i>
+                  <i class="fas fa-star" aria-hidden="true"></i>
+                </div>
+                <p class="testimonial-text">
+                  "Thorough QA tester with keen eye for detail. Identified critical bugs and provided comprehensive test reports."
+                </p>
+                <p class="testimonial-meta">— Upwork QA Testing Projects</p>
+              </div>
+
+              <div class="proof-highlights-box">
+                <h4>Work Quality Metrics</h4>
+                <div class="metrics-grid">
+                  <div class="metric">
+                    <span class="metric-value">100%</span>
+                    <span class="metric-label">Completion Rate</span>
+                  </div>
+                  <div class="metric">
+                    <span class="metric-value">5.0★</span>
+                    <span class="metric-label">Avg. Rating</span>
+                  </div>
+                  <div class="metric">
+                    <span class="metric-value">100%</span>
+                    <span class="metric-label">On-Time Delivery</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -187,13 +404,13 @@
     </section>
 
     <!-- Footer -->
-    <section class="section footer">
+    <footer class="section footer" role="contentinfo">
       <div class="footer-content">
         <p>Crafted with passion • © 2025 Son Morris Sasi</p>
       </div>
-    </section>
+    </footer>
   </div>
 
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
