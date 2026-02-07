@@ -35,10 +35,10 @@
         <li class="nav-item">
           <a href="#skills" class="nav-link" data-section="3">Skills</a>
         </li>
-        <li class="nav-item">
-          <a href="#social-proof" class="nav-link" data-section="4">Social Proof</a>
-        </li>
       </ul>
+      <a href="https://github.com/zceptre" target="_blank" rel="noopener noreferrer" class="nav-github" aria-label="Visit GitHub profile">
+        <i class="fab fa-github" aria-hidden="true"></i> GitHub
+      </a>
       <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
         <span class="bar"></span>
         <span class="bar"></span>
@@ -51,20 +51,20 @@
     <!-- Hero Section -->
     <section class="section hero" id="home" aria-label="Hero section">
       <div class="hero-content">
-        <div class="hero-badge">Portfolio</div>
+        <!-- <div class="hero-badge"></span> Available for Work</div> -->
         <div class="hero-grid">
           <div class="hero-text">
+            <p class="greeting">Hi, I'm</p>
             <h1 class="name">Son Morris Sasi</h1>
-            <p class="title">Junior Developer | QA Tester | Game Developer</p>
-            <p class="location">Philippines • +63-995-181-9233 • morris.dev31@gmail.com</p>
+            <p class="title">Junior Developer, QA Tester, and Game Developer crafting immersive digital experiences and robust applications.</p>
             <div class="buttons">
-              <a href="https://github.com/zceptre" target="_blank" rel="noopener noreferrer" class="btn btn-primary" aria-label="Visit GitHub profile">
+              <a href="#projects" class="btn btn-primary" aria-label="View projects">
+                <i class="fas fa-code" aria-hidden="true"></i> View Projects
+              </a>
+              <a href="https://github.com/zceptre" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" aria-label="Visit GitHub profile">
                 <i class="fab fa-github" aria-hidden="true"></i> GitHub
               </a>
-              <a href="https://www.upwork.com/freelancers/~016110c8b7153e5e76" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" aria-label="Visit Upwork profile">
-                <i class="fab fa-upwork" aria-hidden="true"></i> Upwork
-              </a>
-              <a href="https://www.linkedin.com/in/morris-sasi-b779142b4/" target="_blank" rel="noopener noreferrer" class="btn btn-tertiary" aria-label="Visit LinkedIn profile">
+              <a href="https://www.linkedin.com/in/morris-sasi-b779142b4/" target="_blank" rel="noopener noreferrer" class="btn btn-icon" aria-label="Visit LinkedIn profile">
                 <i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn
               </a>
             </div>
@@ -75,7 +75,6 @@
         </div>
       </div>
       <div class="scroll-indicator">
-        <span>Scroll to explore</span>
         <div class="scroll-arrow">↓</div>
       </div>
     </section>
@@ -83,9 +82,25 @@
     <!-- Summary Section -->
     <section class="section summary" id="about" aria-label="About me section">
       <div class="section-content">
-        <h2>About Me</h2>
+        <div class="about-badge"></span> About Me</div>
+        <h2>Building Immersive Experiences with <span class="gradient-text">Code & Creativity</span></h2>
         <div class="summary-card">
-          <p>Junior Developer with hands-on experience in Unreal Engine and Android development. Proficient in Java, Android Studio, and game mechanics implementation. Experienced in freelance project management, debugging, and QA testing, with a passion for creating interactive applications and games.</p>
+          <p>"I'm a Junior Developer with hands-on experience in <strong>Unreal Engine</strong>, <strong>Android development</strong>, and game mechanics. I specialize in Java, C++, and UI/UX implementation across mobile and gaming platforms. With a strong foundation in debugging, QA testing, and project management, I'm passionate about creating interactive applications that users love."</p>
+        </div>
+        
+        <div class="stats-container">
+          <div class="stat-card">
+            <div class="stat-number">1+</div>
+            <div class="stat-label">YEARS EXPERIENCE</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">2+</div>
+            <div class="stat-label">PROJECTS COMPLETED</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">CLIENT SATISFACTION</div>
+          </div>
         </div>
       </div>
     </section>
@@ -110,41 +125,17 @@
               
               <div class="project-info-grid">
                 <div class="project-info-item">
-                  <h4><i class="fas fa-bullseye" aria-hidden="true"></i> Goal</h4>
-                  <p>Create an immersive fantasy RPG with deep gameplay mechanics and optimized performance.</p>
+                  <h4><i class="fas fa-hammer" aria-hidden="true"></i> Tech Stack</h4>
+                  <div class="tech-tags">
+                    <span class="tech-tag">Unreal Engine 5</span>
+                    <span class="tech-tag">C++</span>
+                    <span class="tech-tag">Blueprint</span>
+                  </div>
                 </div>
                 <div class="project-info-item">
-                  <h4><i class="fas fa-user-tie" aria-hidden="true"></i> Role</h4>
-                  <p>Lead Programmer - responsible for gameplay systems, combat mechanics, and performance optimization.</p>
+                  <h4><i class="fas fa-star" aria-hidden="true"></i> Highlights</h4>
+                  <p>Combat systems, performance optimization, polished gameplay at 60 FPS.</p>
                 </div>
-              </div>
-
-              <div class="project-info-item full-width">
-                <h4><i class="fas fa-hammer" aria-hidden="true"></i> Technologies</h4>
-                <div class="tech-tags">
-                  <span class="tech-tag">Unreal Engine 5</span>
-                  <span class="tech-tag">C++</span>
-                  <span class="tech-tag">Blueprint</span>
-                  <span class="tech-tag">Visual Effects</span>
-                </div>
-              </div>
-
-              <div class="challenges-solutions">
-                <div class="challenge-item">
-                  <h4><i class="fas fa-exclamation-triangle" aria-hidden="true"></i> Challenge</h4>
-                  <p>Complex combat system logic with multiple mechanics (abilities, animations, hit detection)</p>
-                  <span class="solution-badge">Solution:</span> Modular blueprint architecture with event-driven communication
-                </div>
-                <div class="challenge-item">
-                  <h4><i class="fas fa-tachometer-alt" aria-hidden="true"></i> Challenge</h4>
-                  <p>Performance bottlenecks in large environments with many visual effects</p>
-                  <span class="solution-badge">Solution:</span> Level streaming, LOD implementation, and shader optimization
-                </div>
-              </div>
-
-              <div class="project-outcome">
-                <h4><i class="fas fa-star" aria-hidden="true"></i> Outcome</h4>
-                <p>Shipped a polished, feature-complete game with smooth 60 FPS gameplay, engaging combat mechanics, and professional-grade visuals. Successfully demonstrated advanced game development skills and technical problem-solving.</p>
               </div>
             </div>
           </div>
@@ -164,41 +155,17 @@
               
               <div class="project-info-grid">
                 <div class="project-info-item">
-                  <h4><i class="fas fa-bullseye" aria-hidden="true"></i> Goal</h4>
-                  <p>Develop a full-featured Android application for movie booking and seat reservations.</p>
+                  <h4><i class="fas fa-hammer" aria-hidden="true"></i> Tech Stack</h4>
+                  <div class="tech-tags">
+                    <span class="tech-tag">Android Studio</span>
+                    <span class="tech-tag">Java</span>
+                    <span class="tech-tag">SQLite</span>
+                  </div>
                 </div>
                 <div class="project-info-item">
-                  <h4><i class="fas fa-user-tie" aria-hidden="true"></i> Role</h4>
-                  <p>Solo Developer - designed UI/UX, developed backend logic, and managed database.</p>
+                  <h4><i class="fas fa-star" aria-hidden="true"></i> Highlights</h4>
+                  <p>Movie booking app with real-time seat sync, intuitive UI, reliable database.</p>
                 </div>
-              </div>
-
-              <div class="project-info-item full-width">
-                <h4><i class="fas fa-hammer" aria-hidden="true"></i> Technologies</h4>
-                <div class="tech-tags">
-                  <span class="tech-tag">Android Studio</span>
-                  <span class="tech-tag">Java</span>
-                  <span class="tech-tag">SQLite</span>
-                  <span class="tech-tag">Material Design</span>
-                </div>
-              </div>
-
-              <div class="challenges-solutions">
-                <div class="challenge-item">
-                  <h4><i class="fas fa-exclamation-triangle" aria-hidden="true"></i> Challenge</h4>
-                  <p>Real-time seat availability synchronization across multiple user sessions</p>
-                  <span class="solution-badge">Solution:</span> Event-driven database updates with efficient query optimization
-                </div>
-                <div class="challenge-item">
-                  <h4><i class="fas fa-tachometer-alt" aria-hidden="true"></i> Challenge</h4>
-                  <p>Data persistence and integrity during concurrent bookings</p>
-                  <span class="solution-badge">Solution:</span> SQLite transactions with proper schema design and foreign keys
-                </div>
-              </div>
-
-              <div class="project-outcome">
-                <h4><i class="fas fa-star" aria-hidden="true"></i> Outcome</h4>
-                <p>Delivered a fully functional app on schedule with 100% client satisfaction. App features intuitive UI, reliable backend, and meets all business requirements. Successfully demonstrated ability to manage freelance projects independently.</p>
               </div>
             </div>
           </div>
@@ -217,47 +184,51 @@
     <!-- Skills Section -->
     <section class="section skills" id="skills" aria-label="Technical skills section">
       <div class="section-content">
+        <div class="skills-badge"></span> Expertise</div>
         <h2>Technical Skills</h2>
         <div class="skills-grid">
           <div class="skill-category">
-            <h4><i class="fas fa-code" aria-hidden="true"></i> Programming</h4>
+            <div class="skill-category-header">
+              <i class="fas fa-code" aria-hidden="true"></i>
+              <h4>Programming</h4>
+            </div>
             <div class="skill-tags">
               <span class="tag">Java</span>
-              <span class="tag">C++</span>
+             
+              <span class="tag">JavaScript</span>
               <span class="tag">HTML</span>
               <span class="tag">CSS</span>
-              <span class="tag">JavaScript</span>
+              
             </div>
           </div>
 
           <div class="skill-category">
-            <h4><i class="fas fa-gamepad" aria-hidden="true"></i> Game Development</h4>
+            <div class="skill-category-header">
+              <i class="fas fa-gamepad" aria-hidden="true"></i>
+              <h4>Game Development</h4>
+            </div>
             <div class="skill-tags">
               <span class="tag">Unreal Engine 5</span>
               <span class="tag">Blueprint</span>
               <span class="tag">Game Mechanics</span>
               <span class="tag">Performance Optimization</span>
+              <span class="tag">Level Streaming</span>
+              <span class="tag">LOD</span>
             </div>
           </div>
 
           <div class="skill-category">
-            <h4><i class="fas fa-tools" aria-hidden="true"></i> Tools & Frameworks</h4>
+            <div class="skill-category-header">
+              <i class="fas fa-database" aria-hidden="true"></i>
+              <h4>Development Tools</h4>
+            </div>
             <div class="skill-tags">
               <span class="tag">Android Studio</span>
-              <span class="tag">Git</span>
-              <span class="tag">Visual Studio</span>
-              <span class="tag">Material Design</span>
-            </div>
-          </div>
-
-          <div class="skill-category">
-            <h4><i class="fas fa-database" aria-hidden="true"></i> Database & QA</h4>
-            <div class="skill-tags">
-              <span class="tag">MySQL</span>
               <span class="tag">SQLite</span>
-              <span class="tag">QA Testing</span>
-              <span class="tag">Bug Tracking</span>
-              <span class="tag">Debugging</span>
+              <span class="tag">Git</span>
+              <span class="tag">VS Code</span>
+             
+              <span class="tag">Visual Effects</span>
             </div>
           </div>
         </div>
@@ -403,12 +374,48 @@
       </div>
     </section>
 
+    <!-- CTA Section -->
     <!-- Footer -->
+    <footer class="section footer cta-section" role="contentinfo">
+      <div class="section-content">
+        <div class="cta-container">
+          <div class="cta-left">
+            <h2>Let's work together</h2>
+            <p>I'm currently available for freelance projects and full-time opportunities.</p>
+            <a href="mailto:morris.dev31@gmail.com" class="btn btn-cta-primary" aria-label="Send email to get in touch">
+              <i class="fas fa-envelope" aria-hidden="true"></i> Get in Touch
+            </a>
+          </div>
+
+          <div class="cta-right">
+            <div class="contact-item">
+              <i class="fas fa-map-pin" aria-hidden="true"></i>
+              <span>Philippines</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-phone" aria-hidden="true"></i>
+              <a href="tel:+63-995-181-9233">+63-995-181-9233</a>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-envelope" aria-hidden="true"></i>
+              <a href="mailto:morris.dev31@gmail.com">morris.dev31@gmail.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Footer Content -->
     <footer class="section footer" role="contentinfo">
       <div class="footer-content">
         <p>Crafted with passion • © 2025 Son Morris Sasi</p>
       </div>
     </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollTopBtn" class="scroll-top-btn" aria-label="Scroll to top">
+      <i class="fas fa-chevron-up"></i>
+    </button>
   </div>
 
   <script src="script.js" defer></script>

@@ -2,14 +2,16 @@
    HERO SECTION
    ============================================ */
 .hero {
-  background: linear-gradient(135deg, #000000 0%, #1a1a2e 50%, #0a0a0a 100%);
-  min-height: calc(100vh - 70px);
-  padding: 60px 40px;
+  background: linear-gradient(135deg, #000000 0%, #0d1628 50%, #000000 100%);
+  min-height: 100vh;
+  padding: 0 40px 60px 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
+  
+  padding-top: 106px;
 }
 
 .hero::before {
@@ -19,7 +21,7 @@
   left: -10%;
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(100, 150, 255, 0.12) 0%, transparent 70%);
   border-radius: 50%;
   filter: blur(50px);
   pointer-events: none;
@@ -34,7 +36,7 @@
   right: -10%;
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(100, 150, 255, 0.08) 0%, transparent 70%);
   border-radius: 50%;
   filter: blur(50px);
   pointer-events: none;
@@ -58,23 +60,32 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 14px 28px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.05) 100%);
-  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  padding: 10px 20px;
+  background: linear-gradient(135deg, rgba(100, 150, 255, 0.15) 0%, rgba(100, 150, 255, 0.08) 100%);
+  border: 1.5px solid rgba(100, 150, 255, 0.25);
   border-radius: 30px;
-  font-size: 0.8rem;
-  color: #e0e0e0;
+  font-size: 0.75rem;
+  color: #a8d0ff;
   font-weight: 700;
   margin-bottom: 30px;
   animation: slideInDown 0.8s ease-out;
   letter-spacing: 1.3px;
-  text-transform: uppercase;
+  text-transform: capitalize;
   position: relative;
   overflow: hidden;
   backdrop-filter: blur(25px);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 40px rgba(100, 150, 255, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.15);
   transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
   will-change: background, border-color, transform, box-shadow;
+}
+
+.badge-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: #123308;
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
 }
 
 .hero-badge::before {
@@ -84,7 +95,7 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+  background: linear-gradient(90deg, transparent, rgba(100, 150, 255, 0.3), transparent);
   transition: left 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
@@ -92,18 +103,12 @@
   left: 100%;
 }
 
-.hero-badge::after {
-  content: '';
-  font-size: 0.9rem;
-  animation: pulse 2s ease-in-out infinite;
-}
-
 .hero-badge:hover {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.08) 100%);
-  border-color: rgba(255, 255, 255, 0.35);
+  background: linear-gradient(135deg, rgba(100, 150, 255, 0.22) 0%, rgba(100, 150, 255, 0.12) 100%);
+  border-color: rgba(100, 150, 255, 0.4);
   color: #ffffff;
   transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  box-shadow: 0 15px 50px rgba(100, 150, 255, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .hero-grid {
@@ -116,11 +121,46 @@
 
 .hero-text {
   animation: slideInLeft 0.8s ease-out 0.1s both;
-  text-align: center;
+  text-align: left;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+}
+
+.greeting {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  color: #a0a0a0;
+  font-weight: 400;
+  margin-bottom: 5px;
+  letter-spacing: 0.5px;
+  animation: slideInUp 0.8s ease-out 0.15s both;
+}
+
+.name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2.5rem, 8vw, 4.8rem);
+  font-weight: 800;
+  margin-bottom: 25px;
+  letter-spacing: -2.5px;
+  background: linear-gradient(135deg, #a371ff 0%, #d9a7ff 50%, #a371ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.15;
+  animation: slideInUp 0.8s ease-out 0.2s both;
+}
+
+.title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
+  color: #b0b8d0;
+  line-height: 1.7;
+  margin-bottom: 35px;
+  font-weight: 300;
+  letter-spacing: 0.3px;
+  animation: slideInUp 0.8s ease-out 0.25s both;
 }
 
 .hero-image {
@@ -200,10 +240,10 @@
 
 .buttons {
   display: flex;
-  gap: 18px;
+  gap: 15px;
   flex-wrap: wrap;
-  justify-content: center;
-  animation: slideInUp 0.8s ease-out 0.5s both;
+  justify-content: flex-start;
+  animation: slideInUp 0.8s ease-out 0.35s both;
 }
 
 .btn {
@@ -211,11 +251,11 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 15px 35px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.04) 100%);
-  border: 1.5px solid rgba(255, 255, 255, 0.2);
-  border-radius: 12px;
-  color: #e0e0e0;
+  padding: 13px 30px;
+  background: linear-gradient(135deg, rgba(100, 150, 255, 0.2) 0%, rgba(100, 150, 255, 0.08) 100%);
+  border: 1.5px solid rgba(100, 150, 255, 0.3);
+  border-radius: 50px;
+  color: #ffffff;
   text-decoration: none;
   font-weight: 700;
   font-size: 0.95rem;
@@ -225,7 +265,7 @@
   position: relative;
   overflow: hidden;
   will-change: background, border-color, transform, box-shadow;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 .btn::before {
@@ -235,7 +275,7 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+  background: linear-gradient(90deg, transparent, rgba(100, 150, 255, 0.2), transparent);
   transition: left 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
   z-index: 0;
 }
@@ -244,21 +284,50 @@
   left: 100%;
 }
 
-.btn-primary,
-.btn-secondary,
-.btn-tertiary {
-  position: relative;
-  z-index: 1;
+.btn-primary {
+  background: linear-gradient(135deg, rgba(100, 150, 255, 0.35) 0%, rgba(100, 150, 255, 0.15) 100%);
+  border-color: rgba(100, 150, 255, 0.6);
+  color: #ffffff;
+  box-shadow: 0 10px 40px rgba(100, 150, 255, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
-.btn-primary:hover,
-.btn-secondary:hover,
-.btn-tertiary:hover {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.08) 100%);
-  border-color: rgba(255, 255, 255, 0.35);
+.btn-primary:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, rgba(100, 150, 255, 0.5) 0%, rgba(100, 150, 255, 0.25) 100%);
+  box-shadow: 0 20px 60px rgba(100, 150, 255, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  border-color: rgba(100, 150, 255, 0.8);
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, rgba(100, 150, 255, 0.2) 0%, rgba(100, 150, 255, 0.08) 100%);
+  border-color: rgba(100, 150, 255, 0.4);
+  color: #a8d0ff;
+  box-shadow: 0 10px 40px rgba(100, 150, 255, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.btn-secondary:hover {
+  background: linear-gradient(135deg, rgba(100, 150, 255, 0.3) 0%, rgba(100, 150, 255, 0.15) 100%);
+  border-color: rgba(100, 150, 255, 0.6);
   color: #ffffff;
-  transform: translateY(-5px);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 20px 60px rgba(100, 150, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.btn-icon {
+  padding: 13px 16px;
+  background: linear-gradient(135deg, rgba(100, 150, 255, 0.2) 0%, rgba(100, 150, 255, 0.08) 100%);
+  border-color: rgba(100, 150, 255, 0.4);
+  color: #a8d0ff;
+  font-size: 1.2rem;
+  box-shadow: 0 10px 40px rgba(100, 150, 255, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.btn-icon:hover {
+  background: linear-gradient(135deg, rgba(100, 150, 255, 0.3) 0%, rgba(100, 150, 255, 0.15) 100%);
+  border-color: rgba(100, 150, 255, 0.6);
+  color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 20px 60px rgba(100, 150, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 .scroll-indicator {
@@ -362,6 +431,11 @@
     gap: 40px;
   }
 
+  .hero-text {
+    text-align: left;
+    align-items: flex-start;
+  }
+
   .hero-image {
     order: -1;
   }
@@ -376,25 +450,21 @@
 
   .name {
     font-size: 2.4rem;
-    margin-bottom: 12px;
+    margin-bottom: 15px;
   }
 
   .title {
-    font-size: 1.1rem;
-    margin-bottom: 8px;
-  }
-
-  .location {
-    font-size: 0.9rem;
+    font-size: 1.05rem;
     margin-bottom: 30px;
   }
 
   .buttons {
-    gap: 15px;
+    justify-content: flex-start;
+    gap: 12px;
   }
 
   .btn {
-    padding: 12px 28px;
+    padding: 12px 24px;
     font-size: 0.85rem;
   }
 

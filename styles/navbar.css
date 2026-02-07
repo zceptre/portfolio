@@ -1,24 +1,34 @@
 /* ============================================
-   NAVBAR STYLES
+   NAVBAR STYLES - MODERN DESIGN
    ============================================ */
 .navbar {
   position: fixed;
-  top: 0;
-  width: 100%;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 32px);
+  max-width: 1400px;
   height: 70px;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.96) 0%, rgba(10, 10, 20, 0.95) 100%);
-  backdrop-filter: blur(25px);
-  border-bottom: 1.5px solid rgba(255, 255, 255, 0.12);
+  background: transparent;
+  backdrop-filter: blur(40px);
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
   z-index: 1000;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-  will-change: background, border-color, box-shadow;
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    0 0 40px rgba(100, 150, 255, 0.1);
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: background, border-color, box-shadow, transform;
 }
 
 .navbar.scrolled {
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.98) 0%, rgba(5, 5, 15, 0.96) 100%);
-  border-bottom-color: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  top: 12px;
+  width: calc(100% - 24px);
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 0 60px rgba(100, 150, 255, 0.15);
 }
 
 .nav-container {
@@ -45,33 +55,33 @@
   font-family: 'Space Grotesk', sans-serif;
   font-size: 1.5rem;
   font-weight: 800;
-  color: #ffffff;
-  text-decoration: none;
-  background: linear-gradient(135deg, #ffffff 0%, #e8e8e8 50%, #d0d0d0 100%);
+  background: linear-gradient(135deg, #a8d0ff 0%, #6ba3ff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   letter-spacing: -0.8px;
   transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  will-change: transform, text-shadow;
+  will-change: transform, filter;
   cursor: pointer;
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .logo-text:hover {
   transform: translateY(-2px);
-  filter: drop-shadow(0 8px 20px rgba(255, 255, 255, 0.15));
+  filter: drop-shadow(0 8px 20px rgba(100, 150, 255, 0.25));
 }
 
 .nav-menu {
   display: flex;
   list-style: none;
   gap: 50px;
-  flex-grow: 1;
-  justify-content: center;
   margin: 0;
   padding: 0;
   animation: slideInDown 0.8s ease-out;
+  margin-left: auto;
+  margin-right: 30px;
 }
 
 .nav-item {
@@ -89,13 +99,15 @@
   position: relative;
   letter-spacing: 0.3px;
   display: block;
-  padding: 8px 0;
-  will-change: color;
+  padding: 8px 16px;
+  border-radius: 8px;
+  will-change: color, background;
 }
 
 .nav-link:hover,
 .nav-link.active {
   color: #ffffff;
+  background: linear-gradient(135deg, rgba(100, 150, 255, 0.12) 0%, rgba(100, 150, 255, 0.06) 100%);
 }
 
 .nav-link::before {
@@ -105,10 +117,11 @@
   left: 0;
   width: 100%;
   height: 2px;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #ffffff 50%, rgba(255, 255, 255, 0) 100%);
+  background: linear-gradient(90deg, rgba(100, 150, 255, 0) 0%, rgba(100, 150, 255, 0.8) 50%, rgba(100, 150, 255, 0) 100%);
   opacity: 0;
   transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  will-change: opacity, width;
+  will-change: opacity;
+  border-radius: 2px;
 }
 
 .nav-link::after {
@@ -118,11 +131,12 @@
   left: 50%;
   width: 0;
   height: 2.5px;
-  background: linear-gradient(90deg, #ffffff 0%, #e0e0e0 50%, #c0c0c0 100%);
+  background: linear-gradient(90deg, rgba(100, 150, 255, 0.5) 0%, rgba(150, 180, 255, 1) 50%, rgba(100, 150, 255, 0.5) 100%);
   transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   transform: translateX(-50%);
   will-change: width;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 20px rgba(100, 150, 255, 0.4);
+  border-radius: 2px;
 }
 
 .nav-link:hover::before,
@@ -136,20 +150,20 @@
 }
 
 .nav-link:hover {
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  text-shadow: 0 0 20px rgba(100, 150, 255, 0.3);
 }
 
 .hamburger {
   display: none;
   flex-direction: column;
   cursor: pointer;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.04) 100%);
-  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  background: linear-gradient(135deg, rgba(100, 150, 255, 0.1) 0%, rgba(100, 150, 255, 0.05) 100%);
+  border: 1.5px solid rgba(100, 150, 255, 0.2);
   padding: 8px;
   z-index: 1001;
   width: 44px;
   height: 44px;
-  border-radius: 10px;
+  border-radius: 12px;
   justify-content: center;
   align-items: center;
   transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -158,22 +172,66 @@
 }
 
 .hamburger:hover {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.08) 100%);
-  border-color: rgba(255, 255, 255, 0.25);
-  transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, rgba(100, 150, 255, 0.18) 0%, rgba(100, 150, 255, 0.1) 100%);
+  border-color: rgba(100, 150, 255, 0.4);
+  transform: scale(1.08);
+  box-shadow: 0 12px 28px rgba(100, 150, 255, 0.2);
 }
 
 .bar {
   width: 20px;
   height: 2.5px;
-  background: linear-gradient(90deg, #ffffff 0%, #e8e8e8 100%);
+  background: linear-gradient(90deg, #ffffff 0%, #d0e0ff 100%);
   transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   border-radius: 2px;
   transform-origin: center;
   will-change: transform, opacity;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 8px rgba(100, 150, 255, 0.2);
   display: block;
+}
+
+.nav-github {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, rgba(100, 150, 255, 0.12) 0%, rgba(100, 150, 255, 0.05) 100%);
+  border: 1.5px solid rgba(100, 150, 255, 0.25);
+  border-radius: 50px;
+  color: #a8d0ff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: background, border-color, transform, box-shadow;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(100, 150, 255, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.nav-github::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(100, 150, 255, 0.2), transparent);
+  transition: left 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.nav-github:hover::before {
+  left: 100%;
+}
+
+.nav-github:hover {
+  background: linear-gradient(135deg, rgba(100, 150, 255, 0.2) 0%, rgba(100, 150, 255, 0.1) 100%);
+  border-color: rgba(100, 150, 255, 0.4);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 35px rgba(100, 150, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 .hamburger.active .bar:nth-child(1) {
@@ -208,6 +266,11 @@
   .nav-link {
     font-size: 0.9rem;
   }
+
+  .nav-github {
+    padding: 10px 18px;
+    font-size: 0.9rem;
+  }
 }
 
 @media (max-width: 992px) {
@@ -225,23 +288,35 @@
     padding: 0 20px;
   }
 
+  .nav-github {
+    display: none;
+  }
+
   .nav-menu {
     position: fixed;
     left: -100%;
-    top: 70px;
+    top: calc(70px + 28px);
     flex-direction: column;
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.97) 0%, rgba(10, 10, 25, 0.96) 100%);
-    backdrop-filter: blur(30px);
-    width: 100%;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(20, 20, 40, 0.9) 100%);
+    backdrop-filter: blur(40px);
+    width: calc(100% - 32px);
+    max-width: calc(100% - 32px);
+    margin: 0 16px;
+    border-radius: 16px;
     text-align: center;
     transition: left 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     gap: 0;
-    padding: 20px 0;
-    border-bottom: 1.5px solid rgba(255, 255, 255, 0.12);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    padding: 16px 0;
+    border: 1.5px solid rgba(100, 150, 255, 0.15);
+    box-shadow: 
+      0 20px 60px rgba(0, 0, 0, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      0 0 40px rgba(100, 150, 255, 0.1);
     will-change: left;
-    max-height: calc(100vh - 70px);
+    max-height: calc(100vh - 140px);
     overflow-y: auto;
+    margin-left: 0;
+    margin-right: 0;
   }
 
   .nav-menu.active {
@@ -249,7 +324,7 @@
   }
 
   .nav-item {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid rgba(100, 150, 255, 0.08);
     width: 100%;
   }
 
@@ -258,11 +333,13 @@
   }
 
   .nav-link {
-    padding: 18px 20px;
+    padding: 16px 20px;
     display: block;
     width: 100%;
     position: relative;
     font-size: 0.95rem;
+    margin: 0;
+    border-radius: 0;
   }
 
   .nav-link::before {
