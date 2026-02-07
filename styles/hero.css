@@ -432,8 +432,8 @@
   }
 
   .hero-text {
-    text-align: left;
-    align-items: flex-start;
+    text-align: center;
+    align-items: center;
   }
 
   .hero-image {
@@ -504,12 +504,16 @@
   .buttons {
     gap: 12px;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
   }
 
   .btn {
     padding: 11px 24px;
     font-size: 0.8rem;
-    width: 100%;
+    width: auto;
+    min-width: 200px;
   }
 }
 
@@ -562,6 +566,8 @@
   .buttons {
     gap: 10px;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   .btn {
