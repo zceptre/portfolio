@@ -416,8 +416,48 @@
     <button id="scrollTopBtn" class="scroll-top-btn" aria-label="Scroll to top">
       <i class="fas fa-chevron-up"></i>
     </button>
+
+    <!-- AI Chat Widget -->
+    <div class="ai-chat-widget">
+      <div class="ai-chat-panel" id="aiChatPanel">
+        <div class="ai-chat-header">
+          <h3>AI Assistant</h3>
+          <button class="ai-chat-close" id="aiChatClose" aria-label="Close chat">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="ai-chat-messages" id="aiChatMessages"></div>
+        <div class="ai-chat-input-container">
+          <input 
+            type="text" 
+            id="aiChatInput" 
+            placeholder="Ask about my projects, skills..." 
+            class="ai-chat-input"
+            aria-label="Chat message input"
+          >
+          <button class="ai-chat-send" id="aiChatSend" aria-label="Send message">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </div>
+      </div>
+      <button class="ai-chat-button" id="aiChatButton" aria-label="Open AI chat">
+        <i class="fas fa-robot"></i>
+      </button>
+    </div>
   </div>
 
   <script src="script.js" defer></script>
+
+  <!-- AI Agent Script -->
+  <script>
+    async function askAI(msg) {
+      const res = await fetch("https://n8n-zceptre.onrender.com/webhook-test/portfolio-chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: msg })
+      });
+      return await res.json();
+    }
+  </script>
 </body>
 </html>
