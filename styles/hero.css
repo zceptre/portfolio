@@ -44,6 +44,13 @@
   z-index: 0;
 }
 
+@media (max-width: 768px) {
+  .hero::before,
+  .hero::after {
+    display: none !important;
+  }
+}
+
 .hero-content {
   width: 100%;
   max-width: 1400px;
@@ -86,6 +93,12 @@
   background: #123308;
   border-radius: 50%;
   animation: pulse 2s ease-in-out infinite;
+}
+
+@media (max-width: 768px) {
+  .badge-dot {
+    animation: none !important;
+  }
 }
 
 .hero-badge::before {

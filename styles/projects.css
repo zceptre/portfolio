@@ -41,6 +41,13 @@
   animation: float 8s ease-in-out infinite reverse;
 }
 
+@media (max-width: 768px) {
+  .featured-projects::before,
+  .featured-projects::after {
+    display: none !important;
+  }
+}
+
 .featured-projects .section-content {
   max-width: 1400px;
   width: 100%;
@@ -100,6 +107,14 @@
   height: auto;
   padding: 0;
   will-change: background, border-color, transform, box-shadow;
+}
+
+@media (max-width: 768px) {
+  .project-card {
+    backdrop-filter: blur(10px);
+    animation: none !important;
+    transition: none !important;
+  }
 }
 
 .project-card::before {

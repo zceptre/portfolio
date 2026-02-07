@@ -41,9 +41,16 @@ navLinks.forEach((link) => {
 });
 
 // ============================================
-// DETECT CURRENT SECTION ON SCROLL
+// DETECT CURRENT SECTION ON SCROLL (THROTTLED)
 // ============================================
+let lastScrollCheck = 0;
+const SCROLL_THROTTLE = 100; // Check every 100ms max
+
 window.addEventListener('scroll', () => {
+  const now = Date.now();
+  if (now - lastScrollCheck < SCROLL_THROTTLE) return;
+  
+  lastScrollCheck = now;
   let closestSection = 0;
   let closestDistance = Infinity;
   
@@ -78,22 +85,30 @@ function updateActiveNavLink() {
 // SCROLL TO TOP BUTTON (Lower Right Corner)
 // ============================================
 const scrollTopBtn = document.getElementById('scrollTopBtn');
+let lastScrollTopCheck = 0;
+const SCROLL_TOP_THROTTLE = 150;
 
 if (scrollTopBtn) {
-  // Show/hide button based on scroll position
+  // Show/hide button based on scroll position (throttled)
   window.addEventListener('scroll', () => {
+    const now = Date.now();
+    if (now - lastScrollTopCheck < SCROLL_TOP_THROTTLE) return;
+    
+    lastScrollTopCheck = now;
     if (window.scrollY > 300) {
       scrollTopBtn.classList.add('show');
     } else {
       scrollTopBtn.classList.remove('show');
     }
-  });
+  }, { passive: true });
 
   // Scroll to top when button is clicked
   scrollTopBtn.addEventListener('click', () => {
+    // Use instant scroll on mobile, smooth on desktop
+    const isMobile = window.innerWidth < 768;
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
+      behavior: isMobile ? 'auto' : 'smooth'
     });
   });
 }

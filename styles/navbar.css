@@ -31,6 +31,21 @@
     0 0 60px rgba(100, 150, 255, 0.15);
 }
 
+@media (max-width: 768px) {
+  .navbar {
+    backdrop-filter: blur(20px);
+    top: 8px;
+    width: calc(100% - 16px);
+    height: 60px;
+  }
+
+  .navbar.scrolled {
+    backdrop-filter: blur(20px);
+    top: 8px;
+    width: calc(100% - 16px);
+  }
+}
+
 .nav-container {
   max-width: 1400px;
   margin: 0 auto;
