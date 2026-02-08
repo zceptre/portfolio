@@ -161,63 +161,38 @@ async function sendMessage() {
   
   if (!message || isWaitingForResponse) return;
 
-  // Add user message to chat
   addMessage(message, 'user');
   aiChatInput.value = '';
   aiChatSend.disabled = true;
   isWaitingForResponse = true;
-
-  // Show typing indicator
   showTypingIndicator();
 
   try {
-    // Call AI API
     const response = await askAI(message);
     
-    // Debug: Log the full response
-    console.log('Full API Response:', response);
+    console.log('Full response object:', response);
     
-    // Remove typing indicator
     removeTypingIndicator();
 
-    // Handle different response formats from n8n
+    // Handle text response directly
     let aiMessage = '';
     
-    if (response && response.response) {
+    if (typeof response === 'string') {
+      aiMessage = response;
+    } else if (response && response.response) {
       aiMessage = response.response;
     } else if (response && response.output) {
       aiMessage = response.output;
-    } else if (response && response.message) {
-      aiMessage = response.message;
-    } else if (response && typeof response === 'string') {
-      aiMessage = response;
-    } else if (response && response.body) {
-      aiMessage = response.body;
-    } else if (Array.isArray(response) && response.length > 0) {
-      // If response is an array, try to get the first item's response/message
-      const firstItem = response[0];
-      if (firstItem && firstItem.response) {
-        aiMessage = firstItem.response;
-      } else if (firstItem && firstItem.message) {
-        aiMessage = firstItem.message;
-      } else {
-        aiMessage = JSON.stringify(firstItem);
-      }
     } else {
-      // Fallback: try to find any text content in the response
       aiMessage = JSON.stringify(response);
     }
 
-    // Add AI response to chat
-    if (aiMessage) {
-      addMessage(aiMessage, 'assistant');
-    } else {
-      addMessage('Sorry, I received an empty response. Please try again.', 'assistant');
-    }
+    addMessage(aiMessage, 'assistant');
+    
   } catch (error) {
     console.error('Chat error:', error);
     removeTypingIndicator();
-    addMessage('Sorry, I couldn\'t connect to the AI. Please try again later.', 'assistant');
+    addMessage('Error: ' + error.message, 'assistant');
   } finally {
     aiChatSend.disabled = false;
     isWaitingForResponse = false;
