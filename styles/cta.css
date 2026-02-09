@@ -1,43 +1,16 @@
 /* ============================================
    CTA SECTION
    ============================================ */
-.cta-section {
-  background: linear-gradient(135deg, #000000 0%, #0d1628 50%, #000000 100%);
+  background: #000000;
   position: relative;
   overflow: hidden;
   min-height: auto;
   padding: 30px 40px !important;
 }
 
-.cta-section::before {
-  content: '';
-  position: absolute;
-  top: -40%;
-  left: -15%;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(100, 150, 255, 0.15) 0%, transparent 70%);
-  border-radius: 50%;
-  filter: blur(50px);
-  pointer-events: none;
-  animation: float 8s ease-in-out infinite;
-  z-index: 0;
-}
+/* .cta-section::before removed for minimalist style */
 
-.cta-section::after {
-  content: '';
-  position: absolute;
-  bottom: -30%;
-  right: -10%;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(100, 150, 255, 0.1) 0%, transparent 70%);
-  border-radius: 50%;
-  filter: blur(50px);
-  pointer-events: none;
-  animation: float 9s ease-in-out infinite reverse;
-  z-index: 0;
-}
+/* .cta-section::after removed for minimalist style */
 
 .cta-section .section-content {
   max-width: 1400px;
@@ -85,8 +58,8 @@
   align-items: center;
   gap: 12px;
   padding: 16px 40px;
-  background: linear-gradient(135deg, rgba(100, 150, 255, 0.3) 0%, rgba(100, 150, 255, 0.1) 100%);
-  border: 2px solid rgba(100, 150, 255, 0.5);
+  background: #232323;
+  border: none;
   border-radius: 50px;
   color: #ffffff;
   text-decoration: none;
@@ -94,34 +67,21 @@
   font-size: 1rem;
   letter-spacing: 0.5px;
   cursor: pointer;
-  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-  will-change: background, border-color, transform, box-shadow;
   position: relative;
   overflow: hidden;
   width: fit-content;
-  box-shadow: 0 10px 40px rgba(100, 150, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  box-shadow: none;
 }
 
-.btn-cta-primary::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-  transition: left 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
+/* .btn-cta-primary::before removed for minimalist style */
 
-.btn-cta-primary:hover::before {
-  left: 100%;
-}
+/* .btn-cta-primary:hover::before removed for minimalist style */
 
 .btn-cta-primary:hover {
-  background: linear-gradient(135deg, rgba(100, 150, 255, 0.4) 0%, rgba(100, 150, 255, 0.15) 100%);
-  border-color: rgba(100, 150, 255, 0.8);
-  transform: translateY(-4px);
-  box-shadow: 0 20px 60px rgba(100, 150, 255, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  background: #333;
+  border: none;
+  transform: none;
+  box-shadow: none;
 }
 
 .cta-right {
