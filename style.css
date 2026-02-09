@@ -58,7 +58,7 @@ html, body {
   align-items: center;
   justify-content: center;
   padding: 80px 40px;
-  background: linear-gradient(135deg, #000000 0%, #0d1628 50%, #000000 100%);
+  background: #000000;
   position: relative;
   overflow: hidden;
 }
@@ -70,7 +70,7 @@ html, body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
+  background: none;
   pointer-events: none;
 }
 
@@ -81,7 +81,7 @@ html, body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.1) 100%);
+  background: none;
   pointer-events: none;
 }
 
@@ -211,7 +211,7 @@ html, body {
   right: 45px;
   width: 50px;
   height: 50px;
-  background: linear-gradient(135deg, rgba(100, 150, 255, 0.2) 0%, rgba(100, 150, 255, 0.1) 100%);
+  background: #000000;
   border: 1.5px solid rgba(100, 150, 255, 0.3);
   border-radius: 50%;
   color: #a8d0ff;
@@ -233,7 +233,7 @@ html, body {
 }
 
 .scroll-top-btn:hover {
-  background: linear-gradient(135deg, rgba(100, 150, 255, 0.35) 0%, rgba(100, 150, 255, 0.2) 100%);
+  background: #111111;
   border-color: rgba(100, 150, 255, 0.5);
   transform: translateY(-5px);
   box-shadow: 0 20px 60px rgba(100, 150, 255, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2);

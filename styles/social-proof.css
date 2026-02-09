@@ -1,39 +1,14 @@
 /* ============================================
    SOCIAL PROOF SECTION
    ============================================ */
-.social-proof {
-  background: linear-gradient(135deg, #000000 0%, #0d1628 50%, #000000 100%);
+  background: #000000;
   position: relative;
   overflow: hidden;
 }
 
-.social-proof::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  right: -10%;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(100, 150, 255, 0.1) 0%, transparent 70%);
-  border-radius: 50%;
-  filter: blur(40px);
-  pointer-events: none;
-  animation: float 6s ease-in-out infinite;
-}
+/* .social-proof::before removed for minimalist style */
 
-.social-proof::after {
-  content: '';
-  position: absolute;
-  bottom: -20%;
-  left: -10%;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(100, 150, 255, 0.06) 0%, transparent 70%);
-  border-radius: 50%;
-  filter: blur(40px);
-  pointer-events: none;
-  animation: float 8s ease-in-out infinite reverse;
-}
+/* .social-proof::after removed for minimalist style */
 
 @media (max-width: 768px) {
   .social-proof::before,
@@ -58,11 +33,7 @@
   margin-bottom: 60px;
   text-align: center;
   letter-spacing: -1px;
-  animation: fadeInUp 0.8s ease-out;
-  background: linear-gradient(135deg, #ffffff 0%, #a8d0ff 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #a8d0ff;
   position: relative;
   z-index: 2;
 }
@@ -78,14 +49,10 @@
 
 .proof-card {
   border-radius: 20px;
-  background: linear-gradient(135deg, rgba(100, 150, 255, 0.08) 0%, rgba(100, 150, 255, 0.02) 100%);
-  border: 1.5px solid rgba(100, 150, 255, 0.2);
-  backdrop-filter: blur(40px);
+  background: #181818;
+  border: none;
   overflow: hidden;
-  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-  animation: slideInUp 0.8s ease-out both;
-  box-shadow: 0 20px 60px rgba(100, 150, 255, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  will-change: background, border-color, transform, box-shadow;
+  box-shadow: none;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -101,29 +68,9 @@
   }
 }
 
-.proof-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at 20% 50%, rgba(100, 150, 255, 0.08) 0%, transparent 50%);
-  pointer-events: none;
-  z-index: 1;
-}
+/* .proof-card::before removed for minimalist style */
 
-.proof-card::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(100, 150, 255, 0.15), transparent);
-  transition: left 0.8s ease;
-  z-index: 2;
-}
+/* .proof-card::after removed for minimalist style */
 
 .proof-card:nth-child(1) {
   animation-delay: 0.15s;
@@ -134,10 +81,10 @@
 }
 
 .proof-card:hover {
-  background: linear-gradient(135deg, rgba(100, 150, 255, 0.12) 0%, rgba(100, 150, 255, 0.04) 100%);
-  border-color: rgba(100, 150, 255, 0.35);
-  box-shadow: 0 30px 80px rgba(100, 150, 255, 0.15), 0 0 80px rgba(100, 150, 255, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.15);
-  transform: translateY(-10px);
+  background: #222;
+  border: none;
+  box-shadow: none;
+  transform: none;
 }
 
 .proof-card:hover::after {
@@ -149,8 +96,8 @@
   align-items: center;
   gap: 20px;
   padding: 35px;
-  border-bottom: 1px solid rgba(100, 150, 255, 0.15);
-  background: linear-gradient(135deg, rgba(100, 150, 255, 0.05) 0%, rgba(100, 150, 255, 0.01) 100%);
+  border-bottom: 1px solid #232323;
+  background: #181818;
   position: relative;
   z-index: 3;
 }
@@ -161,31 +108,29 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, rgba(100, 150, 255, 0.12) 0%, rgba(100, 150, 255, 0.05) 100%);
-  border: 1.5px solid rgba(100, 150, 255, 0.25);
+  background: #232323;
+  border: none;
   border-radius: 12px;
   font-size: 1.8rem;
   color: #ffffff;
   flex-shrink: 0;
-  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-  will-change: background, transform;
 }
 
 .proof-card:hover .proof-icon {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.08) 100%);
-  border-color: rgba(255, 255, 255, 0.3);
-  transform: scale(1.1) rotate(5deg);
+  background: #333;
+  border: none;
+  transform: none;
 }
 
 .highlights-icon {
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 215, 0, 0.05) 100%);
-  border-color: rgba(255, 215, 0, 0.3);
+  background: #232323;
+  border: none;
   color: #ffd700;
 }
 
 .proof-card:hover .highlights-icon {
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.25) 0%, rgba(255, 215, 0, 0.1) 100%);
-  border-color: rgba(255, 215, 0, 0.4);
+  background: #333;
+  border: none;
 }
 
 .proof-title {
@@ -313,8 +258,8 @@
   justify-content: center;
   width: 20px;
   height: 20px;
-  background: linear-gradient(135deg, rgba(128, 208, 128, 0.2) 0%, rgba(128, 208, 128, 0.05) 100%);
-  border: 1px solid rgba(128, 208, 128, 0.3);
+  background: #232323;
+  border: none;
   border-radius: 4px;
   color: #80d080;
   font-size: 0.75rem;
@@ -328,53 +273,36 @@
   justify-content: center;
   gap: 10px;
   padding: 14px 28px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.04) 100%);
-  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  background: #232323;
+  border: none;
   border-radius: 10px;
   color: #e0e0e0;
   text-decoration: none;
   font-weight: 600;
   font-size: 0.9rem;
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   letter-spacing: 0.2px;
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  will-change: background, border-color, transform;
 }
 
-.proof-button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.1);
-  transition: left 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  z-index: -1;
-}
+/* .proof-button::before removed for minimalist style */
 
-.proof-button:hover::before {
-  left: 0;
-}
+/* .proof-button:hover::before removed for minimalist style */
 
 .proof-button:hover {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.06) 100%);
-  border-color: rgba(255, 255, 255, 0.3);
+  background: #333;
   color: #ffffff;
-  transform: translateY(-3px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  transform: none;
+  box-shadow: none;
 }
 
 .testimonial-item {
   padding: 18px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #181818;
+  border: none;
   border-radius: 10px;
   margin-bottom: 15px;
-  transition: all 0.4s ease;
-  animation: slideInUp 0.8s ease-out both;
 }
 
 .testimonial-item:nth-child(1) {
@@ -386,9 +314,9 @@
 }
 
 .testimonial-item:hover {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
-  border-color: rgba(255, 255, 255, 0.15);
-  transform: translateX(5px);
+  background: #232323;
+  border: none;
+  transform: none;
 }
 
 .testimonial-stars {
@@ -421,10 +349,9 @@
 
 .proof-highlights-box {
   padding: 20px;
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.08) 0%, rgba(255, 215, 0, 0.02) 100%);
-  border: 1.5px solid rgba(255, 215, 0, 0.15);
+  background: #232323;
+  border: none;
   border-radius: 12px;
-  animation: slideInUp 0.8s ease-out 0.7s both;
 }
 
 .proof-highlights-box h4 {

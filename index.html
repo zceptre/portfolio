@@ -450,37 +450,14 @@
 
   <!-- AI Agent Script -->
   <script>
-  async function askAI(msg) {
-  try {
-    const res = await fetch("https://n8n.awtomasyon.com/webhook/portfolio-chat", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message: msg })
-    });
-    
-    console.log('Response status:', res.status);
-    console.log('Response ok:', res.ok);
-    
-    const contentType = res.headers.get('content-type');
-    console.log('Content-Type:', contentType);
-    
-    const text = await res.text();
-    console.log('Raw response:', text);
-    
-    // Try to parse as JSON
-    try {
-      return JSON.parse(text);
-    } catch (e) {
-      console.error('JSON parse error:', e);
-      return { response: text }; // Return as-is if not JSON
+    async function askAI(msg) {
+      const res = await fetch("https://n8n-zceptre.onrender.com/webhook-test/portfolio-chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: msg })
+      });
+      return await res.json();
     }
-    
-  } catch (error) {
-    console.error('Fetch error:', error);
-    throw error;
-  }
-}
-</script>
-
+  </script>
 </body>
 </html>
