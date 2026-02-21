@@ -495,59 +495,61 @@
 </section>
 
  <!-- Social Proof Section -->
-<section class="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-black py-20 px-10"
+<section class="relative w-full flex items-center justify-center overflow-hidden bg-black py-16 md:py-20 px-5 sm:px-8 md:px-10"
          id="social-proof"
          aria-label="Social proof and freelance work section">
 
-  <div class="w-full max-w-[1300px] mx-auto px-10 relative z-10">
+  <div class="w-full max-w-[1100px] mx-auto relative z-10">
 
     <!-- Heading -->
-    <h2 class="font-space text-[clamp(2rem,6vw,3rem)] font-bold mb-16 text-center tracking-tight text-brand-blue">
+    <h2 class="font-space text-[clamp(1.8rem,6vw,3rem)] font-bold mb-10 md:mb-16 text-center tracking-tight text-brand-blue">
       Social Proof & Freelance Work
     </h2>
 
     <!-- Two Column Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-9">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-9">
 
       <!-- Upwork Card -->
-       <div class="group relative flex flex-col h-full px-9 py-11 rounded-[18px] bg-[rgba(100,150,255,0.08)] border border-[rgba(100,150,255,0.2)] backdrop-blur-xl transition-all duration-500 hover:bg-[rgba(100,150,255,0.12)] hover:border-[rgba(100,150,255,0.35)] hover:-translate-y-3 shadow-[0_20px_60px_rgba(100,150,255,0.1)]">
+      <div class="group relative flex flex-col h-full rounded-[18px] bg-[rgba(100,150,255,0.08)] border border-[rgba(100,150,255,0.2)] backdrop-blur-xl transition-all duration-500 hover:bg-[rgba(100,150,255,0.12)] hover:border-[rgba(100,150,255,0.35)] hover:-translate-y-2 shadow-[0_20px_60px_rgba(100,150,255,0.1)] overflow-hidden">
 
         <!-- Card Header -->
-        <div class="flex items-center gap-5 px-9 py-9 border-b border-[#232323] bg-[#181818]">
-          <div class="w-[60px] h-[60px] flex items-center justify-center bg-[#232323] rounded-[12px] text-[1.8rem] text-white flex-shrink-0 group-hover:bg-[#333] transition-colors duration-300">
+        <div class="flex items-center gap-4 p-6 md:px-9 md:py-9 border-b border-[#232323] bg-[#181818]">
+          <div class="w-[54px] h-[54px] md:w-[60px] md:h-[60px] flex items-center justify-center bg-[#232323] rounded-[12px] text-[1.6rem] md:text-[1.8rem] text-white flex-shrink-0 group-hover:bg-[#333] transition-colors duration-300">
             <i class="fab fa-upwork" aria-hidden="true"></i>
           </div>
           <div>
-            <h3 class="font-space text-[1.4rem] font-bold text-white mb-1 tracking-tight">Upwork QA Profile</h3>
+            <h3 class="font-space text-[1.2rem] md:text-[1.4rem] font-bold text-white mb-1 tracking-tight">Upwork QA Profile</h3>
             <p class="text-[0.85rem] text-[#a0a0a0] font-medium tracking-wide">Active Freelancer</p>
           </div>
         </div>
 
         <!-- Card Content -->
-        <div class="px-9 py-8 flex flex-col flex-grow">
+        <div class="p-6 md:px-9 md:py-8 flex flex-col flex-grow">
           <p class="text-[0.95rem] text-[#d0d0d0] leading-relaxed mb-6 tracking-wide">
             Experienced freelancer specializing in QA testing, game development, and mobile app development.
             With a proven track record of successfully completing diverse projects and maintaining high client satisfaction.
           </p>
 
-          <!-- Stats -->
-          <div class="grid grid-cols-3 gap-4 mb-6 pb-6 border-b border-white/10">
+          <!-- Stats (mobile: 1 col, tablet+: 3 cols) -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6 pb-6 border-b border-white/10">
             <div class="flex items-start gap-2.5">
-              <i class="fas fa-check-circle text-white/50 text-[1.3rem] mt-0.5 flex-shrink-0 group-hover:text-white/80 transition-colors duration-300"></i>
+              <i class="fas fa-check-circle text-white/50 text-[1.2rem] mt-0.5 flex-shrink-0 group-hover:text-white/80 transition-colors duration-300"></i>
               <div>
                 <h5 class="font-space text-[0.75rem] font-bold text-[#e0e0e0] uppercase tracking-wide mb-1">Specializations</h5>
                 <p class="text-[0.85rem] text-[#c0c0c0] font-semibold leading-snug">QA Testing, Game Dev, Mobile Apps</p>
               </div>
             </div>
+
             <div class="flex items-start gap-2.5">
-              <i class="fas fa-star text-white/50 text-[1.3rem] mt-0.5 flex-shrink-0 group-hover:text-white/80 transition-colors duration-300"></i>
+              <i class="fas fa-star text-white/50 text-[1.2rem] mt-0.5 flex-shrink-0 group-hover:text-white/80 transition-colors duration-300"></i>
               <div>
                 <h5 class="font-space text-[0.75rem] font-bold text-[#e0e0e0] uppercase tracking-wide mb-1">Work Style</h5>
                 <p class="text-[0.85rem] text-[#c0c0c0] font-semibold leading-snug">Remote, Deadline-focused, Professional</p>
               </div>
             </div>
+
             <div class="flex items-start gap-2.5">
-              <i class="fas fa-rocket text-white/50 text-[1.3rem] mt-0.5 flex-shrink-0 group-hover:text-white/80 transition-colors duration-300"></i>
+              <i class="fas fa-rocket text-white/50 text-[1.2rem] mt-0.5 flex-shrink-0 group-hover:text-white/80 transition-colors duration-300"></i>
               <div>
                 <h5 class="font-space text-[0.75rem] font-bold text-[#e0e0e0] uppercase tracking-wide mb-1">Expertise</h5>
                 <p class="text-[0.85rem] text-[#c0c0c0] font-semibold leading-snug">Beta Testing, Bug Detection, Optimization</p>
@@ -555,24 +557,24 @@
             </div>
           </div>
 
-          <!-- Achievements -->
+          <!-- Achievements (remove translate-x on hover for mobile stability) -->
           <div class="mb-6">
             <h4 class="font-space text-[0.75rem] font-bold text-[#e0e0e0] uppercase tracking-wide mb-3">Key Achievements</h4>
             <ul class="flex flex-col gap-2.5">
-              <li class="flex items-center gap-2.5 text-[0.85rem] text-[#c0c0c0] leading-relaxed transition-all duration-300 hover:text-[#e0e0e0] hover:translate-x-1.5">
-                <span class="inline-flex items-center justify-center w-5 h-5 bg-[#232323] rounded text-[#80d080] text-[0.75rem] font-bold flex-shrink-0">✓</span>
+              <li class="flex items-start gap-2.5 text-[0.85rem] text-[#c0c0c0] leading-relaxed transition-colors duration-300 hover:text-[#e0e0e0]">
+                <span class="inline-flex items-center justify-center w-5 h-5 bg-[#232323] rounded text-[#80d080] text-[0.75rem] font-bold flex-shrink-0 mt-[2px]">✓</span>
                 100% client satisfaction on completed projects
               </li>
-              <li class="flex items-center gap-2.5 text-[0.85rem] text-[#c0c0c0] leading-relaxed transition-all duration-300 hover:text-[#e0e0e0] hover:translate-x-1.5">
-                <span class="inline-flex items-center justify-center w-5 h-5 bg-[#232323] rounded text-[#80d080] text-[0.75rem] font-bold flex-shrink-0">✓</span>
+              <li class="flex items-start gap-2.5 text-[0.85rem] text-[#c0c0c0] leading-relaxed transition-colors duration-300 hover:text-[#e0e0e0]">
+                <span class="inline-flex items-center justify-center w-5 h-5 bg-[#232323] rounded text-[#80d080] text-[0.75rem] font-bold flex-shrink-0 mt-[2px]">✓</span>
                 Consistent on-time delivery and professional communication
               </li>
-              <li class="flex items-center gap-2.5 text-[0.85rem] text-[#c0c0c0] leading-relaxed transition-all duration-300 hover:text-[#e0e0e0] hover:translate-x-1.5">
-                <span class="inline-flex items-center justify-center w-5 h-5 bg-[#232323] rounded text-[#80d080] text-[0.75rem] font-bold flex-shrink-0">✓</span>
+              <li class="flex items-start gap-2.5 text-[0.85rem] text-[#c0c0c0] leading-relaxed transition-colors duration-300 hover:text-[#e0e0e0]">
+                <span class="inline-flex items-center justify-center w-5 h-5 bg-[#232323] rounded text-[#80d080] text-[0.75rem] font-bold flex-shrink-0 mt-[2px]">✓</span>
                 Expertise across multiple project types and industries
               </li>
-              <li class="flex items-center gap-2.5 text-[0.85rem] text-[#c0c0c0] leading-relaxed transition-all duration-300 hover:text-[#e0e0e0] hover:translate-x-1.5">
-                <span class="inline-flex items-center justify-center w-5 h-5 bg-[#232323] rounded text-[#80d080] text-[0.75rem] font-bold flex-shrink-0">✓</span>
+              <li class="flex items-start gap-2.5 text-[0.85rem] text-[#c0c0c0] leading-relaxed transition-colors duration-300 hover:text-[#e0e0e0]">
+                <span class="inline-flex items-center justify-center w-5 h-5 bg-[#232323] rounded text-[#80d080] text-[0.75rem] font-bold flex-shrink-0 mt-[2px]">✓</span>
                 Strong technical skills with proven problem-solving abilities
               </li>
             </ul>
@@ -582,7 +584,7 @@
           <a href="https://www.upwork.com/freelancers/~016110c8b7153e5e76"
              target="_blank"
              rel="noopener noreferrer"
-             class="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 bg-[#232323] border-none rounded-[10px] text-[#e0e0e0] no-underline font-semibold text-[0.9rem] tracking-wide transition-colors duration-300 hover:bg-[#333] hover:text-white mt-auto"
+             class="inline-flex items-center justify-center gap-2.5 px-6 md:px-7 py-3.5 bg-[#232323] border-none rounded-[10px] text-[#e0e0e0] no-underline font-semibold text-[0.9rem] tracking-wide transition-colors duration-300 hover:bg-[#333] hover:text-white mt-auto"
              aria-label="Visit Upwork profile">
             <i class="fab fa-upwork" aria-hidden="true"></i> Visit Upwork Profile
             <i class="fas fa-external-link-alt text-[0.8rem]" aria-hidden="true"></i>
@@ -591,24 +593,24 @@
       </div>
 
       <!-- Testimonials Card -->
-      <div class="group relative flex flex-col h-full px-9 py-11 rounded-[18px] bg-[rgba(100,150,255,0.08)] border border-[rgba(100,150,255,0.2)] backdrop-blur-xl transition-all duration-500 hover:bg-[rgba(100,150,255,0.12)] hover:border-[rgba(100,150,255,0.35)] hover:-translate-y-3 shadow-[0_20px_60px_rgba(100,150,255,0.1)]">
+      <div class="group relative flex flex-col h-full rounded-[18px] bg-[rgba(100,150,255,0.08)] border border-[rgba(100,150,255,0.2)] backdrop-blur-xl transition-all duration-500 hover:bg-[rgba(100,150,255,0.12)] hover:border-[rgba(100,150,255,0.35)] hover:-translate-y-2 shadow-[0_20px_60px_rgba(100,150,255,0.1)] overflow-hidden">
 
         <!-- Card Header -->
-        <div class="flex items-center gap-5 px-9 py-9 border-b border-[#232323] bg-[#181818]">
-          <div class="w-[60px] h-[60px] flex items-center justify-center bg-[#232323] rounded-[12px] text-[1.8rem] text-[#ffd700] flex-shrink-0 group-hover:bg-[#333] transition-colors duration-300">
+        <div class="flex items-center gap-4 p-6 md:px-9 md:py-9 border-b border-[#232323] bg-[#181818]">
+          <div class="w-[54px] h-[54px] md:w-[60px] md:h-[60px] flex items-center justify-center bg-[#232323] rounded-[12px] text-[1.6rem] md:text-[1.8rem] text-[#ffd700] flex-shrink-0 group-hover:bg-[#333] transition-colors duration-300">
             <i class="fas fa-star" aria-hidden="true"></i>
           </div>
           <div>
-            <h3 class="font-space text-[1.4rem] font-bold text-white mb-1 tracking-tight">Client Testimonials</h3>
+            <h3 class="font-space text-[1.2rem] md:text-[1.4rem] font-bold text-white mb-1 tracking-tight">Client Testimonials</h3>
             <p class="text-[0.85rem] text-[#a0a0a0] font-medium tracking-wide">What clients say</p>
           </div>
         </div>
 
         <!-- Card Content -->
-        <div class="px-9 py-8 flex flex-col flex-grow gap-4">
+        <div class="p-6 md:px-9 md:py-8 flex flex-col flex-grow gap-4">
 
           <!-- Testimonial 1 -->
-          <div class="p-[18px] bg-[#181818] rounded-[10px] mb-0 hover:bg-[#232323] transition-colors duration-300">
+          <div class="p-4 md:p-[18px] bg-[#181818] rounded-[10px] hover:bg-[#232323] transition-colors duration-300">
             <div class="flex gap-1 mb-2">
               <i class="fas fa-star text-[#ffd700] text-[0.8rem]"></i>
               <i class="fas fa-star text-[#ffd700] text-[0.8rem]"></i>
@@ -623,7 +625,7 @@
           </div>
 
           <!-- Testimonial 2 -->
-          <div class="p-[18px] bg-[#181818] rounded-[10px] hover:bg-[#232323] transition-colors duration-300">
+          <div class="p-4 md:p-[18px] bg-[#181818] rounded-[10px] hover:bg-[#232323] transition-colors duration-300">
             <div class="flex gap-1 mb-2">
               <i class="fas fa-star text-[#ffd700] text-[0.8rem]"></i>
               <i class="fas fa-star text-[#ffd700] text-[0.8rem]"></i>
@@ -637,10 +639,10 @@
             <p class="text-[0.75rem] text-[#909090] font-medium">— Upwork QA Testing Projects</p>
           </div>
 
-          <!-- Metrics Box -->
+          <!-- Metrics Box (mobile: 1 col, tablet+: 3 cols) -->
           <div class="p-5 bg-[#232323] rounded-[12px] mt-auto">
             <h4 class="font-space text-[0.75rem] font-bold text-[#ffd700] uppercase tracking-wide mb-3">Work Quality Metrics</h4>
-            <div class="grid grid-cols-3 gap-2.5">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
               <div class="text-center p-3 bg-[rgba(255,215,0,0.05)] rounded-lg transition-all duration-300 hover:bg-[rgba(255,215,0,0.1)] hover:scale-105">
                 <div class="font-space text-[1.1rem] font-bold text-[#ffd700] mb-1">100%</div>
                 <div class="text-[0.65rem] text-[#c0c0c0] font-medium uppercase tracking-wide">Completion Rate</div>
