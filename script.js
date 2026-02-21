@@ -249,3 +249,19 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const hamburger = document.querySelector(".hamburger");
+  const navMenu = document.querySelector(".nav-menu");
+
+  if (!hamburger || !navMenu) return;
+
+  // Close drawer after clicking a link
+  navMenu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      navMenu.classList.remove("active");
+      hamburger.classList.remove("active");
+      hamburger.setAttribute("aria-expanded", "false");
+    });
+  });
+});
