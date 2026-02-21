@@ -11,7 +11,7 @@ let currentSection = 0;
 // ============================================
 hamburger.addEventListener('click', () => {
   const isActive = hamburger.classList.toggle('active');
-  navMenu.classList.toggle('active', isActive);
+  navMenu.classList.toggle("active");
   hamburger.setAttribute('aria-expanded', isActive);
 });
 
@@ -265,3 +265,4 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+

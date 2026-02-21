@@ -47,6 +47,42 @@
     .hamburger.active .bar:nth-child(1) { transform: rotate(-45deg) translate(-6px, 8px); }
     .hamburger.active .bar:nth-child(2) { opacity: 0; transform: translateX(-20px); }
     .hamburger.active .bar:nth-child(3) { transform: rotate(45deg) translate(-6px, -8px); }
+@media (max-width: 1024px) { /* below lg */
+  .nav-menu{
+    display: flex;                 /* always render on mobile */
+    flex-direction: column;
+    gap: 12px;
+
+    position: fixed;
+    top: 88px;                     /* adjust if needed */
+    left: 50%;
+    width: calc(100% - 32px);
+    max-width: 420px;
+
+    margin: 0;
+    padding: 14px;
+    background: rgba(0,0,0,0.92);
+    backdrop-filter: blur(40px);
+    border: 1.5px solid rgba(100,150,255,0.15);
+    border-radius: 18px;
+    z-index: 999;
+
+    transform: translateX(120%) translateX(-50%); /* hidden off-screen */
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 320ms ease, opacity 320ms ease;
+  }
+
+  .nav-menu.active{
+    transform: translateX(-50%);   /* centered and visible */
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-menu li { width: 100%; display: flex; }
+  .nav-menu li a { width: 100%; text-align: center; padding: 12px 16px; border-radius: 14px; }
+}
+
     @media (max-width: 768px) {
   /* Mobile drawer base (exists but hidden off-canvas) */
   .nav-menu {
@@ -74,6 +110,12 @@
     opacity: 0;
     pointer-events: none;
     transition: transform 320ms ease, opacity 320ms ease;
+
+     left: 50% !important;
+    right: auto !important;
+    width: calc(100% - 32px);
+    max-width: 420px;
+    transform: translateX(calc(120% - 50%)); /* hidden off-canvas, still centered */
   }
 
   /* When toggled */
@@ -81,6 +123,7 @@
     transform: translateX(0);
     opacity: 1;
     pointer-events: auto;
+     transform: translateX(-50%); /* centered on screen */
   }
 
   /* Make each link fill the drawer width nicely */
@@ -132,7 +175,7 @@
     </div>
 
     <!-- Nav Links -->
-    <ul class="nav-menu hidden md:flex list-none gap-3 md:gap-[50px] ml-auto mr-8 p-0">
+  <ul class="nav-menu list-none gap-4 lg:gap-[50px] ml-auto mr-8 p-0 lg:flex">
       <li class="relative flex items-center">
         <a href="#home"
            class="nav-link w-full text-center px-4 py-2 rounded-lg text-[0.95rem] text-[#b8b8b8] no-underline font-semibold px-4 py-2 rounded-lg tracking-wide transition-all duration-300 hover:text-white hover:bg-[rgba(100,150,255,0.12)]"
@@ -159,13 +202,13 @@
     <a href="https://github.com/zceptre"
        target="_blank"
        rel="noopener noreferrer"
-       class="nav-github hidden md:flex items-center gap-2 px-5 py-2.5 bg-[rgba(100,150,255,0.12)] border border-[rgba(100,150,255,0.25)] rounded-full text-brand-blue no-underline font-bold text-[0.95rem] tracking-wide transition-all duration-300 hover:bg-[rgba(100,150,255,0.2)] hover:border-[rgba(100,150,255,0.4)] hover:text-white hover:-translate-y-0.5"
+       class="nav-github hidden lg:inline-flex items-center gap-2 px-5 py-2.5 bg-[rgba(100,150,255,0.12)] border border-[rgba(100,150,255,0.25)] rounded-full text-brand-blue no-underline font-bold text-[0.95rem] tracking-wide transition-all duration-300 hover:bg-[rgba(100,150,255,0.2)] hover:border-[rgba(100,150,255,0.4)] hover:text-white hover:-translate-y-0.5"
        aria-label="Visit GitHub profile">
       <i class="fab fa-github" aria-hidden="true"></i> GitHub
     </a>
 
     <!-- Hamburger (mobile only) -->
-    <button class="hamburger md:hidden flex flex-col cursor-pointer bg-[rgba(100,150,255,0.1)] border border-[rgba(100,150,255,0.2)] p-2 w-11 h-11 rounded-xl justify-center items-center gap-1 transition-all duration-300 hover:bg-[rgba(100,150,255,0.18)] hover:scale-105"
+    <button class="hamburger lg:hidden flex flex-col cursor-pointer bg-[rgba(100,150,255,0.1)] border border-[rgba(100,150,255,0.2)] p-2 w-11 h-11 rounded-xl justify-center items-center gap-1 transition-all duration-300 hover:bg-[rgba(100,150,255,0.18)] hover:scale-105"
             aria-label="Toggle menu"
             aria-expanded="false">
       <span class="bar block w-5 h-0.5 bg-white rounded-sm transition-all duration-300 origin-center"></span>
@@ -219,11 +262,9 @@
 
 <!-- Scroll Indicator -->
 <div id="scroll-to-summary"
-     class="absolute bottom-[50px] left-1/2 -translate-x-1/2 text-center hidden md:block">
-  <button type="button"
-          class="cursor-pointer transition-all duration-300 hover:translate-y-1"
-          aria-label="Scroll to summary section">
-    <span class="text-[1.6rem] text-[#909090] hover:text-[#d0d0d0] transition-colors duration-300 animate-bounce">
+     class="absolute bottom-1 left-1/2 -translate-x-1/2 z-20 hidden md:block">
+  <button type="button" class="group" aria-label="Scroll to summary section">
+    <span class="block text-[1.3rem] sm:text-[1.6rem] text-[#909090] transition-colors duration-300 group-hover:text-[#d0d0d0] animate-bounce">
       ↓
     </span>
   </button>
