@@ -238,3 +238,14 @@ function removeTypingIndicator() {
   }
 }
 
+// Scroll indicator → Summary section
+document.addEventListener("DOMContentLoaded", () => {
+  const scrollBtn = document.getElementById("scroll-to-summary");
+  const summarySection = document.getElementById("about"); // your Summary section id
+
+  if (scrollBtn && summarySection) {
+    scrollBtn.addEventListener("click", () => {
+      summarySection.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }
+});

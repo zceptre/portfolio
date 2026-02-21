@@ -157,61 +157,45 @@
        style="background: radial-gradient(circle, rgba(100,150,255,0.08) 0%, transparent 70%); filter: blur(50px);"></div>
 
   <div class="hero-content w-full max-w-[1400px] mx-auto flex flex-col items-center justify-center relative z-10">
+<div class="w-full flex flex-col-reverse md:flex-row md:items-center md:justify-between gap-10 md:gap-16">  
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center w-full">
+  <!-- Left: Text -->
+  <div class="flex flex-col items-center text-center md:items-start md:text-left md:w-7/12">
+    <p class="font-space text-[1.2rem] text-[#a0a0a0] font-normal mb-1 tracking-wide">
+      Hi, I'm
+    </p>
+    <h1 class="font-space text-[clamp(2.5rem,8vw,4.8rem)] font-extrabold mb-5 leading-[1.15] tracking-[-2.5px] bg-gradient-to-br from-white via-[#e8e8e8] to-[#d0d0d0] bg-clip-text text-transparent">
+      Son Morris Sasi
+    </h1>
+    <p class="font-space text-[clamp(1rem,2vw,1.15rem)] text-[#b0b8d0] leading-[1.7] mb-6 font-light tracking-wide max-w-[58ch] mx-auto md:mx-0">
+      Junior Developer, QA Tester, and Game Developer crafting immersive digital experiences and robust applications.
+    </p>
+  </div>
 
-      <!-- Left: Text -->
-      <div class="flex flex-col items-start text-left">
-        <p class="font-space text-[1.2rem] text-[#a0a0a0] font-normal mb-1 tracking-wide">
-          Hi, I'm
-        </p>
-        <h1 class="font-space text-[clamp(2.5rem,8vw,4.8rem)] font-extrabold mb-5 leading-[1.15] tracking-[-2.5px] bg-gradient-to-br from-white via-[#e8e8e8] to-[#d0d0d0] bg-clip-text text-transparent">
-          Son Morris Sasi
-        </h1>
-        <p class="font-space text-[clamp(1rem,2vw,1.15rem)] text-[#b0b8d0] leading-[1.7] mb-9 font-light tracking-wide">
-          Junior Developer, QA Tester, and Game Developer crafting immersive digital experiences and robust applications.
-        </p>
+  <!-- Right: Profile Image -->
+  <div class="flex justify-center items-center md:w-5/12">
+    <img src="https://raw.githubusercontent.com/zceptre/sma-portfolio/main/images/Profile.jpg"
+         alt="Son Morris Sasi - Junior Developer"
+         class="w-full max-w-[420px] aspect-square rounded-[24px] object-cover border-2 border-[#222] bg-[#111] hover:border-[#444] transition-all duration-300"
+         loading="lazy"
+         width="400"
+         height="400">
+  </div>
 
-        <!-- Buttons -->
-        <div class="flex gap-4 flex-wrap">
-          <a href="#projects"
-              class="inline-flex items-center gap-2.5 px-8 py-3.5 bg-[#111] border border-[#333] rounded-full text-brand-blue no-underline font-bold text-[0.95rem] tracking-wide transition-all duration-300 hover:bg-[#222] hover:border-[#444] hover:text-white hover:-translate-y-0.5"
-             aria-label="View projects">
-            <i class="fas fa-code" aria-hidden="true"></i> View Projects
-          </a>
-          <a href="https://github.com/zceptre"
-             target="_blank"
-             rel="noopener noreferrer"
-             class="inline-flex items-center gap-2.5 px-8 py-3.5 bg-[#111] border border-[#333] rounded-full text-brand-blue no-underline font-bold text-[0.95rem] tracking-wide transition-all duration-300 hover:bg-[#222] hover:border-[#444] hover:text-white hover:-translate-y-0.5"
-             aria-label="Visit GitHub profile">
-            <i class="fab fa-github" aria-hidden="true"></i> GitHub
-          </a>
-          <a href="https://www.linkedin.com/in/morris-sasi-b779142b4/"
-             target="_blank"
-             rel="noopener noreferrer"
-             class="inline-flex items-center gap-2.5 px-4 py-3.5 bg-[#111] border border-[#333] rounded-full text-brand-blue no-underline font-bold text-[1.2rem] tracking-wide transition-all duration-300 hover:bg-[#222] hover:border-[#444] hover:text-white"
-             aria-label="Visit LinkedIn profile">
-            <i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn
-          </a>
-        </div>
-      </div>
+</div>
 
-      <!-- Right: Profile Image -->
-      <div class="flex justify-center items-center relative">
-        <img src="https://raw.githubusercontent.com/zceptre/sma-portfolio/main/images/Profile.jpg"
-             alt="Son Morris Sasi - Junior Developer"
-             class="w-full max-w-[420px] aspect-square rounded-[24px] object-cover border-2 border-[#222] bg-[#111] hover:border-[#444] transition-all duration-300"
-             loading="lazy"
-             width="400"
-             height="400">
-      </div>
+<!-- Scroll Indicator -->
+<div id="scroll-to-summary"
+     class="absolute bottom-[50px] left-1/2 -translate-x-1/2 text-center hidden md:block">
+  <button type="button"
+          class="cursor-pointer transition-all duration-300 hover:translate-y-1"
+          aria-label="Scroll to summary section">
+    <span class="text-[1.6rem] text-[#909090] hover:text-[#d0d0d0] transition-colors duration-300 animate-bounce">
+      ↓
+    </span>
+  </button>
+</div>
 
-    </div>
-
-    <!-- Scroll Indicator -->
-    <div class="absolute bottom-[50px] left-1/2 -translate-x-1/2 text-center cursor-pointer transition-all duration-300 hover:translate-y-1 hidden md:block">
-      <div class="text-[1.6rem] text-[#909090] hover:text-[#d0d0d0] transition-colors duration-300 animate-bounce">↓</div>
-    </div>
 
   </div>
 </section>
