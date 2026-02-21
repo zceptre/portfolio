@@ -175,7 +175,7 @@
         <!-- Buttons -->
         <div class="flex gap-4 flex-wrap">
           <a href="#projects"
-             class="inline-flex items-center gap-2.5 px-8 py-3.5 bg-[#111] border border-[#333] rounded-full text-white no-underline font-bold text-[0.95rem] tracking-wide transition-all duration-300 hover:bg-[#222] hover:border-[#444] hover:-translate-y-0.5"
+              class="inline-flex items-center gap-2.5 px-8 py-3.5 bg-[#111] border border-[#333] rounded-full text-brand-blue no-underline font-bold text-[0.95rem] tracking-wide transition-all duration-300 hover:bg-[#222] hover:border-[#444] hover:text-white hover:-translate-y-0.5"
              aria-label="View projects">
             <i class="fas fa-code" aria-hidden="true"></i> View Projects
           </a>
@@ -285,7 +285,12 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-9 mb-8">
 
       <!-- Project 1: Echoes of Eldrin -->
-      <div class="rounded-[20px] bg-[#181818] overflow-hidden flex flex-col hover:bg-[#222] transition-colors duration-300">
+       <div class="group relative flex flex-col h-full px-9 py-11 rounded-[18px] bg-[rgba(100,150,255,0.08)] border border-[rgba(100,150,255,0.2)] backdrop-blur-xl transition-all duration-500 hover:bg-[rgba(100,150,255,0.12)] hover:border-[rgba(100,150,255,0.35)] hover:-translate-y-3 shadow-[0_20px_60px_rgba(100,150,255,0.1)]">
+ 
+<div class="absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+     style="background:
+       linear-gradient(135deg, rgba(255,255,255,0.06), transparent 35%, rgba(100,150,255,0.10));">
+</div>
 
         <!-- Video -->
         <div class="relative w-full aspect-video min-h-[240px] bg-[#111]">
@@ -340,7 +345,9 @@
       </div>
 
       <!-- Project 2: BTCinema -->
-      <div class="rounded-[20px] bg-[#181818] overflow-hidden flex flex-col hover:bg-[#222] transition-colors duration-300">
+       <div class="group relative flex flex-col h-full px-9 py-11 rounded-[18px] bg-[rgba(100,150,255,0.08)] border border-[rgba(100,150,255,0.2)] backdrop-blur-xl transition-all duration-500 hover:bg-[rgba(100,150,255,0.12)] hover:border-[rgba(100,150,255,0.35)] hover:-translate-y-3 shadow-[0_20px_60px_rgba(100,150,255,0.1)]">
+            <!-- Premium background layers -->
+
 
         <!-- Video -->
         <div class="relative w-full aspect-video min-h-[240px] bg-[#111]">
@@ -397,14 +404,26 @@
     </div>
 
     <!-- View All CTA -->
-    <div class="text-center py-8 px-8 rounded-[16px] bg-[#232323] mt-6">
+    <div class="group relative text-center flex-col h-full px-9 py-11 rounded-[18px] bg-[rgba(100,150,255,0.08)] border border-[rgba(100,150,255,0.2)] backdrop-blur-xl transition-all duration-500 hover:bg-[rgba(100,150,255,0.12)] hover:border-[rgba(100,150,255,0.35)] hover:-translate-y-3 shadow-[0_20px_60px_rgba(100,150,255,0.1)]">
+
+
+<div class="absolute inset-0 pointer-events-none opacity-[0.08]"
+     style="background-image:
+       linear-gradient(to right, rgba(255,255,255,0.10) 1px, transparent 1px),
+       linear-gradient(to bottom, rgba(255,255,255,0.10) 1px, transparent 1px);
+       background-size: 64px 64px;">
+</div>      
       <p class="text-[0.95rem] text-[#d0d0d0] mb-5 font-medium tracking-wide">
         Interested in seeing more of my work?
       </p>
       <a href="https://github.com/zceptre?tab=repositories"
          target="_blank"
          rel="noopener noreferrer"
-         class="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-[#2a2a2a] text-[#e0e0e0] no-underline font-bold text-[0.9rem] rounded-[10px] uppercase tracking-wide transition-colors duration-300 hover:bg-[#333] hover:text-white"
+         class="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-[12px]
+       bg-[rgba(100,150,255,0.14)] border border-[rgba(100,150,255,0.25)]
+       text-brand-blue no-underline font-bold text-[0.9rem] uppercase tracking-wide
+       transition-all duration-300 hover:bg-[rgba(100,150,255,0.22)]
+       hover:border-[rgba(100,150,255,0.45)] hover:text-white hover:-translate-y-0.5"
          aria-label="View all projects on GitHub">
         <i class="fas fa-code" aria-hidden="true"></i> View All Projects on GitHub
       </a>
@@ -507,7 +526,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-9">
 
       <!-- Upwork Card -->
-      <div class="group rounded-[20px] bg-[#181818] overflow-hidden flex flex-col hover:bg-[#222] transition-colors duration-300">
+       <div class="group relative flex flex-col h-full px-9 py-11 rounded-[18px] bg-[rgba(100,150,255,0.08)] border border-[rgba(100,150,255,0.2)] backdrop-blur-xl transition-all duration-500 hover:bg-[rgba(100,150,255,0.12)] hover:border-[rgba(100,150,255,0.35)] hover:-translate-y-3 shadow-[0_20px_60px_rgba(100,150,255,0.1)]">
 
         <!-- Card Header -->
         <div class="flex items-center gap-5 px-9 py-9 border-b border-[#232323] bg-[#181818]">
@@ -588,7 +607,7 @@
       </div>
 
       <!-- Testimonials Card -->
-      <div class="group rounded-[20px] bg-[#181818] overflow-hidden flex flex-col hover:bg-[#222] transition-colors duration-300">
+      <div class="group relative flex flex-col h-full px-9 py-11 rounded-[18px] bg-[rgba(100,150,255,0.08)] border border-[rgba(100,150,255,0.2)] backdrop-blur-xl transition-all duration-500 hover:bg-[rgba(100,150,255,0.12)] hover:border-[rgba(100,150,255,0.35)] hover:-translate-y-3 shadow-[0_20px_60px_rgba(100,150,255,0.1)]">
 
         <!-- Card Header -->
         <div class="flex items-center gap-5 px-9 py-9 border-b border-[#232323] bg-[#181818]">
