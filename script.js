@@ -2,7 +2,10 @@ const container = document.querySelector('.container');
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 const navLinks = document.querySelectorAll('.nav-link');
-const sections = document.querySelectorAll('.section');
+// Track only the sections that nav links point to
+const sections = Array.from(navLinks)
+  .map(a => document.querySelector(a.getAttribute('href')))
+  .filter(Boolean);
 
 let currentSection = 0;
 
@@ -18,25 +21,27 @@ hamburger.addEventListener('click', () => {
 // ============================================
 // NAVIGATION LINK CLICK HANDLER
 // ============================================
+// NAVIGATION LINK CLICK HANDLER (scroll by href target id)
 navLinks.forEach((link) => {
   link.addEventListener('click', (e) => {
+    const href = link.getAttribute('href'); // e.g. "#about"
+    if (!href || !href.startsWith('#')) return;
+
+    const target = document.querySelector(href);
+    if (!target) return;
+
     e.preventDefault();
-    
-    // Close hamburger menu
+
+    // Close hamburger menu (safe even on desktop)
     hamburger.classList.remove('active');
     navMenu.classList.remove('active');
     hamburger.setAttribute('aria-expanded', 'false');
-    
-    // Get section index from data-section attribute
-    const sectionIndex = parseInt(link.getAttribute('data-section'), 10);
-    
-    // Scroll to section smoothly
-    const targetSection = sections[sectionIndex];
-    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    
-    // Update current section and active link
-    currentSection = sectionIndex;
-    updateActiveNavLink();
+
+    // Smooth scroll to the actual section id
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    // Update URL hash (optional, but nice)
+    history.replaceState(null, '', href);
   });
 });
 
@@ -75,9 +80,9 @@ window.addEventListener('scroll', () => {
 // ============================================
 function updateActiveNavLink() {
   navLinks.forEach((link) => {
-    const linkSection = parseInt(link.getAttribute('data-section'), 10);
-    const isActive = linkSection === currentSection;
-    link.classList.toggle('active', isActive);
+    const href = link.getAttribute('href');
+    const target = document.querySelector(href);
+    link.classList.toggle('active', target === sections[currentSection]);
   });
 }
 

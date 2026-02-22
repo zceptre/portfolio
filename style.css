@@ -52,7 +52,7 @@ button:focus-visible { outline-offset: 4px; }
 
 /* Scroll-to-top button */
 #scrollTopBtn{
-  right: 20px;
+  right: 16px;
   bottom: calc(50px + var(--safe-bottom) + var(--ai-fab-size) + var(--fab-gap));
 }
 
