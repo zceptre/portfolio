@@ -275,51 +275,70 @@
 </section>
 
    <!-- Summary Section -->
-<section class="section summary relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-black py-20 px-10"
+<section class="relative w-full flex items-center justify-center overflow-hidden bg-black py-16 md:py-20 px-5 sm:px-8 md:px-10"
          id="about"
          aria-label="About me section">
 
-  <div class="w-full max-w-[950px] mx-auto relative z-10 text-center">
+  <div class="w-full max-w-[1100px] mx-auto relative z-10 text-center">
 
-    <!-- Badge -->
-    <div class="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[#111] rounded-full text-[0.75rem] text-brand-blue font-bold mb-8 tracking-widest uppercase">
+    <!-- Badge (match style system) -->
+    <div class="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[rgba(100,150,255,0.15)] border border-[rgba(100,150,255,0.25)] rounded-full text-[0.75rem] text-brand-blue font-bold mb-6 md:mb-8 tracking-widest uppercase backdrop-blur-xl shadow-[0_10px_40px_rgba(100,150,255,0.15)]">
       About Me
     </div>
 
     <!-- Heading -->
-    <h2 class="font-space text-[clamp(2rem,6vw,3.5rem)] font-extrabold mb-12 text-center tracking-tight leading-[1.2] text-white">
+    <h2 class="font-space text-[clamp(1.8rem,6vw,3.5rem)] font-extrabold mb-8 md:mb-12 text-center tracking-tight leading-[1.2] text-white">
       Building Immersive Experiences with
       <span class="text-brand-blue"> Code & Creativity</span>
     </h2>
 
-    <!-- Summary Card -->
-    <div class="max-w-[950px] mx-auto mb-16 px-12 py-10">
-      <p class="text-[clamp(1rem,2vw,1.15rem)] text-[#b0b8d0] leading-[1.8] tracking-wide font-light italic text-center">
-        "I'm a Junior Developer with hands-on experience in
-        <strong class="text-white font-bold">Unreal Engine</strong>,
-        <strong class="text-white font-bold">Android development</strong>,
-        and game mechanics. I specialize in Java, C++, and UI/UX implementation across mobile
-        and gaming platforms. With a strong foundation in debugging, QA testing, and project
-        management, I'm passionate about creating interactive applications that users love."
-      </p>
+    <!-- Summary Card (glass like Social Proof) -->
+    <div class="group relative w-full max-w-[950px] mx-auto mb-10 md:mb-16 rounded-[18px] bg-[rgba(100,150,255,0.08)] border border-[rgba(100,150,255,0.2)] backdrop-blur-xl transition-all duration-500 hover:bg-[rgba(100,150,255,0.12)] hover:border-[rgba(100,150,255,0.35)] shadow-[0_20px_60px_rgba(100,150,255,0.1)] overflow-hidden">
+
+      <!-- Optional header strip for consistency -->
+      <div class="p-5 md:p-6 border-b border-[#232323] bg-[#181818]">
+        <h3 class="font-space text-[1.05rem] md:text-[1.15rem] font-bold text-white tracking-tight">
+          Quick Summary
+        </h3>
+        <p class="text-[0.85rem] text-[#a0a0a0] font-medium tracking-wide mt-1">
+          Developer • QA Tester • Game Dev
+        </p>
+      </div>
+
+      <div class="p-5 md:p-8">
+        <p class="text-[clamp(0.98rem,2vw,1.15rem)] text-[#b0b8d0] leading-[1.8] tracking-wide font-light italic text-center">
+          "I'm a Junior Developer with hands-on experience in
+          <strong class="text-white font-bold">Unreal Engine</strong>,
+          <strong class="text-white font-bold">Android development</strong>,
+          and game mechanics. I specialize in Java, C++, and UI/UX implementation across mobile
+          and gaming platforms. With a strong foundation in debugging, QA testing, and project
+          management, I'm passionate about creating interactive applications that users love."
+        </p>
+      </div>
     </div>
 
-    <!-- Stats -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-[900px] mx-auto pt-10">
+    <!-- Stats (glass cards, compact mobile) -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 max-w-[950px] mx-auto">
 
-      <div class="py-10 px-8 rounded-[18px] bg-[#181818] text-center hover:bg-[#222] transition-colors duration-300">
-        <div class="font-space text-[clamp(2rem,5vw,3rem)] font-extrabold text-brand-blue mb-0">1+</div>
-        <div class="text-[0.85rem] text-brand-blue font-bold tracking-[1.2px] uppercase mt-3">Years Experience</div>
+      <div class="group rounded-[18px] bg-[rgba(100,150,255,0.08)] border border-[rgba(100,150,255,0.2)] backdrop-blur-xl p-5 md:p-7 text-center transition-all duration-500 hover:bg-[rgba(100,150,255,0.12)] hover:border-[rgba(100,150,255,0.35)] shadow-[0_20px_60px_rgba(100,150,255,0.08)]">
+        <div class="font-space text-[clamp(1.7rem,4vw,2.6rem)] font-extrabold text-brand-blue leading-none">1+</div>
+        <div class="text-[0.78rem] md:text-[0.85rem] text-[#b0b8d0] font-bold tracking-[1.2px] uppercase mt-2">
+          Years Experience
+        </div>
       </div>
 
-      <div class="py-10 px-8 rounded-[18px] bg-[#181818] text-center hover:bg-[#222] transition-colors duration-300">
-        <div class="font-space text-[clamp(2rem,5vw,3rem)] font-extrabold text-brand-blue mb-0">2+</div>
-        <div class="text-[0.85rem] text-brand-blue font-bold tracking-[1.2px] uppercase mt-3">Projects Completed</div>
+      <div class="group rounded-[18px] bg-[rgba(100,150,255,0.08)] border border-[rgba(100,150,255,0.2)] backdrop-blur-xl p-5 md:p-7 text-center transition-all duration-500 hover:bg-[rgba(100,150,255,0.12)] hover:border-[rgba(100,150,255,0.35)] shadow-[0_20px_60px_rgba(100,150,255,0.08)]">
+        <div class="font-space text-[clamp(1.7rem,4vw,2.6rem)] font-extrabold text-brand-blue leading-none">2+</div>
+        <div class="text-[0.78rem] md:text-[0.85rem] text-[#b0b8d0] font-bold tracking-[1.2px] uppercase mt-2">
+          Projects Completed
+        </div>
       </div>
 
-      <div class="py-10 px-8 rounded-[18px] bg-[#181818] text-center hover:bg-[#222] transition-colors duration-300">
-        <div class="font-space text-[clamp(2rem,5vw,3rem)] font-extrabold text-brand-blue mb-0">100%</div>
-        <div class="text-[0.85rem] text-brand-blue font-bold tracking-[1.2px] uppercase mt-3">Client Satisfaction</div>
+      <div class="group rounded-[18px] bg-[rgba(100,150,255,0.08)] border border-[rgba(100,150,255,0.2)] backdrop-blur-xl p-5 md:p-7 text-center transition-all duration-500 hover:bg-[rgba(100,150,255,0.12)] hover:border-[rgba(100,150,255,0.35)] shadow-[0_20px_60px_rgba(100,150,255,0.08)]">
+        <div class="font-space text-[clamp(1.7rem,4vw,2.6rem)] font-extrabold text-brand-blue leading-none">100%</div>
+        <div class="text-[0.78rem] md:text-[0.85rem] text-[#b0b8d0] font-bold tracking-[1.2px] uppercase mt-2">
+          Client Satisfaction
+        </div>
       </div>
 
     </div>
@@ -328,22 +347,22 @@
 </section>
 
  <!-- Featured Projects Section -->
-<section class="section relative w-full bg-black py-20 px-10"
+<section class="relative w-full bg-black py-16 md:py-20 px-5 sm:px-8 md:px-10"
          id="projects"
          aria-label="Featured projects section">
 
-  <div class="max-w-[1400px] w-full mx-auto relative z-10">
+  <div class="w-full max-w-[1100px] mx-auto relative z-10">
 
     <!-- Heading -->
-    <h2 class="font-space text-[clamp(2rem,6vw,3rem)] font-bold mb-16 text-center tracking-tight text-brand-blue">
+    <h2 class="font-space text-[clamp(1.8rem,6vw,3rem)] font-bold mb-10 md:mb-16 text-center tracking-tight text-brand-blue">
       Featured Projects
     </h2>
 
     <!-- Projects Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-9 mb-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-9 mb-8">
 
       <!-- Project 1: Echoes of Eldrin -->
-       <div class="group relative flex flex-col h-full px-9 py-11 rounded-[18px] bg-[rgba(100,150,255,0.08)] border border-[rgba(100,150,255,0.2)] backdrop-blur-xl transition-all duration-500 hover:bg-[rgba(100,150,255,0.12)] hover:border-[rgba(100,150,255,0.35)] hover:-translate-y-3 shadow-[0_20px_60px_rgba(100,150,255,0.1)]">
+       <div class="group relative flex flex-col h-full p-6 md:px-9 md:py-11 rounded-[18px] bg-[rgba(100,150,255,0.08)] border border-[rgba(100,150,255,0.2)] backdrop-blur-xl transition-all duration-500 hover:bg-[rgba(100,150,255,0.12)] hover:border-[rgba(100,150,255,0.35)] hover:-translate-y-2 shadow-[0_20px_60px_rgba(100,150,255,0.1)] overflow-hidden">
  
 <div class="absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-500 group-hover:opacity-100"
      style="background:
@@ -403,7 +422,7 @@
       </div>
 
       <!-- Project 2: BTCinema -->
-       <div class="group relative flex flex-col h-full px-9 py-11 rounded-[18px] bg-[rgba(100,150,255,0.08)] border border-[rgba(100,150,255,0.2)] backdrop-blur-xl transition-all duration-500 hover:bg-[rgba(100,150,255,0.12)] hover:border-[rgba(100,150,255,0.35)] hover:-translate-y-3 shadow-[0_20px_60px_rgba(100,150,255,0.1)]">
+       <div class="group relative flex flex-col h-full p-6 md:px-9 md:py-11 rounded-[18px] bg-[rgba(100,150,255,0.08)] border border-[rgba(100,150,255,0.2)] backdrop-blur-xl transition-all duration-500 hover:bg-[rgba(100,150,255,0.12)] hover:border-[rgba(100,150,255,0.35)] hover:-translate-y-2 shadow-[0_20px_60px_rgba(100,150,255,0.1)] overflow-hidden">
             <!-- Premium background layers -->
 
 
@@ -491,7 +510,7 @@
 </section>
 
 <!-- Skills Section -->
-<section class="section relative w-full min-h-screen flex items-center justify-center overflow-hidden py-20 px-10"
+<section class="relative w-full flex items-center justify-center overflow-hidden bg-black py-16 md:py-20 px-5 sm:px-8 md:px-10"
          id="skills"
          style="background: #000000;"
          aria-label="Technical skills section">
@@ -502,7 +521,7 @@
   <div class="absolute bottom-[-30%] right-[-10%] w-[400px] h-[400px] rounded-full pointer-events-none z-0"
        style="background: radial-gradient(circle, rgba(100,150,255,0.06) 0%, transparent 70%); filter: blur(40px);"></div>
 
-  <div class="w-full max-w-[1400px] mx-auto px-10 relative z-10 text-center">
+  <div class="w-full max-w-[1100px] mx-auto relative z-10 text-center">
 
     <!-- Badge -->
     <div class="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[rgba(100,150,255,0.15)] border border-[rgba(100,150,255,0.25)] rounded-full text-[0.75rem] text-brand-blue font-bold mb-8 tracking-widest uppercase backdrop-blur-xl shadow-[0_10px_40px_rgba(100,150,255,0.15)]">
@@ -515,7 +534,7 @@
     </h2>
 
     <!-- Skills Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 max-w-[1400px] mx-auto pt-5">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-9 mx-auto pt-2 md:pt-5">
 
       <!-- Programming -->
       <div class="group relative flex flex-col h-full px-9 py-11 rounded-[18px] bg-[rgba(100,150,255,0.08)] border border-[rgba(100,150,255,0.2)] backdrop-blur-xl transition-all duration-500 hover:bg-[rgba(100,150,255,0.12)] hover:border-[rgba(100,150,255,0.35)] hover:-translate-y-3 shadow-[0_20px_60px_rgba(100,150,255,0.1)]">
@@ -806,15 +825,21 @@
 </button>
 
 <!-- AI Chat Widget -->
-<div class="fixed bottom-10 right-10 z-[999] flex flex-col gap-3 items-end">
+<div class="fixed bottom-4 right-4 md:bottom-10 md:right-10 z-[999] flex flex-col gap-3 items-end">
 
   <!-- Chat Panel -->
-  <div class="ai-chat-panel hidden flex-col w-[380px] h-[500px] rounded-[20px] border border-[rgba(100,150,255,0.25)] backdrop-blur-[40px] shadow-[0_20px_60px_rgba(100,150,255,0.2)] overflow-hidden"
-       id="aiChatPanel"
-       style="background: linear-gradient(135deg, rgba(13,22,40,0.95) 0%, rgba(0,0,0,0.9) 100%);">
+  <div class="ai-chat-panel hidden flex-col
+            w-[calc(100vw-2rem)] sm:w-[380px]
+            h-[70vh] sm:h-[500px]
+            max-w-[420px]
+            rounded-[18px] sm:rounded-[20px]
+            border border-[rgba(100,150,255,0.25)] backdrop-blur-[40px]
+            shadow-[0_20px_60px_rgba(100,150,255,0.2)] overflow-hidden"
+     id="aiChatPanel"
+     style="background: linear-gradient(135deg, rgba(13,22,40,0.95) 0%, rgba(0,0,0,0.9) 100%);">
 
     <!-- Header -->
-    <div class="flex justify-between items-center px-5 py-5 border-b border-[rgba(100,150,255,0.15)]"
+    <div class="flex justify-between items-center px-4 py-4 sm:px-5 sm:py-5 border-b border-[rgba(100,150,255,0.15)]"
          style="background: linear-gradient(135deg, rgba(100,150,255,0.08) 0%, rgba(100,150,255,0.02) 100%);">
       <h3 class="font-space text-[1.1rem] font-bold tracking-tight bg-gradient-to-br from-white to-brand-blue bg-clip-text text-transparent">
         AI Assistant
