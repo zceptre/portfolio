@@ -24,3 +24,39 @@ button:focus-visible { outline-offset: 4px; }
   }
 }
 
+/* AI Chat: mobile keyboard-safe layout */
+.ai-chat-panel {
+  max-height: calc(100vh - 140px);
+}
+
+@media (max-width: 768px) {
+  .ai-chat-panel {
+    width: calc(100vw - 2rem);
+    height: auto;
+    max-height: calc(100vh - 140px);
+  }
+}
+
+/* --- Floating buttons layout (AI + Scroll Top) --- */
+:root{
+  --fab-gap: 12px;
+  --ai-fab-size: 60px;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* AI widget wrapper */
+.ai-chat-widget{
+  right: 16px;
+  bottom: calc(16px + var(--safe-bottom));
+}
+
+/* Scroll-to-top button */
+#scrollTopBtn{
+  right: 20px;
+  bottom: calc(50px + var(--safe-bottom) + var(--ai-fab-size) + var(--fab-gap));
+}
+
+/* Mobile tweak (slightly smaller AI button => adjust stack) */
+@media (max-width: 768px){
+  :root{ --ai-fab-size: 54px; }
+}

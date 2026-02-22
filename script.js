@@ -266,3 +266,47 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+  const widgetWrap = document.querySelector(".ai-chat-widget"); // we'll add this class
+  const panel = document.getElementById("aiChatPanel");
+  const input = document.getElementById("aiChatInput");
+
+  if (!widgetWrap || !panel || !input) return;
+
+  // Apply safe-area + keyboard offset when viewport changes
+  const applyViewportFix = () => {
+    const vv = window.visualViewport;
+    if (!vv) return;
+
+    // How much of the page is covered by the keyboard
+    const keyboard = Math.max(0, window.innerHeight - vv.height - vv.offsetTop);
+
+    // Lift the widget above the keyboard (+ small padding)
+    widgetWrap.style.bottom = `${keyboard + 16}px`;
+
+    // Keep panel within the visible area (minus navbar-ish space)
+    panel.style.maxHeight = `${Math.max(260, vv.height - 120)}px`;
+  };
+
+  // When keyboard opens/closes
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener("resize", applyViewportFix);
+    window.visualViewport.addEventListener("scroll", applyViewportFix);
+  }
+
+  // When focusing input, ensure it lifts immediately
+  input.addEventListener("focus", () => setTimeout(applyViewportFix, 50));
+  input.addEventListener("blur", () => {
+    // reset after keyboard closes
+    widgetWrap.style.bottom = "";
+    panel.style.maxHeight = "";
+  });
+
+  // Initial
+  applyViewportFix();
+});
+
+const messages = document.getElementById("aiChatMessages");
+input.addEventListener("focus", () => {
+  if (messages) messages.scrollTop = messages.scrollHeight;
+});
