@@ -10,7 +10,7 @@
 
     @page {
       size: A4;
-      margin: 10mm 12mm;
+      margin: 0;
     }
 
     body {
@@ -42,14 +42,14 @@
 
     @media print {
       .print-bar { display: none; }
-      .page { padding-top: 0; }
+      .page { padding: 10mm 12mm; }
     }
 
     /* ── Page ── */
     .page {
       max-width: 186mm;
       margin: 0 auto;
-      padding-top: 46px;
+      padding: 46px 0 0;
     }
 
     /* ── Header ── */
