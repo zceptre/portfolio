@@ -646,7 +646,18 @@
       max-width: calc(100vw - 32px);
       border-radius: 10px;
       z-index: 10;
+      /* Keep dark regardless of theme */
+      background: #1C1C1E !important;
+      border-color: rgba(255,255,255,0.08) !important;
     }
+    .terminal.minimized .titlebar {
+      background: #1C1C1E !important;
+      border-bottom-color: rgba(255,255,255,0.06) !important;
+    }
+    .terminal.minimized .titlebar-title { color: rgba(255,255,255,0.35) !important; }
+    .terminal.minimized .input-row { background: #1C1C1E !important; }
+    .terminal.minimized #termInput { color: rgba(255,255,255,0.75) !important; caret-color: #4EC994 !important; }
+    .terminal.minimized .prompt { color: #4EC994 !important; }
 
     /* MAXIMIZED — fill viewport */
     .terminal.maximized {
@@ -663,25 +674,25 @@
       position: fixed;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -52%);
-      background: rgba(20,20,20,0.82);
-      backdrop-filter: blur(28px) saturate(1.5);
-      -webkit-backdrop-filter: blur(28px) saturate(1.5);
-      border: 1px solid rgba(255,255,255,0.12);
+      transform: translate(-50%, -48%);
+      background: rgba(22,22,24,0.88);
+      backdrop-filter: blur(32px) saturate(1.6);
+      -webkit-backdrop-filter: blur(32px) saturate(1.6);
+      border: 1px solid rgba(255,255,255,0.11);
       border-radius: 24px;
       padding: 32px 28px 24px;
-      width: 280px;
+      width: 290px;
       text-align: center;
-      box-shadow: 0 32px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.06);
+      box-shadow: 0 40px 100px rgba(0,0,0,0.75), 0 0 0 1px rgba(255,255,255,0.05);
       z-index: 9;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 240ms ease, transform 240ms ease;
+      transition: opacity 260ms ease, transform 260ms ease;
     }
     .peek-card.visible {
       opacity: 1;
       pointer-events: auto;
-      transform: translate(-50%, -55%);
+      transform: translate(-50%, -52%);
     }
     .peek-avatar {
       width: 88px;
@@ -2012,6 +2023,7 @@
   document.getElementById('tlMaximize').addEventListener('click', () => {
     terminal.classList.remove('minimized');
     terminal.classList.toggle('maximized');
+    peekCard.classList.remove('visible');
     requestAnimationFrame(repositionSuggest);
   });
 
