@@ -10,201 +10,106 @@
 
     @page {
       size: A4;
-      margin: 14mm 16mm;
+      margin: 10mm 12mm;
     }
 
     body {
       font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
-      font-size: 9.5pt;
-      line-height: 1.45;
+      font-size: 9pt;
+      line-height: 1.35;
       color: #1a1a1a;
       background: #fff;
     }
 
-    /* ── Print button (hidden when printing) ── */
+    /* ── Print button ── */
     .print-bar {
       position: fixed;
       top: 0; left: 0; right: 0;
       background: #111;
-      padding: 10px 20px;
+      padding: 8px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
       z-index: 100;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
     }
-    .print-bar span {
-      font-size: 12px;
-      color: #888;
-      font-family: 'JetBrains Mono', monospace;
-    }
+    .print-bar span { font-size: 11px; color: #888; }
     .print-btn {
-      background: #fff;
-      color: #111;
-      border: none;
-      padding: 7px 18px;
-      font-size: 12px;
-      font-weight: 600;
-      border-radius: 4px;
-      cursor: pointer;
-      letter-spacing: 0.02em;
+      background: #fff; color: #111; border: none;
+      padding: 6px 16px; font-size: 11px; font-weight: 600;
+      border-radius: 4px; cursor: pointer;
     }
     .print-btn:hover { background: #e8e8e8; }
 
     @media print {
       .print-bar { display: none; }
-      body { margin: 0; }
-      .page { padding: 0; }
+      .page { padding-top: 0; }
     }
 
     /* ── Page ── */
     .page {
-      max-width: 210mm;
+      max-width: 186mm;
       margin: 0 auto;
-      padding: 60px 20mm 20mm;
+      padding-top: 46px;
     }
 
     /* ── Header ── */
-    .header {
-      text-align: center;
-      margin-bottom: 10px;
-    }
+    .header { text-align: center; margin-bottom: 6px; }
     .header-name {
-      font-size: 20pt;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      margin-bottom: 2px;
+      font-size: 18pt; font-weight: 700;
+      letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 1px;
     }
-    .header-title {
-      font-size: 10pt;
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-    .header-contact {
-      font-size: 8.5pt;
-      color: #333;
-      margin-bottom: 2px;
-    }
+    .header-title { font-size: 9.5pt; font-weight: 600; margin-bottom: 3px; }
+    .header-contact { font-size: 8pt; color: #333; margin-bottom: 1px; }
     .header-contact a { color: #333; text-decoration: underline; }
-    .header-links {
-      font-size: 8.5pt;
-      color: #333;
-    }
+    .header-links { font-size: 8pt; color: #333; }
     .header-links a { color: #333; text-decoration: underline; }
 
     /* ── Divider ── */
-    hr {
-      border: none;
-      border-top: 1.5px solid #1a1a1a;
-      margin: 7px 0;
-    }
-    hr.thin {
-      border-top-width: 0.75px;
-      border-color: #ccc;
-      margin: 4px 0;
-    }
+    hr { border: none; border-top: 1.5px solid #1a1a1a; margin: 5px 0; }
 
     /* ── Section heading ── */
     .section-title {
-      font-size: 9pt;
-      font-weight: 700;
-      text-align: center;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin: 8px 0 5px;
+      font-size: 8.5pt; font-weight: 700; text-align: center;
+      letter-spacing: 0.08em; text-transform: uppercase; margin: 5px 0 4px;
     }
 
     /* ── Experience entry ── */
     .exp-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 1px;
+      display: flex; justify-content: space-between;
+      align-items: baseline; margin-bottom: 1px;
     }
-    .exp-role {
-      font-weight: 700;
-      font-size: 9.5pt;
-    }
-    .exp-period {
-      font-size: 8.5pt;
-      color: #333;
-      font-style: italic;
-    }
-    .exp-sub {
-      font-size: 8.5pt;
-      font-style: italic;
-      color: #333;
-      margin-bottom: 3px;
-    }
-    .exp-bullets {
-      list-style: disc;
-      padding-left: 16px;
-      margin-bottom: 6px;
-    }
-    .exp-bullets li {
-      font-size: 9pt;
-      margin-bottom: 1.5px;
-      line-height: 1.4;
-    }
+    .exp-role { font-weight: 700; font-size: 9pt; }
+    .exp-period { font-size: 8pt; color: #333; font-style: italic; white-space: nowrap; }
+    .exp-bullets { list-style: disc; padding-left: 14px; margin-bottom: 4px; }
+    .exp-bullets li { font-size: 8.5pt; margin-bottom: 1px; line-height: 1.35; }
 
     /* ── Skills table ── */
-    .skills-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 4px;
-    }
-    .skills-table td {
-      vertical-align: top;
-      padding: 0 8px 0 0;
-      font-size: 8.5pt;
-      width: 25%;
-    }
+    .skills-table { width: 100%; border-collapse: collapse; margin-top: 3px; }
+    .skills-table td { vertical-align: top; padding: 0 6px 0 0; font-size: 8pt; width: 25%; }
     .skills-table td:last-child { padding-right: 0; }
-    .skills-col-head {
-      font-size: 8.5pt;
-      font-weight: 600;
-      margin-bottom: 3px;
-    }
-    .skills-list {
-      list-style: disc;
-      padding-left: 14px;
-    }
-    .skills-list li {
-      margin-bottom: 1.5px;
-      line-height: 1.35;
-    }
+    .skills-col-head { font-size: 8pt; font-weight: 700; margin-bottom: 2px; }
+    .skills-list { list-style: disc; padding-left: 12px; }
+    .skills-list li { margin-bottom: 1px; line-height: 1.3; }
 
     /* ── Summary ── */
-    .summary-text {
-      font-size: 9pt;
-      line-height: 1.5;
-      text-align: justify;
-    }
+    .summary-text { font-size: 8.5pt; line-height: 1.45; text-align: justify; }
 
     /* ── Education ── */
-    .edu-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-    }
-    .edu-school { font-weight: 700; font-size: 9.5pt; }
-    .edu-period { font-size: 8.5pt; font-style: italic; color: #333; }
-    .edu-degree { font-style: italic; font-size: 8.5pt; color: #333; }
+    .edu-header { display: flex; justify-content: space-between; align-items: baseline; }
+    .edu-school { font-weight: 700; font-size: 9pt; }
+    .edu-period { font-size: 8pt; font-style: italic; color: #333; }
+    .edu-degree { font-style: italic; font-size: 8pt; color: #333; }
   </style>
 </head>
 <body>
 
-<!-- Print bar (hidden on print) -->
 <div class="print-bar">
-  <span>resume.html — Son Morris Sasi</span>
+  <span>Son Morris Sasi — Resume</span>
   <button class="print-btn" onclick="window.print()">⬇ Save as PDF</button>
 </div>
 
 <div class="page">
 
-  <!-- Header -->
   <div class="header">
     <div class="header-name">Son Morris Sasi</div>
     <div class="header-title">Automation Developer</div>
@@ -213,25 +118,19 @@
       <a href="mailto:morris.dev31@gmail.com">morris.dev31@gmail.com</a>
     </div>
     <div class="header-links">
-      <a href="https://github.com/zceptre" target="_blank">GitHub</a>
-      &nbsp;·&nbsp;
-      <a href="https://www.upwork.com/freelancers/~016110c8b7153e5e76" target="_blank">Upwork</a>
-      &nbsp;·&nbsp;
+      <a href="https://github.com/zceptre" target="_blank">GitHub</a> &nbsp;·&nbsp;
+      <a href="https://www.upwork.com/freelancers/~016110c8b7153e5e76" target="_blank">Upwork</a> &nbsp;·&nbsp;
       <a href="https://mrrz.dev" target="_blank">Portfolio</a>
     </div>
   </div>
 
   <hr>
 
-  <!-- Summary -->
   <div class="section-title">Summary</div>
-  <p class="summary-text">
-    Automation Developer with hands-on experience building multi-stage n8n workflows, AI agent pipelines, and CRM integrations. Proficient in connecting tools like Xero, Supabase, GHL, WAHA, and Stripe into reliable business automations. Also experienced in Unreal Engine game development, Android app development, and QA testing across freelance and academic projects.
-  </p>
+  <p class="summary-text">Automation Developer with hands-on experience building n8n workflows, AI agent pipelines, and CRM integrations. Proficient in connecting Xero, Supabase, GHL, WAHA, and Stripe into reliable business automations. Also experienced in Unreal Engine 5 game development, Android development, and QA testing.</p>
 
   <hr>
 
-  <!-- Experience -->
   <div class="section-title">Experience</div>
 
   <div class="exp-header">
@@ -239,43 +138,39 @@
     <span class="exp-period">2025 &ndash; Present</span>
   </div>
   <ul class="exp-bullets">
-    <li>Built a 5-stage n8n order fulfilment pipeline: WhatsApp intake &rarr; Airtable CRM &rarr; AI product filtering &rarr; Supplier relay &rarr; Xero invoice generation.</li>
-    <li>Automated B2B accounting workflow: PDF and email parsing, Xero bank reconciliation, Slack anomaly alerts for the finance team.</li>
-    <li>Developed Instagram Listener system using OpenClaw and Playwright for UAE health/wellness lead discovery and outreach qualification.</li>
-    <li>Integrated GHL, Supabase, Stripe, WAHA, and GPT-4.1-mini across multi-stage automation pipelines.</li>
+    <li>Built a 5-stage n8n order fulfilment pipeline: WhatsApp intake &rarr; Airtable CRM &rarr; AI filtering &rarr; Supplier relay &rarr; Xero invoicing.</li>
+    <li>Automated B2B accounting: PDF/email parsing, Xero reconciliation, Slack anomaly alerts for finance team.</li>
+    <li>Developed Instagram Listener (OpenClaw + Playwright) for UAE health/wellness lead discovery.</li>
+    <li>Integrated GHL, Supabase, Stripe, WAHA, and GPT-4.1-mini across multi-stage pipelines.</li>
   </ul>
 
   <div class="exp-header">
-    <span class="exp-role">Echoes of Eldrin (Capstone Project) &mdash; <em>Programmer</em></span>
+    <span class="exp-role">Echoes of Eldrin (Capstone) &mdash; <em>Programmer</em></span>
     <span class="exp-period">Jan 2025 &ndash; Oct 2025</span>
   </div>
   <ul class="exp-bullets">
-    <li>Developed core gameplay systems and implemented combat mechanics using Unreal Engine 5.</li>
-    <li>Collaborated with designers and artists to integrate assets and enhance visual effects and animations.</li>
-    <li>Optimized code and debugged gameplay mechanics to maintain stable performance.</li>
+    <li>Developed core gameplay systems and combat mechanics using Unreal Engine 5.</li>
+    <li>Optimized and debugged game mechanics; collaborated with artists on asset integration.</li>
   </ul>
 
   <div class="exp-header">
-    <span class="exp-role">BTCinema (Client Android App) &mdash; <em>Programmer &amp; Designer</em></span>
+    <span class="exp-role">BTCinema (Android App) &mdash; <em>Programmer &amp; Designer</em></span>
     <span class="exp-period">Nov 2024 &ndash; Dec 2024</span>
   </div>
   <ul class="exp-bullets">
-    <li>Designed and developed a fully functional Android app for movie booking and seat reservations using Java and SQLite.</li>
-    <li>Delivered on time, meeting all client requirements and deadlines.</li>
+    <li>Designed and developed a movie booking Android app using Java and SQLite; delivered on time.</li>
   </ul>
 
   <div class="exp-header">
-    <span class="exp-role">Freelance &mdash; Upwork &mdash; <em>Beta Tester / QA &amp; Developer</em></span>
+    <span class="exp-role">Freelance &mdash; Upwork &mdash; <em>QA Tester &amp; Developer</em></span>
     <span class="exp-period">2022 &ndash; Present</span>
   </div>
   <ul class="exp-bullets">
-    <li>Tested multiple mobile apps and games, identifying bugs, glitches, and performance issues.</li>
-    <li>Managed remote freelance projects, coordinating deliverables and client communication.</li>
+    <li>Tested mobile apps and games; managed remote projects and client communication on Upwork.</li>
   </ul>
 
   <hr>
 
-  <!-- Education -->
   <div class="section-title">Education</div>
   <div class="edu-header">
     <span class="edu-school">Bataan Peninsula State University, Philippines</span>
@@ -285,7 +180,6 @@
 
   <hr>
 
-  <!-- Skills -->
   <div class="section-title">Technical Skills</div>
   <table class="skills-table">
     <tr>
@@ -329,6 +223,5 @@
   </table>
 
 </div>
-
 </body>
 </html>
