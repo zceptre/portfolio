@@ -1,17 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
 
-/* Scrollbar styling */
-::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: rgba(255,255,255,0.02); }
-::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 10px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(13,236,168,0.2); border-radius: 6px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(13,236,168,0.35); }
 
 /* Selection */
-::selection { background: rgba(255,255,255,0.2); color: #ffffff; }
-::-moz-selection { background: rgba(255,255,255,0.2); color: #ffffff; }
+::selection { background: rgba(13,236,168,0.2); color: #ffffff; }
+::-moz-selection { background: rgba(13,236,168,0.2); color: #ffffff; }
 
 /* Focus */
-:focus-visible { outline: 2px solid rgba(255,255,255,0.3); outline-offset: 2px; }
+:focus-visible { outline: 2px solid rgba(13,236,168,0.4); outline-offset: 3px; }
 button:focus-visible { outline-offset: 4px; }
 
 /* Reduced motion */
@@ -24,39 +24,36 @@ button:focus-visible { outline-offset: 4px; }
   }
 }
 
-/* AI Chat: mobile keyboard-safe layout */
+/* AI Chat panel sizing */
 .ai-chat-panel {
-  max-height: calc(100vh - 140px);
+  max-height: calc(100vh - 120px);
 }
 
 @media (max-width: 768px) {
   .ai-chat-panel {
     width: calc(100vw - 2rem);
     height: auto;
-    max-height: calc(100vh - 140px);
+    max-height: calc(100vh - 120px);
   }
 }
 
-/* --- Floating buttons layout (AI + Scroll Top) --- */
-:root{
+/* Floating buttons layout */
+:root {
   --fab-gap: 12px;
-  --ai-fab-size: 60px;
+  --ai-fab-size: 56px;
   --safe-bottom: env(safe-area-inset-bottom, 0px);
 }
 
-/* AI widget wrapper */
-.ai-chat-widget{
-  right: 16px;
-  bottom: calc(16px + var(--safe-bottom));
+.ai-chat-widget {
+  right: 20px;
+  bottom: calc(20px + var(--safe-bottom));
 }
 
-/* Scroll-to-top button */
-#scrollTopBtn{
-  right: 16px;
-  bottom: calc(50px + var(--safe-bottom) + var(--ai-fab-size) + var(--fab-gap));
+#scrollTopBtn {
+  right: 20px;
+  bottom: calc(30px + var(--safe-bottom) + var(--ai-fab-size) + var(--fab-gap));
 }
 
-/* Mobile tweak (slightly smaller AI button => adjust stack) */
-@media (max-width: 768px){
-  :root{ --ai-fab-size: 54px; }
+@media (max-width: 768px) {
+  :root { --ai-fab-size: 50px; }
 }

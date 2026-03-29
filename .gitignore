@@ -1,0 +1,14 @@
+# API keys / MCP config — never push these
+.mcp.json
+
+# Claude Code internals
+.claude/
+
+# Screenshots (local dev only)
+temporary screenshots/
+
+# Misc
+*.png
+vladburca.com_.png
+zceptre.github.io_portfolio_.png
+Experience/

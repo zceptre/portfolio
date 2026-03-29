@@ -1,900 +1,1868 @@
 <!DOCTYPE html>
-<html lang="en" class="w-full overflow-x-hidden" style="max-width:100%">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Son Morris Sasi - Junior Developer, QA Tester, and Game Developer Portfolio">
-  <meta name="theme-color" content="#000000">
-  <title>Son Morris Sasi - Developer Portfolio</title>
+  <meta name="description" content="Son Morris Sasi — Automation Developer, Game Developer, QA Tester">
+  <meta name="theme-color" content="#0C1219">
+  <title>mrrs.dev — /portfolio</title>
 
-  <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            'brand-blue': '#a8d0ff',
-            'card-bg': '#181818',
-            'dark': '#111111',
-          },
-          fontFamily: {
-            'space': ['"Space Grotesk"', 'sans-serif'],
-            'inter': ['Inter', 'sans-serif'],
-          }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="images/Profile.jpg" type="image/jpeg">
+
+  <style>
+    /* ============================================
+       RESET
+    ============================================ */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ============================================
+       BASE
+    ============================================ */
+    html, body {
+      width: 100%;
+      height: 100%;
+      font-family: 'JetBrains Mono', 'Courier New', monospace;
+      font-size: 13px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow: hidden;
+      background: #0A0A0A;
+    }
+
+    /* ============================================
+       MACOS MENU BAR
+    ============================================ */
+    .macos-menubar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 28px;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      background: rgba(20, 14, 10, 0.55);
+      backdrop-filter: blur(20px) saturate(1.6);
+      -webkit-backdrop-filter: blur(20px) saturate(1.6);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      user-select: none;
+    }
+    .menubar-left {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .menubar-apple { font-size: 15px; opacity: 0.85; line-height: 1; }
+    .menubar-app {
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.9);
+      letter-spacing: 0.01em;
+    }
+    .menubar-items { display: flex; align-items: center; gap: 2px; }
+    .menubar-items span {
+      font-size: 12.5px;
+      color: rgba(255,255,255,0.75);
+      padding: 2px 8px;
+      border-radius: 4px;
+      cursor: default;
+      transition: background 0.15s;
+    }
+    .menubar-items span:hover { background: rgba(255,255,255,0.1); }
+    .menubar-right { display: flex; align-items: center; gap: 14px; }
+    .menubar-right span { font-size: 12px; color: rgba(255,255,255,0.75); cursor: default; }
+    .menubar-time {
+      font-size: 12.5px !important;
+      font-weight: 500;
+      color: rgba(255,255,255,0.88) !important;
+      min-width: 90px;
+      text-align: right;
+    }
+
+    /* ============================================
+       MACOS DOCK
+    ============================================ */
+    .macos-dock {
+      position: fixed;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      display: flex;
+      align-items: flex-end;
+      gap: 6px;
+      padding: 8px 14px;
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(28px) saturate(1.8);
+      -webkit-backdrop-filter: blur(28px) saturate(1.8);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 18px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.15);
+    }
+    .dock-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      cursor: pointer;
+      transition: transform 0.15s cubic-bezier(0.34,1.56,0.64,1);
+      position: relative;
+    }
+    .dock-icon:hover { transform: translateY(-8px) scale(1.2); }
+    .dock-icon img {
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+    .dock-separator {
+      width: 1px;
+      height: 40px;
+      background: rgba(255,255,255,0.2);
+      margin: 0 4px;
+      align-self: center;
+    }
+
+    /* ============================================
+       DESKTOP BACKGROUND
+    ============================================ */
+    .desktop {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%,   rgba(255,255,255,0.025) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 0% 100%,  rgba(255,255,255,0.015) 0%, transparent 55%),
+        #0A0A0A;
+    }
+    /* Grain texture */
+    .desktop::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.4;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+      background-repeat: repeat;
+      mix-blend-mode: overlay;
+    }
+    /* Subtle vignette */
+    .desktop::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(ellipse 100% 100% at 50% 50%, transparent 40%, rgba(0,0,0,0.55) 100%);
+    }
+
+    /* ============================================
+       TERMINAL WINDOW
+    ============================================ */
+    .terminal {
+      width: 100%;
+      max-width: 980px;
+      height: min(680px, calc(100vh - 48px));
+      display: flex;
+      flex-direction: column;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow:
+        0 0 0 1px rgba(0,0,0,0.8),
+        0 40px 100px rgba(0,0,0,0.6),
+        inset 0 1px 0 rgba(255,255,255,0.04);
+      background: #141414;
+      /* Subtle glass reflection at top */
+      position: relative;
+    }
+
+    /* ============================================
+       TITLE BAR
+    ============================================ */
+    .titlebar {
+      display: flex;
+      align-items: center;
+      height: 40px;
+      padding: 0 16px;
+      background: #1E1E1E;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      flex-shrink: 0;
+      position: relative;
+    }
+    .traffic-lights {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: absolute;
+      left: 16px;
+    }
+    .tl {
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .tl-close    { background: #ff5f57; box-shadow: 0 0 4px rgba(255,95,87,0.4); }
+    .tl-minimize { background: #febc2e; box-shadow: 0 0 4px rgba(254,188,46,0.4); }
+    .tl-maximize { background: #28c840; box-shadow: 0 0 4px rgba(40,200,64,0.4); }
+    .titlebar-title {
+      flex: 1;
+      text-align: center;
+      font-size: 12px;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.04em;
+      font-weight: 400;
+      user-select: none;
+    }
+
+    /* ============================================
+       TERMINAL BODY
+    ============================================ */
+    .terminal-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* ============================================
+       HOME SCREEN
+    ============================================ */
+    .home-screen {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+    }
+
+    /* --- Left Column --- */
+    .col-left {
+      width: 280px;
+      flex-shrink: 0;
+      padding: 22px 24px 20px 24px;
+      border-right: 1px solid rgba(255,255,255,0.09);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .welcome-text {
+      font-size: 11px;
+      color: rgba(255,255,255,0.3);
+      font-style: italic;
+      letter-spacing: 0.04em;
+      margin-bottom: 14px;
+      flex-shrink: 0;
+    }
+
+    /* Portrait */
+    .portrait-wrap {
+      position: relative;
+      width: 212px;
+      flex-shrink: 0;
+      margin-bottom: 12px;
+    }
+    .portrait-img {
+      width: 212px;
+      height: 290px;
+      object-fit: cover;
+      object-position: center 15%;
+      display: block;
+      filter: brightness(0.92) contrast(1.08) saturate(1.15);
+      mix-blend-mode: normal;
+    }
+    /* Scanlines + color tint overlay */
+    .portrait-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          to bottom,
+          transparent 0px,
+          transparent 3px,
+          rgba(0,0,0,0.12) 3px,
+          rgba(0,0,0,0.12) 4px
+        );
+      pointer-events: none;
+      mix-blend-mode: multiply;
+    }
+    /* Vignette: dark at edges, fade at bottom */
+    .portrait-wrap::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, transparent 25%, rgba(15,15,15,0.5) 100%),
+        radial-gradient(ellipse 90% 90% at 50% 50%, transparent 55%, rgba(0,0,0,0.25) 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .portrait-meta {
+      font-size: 11.5px;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.7;
+      flex-shrink: 0;
+    }
+    .portrait-meta a {
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      transition: color 150ms ease;
+    }
+    .portrait-meta a:hover { color: #ffffff; }
+
+    .still-there {
+      margin-top: auto;
+      padding-top: 12px;
+      font-size: 11px;
+      color: rgba(255,255,255,0.2);
+      font-style: italic;
+      line-height: 1.55;
+      flex-shrink: 0;
+    }
+
+    /* --- Right Column --- */
+    .col-right {
+      flex: 1;
+      padding: 22px 26px 18px 26px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* Stats table */
+    .stats-table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    .stats-table td {
+      padding: 2.5px 0;
+      vertical-align: top;
+      font-size: 12.5px;
+    }
+    .st-label {
+      color: rgba(255,255,255,0.32);
+      padding-right: 22px;
+      white-space: nowrap;
+    }
+    .st-value {
+      color: rgba(255,255,255,0.82);
+    }
+
+    /* Divider */
+    .h-sep {
+      height: 1px;
+      background: rgba(255,255,255,0.09);
+      flex-shrink: 0;
+    }
+
+    /* Navigation block */
+    .nav-block { display: flex; flex-direction: column; gap: 4px; }
+    .nav-label {
+      font-size: 12.5px;
+      color: #ffffff;
+      font-weight: 500;
+      margin-bottom: 4px;
+      letter-spacing: 0.02em;
+    }
+    .nav-cmd {
+      font-size: 12.5px;
+      color: rgba(255,255,255,0.62);
+      text-decoration: none;
+      display: block;
+      padding: 1px 0;
+    }
+    .nav-cmd:focus-visible { outline: none; }
+
+    .nav-hints {
+      margin-top: 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .nav-hint {
+      font-size: 11px;
+      color: rgba(255,255,255,0.2);
+    }
+
+    /* ============================================
+       OUTPUT AREA
+    ============================================ */
+    #rightHome {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      flex: 1;
+      overflow-y: auto;
+    }
+    .output-area {
+      flex: 1;
+      overflow-y: auto;
+      padding: 0;
+      display: none;
+      flex-direction: column;
+      gap: 1px;
+    }
+    .output-area.visible {
+      display: flex;
+    }
+
+    .o-cmd     { font-size: 12.5px; color: rgba(255,255,255,0.38); margin-bottom: 6px; }
+    .o-head    { font-size: 13px; color: #ffffff; font-weight: 700; margin: 4px 0 2px; letter-spacing: 0.02em; }
+    .o-line    { font-size: 12.5px; color: rgba(255,255,255,0.78); white-space: pre; line-height: 1.75; }
+    .o-para    { font-size: 12.5px; color: rgba(255,255,255,0.72); white-space: pre-wrap; line-height: 1.75; }
+    .o-dim     { font-size: 11px; color: rgba(255,255,255,0.25); font-style: italic; margin: 2px 0; }
+    .o-sep     { height: 1px; background: rgba(255,255,255,0.08); margin: 6px 0; flex-shrink: 0; }
+    .o-err     { font-size: 12.5px; color: #ff6b6b; }
+    .o-ok      { font-size: 12.5px; color: #ffffff; }
+    .o-ai      {
+      font-size: 12.5px;
+      color: rgba(255,255,255,0.75);
+      white-space: pre-wrap;
+      line-height: 1.75;
+      border-left: 2px solid rgba(255,255,255,0.25);
+      padding-left: 12px;
+      margin: 4px 0;
+    }
+    .o-link {
+      color: #ffffff;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .o-link:hover { opacity: 0.7; }
+
+    /* ============================================
+       CHAT AREA
+    ============================================ */
+    .chat-area {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px 24px 10px;
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .chat-area.visible { display: flex; }
+
+    .chat-header {
+      font-size: 11px;
+      color: rgba(255,255,255,0.25);
+      font-style: italic;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      flex-shrink: 0;
+    }
+    .chat-msg {
+      display: flex;
+      gap: 10px;
+      max-width: 100%;
+    }
+    .chat-msg.user { flex-direction: row-reverse; }
+
+    .chat-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      overflow: hidden;
+      margin-top: 2px;
+      background: rgba(255,255,255,0.08);
+    }
+    .chat-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(1);
+    }
+    .chat-avatar-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .chat-msg-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      flex: 1;
+      min-width: 0;
+    }
+    .chat-msg-label {
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.25);
+    }
+    .chat-msg.user .chat-msg-label { text-align: right; }
+    .chat-msg-body {
+      font-size: 12.5px;
+      line-height: 1.75;
+      white-space: pre-wrap;
+      padding: 8px 12px;
+      border-radius: 4px;
+    }
+    .chat-msg.user .chat-msg-body {
+      background: rgba(255,255,255,0.07);
+      color: rgba(255,255,255,0.9);
+      align-self: flex-end;
+      border-right: 2px solid rgba(255,255,255,0.3);
+    }
+    .chat-msg.ai .chat-msg-body {
+      background: rgba(255,255,255,0.03);
+      color: rgba(255,255,255,0.75);
+      align-self: flex-start;
+      border-left: 2px solid rgba(255,255,255,0.18);
+    }
+    .chat-msg.ai .chat-msg-label { color: rgba(255,255,255,0.2); }
+    .chat-typing {
+      font-size: 11px;
+      color: rgba(255,255,255,0.25);
+      font-style: italic;
+      animation: blink 1s step-end infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+    .chat-area::-webkit-scrollbar { width: 4px; }
+    .chat-area::-webkit-scrollbar-track { background: transparent; }
+    .chat-area::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 4px; }
+
+    /* Output scrollbar */
+    .output-area::-webkit-scrollbar { width: 4px; }
+    .output-area::-webkit-scrollbar-track { background: transparent; }
+    .output-area::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 4px; }
+
+    /* ============================================
+       PROMPT BAR
+    ============================================ */
+    .prompt-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 11px 24px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      flex-shrink: 0;
+      background: #141414;
+      position: relative;
+    }
+    .prompt-char {
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 500;
+      flex-shrink: 0;
+      user-select: none;
+    }
+    .prompt-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: rgba(255,255,255,0.85);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      caret-color: #ffffff;
+      min-width: 0;
+    }
+    .prompt-input::placeholder {
+      color: rgba(255,255,255,0.2);
+    }
+
+    /* ============================================
+       BLINKING CURSOR in output
+    ============================================ */
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0; }
+    }
+    .blink-cursor {
+      display: inline-block;
+      width: 7px; height: 13px;
+      background: #ffffff;
+      vertical-align: middle;
+      margin-left: 2px;
+      animation: blink 1.1s ease infinite;
+    }
+
+    /* ============================================
+       TRAFFIC LIGHT INTERACTIONS
+    ============================================ */
+    .tl {
+      cursor: pointer;
+      transition: opacity 150ms ease;
+      position: relative;
+    }
+    .tl:hover { opacity: 0.75; }
+    .tl:active { opacity: 0.5; }
+    .tl::after {
+      content: attr(data-tip);
+      position: absolute;
+      top: calc(100% + 20px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: #2A2A2A;
+      color: rgba(255,255,255,0.75);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      white-space: nowrap;
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(255,255,255,0.1);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 150ms ease;
+      z-index: 100;
+    }
+    .tl:hover::after { opacity: 1; }
+
+    /* MINIMIZED — just title bar + prompt */
+    .terminal.minimized .terminal-body { display: none; }
+    .terminal.minimized {
+      height: auto;
+      max-width: 680px;
+      border-radius: 10px;
+    }
+
+    /* MAXIMIZED — fill viewport */
+    .terminal.maximized {
+      max-width: 100%;
+      height: 100vh;
+      border-radius: 0;
+    }
+    .desktop:has(.terminal.maximized) { padding: 0; }
+
+    /* ============================================
+       EXIT SCREEN
+    ============================================ */
+    #exitScreen {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.55);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      z-index: 999;
+    }
+    #exitScreen[hidden] { display: none; }
+
+    .exit-window {
+      width: min(480px, calc(100vw - 40px));
+      background: #141414;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(0,0,0,0.5);
+    }
+    .exit-titlebar {
+      display: flex;
+      align-items: center;
+      height: 40px;
+      padding: 0 16px;
+      background: #1E1E1E;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      position: relative;
+    }
+    .exit-body {
+      padding: 24px 28px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .exit-line {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+    .exit-accent { color: rgba(255,255,255,0.85); }
+    .exit-normal { color: rgba(255,255,255,0.5); }
+    .exit-sep {
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+      margin: 14px 0 10px;
+    }
+    .exit-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .exit-prompt {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+      margin-right: 2px;
+    }
+    .exit-btn {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: rgba(255,255,255,0.7);
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 6px;
+      padding: 6px 14px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 150ms ease, color 150ms ease, border-color 150ms ease;
+    }
+    .exit-btn:hover {
+      background: rgba(255,255,255,0.07);
+      color: #ffffff;
+      border-color: rgba(255,255,255,0.35);
+    }
+    .exit-btn-solid {
+      background: rgba(255,255,255,0.08);
+      color: #ffffff;
+      border-color: rgba(255,255,255,0.25);
+    }
+
+    /* ============================================
+       COMMAND AUTOCOMPLETE
+    ============================================ */
+    .cmd-suggest {
+      position: fixed;
+      background: #1E1E1E;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      overflow: hidden;
+      z-index: 9999;
+      box-shadow: 0 -8px 24px rgba(0,0,0,0.5);
+    }
+    .cmd-item {
+      padding: 8px 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12.5px;
+      color: rgba(255,255,255,0.55);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: background 100ms ease, color 100ms ease;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .cmd-item:last-child { border-bottom: none; }
+    .cmd-item .cmd-name  { color: rgba(255,255,255,0.85); }
+    .cmd-item .cmd-desc  { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .cmd-item:hover,
+    .cmd-item.active {
+      background: rgba(255,255,255,0.07);
+      color: rgba(255,255,255,0.9);
+    }
+    .cmd-item.active .cmd-name { color: #ffffff; }
+
+    /* ============================================
+       MOBILE
+    ============================================ */
+    @media (max-width: 680px) {
+      .desktop {
+        padding: 0;
+        align-items: stretch;
+      }
+      .terminal {
+        max-width: 100%;
+        height: 100vh;
+        border-radius: 0;
+        border: none;
+      }
+      .home-screen {
+        flex-direction: column;
+        overflow-y: auto;
+      }
+      .col-left {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.09);
+        padding: 16px 18px 14px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 14px;
+        overflow: visible;
+      }
+      .portrait-wrap {
+        width: 90px;
+        flex-shrink: 0;
+      }
+      .portrait-img {
+        width: 90px;
+        height: 105px;
+      }
+      .portrait-meta-wrap {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 2px;
+        min-width: 0;
+      }
+      .welcome-text {
+        width: 100%;
+        order: -1;
+        margin-bottom: 0;
+      }
+      .still-there { display: none; }
+      .col-right {
+        padding: 14px 18px 14px;
+        gap: 12px;
+      }
+      .prompt-bar { padding: 10px 18px; }
+      .output-area { padding: 12px 18px 10px; }
+    }
+
+    /* ============================================
+       REDUCED MOTION
+    ============================================ */
+    @media (prefers-reduced-motion: reduce) {
+      .blink-cursor { animation: none; }
+    }
+
+    /* ============================================
+       MISC
+    ============================================ */
+    ::selection { background: rgba(13,236,168,0.22); color: #fff; }
+    ::-moz-selection { background: rgba(13,236,168,0.22); color: #fff; }
+    :focus-visible { outline: 1px solid rgba(13,236,168,0.4); outline-offset: 2px; }
+
+    /* Right column scrollbar */
+    .col-right::-webkit-scrollbar { width: 3px; }
+    .col-right::-webkit-scrollbar-track { background: transparent; }
+    .col-right::-webkit-scrollbar-thumb { background: rgba(13,236,168,0.15); border-radius: 3px; }
+
+    /* ============================================
+       LIGHT THEME
+    ============================================ */
+    [data-theme="light"] html,
+    [data-theme="light"] body,
+    html[data-theme="light"],
+    html[data-theme="light"] body {
+      background: #EFEFEA;
+    }
+
+    html[data-theme="light"] .macos-menubar {
+      background: rgba(235,234,228,0.85);
+      border-bottom-color: rgba(0,0,0,0.08);
+    }
+    html[data-theme="light"] .menubar-app,
+    html[data-theme="light"] .menubar-apple { color: rgba(0,0,0,0.8); }
+    html[data-theme="light"] .menubar-items span { color: rgba(0,0,0,0.65); }
+    html[data-theme="light"] .menubar-items span:hover { background: rgba(0,0,0,0.08); }
+    html[data-theme="light"] .menubar-right span { color: rgba(0,0,0,0.6); }
+    html[data-theme="light"] .menubar-time { color: rgba(0,0,0,0.8) !important; }
+
+    html[data-theme="light"] .macos-dock {
+      background: rgba(0,0,0,0.08);
+      border-color: rgba(0,0,0,0.12);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.6);
+    }
+    html[data-theme="light"] .dock-separator { background: rgba(0,0,0,0.15); }
+
+    html[data-theme="light"] .desktop {
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%,   rgba(0,0,0,0.04) 0%, transparent 60%),
+        #EFEFEA;
+    }
+    html[data-theme="light"] .desktop::before { opacity: 0.25; mix-blend-mode: multiply; }
+    html[data-theme="light"] .desktop::after {
+      background: radial-gradient(ellipse 100% 100% at 50% 50%, transparent 40%, rgba(0,0,0,0.08) 100%);
+    }
+
+    html[data-theme="light"] .terminal {
+      background: #F7F6F1;
+      border-color: rgba(0,0,0,0.12);
+      box-shadow:
+        0 0 0 1px rgba(0,0,0,0.05),
+        0 40px 100px rgba(0,0,0,0.12),
+        inset 0 1px 0 rgba(255,255,255,0.8);
+    }
+
+    html[data-theme="light"] .titlebar {
+      background: #EDECE6;
+      border-bottom-color: rgba(0,0,0,0.08);
+    }
+    html[data-theme="light"] .titlebar-title { color: rgba(0,0,0,0.35); }
+    html[data-theme="light"] .tl::after {
+      background: #E8E7E0;
+      color: rgba(0,0,0,0.7);
+      border-color: rgba(0,0,0,0.1);
+    }
+
+    html[data-theme="light"] .col-left { border-right-color: rgba(0,0,0,0.09); }
+    html[data-theme="light"] .welcome-text { color: rgba(0,0,0,0.38); }
+    html[data-theme="light"] .portrait-wrap::before {
+      background: linear-gradient(to bottom, transparent 50%, rgba(247,246,241,0.4) 100%);
+    }
+    html[data-theme="light"] .portrait-meta { color: rgba(0,0,0,0.55); }
+    html[data-theme="light"] .portrait-meta a { color: rgba(0,0,0,0.55); }
+    html[data-theme="light"] .portrait-meta a:hover { color: #000000; }
+    html[data-theme="light"] .still-there { color: rgba(0,0,0,0.28); }
+
+    html[data-theme="light"] .st-label { color: rgba(0,0,0,0.38); }
+    html[data-theme="light"] .st-value  { color: rgba(0,0,0,0.82); }
+    html[data-theme="light"] .h-sep     { background: rgba(0,0,0,0.09); }
+    html[data-theme="light"] .nav-label { color: #000000; }
+    html[data-theme="light"] .nav-cmd   { color: rgba(0,0,0,0.6); }
+    html[data-theme="light"] .nav-hint  { color: rgba(0,0,0,0.32); }
+
+    html[data-theme="light"] .o-cmd  { color: rgba(0,0,0,0.38); }
+    html[data-theme="light"] .o-head { color: #000000; }
+    html[data-theme="light"] .o-line { color: rgba(0,0,0,0.8); }
+    html[data-theme="light"] .o-para { color: rgba(0,0,0,0.72); }
+    html[data-theme="light"] .o-dim  { color: rgba(0,0,0,0.35); }
+    html[data-theme="light"] .o-sep  { background: rgba(0,0,0,0.08); }
+    html[data-theme="light"] .o-ok   { color: #000000; }
+    html[data-theme="light"] .o-link { color: #000000; }
+    html[data-theme="light"] .o-ai {
+      color: rgba(0,0,0,0.72);
+      border-left-color: rgba(0,0,0,0.2);
+    }
+
+    html[data-theme="light"] .chat-header {
+      color: rgba(0,0,0,0.35);
+      border-bottom-color: rgba(0,0,0,0.08);
+    }
+    html[data-theme="light"] .chat-avatar { background: rgba(0,0,0,0.07); }
+    html[data-theme="light"] .chat-avatar-placeholder { color: rgba(0,0,0,0.4); }
+    html[data-theme="light"] .chat-msg-label { color: rgba(0,0,0,0.35); }
+    html[data-theme="light"] .chat-msg.ai .chat-msg-label { color: rgba(0,0,0,0.3); }
+    html[data-theme="light"] .chat-msg.user .chat-msg-body {
+      background: rgba(0,0,0,0.05);
+      color: rgba(0,0,0,0.85);
+      border-right-color: rgba(0,0,0,0.2);
+    }
+    html[data-theme="light"] .chat-msg.ai .chat-msg-body {
+      background: rgba(0,0,0,0.03);
+      color: rgba(0,0,0,0.72);
+      border-left-color: rgba(0,0,0,0.15);
+    }
+    html[data-theme="light"] .chat-typing { color: rgba(0,0,0,0.35); }
+    html[data-theme="light"] .chat-area::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); }
+
+    html[data-theme="light"] .prompt-bar {
+      background: #F7F6F1;
+      border-top-color: rgba(0,0,0,0.08);
+    }
+    html[data-theme="light"] .prompt-char { color: #000000; }
+    html[data-theme="light"] .prompt-input {
+      color: rgba(0,0,0,0.85);
+      caret-color: #000000;
+    }
+    html[data-theme="light"] .prompt-input::placeholder { color: rgba(0,0,0,0.3); }
+    html[data-theme="light"] .blink-cursor { background: #000000; }
+
+    html[data-theme="light"] .output-area::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); }
+
+    html[data-theme="light"] .cmd-suggest {
+      background: #EDECE6;
+      border-color: rgba(0,0,0,0.1);
+      box-shadow: 0 -8px 24px rgba(0,0,0,0.1);
+    }
+    html[data-theme="light"] .cmd-item {
+      color: rgba(0,0,0,0.55);
+      border-bottom-color: rgba(0,0,0,0.05);
+    }
+    html[data-theme="light"] .cmd-item .cmd-name { color: rgba(0,0,0,0.85); }
+    html[data-theme="light"] .cmd-item .cmd-desc  { color: rgba(0,0,0,0.38); }
+    html[data-theme="light"] .cmd-item:hover,
+    html[data-theme="light"] .cmd-item.active { background: rgba(0,0,0,0.05); }
+    html[data-theme="light"] .cmd-item.active .cmd-name { color: #000000; }
+
+    html[data-theme="light"] .exit-window {
+      background: #F7F6F1;
+      border-color: rgba(0,0,0,0.1);
+      box-shadow: 0 32px 80px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.05);
+    }
+    html[data-theme="light"] .exit-titlebar {
+      background: #EDECE6;
+      border-bottom-color: rgba(0,0,0,0.06);
+    }
+    html[data-theme="light"] .exit-accent { color: rgba(0,0,0,0.85); }
+    html[data-theme="light"] .exit-normal { color: rgba(0,0,0,0.5); }
+    html[data-theme="light"] .exit-sep    { background: rgba(0,0,0,0.08); }
+    html[data-theme="light"] .exit-prompt { color: rgba(0,0,0,0.4); }
+    html[data-theme="light"] .exit-btn {
+      color: rgba(0,0,0,0.65);
+      border-color: rgba(0,0,0,0.18);
+    }
+    html[data-theme="light"] .exit-btn:hover {
+      background: rgba(0,0,0,0.05);
+      color: #000000;
+      border-color: rgba(0,0,0,0.3);
+    }
+    html[data-theme="light"] .exit-btn-solid {
+      background: rgba(0,0,0,0.07);
+      color: #000000;
+      border-color: rgba(0,0,0,0.2);
+    }
+
+    html[data-theme="light"] .col-left { border-right-color: rgba(0,0,0,0.09); }
+
+    @media (max-width: 680px) {
+      html[data-theme="light"] .col-left { border-bottom-color: rgba(0,0,0,0.09); }
+    }
+
+    /* ============================================
+       PIXEL LOGO
+    ============================================ */
+    .pixel-logo-wrap {
+      position: relative;
+      background: #111111;
+      border-radius: 3px;
+      overflow: hidden;
+      flex-shrink: 0;
+      margin-bottom: 16px;
+      padding: 10px 12px 12px;
+      display: flex;
+      justify-content: center;
+      box-shadow:
+        0 2px 0 #000000,
+        0 4px 0 #000000,
+        0 6px 16px rgba(0,0,0,0.6);
+    }
+    .pixel-logo {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 13px;
+      color: #ffffff;
+      display: block;
+      line-height: 1;
+      letter-spacing: 0.02em;
+      text-shadow:
+        2px 2px 0 #666666,
+        4px 4px 0 #333333;
+      position: relative;
+      z-index: 1;
+      white-space: nowrap;
+    }
+    /* Horizontal scanlines over the text */
+    .pixel-logo-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        to bottom,
+        transparent       0px,
+        transparent       2px,
+        rgba(0,0,0,0.28)  2px,
+        rgba(0,0,0,0.28)  3px
+      );
+      pointer-events: none;
+      z-index: 2;
+    }
+    /* Subtle inner highlight at top */
+    .pixel-logo-wrap::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: rgba(255,255,255,0.07);
+      pointer-events: none;
+      z-index: 3;
+    }
+    html[data-theme="light"] .pixel-logo-wrap {
+      background: #111111;
+      box-shadow: 0 2px 0 #000, 0 4px 0 #000, 0 6px 16px rgba(0,0,0,0.25);
+    }
+  </style>
+</head>
+<body>
+
+
+<div class="desktop">
+  <canvas id="pixelCanvas" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;"></canvas>
+  <div class="terminal" role="main" aria-label="mrrs.dev terminal portfolio" style="position:relative;z-index:1;">
+
+    <!-- ==========================================
+         TITLE BAR
+    ========================================== -->
+    <div class="titlebar" aria-hidden="true">
+      <div class="traffic-lights">
+        <div class="tl tl-close"    id="tlClose"    data-tip="Close"    role="button" tabindex="0" aria-label="Close terminal"></div>
+        <div class="tl tl-minimize" id="tlMinimize" data-tip="Minimize" role="button" tabindex="0" aria-label="Minimize terminal"></div>
+        <div class="tl tl-maximize" id="tlMaximize" data-tip="Maximize" role="button" tabindex="0" aria-label="Maximize terminal"></div>
+      </div>
+      <span class="titlebar-title">mrrs.dev — /portfolio</span>
+    </div>
+
+    <div class="terminal-body">
+
+      <!-- ==========================================
+           HOME SCREEN
+      ========================================== -->
+      <div class="home-screen" id="homeScreen">
+
+        <!-- LEFT COLUMN -->
+        <div class="col-left">
+          <div class="pixel-logo-wrap" aria-label="mrrz.dev logo">
+            <span class="pixel-logo">mrrz.dev</span>
+          </div>
+
+          <div class="portrait-wrap" aria-label="Son Morris Sasi profile photo">
+            <img src="images/Profile.jpg"
+                 alt="Son Morris Sasi"
+                 class="portrait-img"
+                 loading="eager">
+          </div>
+
+          <div class="portrait-meta-wrap">
+            <div class="portrait-meta">
+              Automation Developer — Philippines<br>
+              <a href="mailto:morris.dev31@gmail.com">morris.dev31@gmail.com</a>
+            </div>
+          </div>
+
+          
+        </div>
+
+        <!-- RIGHT COLUMN -->
+        <div class="col-right">
+
+          <!-- Home content (hidden when a command is active) -->
+          <div id="rightHome">
+
+            <!-- Stats -->
+            <div>
+              <p class="nav-label" style="margin-bottom:10px;">Capabilities</p>
+              <table class="stats-table" aria-label="Skills overview">
+                <tbody>
+                  <tr>
+                    <td class="st-label">Role</td>
+                    <td class="st-value">Automation Developer · Game Dev · QA</td>
+                  </tr>
+                  <tr>
+                    <td class="st-label">Automate</td>
+                    <td class="st-value">n8n, GHL, Supabase, OpenClaw</td>
+                  </tr>
+                  <tr>
+                    <td class="st-label">Code</td>
+                    <td class="st-value">Java, C++, JavaScript, Blueprint</td>
+                  </tr>
+                  <tr>
+                    <td class="st-label">Build</td>
+                    <td class="st-value">Games, Android Apps, Automation Pipelines</td>
+                  </tr>
+                  <tr>
+                    <td class="st-label">Test</td>
+                    <td class="st-value">QA, Bug Detection, Regression</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="h-sep"></div>
+
+            <!-- Navigation -->
+            <div class="nav-block" aria-label="Terminal navigation">
+              <p class="nav-label">Navigation</p>
+              <span class="nav-cmd">/about</span>
+              <span class="nav-cmd">/projects</span>
+              <span class="nav-cmd">/skills</span>
+              <span class="nav-cmd">/contact</span>
+
+              <div class="nav-hints">
+                <span class="nav-hint">... /help for all commands</span>
+                <span class="nav-hint">Try /light to switch to light theme</span>
+                <span class="nav-hint">Try /clear to reset the view</span>
+              </div>
+            </div>
+
+          </div><!-- /#rightHome -->
+
+          <!-- Output area (shown in place of home content) -->
+          <div class="output-area" id="outputArea" aria-live="polite" aria-label="Command output"></div>
+
+          <!-- Chat area (shown when /chat is active) -->
+          <div class="chat-area" id="chatArea" aria-live="polite" aria-label="AI chat">
+            <div class="chat-header">Chat with Morris — type anything · /exit or /clear to leave</div>
+          </div>
+
+        </div>
+      </div><!-- /.home-screen -->
+
+    </div><!-- /.terminal-body -->
+
+    <!-- ==========================================
+         PROMPT BAR
+    ========================================== -->
+    <div class="prompt-bar">
+      <span class="prompt-char" aria-hidden="true">&gt;</span>
+      <input
+        type="text"
+        id="termInput"
+        class="prompt-input"
+        placeholder="Type a command... try '/about'"
+        autocomplete="off"
+        autocorrect="off"
+        autocapitalize="off"
+        spellcheck="false"
+        aria-label="Terminal command input"
+        aria-autocomplete="list"
+        aria-controls="cmdSuggest">
+    </div>
+
+  </div><!-- /.terminal -->
+
+  <!-- ==========================================
+       EXIT SCREEN (shown when red button clicked)
+  ========================================== -->
+  <div id="exitScreen" hidden>
+    <div class="exit-window">
+      <div class="exit-titlebar">
+        <div class="traffic-lights">
+          <div class="tl tl-close" style="opacity:0.4;"></div>
+          <div class="tl tl-minimize" style="opacity:0.4;"></div>
+          <div class="tl tl-maximize" style="opacity:0.4;"></div>
+        </div>
+        <span class="titlebar-title">mrrs.dev — /exit</span>
+      </div>
+      <div class="exit-body">
+        <p class="exit-line exit-accent">$ kill -9 portfolio</p>
+        <p class="exit-line exit-accent">X Process terminated.</p>
+        <p class="exit-line exit-normal">But great code never really stops.</p>
+        <p class="exit-line exit-accent">Let's keep the conversation going.</p>
+        <div class="exit-sep"></div>
+        <div class="exit-actions">
+          <span class="exit-prompt">&gt;</span>
+          <a href="https://github.com/zceptre" target="_blank" rel="noopener noreferrer" class="exit-btn">GitHub</a>
+          <a href="https://www.upwork.com/freelancers/~016110c8b7153e5e76" target="_blank" rel="noopener noreferrer" class="exit-btn">Upwork</a>
+          <button id="reopenBtn" class="exit-btn exit-btn-solid">Reopen terminal</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.desktop -->
+
+<!-- Autocomplete dropdown — outside terminal so it's never clipped -->
+<div class="cmd-suggest" id="cmdSuggest" hidden role="listbox" aria-label="Command suggestions"></div>
+
+<script>
+  const input      = document.getElementById('termInput');
+  const outputEl   = document.getElementById('outputArea');
+  const rightHome  = document.getElementById('rightHome');
+  const suggest    = document.getElementById('cmdSuggest');
+  const chatEl     = document.getElementById('chatArea');
+  let chatMode     = false;
+
+  let cmdHistory = [];
+  let histIdx    = -1;
+  let suggestIdx = -1;
+
+  // ============================================
+  // AUTOCOMPLETE DATA
+  // ============================================
+  const SUGGESTIONS = [
+    { cmd: '/about',    desc: 'Who I am and what I do' },
+    { cmd: '/projects', desc: 'Projects I have shipped' },
+    { cmd: '/skills',   desc: 'My technical stack' },
+    { cmd: '/contact',  desc: 'Ways to reach me' },
+    { cmd: '/chat',     desc: 'Chat with Morris' },
+    { cmd: '/dark',     desc: 'Switch to dark theme' },
+    { cmd: '/light',    desc: 'Switch to light theme' },
+    { cmd: '/help',     desc: 'List all commands' },
+    { cmd: '/clear',    desc: 'Reset the terminal' },
+  ];
+
+  function showSuggest(query) {
+    const q = query.toLowerCase();
+    const filtered = SUGGESTIONS.filter(s => s.cmd.startsWith(q));
+    if (!filtered.length) { hideSuggest(); return; }
+
+    suggest.innerHTML = '';
+    suggestIdx = -1;
+    filtered.forEach((s, i) => {
+      const item = document.createElement('div');
+      item.className = 'cmd-item';
+      item.setAttribute('role', 'option');
+      item.dataset.cmd = s.cmd;
+      item.innerHTML = `<span class="cmd-name">${s.cmd}</span><span class="cmd-desc">${s.desc}</span>`;
+      item.addEventListener('mousedown', e => {
+        e.preventDefault(); // don't blur input
+        selectSuggestion(s.cmd);
+      });
+      suggest.appendChild(item);
+    });
+
+    // Position above the input using fixed coords
+    const rect = input.getBoundingClientRect();
+    suggest.style.left   = rect.left + 'px';
+    suggest.style.width  = rect.width + 'px';
+    suggest.style.bottom = (window.innerHeight - rect.top + 4) + 'px';
+    suggest.style.top    = '';
+
+    suggest.hidden = false;
+  }
+
+  function hideSuggest() {
+    suggest.hidden = true;
+    suggestIdx = -1;
+  }
+
+  function selectSuggestion(cmd) {
+    input.value = cmd;
+    hideSuggest();
+    input.focus();
+  }
+
+  function moveSuggest(dir) {
+    const items = suggest.querySelectorAll('.cmd-item');
+    if (!items.length) return;
+    items[suggestIdx]?.classList.remove('active');
+    suggestIdx = Math.max(0, Math.min(items.length - 1, suggestIdx + dir));
+    items[suggestIdx].classList.add('active');
+  }
+
+  // ============================================
+  // COMMAND DEFINITIONS
+  // ============================================
+  const CMDS = {
+
+    '/about': () => [
+      { t: 'cmd',  v: '> /about' },
+      { t: 'sep' },
+      { t: 'head', v: '# about' },
+      { t: 'line', v: 'Name       Son Morris Sasi' },
+      { t: 'line', v: 'Role       Automation Developer · Game Dev · QA Tester' },
+      { t: 'line', v: 'Based      Philippines' },
+      { t: 'sep' },
+      { t: 'para', v: "I build automation systems and software that actually work in production.\nCurrently working as a Automation Developer — designing and shipping\nmulti-stage n8n pipelines, AI agents, and CRM integrations for a UAE\nhealth-tech company (MeScreen)." },
+      { t: 'para', v: "Also a game developer and QA tester with hands-on experience in\nUnreal Engine 5, Android development, and regression testing.\nI care about clean systems, zero manual intervention, and code that ships." },
+      { t: 'sep' },
+      { t: 'dim',  v: 'Type /projects to see my work. Type /skills for my stack.' },
+    ],
+
+    '/projects': () => [
+      { t: 'cmd',  v: '> /projects' },
+      { t: 'sep' },
+      { t: 'head', v: '# projects' },
+      { t: 'line', v: '[1]  MeScreen Order Fulfilment         Automation Developer @ MeScreen (UAE)' },
+      { t: 'dim',  v: '     n8n · Supabase · GPT-4.1-mini · WhatsApp · GHL  |  2025–Present' },
+      { t: 'para', v: '     5-stage autonomous pipeline managing the full customer journey\n     from order placement to kit collection. Zero manual intervention.\n     Multi-channel notifications (WhatsApp, Email, Discord) with\n     retry logic, escalation paths, and AI agents at each stage.' },
+      { t: 'sep' },
+      { t: 'line', v: '[2]  MeScreen B2B Accounting           Automation Developer @ MeScreen (UAE)' },
+      { t: 'dim',  v: '     n8n · Supabase · Xero · Stripe · GHL · WAHA  |  2025–Present' },
+      { t: 'para', v: '     Full B2B order-to-cash automation — quoting, invoicing,\n     payment reconciliation, and kit dispatch across pre-paid\n     and post-paid billing paths.' },
+      { t: 'sep' },
+      { t: 'line', v: '[3]  Instagram Listener                Automation Developer @ MeScreen (UAE)' },
+      { t: 'dim',  v: '     OpenClaw · Google Sheets · AI enrichment  |  2025–Present' },
+      { t: 'para', v: '     Network-first Instagram account discovery tool for UAE health\n     and wellness market. Automated account qualification,\n     engagement mining, and structured data export.' },
+      { t: 'sep' },
+      { t: 'line', v: '[4]  Echoes of Eldrin                 Capstone' },
+      { t: 'dim',  v: '     Unreal Engine 5 · C++ · Blueprint  |  Jan – Oct 2025' },
+      { t: 'para', v: '     Action RPG with combat systems, performance optimization,\n     and polished 60 FPS gameplay.' },
+      { t: 'link', v: '     Watch gameplay →', url: 'https://www.youtube.com/watch?v=D39TFVbQYAE' },
+      { t: 'sep' },
+      { t: 'line', v: '[5]  BTCinema                         Freelance' },
+      { t: 'dim',  v: '     Android Studio · Java · SQLite     |  Nov – Dec 2025' },
+      { t: 'para', v: '     Movie booking app with real-time seat sync,\n     intuitive UI, and a reliable SQLite database.' },
+      { t: 'link', v: '     Watch overview →', url: 'https://www.youtube.com/watch?v=YvWEu5DvwN0' },
+      { t: 'sep' },
+      { t: 'link', v: '     All projects on GitHub →', url: 'https://github.com/zceptre?tab=repositories' },
+      { t: 'dim',  v: 'Type /skills to see my stack.' },
+    ],
+
+    '/skills': () => [
+      { t: 'cmd',  v: '> /skills' },
+      { t: 'sep' },
+      { t: 'head', v: '# skills' },
+      { t: 'line', v: 'Automation     n8n, AI Agents, Multi-stage Pipelines' },
+      { t: 'line', v: 'Integrations   GHL / GoHighLevel, Supabase, Xero, Stripe, WAHA' },
+      { t: 'line', v: '               WhatsApp API, Discord Webhooks, OpenClaw' },
+      { t: 'line', v: 'Programming    Java, JavaScript, C++, HTML, CSS' },
+      { t: 'line', v: 'Game Dev       Unreal Engine 5, Blueprint, C++, 60fps Optimization' },
+      { t: 'line', v: 'Mobile         Android Studio, Java, SQLite' },
+      { t: 'line', v: 'QA             Bug Detection, Regression Testing, Test Reports' },
+      { t: 'line', v: 'Tools          Git, VS Code, Supabase, Render' },
+      { t: 'sep' },
+      { t: 'dim',  v: 'Type /contact to reach me.' },
+    ],
+
+    '/contact': () => [
+      { t: 'cmd',  v: '> /contact' },
+      { t: 'sep' },
+      { t: 'head', v: '# contact' },
+      { t: 'line', v: 'Email      morris.dev31@gmail.com' },
+      { t: 'line', v: 'Phone      +63-995-181-9233' },
+      { t: 'line', v: 'Location   Philippines' },
+      { t: 'sep' },
+      { t: 'link', v: 'GitHub  →  github.com/zceptre',                      url: 'https://github.com/zceptre' },
+      { t: 'link', v: 'Upwork  →  upwork.com/freelancers/~016110c8b7153e5e76', url: 'https://www.upwork.com/freelancers/~016110c8b7153e5e76' },
+      { t: 'link', v: 'Email   →  morris.dev31@gmail.com',                   url: 'mailto:morris.dev31@gmail.com' },
+      { t: 'sep' },
+      { t: 'ok',   v: 'Available for freelance projects and full-time opportunities.' },
+    ],
+
+    '/help': () => [
+      { t: 'cmd',  v: '> /help' },
+      { t: 'sep' },
+      { t: 'head', v: '# commands' },
+      { t: 'line', v: '/about       Who I am and what I do' },
+      { t: 'line', v: '/projects    Projects I have shipped' },
+      { t: 'line', v: '/skills      My technical stack' },
+      { t: 'line', v: '/contact     Ways to reach me' },
+      { t: 'line', v: '/chat        Chat with Morris' },
+      { t: 'line', v: '/dark        Switch to dark theme (default)' },
+      { t: 'line', v: '/light       Switch to light theme' },
+      { t: 'line', v: '/clear       Clear the terminal' },
+      { t: 'line', v: '/help        Show this message' },
+      { t: 'sep' },
+      { t: 'dim',  v: 'Or just type /chat to chat with the AI assistant.' },
+    ],
+
+    '/clear': () => {
+      clearTerminal();
+      return null;
+    },
+
+    '/dark': () => {
+      document.documentElement.removeAttribute('data-theme');
+      return [
+        { t: 'cmd', v: '> /dark' },
+        { t: 'ok',  v: 'Theme: dark' },
+      ];
+    },
+
+    '/light': () => {
+      document.documentElement.setAttribute('data-theme', 'light');
+      return [
+        { t: 'cmd', v: '> /light' },
+        { t: 'ok',  v: 'Theme: light' },
+      ];
+    },
+  };
+
+  // ============================================
+  // CHAT MODE
+  // ============================================
+  function openChat() {
+    chatMode = true;
+    rightHome.style.display = 'none';
+    outputEl.classList.remove('visible');
+    // Reset chat area (keep header only)
+    chatEl.innerHTML = '<div class="chat-header">Morris — type anything · /exit or /clear to leave</div>';
+    chatEl.classList.add('visible');
+    input.placeholder = 'Message AI...';
+    input.focus();
+  }
+
+  function exitChat() {
+    chatMode = false;
+    chatEl.classList.remove('visible');
+    input.placeholder = "Type a command... try '/about'";
+    clearTerminal();
+  }
+
+  async function sendChatMessage(msg) {
+    // Render user bubble
+    appendChatBubble('user', msg);
+
+    // Typing indicator
+    const typingEl = document.createElement('div');
+    typingEl.className = 'chat-typing';
+    typingEl.textContent = 'Morris is typing...';
+    chatEl.appendChild(typingEl);
+    chatEl.scrollTop = chatEl.scrollHeight;
+
+    try {
+      const response = await askAI(msg);
+      typingEl.remove();
+      let text = '';
+      if (typeof response === 'string')  text = response;
+      else if (response?.response)       text = response.response;
+      else if (response?.output)         text = response.output;
+      else                               text = JSON.stringify(response);
+      appendChatBubble('ai', text);
+    } catch (e) {
+      typingEl.remove();
+      appendChatBubble('ai', 'Error: ' + e.message);
+    }
+  }
+
+  function appendChatBubble(role, text) {
+    const wrap = document.createElement('div');
+    wrap.className = `chat-msg ${role}`;
+
+    // Avatar
+    const avatar = document.createElement('div');
+    avatar.className = 'chat-avatar';
+    if (role === 'ai') {
+      const img = document.createElement('img');
+      img.src = 'images/Profile.jpg';
+      img.alt = 'Morris';
+      avatar.appendChild(img);
+    } else {
+      const ph = document.createElement('div');
+      ph.className = 'chat-avatar-placeholder';
+      ph.textContent = '›_';
+      avatar.appendChild(ph);
+    }
+
+    // Inner (label + body)
+    const inner = document.createElement('div');
+    inner.className = 'chat-msg-inner';
+
+    const label = document.createElement('div');
+    label.className = 'chat-msg-label';
+    label.textContent = role === 'user' ? 'you' : 'morris';
+
+    const body = document.createElement('div');
+    body.className = 'chat-msg-body';
+    body.textContent = text;
+
+    inner.appendChild(label);
+    inner.appendChild(body);
+    wrap.appendChild(avatar);
+    wrap.appendChild(inner);
+    chatEl.appendChild(wrap);
+    chatEl.scrollTop = chatEl.scrollHeight;
+  }
+
+  // ============================================
+  // CLEAR
+  // ============================================
+  function clearTerminal() {
+    chatMode = false;
+    chatEl.classList.remove('visible');
+    outputEl.innerHTML = '';
+    outputEl.classList.remove('visible');
+    rightHome.style.display = '';
+    input.placeholder = "Type a command... try '/about'";
+  }
+
+  // ============================================
+  // RENDER
+  // ============================================
+  function renderLines(lines) {
+    if (!lines) return;
+    rightHome.style.display = 'none';
+    outputEl.classList.add('visible');
+
+    const frag = document.createDocumentFragment();
+
+    lines.forEach(item => {
+      const el = document.createElement('div');
+
+      switch (item.t) {
+        case 'cmd':
+          el.className = 'o-cmd';
+          el.textContent = item.v;
+          break;
+        case 'head':
+          el.className = 'o-head';
+          el.textContent = item.v;
+          break;
+        case 'sep':
+          el.className = 'o-sep';
+          break;
+        case 'line':
+          el.className = 'o-line';
+          el.textContent = item.v;
+          break;
+        case 'para':
+          el.className = 'o-para';
+          el.textContent = item.v;
+          break;
+        case 'dim':
+          el.className = 'o-dim';
+          el.textContent = item.v;
+          break;
+        case 'err':
+          el.className = 'o-err';
+          el.textContent = item.v;
+          break;
+        case 'ok':
+          el.className = 'o-ok';
+          el.textContent = item.v;
+          break;
+        case 'link': {
+          el.className = 'o-line';
+          // Split on → to separate label from URL text
+          const parts = item.v.split('→');
+          const before = parts[0] + '→ ';
+          const linkLabel = item.url.replace(/^https?:\/\//, '');
+          el.textContent = before;
+          const a = document.createElement('a');
+          a.className = 'o-link';
+          a.href = item.url;
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+          a.textContent = linkLabel;
+          el.appendChild(a);
+          break;
         }
+        case 'ai':
+          el.className = 'o-ai';
+          el.textContent = item.v;
+          break;
+      }
+
+      frag.appendChild(el);
+    });
+
+    outputEl.appendChild(frag);
+    outputEl.scrollTop = outputEl.scrollHeight;
+  }
+
+  // ============================================
+  // HANDLE COMMAND
+  // ============================================
+  async function handleCmd(raw) {
+    const trimmed = raw.trim();
+    if (!trimmed) return;
+
+    // Auto-restore if minimized so output is visible
+    terminal.classList.remove('minimized');
+
+    cmdHistory.unshift(trimmed);
+    histIdx = -1;
+
+    const lower = trimmed.toLowerCase();
+
+    // In chat mode: /exit and /clear leave; theme commands still work; everything else goes to AI
+    if (chatMode) {
+      if (lower === '/exit' || lower === '/clear') {
+        exitChat();
+        return;
+      }
+      if (lower === '/dark' || lower === '/light') {
+        CMDS[lower]();
+        return;
+      }
+      await sendChatMessage(trimmed);
+      return;
+    }
+
+    if (CMDS[lower]) {
+      const result = CMDS[lower]();
+      renderLines(result);
+    } else if (lower === '/chat') {
+      // Open persistent chat session
+      openChat();
+    } else if (lower.startsWith('/')) {
+      renderLines([
+        { t: 'cmd', v: `> ${trimmed}` },
+        { t: 'err', v: `command not found: ${lower}` },
+        { t: 'dim', v: 'Type /help to see available commands.' },
+      ]);
+    } else {
+      // Send to AI
+      renderLines([
+        { t: 'cmd', v: `> ${trimmed}` },
+        { t: 'dim', v: '...' },
+      ]);
+
+      try {
+        const response = await askAI(trimmed);
+        // Remove the "..." placeholder
+        const lastDim = outputEl.querySelector('.o-dim:last-child');
+        if (lastDim && lastDim.textContent === '...') lastDim.remove();
+
+        let text = '';
+        if (typeof response === 'string')   text = response;
+        else if (response?.response)         text = response.response;
+        else if (response?.output)           text = response.output;
+        else                                 text = JSON.stringify(response);
+
+        const el = document.createElement('div');
+        el.className = 'o-ai';
+        el.textContent = text;
+        outputEl.appendChild(el);
+        outputEl.scrollTop = outputEl.scrollHeight;
+
+      } catch (e) {
+        const lastDim = outputEl.querySelector('.o-dim:last-child');
+        if (lastDim && lastDim.textContent === '...') lastDim.remove();
+        const el = document.createElement('div');
+        el.className = 'o-err';
+        el.textContent = 'AI error: ' + e.message;
+        outputEl.appendChild(el);
       }
     }
-  </script>
+  }
 
-  <!-- Remaining CSS -->
-  <link rel="stylesheet" href="style.css">
-
-  <!-- JS-toggled states -->
-  <style>
-    html, body {
-      width: 100% !important;
-      max-width: 100% !important;
-      overflow-x: hidden !important;
-      margin: 0 !important;
-      padding: 0 !important;
+  // ============================================
+  // INPUT EVENTS
+  // ============================================
+  input.addEventListener('input', () => {
+    if (chatMode) { hideSuggest(); return; }
+    const val = input.value;
+    if (val.startsWith('/')) {
+      showSuggest(val);
+    } else {
+      hideSuggest();
     }
-    .container { width: 100% !important; max-width: 100% !important; }
-    .section, .hero { width: 100% !important; max-width: 100% !important; }
-    .scroll-top-btn.show { display: flex !important; }
-    .ai-chat-panel.active { display: flex !important; }
-    .nav-link.active { color: white !important; background: rgba(100,150,255,0.12); }
-    .hamburger.active .bar:nth-child(1) { transform: rotate(-45deg) translate(-6px, 8px); }
-    .hamburger.active .bar:nth-child(2) { opacity: 0; transform: translateX(-20px); }
-    .hamburger.active .bar:nth-child(3) { transform: rotate(45deg) translate(-6px, -8px); }
-@media (max-width: 1024px) { /* below lg */
-  .nav-menu{
-    display: flex;                 /* always render on mobile */
-    flex-direction: column;
-    gap: 12px;
+  });
 
-    position: fixed;
-    top: 88px;                     /* adjust if needed */
-    left: 50%;
-    width: calc(100% - 32px);
-    max-width: 420px;
+  input.addEventListener('keydown', e => {
+    // Autocomplete navigation
+    if (!suggest.hidden) {
+      if (e.key === 'ArrowDown') { e.preventDefault(); moveSuggest(1); return; }
+      if (e.key === 'ArrowUp')   { e.preventDefault(); moveSuggest(-1); return; }
+      if (e.key === 'Escape')    { hideSuggest(); return; }
+      if (e.key === 'Tab' || (e.key === 'Enter' && suggestIdx >= 0)) {
+        e.preventDefault();
+        const active = suggest.querySelector('.cmd-item.active') || suggest.querySelector('.cmd-item');
+        if (active) selectSuggestion(active.dataset.cmd);
+        return;
+      }
+    }
 
-    margin: 0;
-    padding: 14px;
-    background: rgba(0,0,0,0.92);
-    backdrop-filter: blur(40px);
-    border: 1.5px solid rgba(100,150,255,0.15);
-    border-radius: 18px;
-    z-index: 999;
+    if (e.key === 'Enter') {
+      const val = input.value;
+      hideSuggest();
+      input.value = '';
+      handleCmd(val);
+    } else if (e.key === 'ArrowUp' && suggest.hidden) {
+      e.preventDefault();
+      if (histIdx < cmdHistory.length - 1) {
+        histIdx++;
+        input.value = cmdHistory[histIdx];
+      }
+    } else if (e.key === 'ArrowDown' && suggest.hidden) {
+      e.preventDefault();
+      if (histIdx > 0) {
+        histIdx--;
+        input.value = cmdHistory[histIdx];
+      } else {
+        histIdx = -1;
+        input.value = '';
+      }
+    }
+  });
 
-    transform: translateX(120%) translateX(-50%); /* hidden off-screen */
-    opacity: 0;
-    pointer-events: none;
-    transition: transform 320ms ease, opacity 320ms ease;
+  // Click anywhere in terminal → focus input
+  document.querySelector('.terminal').addEventListener('click', () => {
+    input.focus();
+  });
+
+  // Auto-focus on load
+  window.addEventListener('load', () => {
+    input.focus();
+  });
+
+
+  // ============================================
+  // TRAFFIC LIGHTS
+  // ============================================
+  const terminal   = document.querySelector('.terminal');
+  const exitScreen = document.getElementById('exitScreen');
+  const reopenBtn  = document.getElementById('reopenBtn');
+
+  // RED — close → show exit screen
+  document.getElementById('tlClose').addEventListener('click', () => {
+    exitScreen.hidden = false;
+  });
+
+  // YELLOW — minimize → collapse to title bar + prompt only
+  document.getElementById('tlMinimize').addEventListener('click', () => {
+    terminal.classList.remove('maximized');
+    terminal.classList.toggle('minimized');
+  });
+
+  // GREEN — maximize → fill viewport
+  document.getElementById('tlMaximize').addEventListener('click', () => {
+    terminal.classList.remove('minimized');
+    terminal.classList.toggle('maximized');
+  });
+
+  // Reopen terminal button
+  reopenBtn.addEventListener('click', () => {
+    exitScreen.hidden = true;
+    input.focus();
+  });
+
+  // Keyboard support for traffic lights
+  [tlClose, tlMinimize, tlMaximize].forEach(btn => {
+    btn.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); btn.click(); }
+    });
+  });
+
+  // ============================================
+  // AI BACKEND
+  // ============================================
+  // Stable session ID per browser tab
+  const SESSION_ID = Math.random().toString(36).slice(2);
+
+  async function askAI(msg) {
+    const res = await fetch('https://n8n-zceptre.onrender.com/webhook/portfolio-chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: msg, sessionId: SESSION_ID }),
+    });
+    return await res.json();
   }
-
-  .nav-menu.active{
-    transform: translateX(-50%);   /* centered and visible */
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  .nav-menu li { width: 100%; display: flex; }
-  .nav-menu li a { width: 100%; text-align: center; padding: 12px 16px; border-radius: 14px; }
-}
-
-    @media (max-width: 768px) {
-  /* Mobile drawer base (exists but hidden off-canvas) */
-  .nav-menu {
-    display: flex !important;              /* override Tailwind 'hidden' */
-    flex-direction: column;
-    gap: 10px;
-
-    position: fixed;
-    top: 88px;                              /* below navbar */
-    right: 16px;                            /* aligns with navbar padding */
-    width: calc(100% - 32px);
-    max-width: 420px;
-
-    margin: 0;
-    padding: 14px;
-    background: rgba(0,0,0,0.92);
-    backdrop-filter: blur(40px);
-    border: 1.5px solid rgba(100,150,255,0.15);
-    border-radius: 18px;
-
-    z-index: 999;
-
-    /* slide-in animation */
-    transform: translateX(120%);
-    opacity: 0;
-    pointer-events: none;
-    transition: transform 320ms ease, opacity 320ms ease;
-
-     left: 50% !important;
-    right: auto !important;
-    width: calc(100% - 32px);
-    max-width: 420px;
-    transform: translateX(calc(120% - 50%)); /* hidden off-canvas, still centered */
-  }
-
-  /* When toggled */
-  .nav-menu.active {
-    transform: translateX(0);
-    opacity: 1;
-    pointer-events: auto;
-     transform: translateX(-50%); /* centered on screen */
-  }
-
-  /* Make each link fill the drawer width nicely */
-  .nav-menu li {
-    width: 100%;
-    display: flex;
-  }
-
-  .nav-menu li a {
-    width: 100%;
-    text-align: center;
-    padding: 12px 16px;                    /* bigger tap target */
-    border-radius: 14px;                   /* consistent rounding */
-  }
-}
-    .ai-chat-message { display: flex; }
-    .ai-chat-message.user { justify-content: flex-end; }
-    .ai-chat-message.assistant { justify-content: flex-start; }
-    .ai-chat-bubble { max-width: 85%; padding: 12px 16px; border-radius: 12px; font-size: 0.95rem; line-height: 1.4; word-wrap: break-word; }
-    .ai-chat-message.user .ai-chat-bubble { background: linear-gradient(135deg, rgba(100,150,255,0.8), rgba(100,150,255,0.6)); border: 1px solid rgba(100,150,255,0.3); color: #fff; border-radius: 12px 2px 12px 12px; }
-    .ai-chat-message.assistant .ai-chat-bubble { background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)); border: 1px solid rgba(255,255,255,0.1); color: #d0d0d0; border-radius: 2px 12px 12px 12px; }
-    .ai-chat-typing { display: flex; gap: 4px; padding: 12px 16px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 2px 12px 12px 12px; width: fit-content; }
-    .ai-chat-typing span { width: 8px; height: 8px; background: rgba(100,150,255,0.6); border-radius: 50%; animation: bounce 1.4s infinite; }
-    .ai-chat-typing span:nth-child(2) { animation-delay: 0.2s; }
-    .ai-chat-typing span:nth-child(3) { animation-delay: 0.4s; }
-    @keyframes bounce { 0%,80%,100% { transform: translateY(0); opacity: 0.6; } 40% { transform: translateY(-8px); opacity: 1; } }
-    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-  </style>
-
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
-
-  <!-- Favicon -->
-  <link rel="icon" href="https://raw.githubusercontent.com/zceptre/sma-portfolio/main/images/favicon.png" type="image/png">
-  <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/zceptre/sma-portfolio/main/images/favicon.png">
-</head>
-<body class="bg-black text-white font-inter w-full min-h-screen overflow-x-hidden antialiased">
- <!-- Navigation Bar -->
-<nav class="navbar fixed top-4 left-1/2 -translate-x-1/2 w-[calc(100%-32px)] max-w-[1400px] h-[70px] backdrop-blur-xl border border-white/10 rounded-[20px] z-[1000] shadow-[inset_0_1px_0_rgba(255,255,255,0.15),0_0_40px_rgba(100,150,255,0.1)] transition-all duration-500"
-     role="navigation" aria-label="Main Navigation">
-
-  <div class="max-w-[1400px] mx-auto px-10 flex justify-between items-center h-full relative z-10">
-
-    <!-- Logo -->
-    <div class="flex-shrink-0 flex items-center">
-      <span class="font-space text-2xl font-extrabold bg-gradient-to-br from-brand-blue to-[#6ba3ff] bg-clip-text text-transparent tracking-tight cursor-pointer hover:-translate-y-0.5 transition-transform duration-300">
-        mrrs.dev
-      </span>
-    </div>
-
-    <!-- Nav Links -->
-  <ul class="nav-menu list-none gap-4 lg:gap-[50px] ml-auto mr-8 p-0 lg:flex">
-      <li class="relative flex items-center">
-        <a href="#home"
-           class="nav-link w-full text-center px-4 py-2 rounded-lg text-[0.95rem] text-[#b8b8b8] no-underline font-semibold px-4 py-2 rounded-lg tracking-wide transition-all duration-300 hover:text-white hover:bg-[rgba(100,150,255,0.12)]"
-           data-section="0">Home</a>
-      </li>
-      <li class="relative flex items-center">
-        <a href="#about"
-           class="nav-link w-full text-center px-4 py-2 rounded-lg text-[0.95rem] text-[#b8b8b8] no-underline font-semibold px-4 py-2 rounded-lg tracking-wide transition-all duration-300 hover:text-white hover:bg-[rgba(100,150,255,0.12)]"
-           data-section="1">About</a>
-      </li>
-      <li class="relative flex items-center">
-        <a href="#projects"
-           class="nav-link w-full text-center px-4 py-2 rounded-lg text-[0.95rem] text-[#b8b8b8] no-underline font-semibold px-4 py-2 rounded-lg tracking-wide transition-all duration-300 hover:text-white hover:bg-[rgba(100,150,255,0.12)]"
-           data-section="2">Projects</a>
-      </li>
-      <li class="relative flex items-center">
-        <a href="#skills"
-           class="nav-link w-full text-center px-4 py-2 rounded-lg text-[0.95rem] text-[#b8b8b8] no-underline font-semibold px-4 py-2 rounded-lg tracking-wide transition-all duration-300 hover:text-white hover:bg-[rgba(100,150,255,0.12)]"
-           data-section="3">Skills</a>
-      </li>
-    </ul>
-
-    <!-- GitHub Button -->
-    <a href="https://github.com/zceptre"
-       target="_blank"
-       rel="noopener noreferrer"
-       class="nav-github hidden lg:inline-flex items-center gap-2 px-5 py-2.5 bg-[rgba(100,150,255,0.12)] border border-[rgba(100,150,255,0.25)] rounded-full text-brand-blue no-underline font-bold text-[0.95rem] tracking-wide transition-all duration-300 hover:bg-[rgba(100,150,255,0.2)] hover:border-[rgba(100,150,255,0.4)] hover:text-white hover:-translate-y-0.5"
-       aria-label="Visit GitHub profile">
-      <i class="fab fa-github" aria-hidden="true"></i> GitHub
-    </a>
-
-    <!-- Hamburger (mobile only) -->
-    <button class="hamburger lg:hidden flex flex-col cursor-pointer bg-[rgba(100,150,255,0.1)] border border-[rgba(100,150,255,0.2)] p-2 w-11 h-11 rounded-xl justify-center items-center gap-1 transition-all duration-300 hover:bg-[rgba(100,150,255,0.18)] hover:scale-105"
-            aria-label="Toggle menu"
-            aria-expanded="false">
-      <span class="bar block w-5 h-0.5 bg-white rounded-sm transition-all duration-300 origin-center"></span>
-      <span class="bar block w-5 h-0.5 bg-white rounded-sm transition-all duration-300 origin-center"></span>
-      <span class="bar block w-5 h-0.5 bg-white rounded-sm transition-all duration-300 origin-center"></span>
-    </button>
-
-  </div>
-</nav>
-
-  <div class="container w-full overflow-x-hidden" role="main">
-   <!-- Hero Section -->
-<section class="section hero relative w-full min-h-screen flex items-center justify-center overflow-hidden pt-[106px] pb-16 px-10"
-         id="home"
-         style="background: #000000;"
-         aria-label="Hero section">
-
-  <!-- Background glow effects -->
-  <div class="absolute top-[-30%] left-[-10%] w-[500px] h-[500px] rounded-full pointer-events-none z-0"
-       style="background: radial-gradient(circle, rgba(100,150,255,0.12) 0%, transparent 70%); filter: blur(50px);"></div>
-  <div class="absolute bottom-[-20%] right-[-10%] w-[400px] h-[400px] rounded-full pointer-events-none z-0"
-       style="background: radial-gradient(circle, rgba(100,150,255,0.08) 0%, transparent 70%); filter: blur(50px);"></div>
-
-  <div class="hero-content w-full max-w-[1400px] mx-auto flex flex-col items-center justify-center relative z-10">
-<div class="w-full flex flex-col-reverse md:flex-row md:items-center md:justify-between gap-10 md:gap-16">  
-
-  <!-- Left: Text -->
-  <div class="flex flex-col items-center text-center md:items-start md:text-left md:w-7/12">
-    <p class="font-space text-[1.2rem] text-[#a0a0a0] font-normal mb-1 tracking-wide">
-      Hi, I'm
-    </p>
-    <h1 class="font-space text-[clamp(2.5rem,8vw,4.8rem)] font-extrabold mb-5 leading-[1.15] tracking-[-2.5px] bg-gradient-to-br from-white via-[#e8e8e8] to-[#d0d0d0] bg-clip-text text-transparent">
-      Son Morris Sasi
-    </h1>
-    <p class="font-space text-[clamp(1rem,2vw,1.15rem)] text-[#b0b8d0] leading-[1.7] mb-6 font-light tracking-wide max-w-[58ch] mx-auto md:mx-0">
-      Junior Developer, QA Tester, and Game Developer crafting immersive digital experiences and robust applications.
-    </p>
-  </div>
-
-  <!-- Right: Profile Image -->
-  <div class="flex justify-center items-center md:w-5/12">
-    <img src="https://raw.githubusercontent.com/zceptre/sma-portfolio/main/images/Profile.jpg"
-         alt="Son Morris Sasi - Junior Developer"
-         class="w-full max-w-[420px] aspect-square rounded-[24px] object-cover border-2 border-[#222] bg-[#111] hover:border-[#444] transition-all duration-300"
-         loading="lazy"
-         width="400"
-         height="400">
-  </div>
-
-</div>
-
-<!-- Scroll Indicator -->
-<div id="scroll-to-summary"
-     class="absolute bottom-1 left-1/2 -translate-x-1/2 z-20 hidden md:block">
-  <button type="button" class="group" aria-label="Scroll to summary section">
-    <span class="block text-[1.3rem] sm:text-[1.6rem] text-[#909090] transition-colors duration-300 group-hover:text-[#d0d0d0] animate-bounce">
-      ↓
-    </span>
-  </button>
-</div>
-
-
-  </div>
-</section>
-
-   <!-- Summary Section -->
-<section class="relative w-full flex items-center justify-center overflow-hidden bg-black py-16 md:py-20 px-5 sm:px-8 md:px-10"
-         id="about"
-         aria-label="About me section">
-
-  <div class="w-full max-w-[1100px] mx-auto relative z-10 text-center">
-
-    <!-- Badge (match style system) -->
-    <div class="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[rgba(100,150,255,0.15)] border border-[rgba(100,150,255,0.25)] rounded-full text-[0.75rem] text-brand-blue font-bold mb-6 md:mb-8 tracking-widest uppercase backdrop-blur-xl shadow-[0_10px_40px_rgba(100,150,255,0.15)]">
-      About Me
-    </div>
-
-    <!-- Heading -->
-    <h2 class="font-space text-[clamp(1.8rem,6vw,3.5rem)] font-extrabold mb-8 md:mb-12 text-center tracking-tight leading-[1.2] text-white">
-      Building Immersive Experiences with
-      <span class="text-brand-blue"> Code & Creativity</span>
-    </h2>
-
-    <!-- Summary Card (glass like Social Proof) -->
-    <div class="group relative w-full max-w-[950px] mx-auto mb-10 md:mb-16 rounded-[18px] bg-[rgba(100,150,255,0.08)] border border-[rgba(100,150,255,0.2)] backdrop-blur-xl transition-all duration-500 hover:bg-[rgba(100,150,255,0.12)] hover:border-[rgba(100,150,255,0.35)] shadow-[0_20px_60px_rgba(100,150,255,0.1)] overflow-hidden">
-
-      <!-- Optional header strip for consistency -->
-      <div class="p-5 md:p-6 border-b border-[#232323] bg-[#181818]">
-        <h3 class="font-space text-[1.05rem] md:text-[1.15rem] font-bold text-white tracking-tight">
-          Quick Summary
-        </h3>
-        <p class="text-[0.85rem] text-[#a0a0a0] font-medium tracking-wide mt-1">
-          Developer • QA Tester • Game Dev
-        </p>
-      </div>
-
-      <div class="p-5 md:p-8">
-        <p class="text-[clamp(0.98rem,2vw,1.15rem)] text-[#b0b8d0] leading-[1.8] tracking-wide font-light italic text-center">
-          "I'm a Junior Developer with hands-on experience in
-          <strong class="text-white font-bold">Unreal Engine</strong>,
-          <strong class="text-white font-bold">Android development</strong>,
-          and game mechanics. I specialize in Java, C++, and UI/UX implementation across mobile
-          and gaming platforms. With a strong foundation in debugging, QA testing, and project
-          management, I'm passionate about creating interactive applications that users love."
-        </p>
-      </div>
-    </div>
-
-    <!-- Stats (glass cards, compact mobile) -->
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 max-w-[950px] mx-auto">
-
-      <div class="group rounded-[18px] bg-[rgba(100,150,255,0.08)] border border-[rgba(100,150,255,0.2)] backdrop-blur-xl p-5 md:p-7 text-center transition-all duration-500 hover:bg-[rgba(100,150,255,0.12)] hover:border-[rgba(100,150,255,0.35)] shadow-[0_20px_60px_rgba(100,150,255,0.08)]">
-        <div class="font-space text-[clamp(1.7rem,4vw,2.6rem)] font-extrabold text-brand-blue leading-none">1+</div>
-        <div class="text-[0.78rem] md:text-[0.85rem] text-[#b0b8d0] font-bold tracking-[1.2px] uppercase mt-2">
-          Years Experience
-        </div>
-      </div>
-
-      <div class="group rounded-[18px] bg-[rgba(100,150,255,0.08)] border border-[rgba(100,150,255,0.2)] backdrop-blur-xl p-5 md:p-7 text-center transition-all duration-500 hover:bg-[rgba(100,150,255,0.12)] hover:border-[rgba(100,150,255,0.35)] shadow-[0_20px_60px_rgba(100,150,255,0.08)]">
-        <div class="font-space text-[clamp(1.7rem,4vw,2.6rem)] font-extrabold text-brand-blue leading-none">2+</div>
-        <div class="text-[0.78rem] md:text-[0.85rem] text-[#b0b8d0] font-bold tracking-[1.2px] uppercase mt-2">
-          Projects Completed
-        </div>
-      </div>
-
-      <div class="group rounded-[18px] bg-[rgba(100,150,255,0.08)] border border-[rgba(100,150,255,0.2)] backdrop-blur-xl p-5 md:p-7 text-center transition-all duration-500 hover:bg-[rgba(100,150,255,0.12)] hover:border-[rgba(100,150,255,0.35)] shadow-[0_20px_60px_rgba(100,150,255,0.08)]">
-        <div class="font-space text-[clamp(1.7rem,4vw,2.6rem)] font-extrabold text-brand-blue leading-none">100%</div>
-        <div class="text-[0.78rem] md:text-[0.85rem] text-[#b0b8d0] font-bold tracking-[1.2px] uppercase mt-2">
-          Client Satisfaction
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-</section>
-
- <!-- Featured Projects Section -->
-<section class="relative w-full bg-black py-16 md:py-20 px-5 sm:px-8 md:px-10"
-         id="projects"
-         aria-label="Featured projects section">
-
-  <div class="w-full max-w-[1100px] mx-auto relative z-10">
-
-    <!-- Heading -->
-    <h2 class="font-space text-[clamp(1.8rem,6vw,3rem)] font-bold mb-10 md:mb-16 text-center tracking-tight text-brand-blue">
-      Featured Projects
-    </h2>
-
-    <!-- Projects Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-9 mb-8">
-
-      <!-- Project 1: Echoes of Eldrin -->
-       <div class="group relative flex flex-col h-full p-6 md:px-9 md:py-11 rounded-[18px] bg-[rgba(100,150,255,0.08)] border border-[rgba(100,150,255,0.2)] backdrop-blur-xl transition-all duration-500 hover:bg-[rgba(100,150,255,0.12)] hover:border-[rgba(100,150,255,0.35)] hover:-translate-y-2 shadow-[0_20px_60px_rgba(100,150,255,0.1)] overflow-hidden">
- 
-<div class="absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-     style="background:
-       linear-gradient(135deg, rgba(255,255,255,0.06), transparent 35%, rgba(100,150,255,0.10));">
-</div>
-
-        <!-- Video -->
-        <div class="relative w-full aspect-video min-h-[240px] bg-[#111]">
-          <iframe class="w-full h-full rounded-t-[20px] border-none block"
-                  src="https://www.youtube.com/embed/D39TFVbQYAE"
-                  title="Echoes of Eldrin Gameplay"
-                  frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
-                  loading="lazy"></iframe>
-          <div class="absolute top-[18px] right-[18px] bg-[#232323] text-white px-4 py-2.5 rounded-full text-[0.75rem] font-bold uppercase tracking-wide z-10">
-            Gameplay Video
-          </div>
-        </div>
-
-        <!-- Details -->
-        <div class="p-9 flex flex-col gap-3">
-          <div class="flex items-center gap-3 flex-wrap">
-            <h3 class="font-space text-[clamp(1.3rem,4vw,1.8rem)] font-bold text-[#e0e0e0] tracking-tight">
-              Echoes of Eldrin
-            </h3>
-            <span class="px-3 py-1.5 bg-[#232323] rounded-md text-[0.65rem] font-bold text-[#e0e0e0] uppercase tracking-wide">
-              Capstone Project
-            </span>
-          </div>
-
-          <p class="text-[0.8rem] text-[#b0b0b0] font-medium tracking-wide flex items-center gap-2">
-            <i class="fas fa-clock text-white/40 text-[0.9rem]"></i>
-            Unreal Engine 5 • C++ • Blueprint | Jan 2025 – Oct 2025
-          </p>
-
-          <div class="border-b border-white/10 pb-4 mb-1">
-            <!-- Tech Stack -->
-            <h4 class="font-space text-[0.75rem] font-bold text-[#e0e0e0] uppercase tracking-wide mb-3 flex items-center gap-1.5">
-              <i class="fas fa-hammer text-white/50 text-[0.8rem]"></i> Tech Stack
-            </h4>
-            <div class="flex flex-wrap gap-2 mb-4">
-              <span class="px-3 py-1.5 bg-[#232323] rounded-md text-[0.7rem] text-[#d8d8d8] font-bold uppercase tracking-wide hover:bg-[#333] hover:text-white transition-colors duration-200">Unreal Engine 5</span>
-              <span class="px-3 py-1.5 bg-[#232323] rounded-md text-[0.7rem] text-[#d8d8d8] font-bold uppercase tracking-wide hover:bg-[#333] hover:text-white transition-colors duration-200">C++</span>
-              <span class="px-3 py-1.5 bg-[#232323] rounded-md text-[0.7rem] text-[#d8d8d8] font-bold uppercase tracking-wide hover:bg-[#333] hover:text-white transition-colors duration-200">Blueprint</span>
-            </div>
-
-            <!-- Highlights -->
-            <h4 class="font-space text-[0.75rem] font-bold text-[#e0e0e0] uppercase tracking-wide mb-2 flex items-center gap-1.5">
-              <i class="fas fa-star text-white/50 text-[0.8rem]"></i> Highlights
-            </h4>
-            <p class="text-[0.8rem] text-[#d0d0d0] leading-relaxed">
-              Combat systems, performance optimization, polished gameplay at 60 FPS.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project 2: BTCinema -->
-       <div class="group relative flex flex-col h-full p-6 md:px-9 md:py-11 rounded-[18px] bg-[rgba(100,150,255,0.08)] border border-[rgba(100,150,255,0.2)] backdrop-blur-xl transition-all duration-500 hover:bg-[rgba(100,150,255,0.12)] hover:border-[rgba(100,150,255,0.35)] hover:-translate-y-2 shadow-[0_20px_60px_rgba(100,150,255,0.1)] overflow-hidden">
-            <!-- Premium background layers -->
-
-
-        <!-- Video -->
-        <div class="relative w-full aspect-video min-h-[240px] bg-[#111]">
-          <iframe class="w-full h-full rounded-t-[20px] border-none block"
-                  src="https://www.youtube.com/embed/YvWEu5DvwN0"
-                  title="BTCinema App Overview"
-                  frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
-                  loading="lazy"></iframe>
-          <div class="absolute top-[18px] right-[18px] bg-[#232323] text-white px-4 py-2.5 rounded-full text-[0.75rem] font-bold uppercase tracking-wide z-10">
-            App Overview
-          </div>
-        </div>
-
-        <!-- Details -->
-        <div class="p-9 flex flex-col gap-3">
-          <div class="flex items-center gap-3 flex-wrap">
-            <h3 class="font-space text-[clamp(1.3rem,4vw,1.8rem)] font-bold text-[#e0e0e0] tracking-tight">
-              BTCinema
-            </h3>
-            <span class="px-3 py-1.5 bg-[#232323] rounded-md text-[0.65rem] font-bold text-[#e0e0e0] uppercase tracking-wide">
-              Freelance Project
-            </span>
-          </div>
-
-          <p class="text-[0.8rem] text-[#b0b0b0] font-medium tracking-wide flex items-center gap-2">
-            <i class="fas fa-clock text-white/40 text-[0.9rem]"></i>
-            Android Studio • Java • SQLite | Nov – Dec 2025
-          </p>
-
-          <div class="border-b border-white/10 pb-4 mb-1">
-            <!-- Tech Stack -->
-            <h4 class="font-space text-[0.75rem] font-bold text-[#e0e0e0] uppercase tracking-wide mb-3 flex items-center gap-1.5">
-              <i class="fas fa-hammer text-white/50 text-[0.8rem]"></i> Tech Stack
-            </h4>
-            <div class="flex flex-wrap gap-2 mb-4">
-              <span class="px-3 py-1.5 bg-[#232323] rounded-md text-[0.7rem] text-[#d8d8d8] font-bold uppercase tracking-wide hover:bg-[#333] hover:text-white transition-colors duration-200">Android Studio</span>
-              <span class="px-3 py-1.5 bg-[#232323] rounded-md text-[0.7rem] text-[#d8d8d8] font-bold uppercase tracking-wide hover:bg-[#333] hover:text-white transition-colors duration-200">Java</span>
-              <span class="px-3 py-1.5 bg-[#232323] rounded-md text-[0.7rem] text-[#d8d8d8] font-bold uppercase tracking-wide hover:bg-[#333] hover:text-white transition-colors duration-200">SQLite</span>
-            </div>
-
-            <!-- Highlights -->
-            <h4 class="font-space text-[0.75rem] font-bold text-[#e0e0e0] uppercase tracking-wide mb-2 flex items-center gap-1.5">
-              <i class="fas fa-star text-white/50 text-[0.8rem]"></i> Highlights
-            </h4>
-            <p class="text-[0.8rem] text-[#d0d0d0] leading-relaxed">
-              Movie booking app with real-time seat sync, intuitive UI, reliable database.
-            </p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- View All CTA -->
-    <div class="group relative text-center flex-col h-full px-9 py-11 rounded-[18px] bg-[rgba(100,150,255,0.08)] border border-[rgba(100,150,255,0.2)] backdrop-blur-xl transition-all duration-500 hover:bg-[rgba(100,150,255,0.12)] hover:border-[rgba(100,150,255,0.35)] hover:-translate-y-3 shadow-[0_20px_60px_rgba(100,150,255,0.1)]">
-
-
-<div class="absolute inset-0 pointer-events-none opacity-[0.08]"
-     style="background-image:
-       linear-gradient(to right, rgba(255,255,255,0.10) 1px, transparent 1px),
-       linear-gradient(to bottom, rgba(255,255,255,0.10) 1px, transparent 1px);
-       background-size: 64px 64px;">
-</div>      
-      <p class="text-[0.95rem] text-[#d0d0d0] mb-5 font-medium tracking-wide">
-        Interested in seeing more of my work?
-      </p>
-      <a href="https://github.com/zceptre?tab=repositories"
-         target="_blank"
-         rel="noopener noreferrer"
-         class="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-[12px]
-       bg-[rgba(100,150,255,0.14)] border border-[rgba(100,150,255,0.25)]
-       text-brand-blue no-underline font-bold text-[0.9rem] uppercase tracking-wide
-       transition-all duration-300 hover:bg-[rgba(100,150,255,0.22)]
-       hover:border-[rgba(100,150,255,0.45)] hover:text-white hover:-translate-y-0.5"
-         aria-label="View all projects on GitHub">
-        <i class="fas fa-code" aria-hidden="true"></i> View All Projects on GitHub
-      </a>
-    </div>
-
-  </div>
-</section>
-
-<!-- Skills Section -->
-<section class="relative w-full flex items-center justify-center overflow-hidden bg-black py-16 md:py-20 px-5 sm:px-8 md:px-10"
-         id="skills"
-         style="background: #000000;"
-         aria-label="Technical skills section">
-
-  <!-- Background glow effects -->
-  <div class="absolute top-[-30%] left-[-10%] w-[500px] h-[500px] rounded-full pointer-events-none z-0"
-       style="background: radial-gradient(circle, rgba(100,150,255,0.1) 0%, transparent 70%); filter: blur(40px);"></div>
-  <div class="absolute bottom-[-30%] right-[-10%] w-[400px] h-[400px] rounded-full pointer-events-none z-0"
-       style="background: radial-gradient(circle, rgba(100,150,255,0.06) 0%, transparent 70%); filter: blur(40px);"></div>
-
-  <div class="w-full max-w-[1100px] mx-auto relative z-10 text-center">
-
-    <!-- Badge -->
-    <div class="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[rgba(100,150,255,0.15)] border border-[rgba(100,150,255,0.25)] rounded-full text-[0.75rem] text-brand-blue font-bold mb-8 tracking-widest uppercase backdrop-blur-xl shadow-[0_10px_40px_rgba(100,150,255,0.15)]">
-      Expertise
-    </div>
-
-    <!-- Heading -->
-    <h2 class="font-space text-[clamp(2rem,6vw,3rem)] font-bold mb-16 text-center tracking-tight bg-gradient-to-br from-white to-brand-blue bg-clip-text text-transparent">
-      Technical Skills
-    </h2>
-
-    <!-- Skills Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-9 mx-auto pt-2 md:pt-5">
-
-      <!-- Programming -->
-      <div class="group relative flex flex-col h-full px-9 py-11 rounded-[18px] bg-[rgba(100,150,255,0.08)] border border-[rgba(100,150,255,0.2)] backdrop-blur-xl transition-all duration-500 hover:bg-[rgba(100,150,255,0.12)] hover:border-[rgba(100,150,255,0.35)] hover:-translate-y-3 shadow-[0_20px_60px_rgba(100,150,255,0.1)]">
-        <!-- Header -->
-        <div class="flex items-center gap-3 mb-6">
-          <i class="fas fa-code text-[1.5rem] text-white/60 transition-all duration-500 group-hover:text-white/90 group-hover:scale-110 group-hover:rotate-6"></i>
-          <h4 class="font-space text-[1.15rem] font-bold text-white tracking-tight">Programming</h4>
-        </div>
-        <!-- Tags -->
-        <div class="flex flex-col gap-3">
-          <span class="inline-flex items-center px-4 py-2.5 bg-white/[0.08] border border-white/[0.15] rounded-lg text-[0.87rem] text-[#d0d0d0] font-semibold uppercase tracking-wide transition-all duration-300 hover:bg-white/[0.15] hover:border-white/30 hover:text-white hover:translate-x-1.5">Java</span>
-          <span class="inline-flex items-center px-4 py-2.5 bg-white/[0.08] border border-white/[0.15] rounded-lg text-[0.87rem] text-[#d0d0d0] font-semibold uppercase tracking-wide transition-all duration-300 hover:bg-white/[0.15] hover:border-white/30 hover:text-white hover:translate-x-1.5">JavaScript</span>
-          <span class="inline-flex items-center px-4 py-2.5 bg-white/[0.08] border border-white/[0.15] rounded-lg text-[0.87rem] text-[#d0d0d0] font-semibold uppercase tracking-wide transition-all duration-300 hover:bg-white/[0.15] hover:border-white/30 hover:text-white hover:translate-x-1.5">HTML</span>
-          <span class="inline-flex items-center px-4 py-2.5 bg-white/[0.08] border border-white/[0.15] rounded-lg text-[0.87rem] text-[#d0d0d0] font-semibold uppercase tracking-wide transition-all duration-300 hover:bg-white/[0.15] hover:border-white/30 hover:text-white hover:translate-x-1.5">CSS</span>
-        </div>
-      </div>
-
-      <!-- Game Development -->
-      <div class="group relative flex flex-col h-full px-9 py-11 rounded-[18px] bg-[rgba(100,150,255,0.08)] border border-[rgba(100,150,255,0.2)] backdrop-blur-xl transition-all duration-500 hover:bg-[rgba(100,150,255,0.12)] hover:border-[rgba(100,150,255,0.35)] hover:-translate-y-3 shadow-[0_20px_60px_rgba(100,150,255,0.1)]">
-        <div class="flex items-center gap-3 mb-6">
-          <i class="fas fa-gamepad text-[1.5rem] text-white/60 transition-all duration-500 group-hover:text-white/90 group-hover:scale-110 group-hover:rotate-6"></i>
-          <h4 class="font-space text-[1.15rem] font-bold text-white tracking-tight">Game Development</h4>
-        </div>
-        <div class="flex flex-col gap-3">
-          <span class="inline-flex items-center px-4 py-2.5 bg-white/[0.08] border border-white/[0.15] rounded-lg text-[0.87rem] text-[#d0d0d0] font-semibold uppercase tracking-wide transition-all duration-300 hover:bg-white/[0.15] hover:border-white/30 hover:text-white hover:translate-x-1.5">Unreal Engine 5</span>
-          <span class="inline-flex items-center px-4 py-2.5 bg-white/[0.08] border border-white/[0.15] rounded-lg text-[0.87rem] text-[#d0d0d0] font-semibold uppercase tracking-wide transition-all duration-300 hover:bg-white/[0.15] hover:border-white/30 hover:text-white hover:translate-x-1.5">Blueprint</span>
-          <span class="inline-flex items-center px-4 py-2.5 bg-white/[0.08] border border-white/[0.15] rounded-lg text-[0.87rem] text-[#d0d0d0] font-semibold uppercase tracking-wide transition-all duration-300 hover:bg-white/[0.15] hover:border-white/30 hover:text-white hover:translate-x-1.5">Game Mechanics</span>
-          <span class="inline-flex items-center px-4 py-2.5 bg-white/[0.08] border border-white/[0.15] rounded-lg text-[0.87rem] text-[#d0d0d0] font-semibold uppercase tracking-wide transition-all duration-300 hover:bg-white/[0.15] hover:border-white/30 hover:text-white hover:translate-x-1.5">Performance Optimization</span>
-          <span class="inline-flex items-center px-4 py-2.5 bg-white/[0.08] border border-white/[0.15] rounded-lg text-[0.87rem] text-[#d0d0d0] font-semibold uppercase tracking-wide transition-all duration-300 hover:bg-white/[0.15] hover:border-white/30 hover:text-white hover:translate-x-1.5">Level Streaming</span>
-          <span class="inline-flex items-center px-4 py-2.5 bg-white/[0.08] border border-white/[0.15] rounded-lg text-[0.87rem] text-[#d0d0d0] font-semibold uppercase tracking-wide transition-all duration-300 hover:bg-white/[0.15] hover:border-white/30 hover:text-white hover:translate-x-1.5">LOD</span>
-        </div>
-      </div>
-
-      <!-- Development Tools -->
-      <div class="group relative flex flex-col h-full px-9 py-11 rounded-[18px] bg-[rgba(100,150,255,0.08)] border border-[rgba(100,150,255,0.2)] backdrop-blur-xl transition-all duration-500 hover:bg-[rgba(100,150,255,0.12)] hover:border-[rgba(100,150,255,0.35)] hover:-translate-y-3 shadow-[0_20px_60px_rgba(100,150,255,0.1)]">
-        <div class="flex items-center gap-3 mb-6">
-          <i class="fas fa-database text-[1.5rem] text-white/60 transition-all duration-500 group-hover:text-white/90 group-hover:scale-110 group-hover:rotate-6"></i>
-          <h4 class="font-space text-[1.15rem] font-bold text-white tracking-tight">Development Tools</h4>
-        </div>
-        <div class="flex flex-col gap-3">
-          <span class="inline-flex items-center px-4 py-2.5 bg-white/[0.08] border border-white/[0.15] rounded-lg text-[0.87rem] text-[#d0d0d0] font-semibold uppercase tracking-wide transition-all duration-300 hover:bg-white/[0.15] hover:border-white/30 hover:text-white hover:translate-x-1.5">Android Studio</span>
-          <span class="inline-flex items-center px-4 py-2.5 bg-white/[0.08] border border-white/[0.15] rounded-lg text-[0.87rem] text-[#d0d0d0] font-semibold uppercase tracking-wide transition-all duration-300 hover:bg-white/[0.15] hover:border-white/30 hover:text-white hover:translate-x-1.5">SQLite</span>
-          <span class="inline-flex items-center px-4 py-2.5 bg-white/[0.08] border border-white/[0.15] rounded-lg text-[0.87rem] text-[#d0d0d0] font-semibold uppercase tracking-wide transition-all duration-300 hover:bg-white/[0.15] hover:border-white/30 hover:text-white hover:translate-x-1.5">Git</span>
-          <span class="inline-flex items-center px-4 py-2.5 bg-white/[0.08] border border-white/[0.15] rounded-lg text-[0.87rem] text-[#d0d0d0] font-semibold uppercase tracking-wide transition-all duration-300 hover:bg-white/[0.15] hover:border-white/30 hover:text-white hover:translate-x-1.5">VS Code</span>
-          <span class="inline-flex items-center px-4 py-2.5 bg-white/[0.08] border border-white/[0.15] rounded-lg text-[0.87rem] text-[#d0d0d0] font-semibold uppercase tracking-wide transition-all duration-300 hover:bg-white/[0.15] hover:border-white/30 hover:text-white hover:translate-x-1.5">Visual Effects</span>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
- <!-- Social Proof Section -->
-<section class="relative w-full flex items-center justify-center overflow-hidden bg-black py-16 md:py-20 px-5 sm:px-8 md:px-10"
-         id="social-proof"
-         aria-label="Social proof and freelance work section">
-
-  <div class="w-full max-w-[1100px] mx-auto relative z-10">
-
-    <!-- Heading -->
-    <h2 class="font-space text-[clamp(1.8rem,6vw,3rem)] font-bold mb-10 md:mb-16 text-center tracking-tight text-brand-blue">
-      Social Proof & Freelance Work
-    </h2>
-
-    <!-- Two Column Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-9">
-
-      <!-- Upwork Card -->
-      <div class="group relative flex flex-col h-full rounded-[18px] bg-[rgba(100,150,255,0.08)] border border-[rgba(100,150,255,0.2)] backdrop-blur-xl transition-all duration-500 hover:bg-[rgba(100,150,255,0.12)] hover:border-[rgba(100,150,255,0.35)] hover:-translate-y-2 shadow-[0_20px_60px_rgba(100,150,255,0.1)] overflow-hidden">
-
-        <!-- Card Header -->
-        <div class="flex items-center gap-4 p-6 md:px-9 md:py-9 border-b border-[#232323] bg-[#181818]">
-          <div class="w-[54px] h-[54px] md:w-[60px] md:h-[60px] flex items-center justify-center bg-[#232323] rounded-[12px] text-[1.6rem] md:text-[1.8rem] text-white flex-shrink-0 group-hover:bg-[#333] transition-colors duration-300">
-            <i class="fab fa-upwork" aria-hidden="true"></i>
-          </div>
-          <div>
-            <h3 class="font-space text-[1.2rem] md:text-[1.4rem] font-bold text-white mb-1 tracking-tight">Upwork QA Profile</h3>
-            <p class="text-[0.85rem] text-[#a0a0a0] font-medium tracking-wide">Active Freelancer</p>
-          </div>
-        </div>
-
-        <!-- Card Content -->
-        <div class="p-6 md:px-9 md:py-8 flex flex-col flex-grow">
-          <p class="text-[0.95rem] text-[#d0d0d0] leading-relaxed mb-6 tracking-wide">
-            Experienced freelancer specializing in QA testing, game development, and mobile app development.
-            With a proven track record of successfully completing diverse projects and maintaining high client satisfaction.
-          </p>
-
-          <!-- Stats (mobile: 1 col, tablet+: 3 cols) -->
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6 pb-6 border-b border-white/10">
-            <div class="flex items-start gap-2.5">
-              <i class="fas fa-check-circle text-white/50 text-[1.2rem] mt-0.5 flex-shrink-0 group-hover:text-white/80 transition-colors duration-300"></i>
-              <div>
-                <h5 class="font-space text-[0.75rem] font-bold text-[#e0e0e0] uppercase tracking-wide mb-1">Specializations</h5>
-                <p class="text-[0.85rem] text-[#c0c0c0] font-semibold leading-snug">QA Testing, Game Dev, Mobile Apps</p>
-              </div>
-            </div>
-
-            <div class="flex items-start gap-2.5">
-              <i class="fas fa-star text-white/50 text-[1.2rem] mt-0.5 flex-shrink-0 group-hover:text-white/80 transition-colors duration-300"></i>
-              <div>
-                <h5 class="font-space text-[0.75rem] font-bold text-[#e0e0e0] uppercase tracking-wide mb-1">Work Style</h5>
-                <p class="text-[0.85rem] text-[#c0c0c0] font-semibold leading-snug">Remote, Deadline-focused, Professional</p>
-              </div>
-            </div>
-
-            <div class="flex items-start gap-2.5">
-              <i class="fas fa-rocket text-white/50 text-[1.2rem] mt-0.5 flex-shrink-0 group-hover:text-white/80 transition-colors duration-300"></i>
-              <div>
-                <h5 class="font-space text-[0.75rem] font-bold text-[#e0e0e0] uppercase tracking-wide mb-1">Expertise</h5>
-                <p class="text-[0.85rem] text-[#c0c0c0] font-semibold leading-snug">Beta Testing, Bug Detection, Optimization</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Achievements (remove translate-x on hover for mobile stability) -->
-          <div class="mb-6">
-            <h4 class="font-space text-[0.75rem] font-bold text-[#e0e0e0] uppercase tracking-wide mb-3">Key Achievements</h4>
-            <ul class="flex flex-col gap-2.5">
-              <li class="flex items-start gap-2.5 text-[0.85rem] text-[#c0c0c0] leading-relaxed transition-colors duration-300 hover:text-[#e0e0e0]">
-                <span class="inline-flex items-center justify-center w-5 h-5 bg-[#232323] rounded text-[#80d080] text-[0.75rem] font-bold flex-shrink-0 mt-[2px]">✓</span>
-                100% client satisfaction on completed projects
-              </li>
-              <li class="flex items-start gap-2.5 text-[0.85rem] text-[#c0c0c0] leading-relaxed transition-colors duration-300 hover:text-[#e0e0e0]">
-                <span class="inline-flex items-center justify-center w-5 h-5 bg-[#232323] rounded text-[#80d080] text-[0.75rem] font-bold flex-shrink-0 mt-[2px]">✓</span>
-                Consistent on-time delivery and professional communication
-              </li>
-              <li class="flex items-start gap-2.5 text-[0.85rem] text-[#c0c0c0] leading-relaxed transition-colors duration-300 hover:text-[#e0e0e0]">
-                <span class="inline-flex items-center justify-center w-5 h-5 bg-[#232323] rounded text-[#80d080] text-[0.75rem] font-bold flex-shrink-0 mt-[2px]">✓</span>
-                Expertise across multiple project types and industries
-              </li>
-              <li class="flex items-start gap-2.5 text-[0.85rem] text-[#c0c0c0] leading-relaxed transition-colors duration-300 hover:text-[#e0e0e0]">
-                <span class="inline-flex items-center justify-center w-5 h-5 bg-[#232323] rounded text-[#80d080] text-[0.75rem] font-bold flex-shrink-0 mt-[2px]">✓</span>
-                Strong technical skills with proven problem-solving abilities
-              </li>
-            </ul>
-          </div>
-
-          <!-- Button -->
-          <a href="https://www.upwork.com/freelancers/~016110c8b7153e5e76"
-             target="_blank"
-             rel="noopener noreferrer"
-             class="inline-flex items-center justify-center gap-2.5 px-6 md:px-7 py-3.5 bg-[#232323] border-none rounded-[10px] text-[#e0e0e0] no-underline font-semibold text-[0.9rem] tracking-wide transition-colors duration-300 hover:bg-[#333] hover:text-white mt-auto"
-             aria-label="Visit Upwork profile">
-            <i class="fab fa-upwork" aria-hidden="true"></i> Visit Upwork Profile
-            <i class="fas fa-external-link-alt text-[0.8rem]" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-
-      <!-- Testimonials Card -->
-      <div class="group relative flex flex-col h-full rounded-[18px] bg-[rgba(100,150,255,0.08)] border border-[rgba(100,150,255,0.2)] backdrop-blur-xl transition-all duration-500 hover:bg-[rgba(100,150,255,0.12)] hover:border-[rgba(100,150,255,0.35)] hover:-translate-y-2 shadow-[0_20px_60px_rgba(100,150,255,0.1)] overflow-hidden">
-
-        <!-- Card Header -->
-        <div class="flex items-center gap-4 p-6 md:px-9 md:py-9 border-b border-[#232323] bg-[#181818]">
-          <div class="w-[54px] h-[54px] md:w-[60px] md:h-[60px] flex items-center justify-center bg-[#232323] rounded-[12px] text-[1.6rem] md:text-[1.8rem] text-[#ffd700] flex-shrink-0 group-hover:bg-[#333] transition-colors duration-300">
-            <i class="fas fa-star" aria-hidden="true"></i>
-          </div>
-          <div>
-            <h3 class="font-space text-[1.2rem] md:text-[1.4rem] font-bold text-white mb-1 tracking-tight">Client Testimonials</h3>
-            <p class="text-[0.85rem] text-[#a0a0a0] font-medium tracking-wide">What clients say</p>
-          </div>
-        </div>
-
-        <!-- Card Content -->
-        <div class="p-6 md:px-9 md:py-8 flex flex-col flex-grow gap-4">
-
-          <!-- Testimonial 1 -->
-          <div class="p-4 md:p-[18px] bg-[#181818] rounded-[10px] hover:bg-[#232323] transition-colors duration-300">
-            <div class="flex gap-1 mb-2">
-              <i class="fas fa-star text-[#ffd700] text-[0.8rem]"></i>
-              <i class="fas fa-star text-[#ffd700] text-[0.8rem]"></i>
-              <i class="fas fa-star text-[#ffd700] text-[0.8rem]"></i>
-              <i class="fas fa-star text-[#ffd700] text-[0.8rem]"></i>
-              <i class="fas fa-star text-[#ffd700] text-[0.8rem]"></i>
-            </div>
-            <p class="text-[0.85rem] text-[#d0d0d0] leading-relaxed mb-2 italic tracking-wide">
-              "Professional developer with deep technical knowledge. Delivered the project on time with excellent code quality."
-            </p>
-            <p class="text-[0.75rem] text-[#909090] font-medium">— BTCinema Client Project</p>
-          </div>
-
-          <!-- Testimonial 2 -->
-          <div class="p-4 md:p-[18px] bg-[#181818] rounded-[10px] hover:bg-[#232323] transition-colors duration-300">
-            <div class="flex gap-1 mb-2">
-              <i class="fas fa-star text-[#ffd700] text-[0.8rem]"></i>
-              <i class="fas fa-star text-[#ffd700] text-[0.8rem]"></i>
-              <i class="fas fa-star text-[#ffd700] text-[0.8rem]"></i>
-              <i class="fas fa-star text-[#ffd700] text-[0.8rem]"></i>
-              <i class="fas fa-star text-[#ffd700] text-[0.8rem]"></i>
-            </div>
-            <p class="text-[0.85rem] text-[#d0d0d0] leading-relaxed mb-2 italic tracking-wide">
-              "Thorough QA tester with keen eye for detail. Identified critical bugs and provided comprehensive test reports."
-            </p>
-            <p class="text-[0.75rem] text-[#909090] font-medium">— Upwork QA Testing Projects</p>
-          </div>
-
-          <!-- Metrics Box (mobile: 1 col, tablet+: 3 cols) -->
-          <div class="p-5 bg-[#232323] rounded-[12px] mt-auto">
-            <h4 class="font-space text-[0.75rem] font-bold text-[#ffd700] uppercase tracking-wide mb-3">Work Quality Metrics</h4>
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-              <div class="text-center p-3 bg-[rgba(255,215,0,0.05)] rounded-lg transition-all duration-300 hover:bg-[rgba(255,215,0,0.1)] hover:scale-105">
-                <div class="font-space text-[1.1rem] font-bold text-[#ffd700] mb-1">100%</div>
-                <div class="text-[0.65rem] text-[#c0c0c0] font-medium uppercase tracking-wide">Completion Rate</div>
-              </div>
-              <div class="text-center p-3 bg-[rgba(255,215,0,0.05)] rounded-lg transition-all duration-300 hover:bg-[rgba(255,215,0,0.1)] hover:scale-105">
-                <div class="font-space text-[1.1rem] font-bold text-[#ffd700] mb-1">5.0★</div>
-                <div class="text-[0.65rem] text-[#c0c0c0] font-medium uppercase tracking-wide">Avg. Rating</div>
-              </div>
-              <div class="text-center p-3 bg-[rgba(255,215,0,0.05)] rounded-lg transition-all duration-300 hover:bg-[rgba(255,215,0,0.1)] hover:scale-105">
-                <div class="font-space text-[1.1rem] font-bold text-[#ffd700] mb-1">100%</div>
-                <div class="text-[0.65rem] text-[#c0c0c0] font-medium uppercase tracking-wide">On-Time Delivery</div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- CTA + Footer -->
-<footer class="relative w-full bg-black py-8 px-10"
-        role="contentinfo">
-
-  <div class="max-w-[1400px] w-full mx-auto relative z-10">
-
-    <!-- CTA Container -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-24 items-center w-full mb-16">
-
-      <!-- Left: CTA Text -->
-      <div class="flex flex-col gap-8">
-        <h2 class="font-space text-[clamp(1.5rem,4vw,2.5rem)] font-extrabold text-white tracking-tight leading-[1.2]">
-          Let's work together
-        </h2>
-        <p class="text-[clamp(0.9rem,1.5vw,1rem)] text-[#b0b8d0] leading-relaxed font-normal">
-          I'm currently available for freelance projects and full-time opportunities.
-        </p>
-        <a href="mailto:morris.dev31@gmail.com"
-           class="inline-flex items-center gap-3 px-10 py-4 bg-[#232323] rounded-full text-white no-underline font-bold text-[1rem] tracking-wide w-fit transition-colors duration-300 hover:bg-[#333]"
-           aria-label="Send email to get in touch">
-          <i class="fas fa-envelope" aria-hidden="true"></i> Get in Touch
-        </a>
-      </div>
-
-      <!-- Right: Contact Info -->
-      <div class="flex flex-col gap-9">
-        <div class="flex items-center gap-5 text-[1.1rem] text-[#d0d8e8] transition-all duration-300 hover:translate-x-2 group">
-          <i class="fas fa-map-pin text-[1.5rem] text-[rgba(100,150,255,0.6)] w-8 text-center transition-all duration-300 group-hover:text-[rgba(100,150,255,1)] group-hover:scale-110"></i>
-          <span>Philippines</span>
-        </div>
-        <div class="flex items-center gap-5 text-[1.1rem] text-[#d0d8e8] transition-all duration-300 hover:translate-x-2 group">
-          <i class="fas fa-phone text-[1.5rem] text-[rgba(100,150,255,0.6)] w-8 text-center transition-all duration-300 group-hover:text-[rgba(100,150,255,1)] group-hover:scale-110"></i>
-          <a href="tel:+63-995-181-9233"
-             class="text-[#d0d8e8] no-underline transition-colors duration-300 hover:text-[rgba(100,150,255,0.8)]">
-            +63-995-181-9233
-          </a>
-        </div>
-        <div class="flex items-center gap-5 text-[1.1rem] text-[#d0d8e8] transition-all duration-300 hover:translate-x-2 group">
-          <i class="fas fa-envelope text-[1.5rem] text-[rgba(100,150,255,0.6)] w-8 text-center transition-all duration-300 group-hover:text-[rgba(100,150,255,1)] group-hover:scale-110"></i>
-          <a href="mailto:morris.dev31@gmail.com"
-             class="text-[#d0d8e8] no-underline transition-colors duration-300 hover:text-[rgba(100,150,255,0.8)]">
-            morris.dev31@gmail.com
-          </a>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Divider -->
-    <div class="w-full h-px bg-white/10 mb-8"></div>
-
-    <!-- Bottom Footer -->
-    <div class="text-center text-[0.9rem] text-[#808080] tracking-wide">
-      <p>Crafted with passion • © 2025 Son Morris Sasi</p>
-    </div>
-
-  </div>
-</footer>
-
-   <!-- Scroll to Top Button -->
-<button id="scrollTopBtn"
-        class="scroll-top-btn fixed bottom-[120px] right-[45px] w-[50px] h-[50px] bg-black border border-[rgba(100,150,255,0.3)] rounded-full text-brand-blue text-[1.2rem] cursor-pointer hidden items-center justify-center z-[999] transition-all duration-300 backdrop-blur-xl shadow-[0_10px_40px_rgba(100,150,255,0.15)] hover:bg-[#111] hover:border-[rgba(100,150,255,0.5)] hover:-translate-y-1.5 hover:shadow-[0_20px_60px_rgba(100,150,255,0.25)] active:-translate-y-0.5"
-        aria-label="Scroll to top">
-  <i class="fas fa-chevron-up"></i>
-</button>
-
-<!-- AI Chat Widget -->
-<div class="ai-chat-widget fixed bottom-4 right-4 md:bottom-10 md:right-10 z-[999] flex flex-col gap-3 items-end">
-
-  <!-- Chat Panel -->
-  <div class="ai-chat-panel hidden flex-col
-            w-[calc(100vw-2rem)] sm:w-[380px]
-            h-[70vh] sm:h-[500px]
-            max-w-[420px]
-            rounded-[18px] sm:rounded-[20px]
-            border border-[rgba(100,150,255,0.25)] backdrop-blur-[40px]
-            shadow-[0_20px_60px_rgba(100,150,255,0.2)] overflow-hidden"
-     id="aiChatPanel"
-     style="background: linear-gradient(135deg, rgba(13,22,40,0.95) 0%, rgba(0,0,0,0.9) 100%);">
-
-    <!-- Header -->
-    <div class="flex justify-between items-center px-4 py-4 sm:px-5 sm:py-5 border-b border-[rgba(100,150,255,0.15)]"
-         style="background: linear-gradient(135deg, rgba(100,150,255,0.08) 0%, rgba(100,150,255,0.02) 100%);">
-      <h3 class="font-space text-[1.1rem] font-bold tracking-tight bg-gradient-to-br from-white to-brand-blue bg-clip-text text-transparent">
-        AI Assistant
-      </h3>
-      <button class="ai-chat-close w-[30px] h-[30px] flex items-center justify-center bg-transparent border-none text-brand-blue text-[1.2rem] cursor-pointer rounded-lg transition-all duration-300 hover:bg-[rgba(100,150,255,0.15)] hover:rotate-90"
-              id="aiChatClose"
-              aria-label="Close chat">
-        <i class="fas fa-times"></i>
-      </button>
-    </div>
-
-    <!-- Messages -->
-    <div class="ai-chat-messages flex-1 overflow-y-auto p-4 flex flex-col gap-3"
-         id="aiChatMessages"
-         style="scrollbar-width: thin; scrollbar-color: rgba(100,150,255,0.3) rgba(100,150,255,0.05);">
-    </div>
-
-    <!-- Input -->
-    <div class="flex gap-2 p-3 border-t border-[rgba(100,150,255,0.15)]"
-         style="background: linear-gradient(135deg, rgba(100,150,255,0.05) 0%, rgba(100,150,255,0.01) 100%);">
-      <input type="text"
-             id="aiChatInput"
-             placeholder="Ask about my projects, skills..."
-             class="ai-chat-input flex-1 bg-white/[0.05] border border-[rgba(100,150,255,0.2)] rounded-[10px] text-white px-3.5 py-2.5 text-[0.9rem] font-inter transition-all duration-300 focus:outline-none focus:border-[rgba(100,150,255,0.5)] focus:bg-white/[0.08] placeholder-[rgba(168,208,255,0.5)]"
-             aria-label="Chat message input">
-      <button class="ai-chat-send w-10 h-10 flex items-center justify-center border border-[rgba(100,150,255,0.3)] rounded-[10px] text-white text-[1rem] cursor-pointer transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_5px_15px_rgba(100,150,255,0.3)] disabled:opacity-50 disabled:cursor-not-allowed"
-              id="aiChatSend"
-              style="background: linear-gradient(135deg, rgba(100,150,255,0.7) 0%, rgba(100,150,255,0.5) 100%);"
-              aria-label="Send message">
-        <i class="fas fa-paper-plane"></i>
-      </button>
-    </div>
-  </div>
-
-  <!-- Chat Toggle Button -->
-  <button class="ai-chat-button w-[60px] h-[60px] rounded-full border-2 border-white/20 text-white text-[1.5rem] cursor-pointer flex items-center justify-center transition-all duration-300 shadow-[0_10px_30px_rgba(100,150,255,0.3)] hover:-translate-y-2 hover:scale-110 hover:shadow-[0_20px_50px_rgba(100,150,255,0.5)]"
-          id="aiChatButton"
-          style="background: linear-gradient(135deg, rgba(100,150,255,0.9) 0%, rgba(100,150,255,0.7) 100%);"
-          aria-label="Open AI chat">
-    <i class="fas fa-robot"></i>
-  </button>
-</div>
-
-  <script src="script.js" defer></script>
-
-  <!-- AI Agent Script -->
-  <script>
-    async function askAI(msg) {
-      const res = await fetch("https://n8n.awtomasyon.com/webhook/portfolio-chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: msg })
+</script>
+
+<script>
+  // ============================================
+  // FALLING PIXELS
+  // ============================================
+  (function() {
+    const canvas = document.getElementById('pixelCanvas');
+    const ctx    = canvas.getContext('2d');
+    const SIZE   = 4;   // pixel size
+    const COUNT  = 120; // number of pixels
+
+    function resize() {
+      canvas.width  = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    // Each pixel: x, y, speed, opacity, grey shade
+    const pixels = Array.from({ length: COUNT }, () => ({
+      x:     Math.random() * window.innerWidth,
+      y:     Math.random() * window.innerHeight,
+      speed: 0.4 + Math.random() * 0.9,
+      op:    0.25 + Math.random() * 0.5,
+      shade: Math.floor(160 + Math.random() * 95), // 160–255 white-ish
+    }));
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Check light theme
+      const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+
+      pixels.forEach(p => {
+        const color = isLight
+          ? `rgba(0,0,0,${p.op * 0.6})`
+          : `rgba(${p.shade},${p.shade},${p.shade},${p.op})`;
+        ctx.fillStyle = color;
+        ctx.fillRect(Math.floor(p.x), Math.floor(p.y), SIZE, SIZE);
+
+        p.y += p.speed;
+        if (p.y > canvas.height + SIZE) {
+          p.y = -SIZE;
+          p.x = Math.random() * canvas.width;
+        }
       });
-      return await res.json();
+
+      requestAnimationFrame(draw);
     }
-  </script>
+
+    draw();
+  })();
+</script>
+
 </body>
 </html>
