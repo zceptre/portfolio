@@ -634,12 +634,18 @@
     }
     .tl:hover::after { opacity: 1; }
 
-    /* MINIMIZED — just title bar + prompt */
+    /* MINIMIZED — just title bar + prompt, docked to bottom */
     .terminal.minimized .terminal-body { display: none; }
     .terminal.minimized {
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
       height: auto;
-      max-width: 680px;
+      width: 520px;
+      max-width: calc(100vw - 32px);
       border-radius: 10px;
+      z-index: 10;
     }
 
     /* MAXIMIZED — fill viewport */
@@ -654,23 +660,23 @@
        PEEK CARD (visible only when minimized)
     ============================================ */
     .peek-card {
-      position: absolute;
+      position: fixed;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -60%);
-      background: rgba(20,20,20,0.72);
-      backdrop-filter: blur(24px) saturate(1.4);
-      -webkit-backdrop-filter: blur(24px) saturate(1.4);
-      border: 1px solid rgba(255,255,255,0.1);
+      transform: translate(-50%, -52%);
+      background: rgba(20,20,20,0.82);
+      backdrop-filter: blur(28px) saturate(1.5);
+      -webkit-backdrop-filter: blur(28px) saturate(1.5);
+      border: 1px solid rgba(255,255,255,0.12);
       border-radius: 24px;
       padding: 32px 28px 24px;
       width: 280px;
       text-align: center;
-      box-shadow: 0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04);
-      z-index: 0;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.06);
+      z-index: 9;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 220ms ease, transform 220ms ease;
+      transition: opacity 240ms ease, transform 240ms ease;
     }
     .peek-card.visible {
       opacity: 1;
@@ -1861,8 +1867,13 @@
     const trimmed = raw.trim();
     if (!trimmed) return;
 
-    // Auto-restore if minimized so output is visible
-    terminal.classList.remove('minimized');
+    // Auto-restore if minimized (except theme-only commands that need no output)
+    const isThemeCmd = lower === '/dark' || lower === '/light';
+    if (!isThemeCmd && terminal.classList.contains('minimized')) {
+      terminal.classList.remove('minimized');
+      peekCard.classList.remove('visible');
+      requestAnimationFrame(repositionSuggest);
+    }
 
     cmdHistory.unshift(trimmed);
     histIdx = -1;
