@@ -651,6 +651,77 @@
     .desktop:has(.terminal.maximized) { padding: 0; }
 
     /* ============================================
+       PEEK CARD (visible only when minimized)
+    ============================================ */
+    .peek-card {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -60%);
+      background: rgba(20,20,20,0.72);
+      backdrop-filter: blur(24px) saturate(1.4);
+      -webkit-backdrop-filter: blur(24px) saturate(1.4);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 24px;
+      padding: 32px 28px 24px;
+      width: 280px;
+      text-align: center;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04);
+      z-index: 0;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 220ms ease, transform 220ms ease;
+    }
+    .peek-card.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translate(-50%, -55%);
+    }
+    .peek-avatar {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: top;
+      margin: 0 auto 16px;
+      display: block;
+      border: 2px solid rgba(255,255,255,0.12);
+      filter: brightness(0.95) contrast(1.08) saturate(1.1);
+    }
+    .peek-heading {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.92);
+      margin-bottom: 8px;
+      line-height: 1.4;
+      letter-spacing: -0.01em;
+    }
+    .peek-sub {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .peek-btn {
+      display: inline-block;
+      width: 100%;
+      padding: 9px 0;
+      background: rgba(255,255,255,0.9);
+      color: #111;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      font-weight: 700;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      letter-spacing: 0.04em;
+      transition: background 150ms ease;
+    }
+    .peek-btn:hover { background: #ffffff; }
+
+    /* ============================================
        EXIT SCREEN
     ============================================ */
     #exitScreen {
@@ -1092,6 +1163,15 @@
 
 <div class="desktop">
   <canvas id="pixelCanvas" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;"></canvas>
+
+  <!-- Peek card — shown when terminal is minimized -->
+  <div class="peek-card" id="peekCard">
+    <img class="peek-avatar" src="images/Profile.jpg" alt="Morris">
+    <div class="peek-heading">You're really curious,<br>aren't you?</div>
+    <div class="peek-sub">If you got this far I suppose<br>we really need to chat.</div>
+    <button class="peek-btn" id="peekOpenBtn">Open Terminal</button>
+  </div>
+
   <div class="terminal" role="main" aria-label="mrrs.dev terminal portfolio" style="position:relative;z-index:1;">
 
     <!-- ==========================================
@@ -1892,6 +1972,8 @@
   const terminal   = document.querySelector('.terminal');
   const exitScreen = document.getElementById('exitScreen');
   const reopenBtn  = document.getElementById('reopenBtn');
+  const peekCard   = document.getElementById('peekCard');
+  const peekOpenBtn = document.getElementById('peekOpenBtn');
 
   // RED — close → show exit screen
   document.getElementById('tlClose').addEventListener('click', () => {
@@ -1903,6 +1985,15 @@
   document.getElementById('tlMinimize').addEventListener('click', () => {
     terminal.classList.remove('maximized');
     terminal.classList.toggle('minimized');
+    peekCard.classList.toggle('visible', terminal.classList.contains('minimized'));
+    requestAnimationFrame(repositionSuggest);
+  });
+
+  // Peek card open button — restore terminal
+  peekOpenBtn.addEventListener('click', () => {
+    terminal.classList.remove('minimized');
+    peekCard.classList.remove('visible');
+    input.focus();
     requestAnimationFrame(repositionSuggest);
   });
 
