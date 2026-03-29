@@ -744,10 +744,15 @@
       background: #1E1E1E;
       border: 1px solid rgba(255,255,255,0.12);
       border-radius: 8px;
-      overflow: hidden;
+      overflow-y: auto;
+      overflow-x: hidden;
+      max-height: 55vh;
       z-index: 9999;
       box-shadow: 0 -8px 24px rgba(0,0,0,0.5);
     }
+    .cmd-suggest::-webkit-scrollbar { width: 4px; }
+    .cmd-suggest::-webkit-scrollbar-track { background: transparent; }
+    .cmd-suggest::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
     .cmd-item {
       padding: 8px 14px;
       font-family: 'JetBrains Mono', monospace;
