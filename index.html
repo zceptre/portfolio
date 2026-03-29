@@ -1310,14 +1310,17 @@
       suggest.appendChild(item);
     });
 
-    // Position above the input using fixed coords
+    suggest.hidden = false;
+    repositionSuggest();
+  }
+
+  function repositionSuggest() {
+    if (suggest.hidden) return;
     const rect = input.getBoundingClientRect();
     suggest.style.left   = rect.left + 'px';
     suggest.style.width  = rect.width + 'px';
     suggest.style.bottom = (window.innerHeight - rect.top + 4) + 'px';
     suggest.style.top    = '';
-
-    suggest.hidden = false;
   }
 
   function hideSuggest() {
@@ -1831,6 +1834,9 @@
       hideSuggest();
     }
   });
+
+  window.addEventListener('resize', repositionSuggest);
+  window.addEventListener('focus', repositionSuggest);
 
   input.addEventListener('keydown', e => {
     // Autocomplete navigation
