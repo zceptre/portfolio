@@ -1835,8 +1835,8 @@
     }
   });
 
-  window.addEventListener('resize', repositionSuggest);
-  window.addEventListener('focus', repositionSuggest);
+  window.addEventListener('resize', () => requestAnimationFrame(repositionSuggest));
+  window.addEventListener('focus',  () => requestAnimationFrame(repositionSuggest));
 
   input.addEventListener('keydown', e => {
     // Autocomplete navigation
@@ -1895,6 +1895,7 @@
 
   // RED — close → show exit screen
   document.getElementById('tlClose').addEventListener('click', () => {
+    hideSuggest();
     exitScreen.hidden = false;
   });
 
@@ -1902,12 +1903,14 @@
   document.getElementById('tlMinimize').addEventListener('click', () => {
     terminal.classList.remove('maximized');
     terminal.classList.toggle('minimized');
+    requestAnimationFrame(repositionSuggest);
   });
 
   // GREEN — maximize → fill viewport
   document.getElementById('tlMaximize').addEventListener('click', () => {
     terminal.classList.remove('minimized');
     terminal.classList.toggle('maximized');
+    requestAnimationFrame(repositionSuggest);
   });
 
   // Reopen terminal button
