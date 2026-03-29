@@ -1555,6 +1555,9 @@
       { t: 'line', v: 'Major: Game Development' },
       { t: 'line', v: 'BPSU — Bataan Peninsula State University  [2021 – 2026]' },
       { t: 'sep' },
+      { t: 'sep' },
+      { t: 'dl',   v: '↓  Open resume.html  —  Print → Save as PDF', url: 'resume.html' },
+      { t: 'sep' },
       { t: 'dim',  v: 'Type /hire to work together. Type /contact to reach me.' },
     ],
 
@@ -1739,6 +1742,17 @@
           el.appendChild(a);
           break;
         }
+        case 'dl': {
+          el.className = 'o-line';
+          const a = document.createElement('a');
+          a.className = 'o-link';
+          a.href = item.url;
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+          a.textContent = item.v;
+          el.appendChild(a);
+          break;
+        }
         case 'ai':
           el.className = 'o-ai';
           el.textContent = item.v;
@@ -1794,38 +1808,9 @@
         { t: 'dim', v: 'Type /help to see available commands.' },
       ]);
     } else {
-      // Send to AI
-      renderLines([
-        { t: 'cmd', v: `> ${trimmed}` },
-        { t: 'dim', v: '...' },
-      ]);
-
-      try {
-        const response = await askAI(trimmed);
-        // Remove the "..." placeholder
-        const lastDim = outputEl.querySelector('.o-dim:last-child');
-        if (lastDim && lastDim.textContent === '...') lastDim.remove();
-
-        let text = '';
-        if (typeof response === 'string')   text = response;
-        else if (response?.response)         text = response.response;
-        else if (response?.output)           text = response.output;
-        else                                 text = JSON.stringify(response);
-
-        const el = document.createElement('div');
-        el.className = 'o-ai';
-        el.textContent = text;
-        outputEl.appendChild(el);
-        outputEl.scrollTop = outputEl.scrollHeight;
-
-      } catch (e) {
-        const lastDim = outputEl.querySelector('.o-dim:last-child');
-        if (lastDim && lastDim.textContent === '...') lastDim.remove();
-        const el = document.createElement('div');
-        el.className = 'o-err';
-        el.textContent = 'AI error: ' + e.message;
-        outputEl.appendChild(el);
-      }
+      // Non-command message: open chat mode then send
+      openChat();
+      await sendChatMessage(trimmed);
     }
   }
 
