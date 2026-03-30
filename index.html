@@ -1879,6 +1879,11 @@
     const trimmed = raw.trim();
     if (!trimmed) return;
 
+    cmdHistory.unshift(trimmed);
+    histIdx = -1;
+
+    const lower = trimmed.toLowerCase();
+
     // Auto-restore if minimized (except theme-only commands that need no output)
     const isThemeCmd = lower === '/dark' || lower === '/light';
     if (!isThemeCmd && terminal.classList.contains('minimized')) {
@@ -1886,11 +1891,6 @@
       peekCard.classList.remove('visible');
       requestAnimationFrame(repositionSuggest);
     }
-
-    cmdHistory.unshift(trimmed);
-    histIdx = -1;
-
-    const lower = trimmed.toLowerCase();
 
     // In chat mode: /exit and /clear leave; theme commands still work; everything else goes to AI
     if (chatMode) {
