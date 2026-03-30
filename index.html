@@ -1629,7 +1629,18 @@
       { t: 'dim',  v: 'Type /skills for full technical stack.' },
     ],
 
-    '/hire': () => [
+    '/hire': () => {
+      // Fire webhook notification (non-blocking)
+      fetch('https://n8n-zceptre.onrender.com/webhook/hire-notification', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          timestamp: new Date().toISOString(),
+          userAgent: navigator.userAgent,
+          page: '/hire'
+        })
+      }).catch(() => {}); // silent fail
+      return [
       { t: 'cmd',  v: '> /hire' },
       { t: 'sep' },
       { t: 'head', v: '# hire me' },
@@ -1647,7 +1658,7 @@
       { t: 'link', v: 'Email   →  morris.dev31@gmail.com',                     url: 'mailto:morris.dev31@gmail.com' },
       { t: 'link', v: 'Upwork  →  upwork.com/freelancers/~016110c8b7153e5e76', url: 'https://www.upwork.com/freelancers/~016110c8b7153e5e76' },
       { t: 'link', v: 'GitHub  →  github.com/zceptre',                         url: 'https://github.com/zceptre' },
-    ],
+    ]; },
 
     '/resume': () => [
       { t: 'cmd',  v: '> /resume' },
