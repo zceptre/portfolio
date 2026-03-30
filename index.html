@@ -433,6 +433,7 @@
     .o-sep     { height: 1px; background: rgba(255,255,255,0.08); margin: 6px 0; flex-shrink: 0; }
     .o-err     { font-size: 12.5px; color: #ff6b6b; }
     .o-ok      { font-size: 12.5px; color: #ffffff; }
+    .o-prompt  { font-size: 12.5px; color: #5DBA7D; font-weight: 600; margin-top: 4px; }
     .o-ai      {
       font-size: 12.5px;
       color: rgba(255,255,255,0.75);
@@ -469,6 +470,29 @@
       padding-bottom: 8px;
       border-bottom: 1px solid rgba(255,255,255,0.08);
       flex-shrink: 0;
+    }
+    .chat-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding: 8px 0 4px;
+      flex-shrink: 0;
+    }
+    .chat-chip {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      color: rgba(255,255,255,0.5);
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 4px;
+      padding: 3px 9px;
+      cursor: pointer;
+      transition: background 120ms ease, color 120ms ease, border-color 120ms ease;
+    }
+    .chat-chip:hover {
+      background: rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.85);
+      border-color: rgba(255,255,255,0.22);
     }
     .chat-msg {
       display: flex;
@@ -1011,13 +1035,24 @@
     html[data-theme="light"] .o-para { color: rgba(0,0,0,0.72); }
     html[data-theme="light"] .o-dim  { color: rgba(0,0,0,0.35); }
     html[data-theme="light"] .o-sep  { background: rgba(0,0,0,0.08); }
-    html[data-theme="light"] .o-ok   { color: #000000; }
+    html[data-theme="light"] .o-ok     { color: #000000; }
+    html[data-theme="light"] .o-prompt { color: #1a7a40; }
     html[data-theme="light"] .o-link { color: #000000; }
     html[data-theme="light"] .o-ai {
       color: rgba(0,0,0,0.72);
       border-left-color: rgba(0,0,0,0.2);
     }
 
+    html[data-theme="light"] .chat-chip {
+      color: rgba(0,0,0,0.45);
+      background: rgba(0,0,0,0.04);
+      border-color: rgba(0,0,0,0.1);
+    }
+    html[data-theme="light"] .chat-chip:hover {
+      background: rgba(0,0,0,0.08);
+      color: rgba(0,0,0,0.8);
+      border-color: rgba(0,0,0,0.2);
+    }
     html[data-theme="light"] .chat-header {
       color: rgba(0,0,0,0.35);
       border-bottom-color: rgba(0,0,0,0.08);
@@ -1388,7 +1423,13 @@
   const rightHome  = document.getElementById('rightHome');
   const suggest    = document.getElementById('cmdSuggest');
   const chatEl     = document.getElementById('chatArea');
-  let chatMode     = false;
+  let chatMode        = false;
+  let chatInitialized = false;  // true once chat has been opened — preserves history
+
+  // Hire form state
+  let hireFormMode = false;
+  let hireFormStep = null;   // 'name' | 'email' | 'message'
+  let hireFormData = {};
 
   let cmdHistory = [];
   let histIdx    = -1;
@@ -1630,16 +1671,11 @@
     ],
 
     '/hire': () => {
-      // Fire webhook notification (non-blocking)
-      fetch('https://n8n-zceptre.onrender.com/webhook/hire-notification', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          timestamp: new Date().toISOString(),
-          userAgent: navigator.userAgent,
-          page: '/hire'
-        })
-      }).catch(() => {}); // silent fail
+      // Start hire form flow
+      hireFormMode = true;
+      hireFormStep = 'name';
+      hireFormData = {};
+      input.placeholder = 'Your name...';
       return [
       { t: 'cmd',  v: '> /hire' },
       { t: 'sep' },
@@ -1655,9 +1691,9 @@
       { t: 'sep' },
       { t: 'ok',   v: 'Available now. Let\'s talk.' },
       { t: 'sep' },
-      { t: 'link', v: 'Email   →  morris.dev31@gmail.com',                     url: 'mailto:morris.dev31@gmail.com' },
-      { t: 'link', v: 'Upwork  →  upwork.com/freelancers/~016110c8b7153e5e76', url: 'https://www.upwork.com/freelancers/~016110c8b7153e5e76' },
-      { t: 'link', v: 'GitHub  →  github.com/zceptre',                         url: 'https://github.com/zceptre' },
+      { t: 'dim',  v: 'Fill in a quick form and I\'ll get back to you. Type /exit to cancel.' },
+      { t: 'sep' },
+      { t: 'prompt', v: 'Your name:' },
     ]; },
 
     '/resume': () => [
@@ -1729,22 +1765,54 @@
   // ============================================
   // CHAT MODE
   // ============================================
+  const CHAT_CHIPS = [
+    '/about', '/skills', '/projects', '/experience', '/now', '/uses', '/hire', '/resume',
+  ];
+
   function openChat() {
     chatMode = true;
     rightHome.style.display = 'none';
     outputEl.classList.remove('visible');
-    // Reset chat area (keep header only)
-    chatEl.innerHTML = '<div class="chat-header">Morris — type anything · /exit or /clear to leave</div>';
+
+    if (!chatInitialized) {
+      // First open — build header and chips
+      chatEl.innerHTML = '<div class="chat-header">Morris — type anything · /exit or /clear to leave</div>';
+
+      const chipsEl = document.createElement('div');
+      chipsEl.className = 'chat-chips';
+      CHAT_CHIPS.forEach(cmd => {
+        const chip = document.createElement('button');
+        chip.className = 'chat-chip';
+        chip.textContent = cmd;
+        chip.addEventListener('click', () => {
+          chatMode = false;
+          chatEl.classList.remove('visible');
+          input.placeholder = "Type a command... try '/about'";
+          outputEl.innerHTML = '';
+          outputEl.classList.remove('visible');
+          rightHome.style.display = '';
+          handleCmd(cmd);
+        });
+        chipsEl.appendChild(chip);
+      });
+      chatEl.appendChild(chipsEl);
+      chatInitialized = true;
+    }
+
     chatEl.classList.add('visible');
+    chatEl.scrollTop = chatEl.scrollHeight;
     input.placeholder = 'Message AI...';
     input.focus();
   }
 
   function exitChat() {
+    // Hide chat but keep history — user can return and continue
     chatMode = false;
     chatEl.classList.remove('visible');
     input.placeholder = "Type a command... try '/about'";
-    clearTerminal();
+    outputEl.innerHTML = '';
+    outputEl.classList.remove('visible');
+    rightHome.style.display = '';
   }
 
   async function sendChatMessage(msg) {
@@ -1817,6 +1885,8 @@
   // ============================================
   function clearTerminal() {
     chatMode = false;
+    chatInitialized = false;
+    chatEl.innerHTML = '';
     chatEl.classList.remove('visible');
     outputEl.innerHTML = '';
     outputEl.classList.remove('visible');
@@ -1900,6 +1970,10 @@
           el.className = 'o-ai';
           el.textContent = item.v;
           break;
+        case 'prompt':
+          el.className = 'o-prompt';
+          el.textContent = '› ' + item.v;
+          break;
       }
 
       frag.appendChild(el);
@@ -1929,6 +2003,70 @@
       requestAnimationFrame(repositionSuggest);
     }
 
+    // In hire form mode: collect name → email → message, then fire webhook
+    if (hireFormMode) {
+      if (lower === '/exit' || lower === '/clear') {
+        hireFormMode = false;
+        hireFormStep = null;
+        hireFormData = {};
+        input.placeholder = "Type a command... try '/about'";
+        renderLines([{ t: 'dim', v: 'Form cancelled.' }]);
+        return;
+      }
+
+      if (hireFormStep === 'name') {
+        hireFormData.name = trimmed;
+        hireFormStep = 'email';
+        input.placeholder = 'Your email...';
+        renderLines([
+          { t: 'line',   v: trimmed },
+          { t: 'prompt', v: 'Your email:' },
+        ]);
+        return;
+      }
+
+      if (hireFormStep === 'email') {
+        hireFormData.email = trimmed;
+        hireFormStep = 'message';
+        input.placeholder = "What's your project about?";
+        renderLines([
+          { t: 'line',   v: trimmed },
+          { t: 'prompt', v: "What's your project about?" },
+        ]);
+        return;
+      }
+
+      if (hireFormStep === 'message') {
+        hireFormData.message = trimmed;
+        hireFormMode = false;
+        hireFormStep = null;
+        input.placeholder = "Type a command... try '/about'";
+
+        // Show success immediately — don't wait for Render cold start
+        renderLines([
+          { t: 'line', v: trimmed },
+          { t: 'sep'  },
+          { t: 'ok',  v: '✓ Message sent! I\'ll get back to you soon.' },
+          { t: 'sep' },
+          { t: 'dim', v: 'Type /hire again or /help for more commands.' },
+        ]);
+
+        // Fire webhook in background (silent)
+        fetch('https://n8n-zceptre.onrender.com/webhook/hire-notification', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            timestamp:  new Date().toISOString(),
+            userAgent:  navigator.userAgent,
+            name:       hireFormData.name,
+            email:      hireFormData.email,
+            message:    hireFormData.message,
+          })
+        }).catch(() => {});
+        return;
+      }
+    }
+
     // In chat mode: /exit and /clear leave; theme commands still work; everything else goes to AI
     if (chatMode) {
       if (lower === '/exit' || lower === '/clear') {
@@ -1937,6 +2075,15 @@
       }
       if (lower === '/dark' || lower === '/light') {
         CMDS[lower]();
+        return;
+      }
+      // Intercept known terminal commands typed inside chat
+      if (CMDS[lower] || lower === '/chat') {
+        chatMode = false;
+        chatEl.classList.remove('visible');
+        input.placeholder = "Type a command... try '/about'";
+        clearTerminal();
+        handleCmd(trimmed);
         return;
       }
       await sendChatMessage(trimmed);
@@ -1966,7 +2113,7 @@
   // INPUT EVENTS
   // ============================================
   input.addEventListener('input', () => {
-    if (chatMode) { hideSuggest(); return; }
+    if (chatMode || hireFormMode) { hideSuggest(); return; }
     const val = input.value;
     if (val.startsWith('/')) {
       showSuggest(val);
