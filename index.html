@@ -1864,6 +1864,13 @@
         chipsEl.appendChild(chip);
       });
       chatEl.appendChild(chipsEl);
+
+      // Greeting bubble
+      const greetEl = document.createElement('div');
+      greetEl.className = 'chat-msg ai';
+      greetEl.innerHTML = `<div class="chat-avatar"><img src="images/Profile.jpg" alt="Morris"></div><div class="chat-msg-inner"><div class="chat-msg-label">morris</div><div class="chat-msg-body">Hey! I'm Morris — Automation Developer from the Philippines. Ask me anything about my work, projects, or skills. Always happy to connect 👋</div></div>`;
+      chatEl.appendChild(greetEl);
+
       chatInitialized = true;
     }
 
@@ -1957,6 +1964,7 @@
     hireFormMode = false;
     hireFormStep = null;
     hireFormData = {};
+    SESSION_ID = Math.random().toString(36).slice(2);
     chatEl.innerHTML = '';
     chatEl.classList.remove('visible');
     outputEl.innerHTML = '';
@@ -2156,8 +2164,12 @@
 
     // In chat mode: /exit and /clear leave; theme commands still work; everything else goes to AI
     if (chatMode) {
-      if (lower === '/exit' || lower === '/clear') {
+      if (lower === '/exit') {
         exitChat();
+        return;
+      }
+      if (lower === '/clear') {
+        clearTerminal();
         return;
       }
       if (lower === '/dark' || lower === '/light') {
@@ -2334,7 +2346,7 @@
   // AI BACKEND
   // ============================================
   // Stable session ID per browser tab
-  const SESSION_ID = Math.random().toString(36).slice(2);
+  let SESSION_ID = Math.random().toString(36).slice(2);
 
   async function askAI(msg) {
     const res = await fetch('https://n8n-zceptre.onrender.com/webhook/portfolio-chat', {
