@@ -12,3 +12,9 @@ temporary screenshots/
 vladburca.com_.png
 zceptre.github.io_portfolio_.png
 Experience/
+
+# Personal/private files
+CV.pdf
+*.json
+!package.json
+!package-lock.json
