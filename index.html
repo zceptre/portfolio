@@ -388,8 +388,15 @@
       color: rgba(255,255,255,0.62);
       text-decoration: none;
       display: block;
-      padding: 1px 0;
+      padding: 2px 0;
+      cursor: pointer;
+      transition: color 120ms ease;
+      background: none;
+      border: none;
+      font-family: inherit;
+      text-align: left;
     }
+    .nav-cmd:hover { color: rgba(255,255,255,0.92); }
     .nav-cmd:focus-visible { outline: none; }
 
     .nav-hints {
@@ -424,6 +431,52 @@
     .output-area.visible {
       display: flex;
     }
+    .scroll-top-btn {
+      position: sticky;
+      bottom: 8px;
+      align-self: flex-end;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: rgba(255,255,255,0.4);
+      background: rgba(30,30,32,0.85);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 4px;
+      padding: 4px 10px;
+      cursor: pointer;
+      backdrop-filter: blur(4px);
+      transition: opacity 180ms ease, color 120ms ease;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .scroll-top-btn.visible { opacity: 1; pointer-events: auto; }
+    .scroll-top-btn:hover { color: rgba(255,255,255,0.8); border-color: rgba(255,255,255,0.25); }
+    html[data-theme="light"] .scroll-top-btn {
+      color: rgba(0,0,0,0.4);
+      background: rgba(240,239,234,0.9);
+      border-color: rgba(0,0,0,0.12);
+    }
+    html[data-theme="light"] .scroll-top-btn:hover { color: rgba(0,0,0,0.75); border-color: rgba(0,0,0,0.25); }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: rgba(255,255,255,0.35);
+      background: none;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 4px;
+      padding: 4px 10px;
+      cursor: pointer;
+      margin-bottom: 8px;
+      align-self: flex-start;
+      transition: color 120ms ease, border-color 120ms ease;
+      flex-shrink: 0;
+    }
+    .back-btn:hover { color: rgba(255,255,255,0.75); border-color: rgba(255,255,255,0.25); }
+    html[data-theme="light"] .back-btn { color: rgba(0,0,0,0.38); border-color: rgba(0,0,0,0.12); }
+    html[data-theme="light"] .back-btn:hover { color: rgba(0,0,0,0.7); border-color: rgba(0,0,0,0.25); }
 
     .o-cmd     { font-size: 12.5px; color: rgba(255,255,255,0.38); margin-bottom: 6px; }
     .o-head    { font-size: 13px; color: #ffffff; font-weight: 700; margin: 4px 0 2px; letter-spacing: 0.02em; }
@@ -1027,6 +1080,7 @@
     html[data-theme="light"] .h-sep     { background: rgba(0,0,0,0.09); }
     html[data-theme="light"] .nav-label { color: #000000; }
     html[data-theme="light"] .nav-cmd   { color: rgba(0,0,0,0.6); }
+    html[data-theme="light"] .nav-cmd:hover { color: rgba(0,0,0,0.9); }
     html[data-theme="light"] .nav-hint  { color: rgba(0,0,0,0.32); }
 
     html[data-theme="light"] .o-cmd  { color: rgba(0,0,0,0.38); }
@@ -1335,10 +1389,15 @@
             <!-- Navigation -->
             <div class="nav-block" aria-label="Terminal navigation">
               <p class="nav-label">Navigation</p>
-              <span class="nav-cmd">/about</span>
-              <span class="nav-cmd">/projects</span>
-              <span class="nav-cmd">/skills</span>
-              <span class="nav-cmd">/contact</span>
+              <button class="nav-cmd" data-cmd="/about">/about</button>
+              <button class="nav-cmd" data-cmd="/experience">/experience</button>
+              <button class="nav-cmd" data-cmd="/projects">/projects</button>
+              <button class="nav-cmd" data-cmd="/skills">/skills</button>
+              <button class="nav-cmd" data-cmd="/now">/now</button>
+              <button class="nav-cmd" data-cmd="/uses">/uses</button>
+              <button class="nav-cmd" data-cmd="/hire">/hire</button>
+              <button class="nav-cmd" data-cmd="/resume">/resume</button>
+              <button class="nav-cmd" data-cmd="/contact">/contact</button>
 
               <div class="nav-hints">
                 <span class="nav-hint">... /help for all commands</span>
@@ -1350,7 +1409,9 @@
           </div><!-- /#rightHome -->
 
           <!-- Output area (shown in place of home content) -->
-          <div class="output-area" id="outputArea" aria-live="polite" aria-label="Command output"></div>
+          <div class="output-area" id="outputArea" aria-live="polite" aria-label="Command output">
+            <button class="scroll-top-btn" id="scrollTopBtn">↑ top</button>
+          </div>
 
           <!-- Chat area (shown when /chat is active) -->
           <div class="chat-area" id="chatArea" aria-live="polite" aria-label="AI chat">
@@ -1418,11 +1479,12 @@
 <div class="cmd-suggest" id="cmdSuggest" hidden role="listbox" aria-label="Command suggestions"></div>
 
 <script>
-  const input      = document.getElementById('termInput');
-  const outputEl   = document.getElementById('outputArea');
-  const rightHome  = document.getElementById('rightHome');
-  const suggest    = document.getElementById('cmdSuggest');
-  const chatEl     = document.getElementById('chatArea');
+  const input        = document.getElementById('termInput');
+  const outputEl     = document.getElementById('outputArea');
+  const rightHome    = document.getElementById('rightHome');
+  const suggest      = document.getElementById('cmdSuggest');
+  const chatEl       = document.getElementById('chatArea');
+  const scrollTopBtn = document.getElementById('scrollTopBtn');
   let chatMode        = false;
   let chatInitialized = false;  // true once chat has been opened — preserves history
 
@@ -1749,18 +1811,10 @@
 
     '/dark': () => {
       document.documentElement.removeAttribute('data-theme');
-      return [
-        { t: 'cmd', v: '> /dark' },
-        { t: 'ok',  v: 'Theme: dark' },
-      ];
     },
 
     '/light': () => {
       document.documentElement.setAttribute('data-theme', 'light');
-      return [
-        { t: 'cmd', v: '> /light' },
-        { t: 'ok',  v: 'Theme: light' },
-      ];
     },
   };
 
@@ -1888,9 +1942,14 @@
   function clearTerminal() {
     chatMode = false;
     chatInitialized = false;
+    hireFormMode = false;
+    hireFormStep = null;
+    hireFormData = {};
     chatEl.innerHTML = '';
     chatEl.classList.remove('visible');
     outputEl.innerHTML = '';
+    outputEl.appendChild(scrollTopBtn);
+    scrollTopBtn.classList.remove('visible');
     outputEl.classList.remove('visible');
     rightHome.style.display = '';
     input.placeholder = "Type a command... try '/about'";
@@ -1903,6 +1962,18 @@
     if (!lines) return;
     rightHome.style.display = 'none';
     outputEl.classList.add('visible');
+
+    // Add back button once (first render)
+    if (!outputEl.querySelector('.back-btn')) {
+      const backBtn = document.createElement('button');
+      backBtn.className = 'back-btn';
+      backBtn.innerHTML = '← back';
+      backBtn.addEventListener('click', clearTerminal);
+      outputEl.prepend(backBtn);
+    }
+
+    // Keep scroll-to-top btn at the end
+    outputEl.appendChild(scrollTopBtn);
 
     const frag = document.createDocumentFragment();
 
@@ -1981,8 +2052,10 @@
       frag.appendChild(el);
     });
 
-    outputEl.appendChild(frag);
-    outputEl.scrollTop = outputEl.scrollHeight;
+    const isFirst = outputEl.children.length <= 2; // back btn + scroll-top btn
+    const prevHeight = outputEl.scrollHeight;
+    outputEl.insertBefore(frag, scrollTopBtn);
+    outputEl.scrollTop = isFirst ? 0 : prevHeight;
   }
 
   // ============================================
@@ -2218,6 +2291,19 @@
   reopenBtn.addEventListener('click', () => {
     exitScreen.hidden = true;
     input.focus();
+  });
+
+  // Scroll-to-top button
+  outputEl.addEventListener('scroll', () => {
+    scrollTopBtn.classList.toggle('visible', outputEl.scrollTop > 80);
+  });
+  scrollTopBtn.addEventListener('click', () => {
+    outputEl.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // Nav command clicks
+  document.querySelectorAll('.nav-cmd[data-cmd]').forEach(btn => {
+    btn.addEventListener('click', () => handleCmd(btn.dataset.cmd));
   });
 
   // Keyboard support for traffic lights
