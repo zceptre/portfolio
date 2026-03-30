@@ -1536,10 +1536,11 @@
       item.dataset.cmd = s.cmd;
       item.innerHTML = `<span class="cmd-name">${s.cmd}</span><span class="cmd-desc">${s.desc}</span>`;
       item.addEventListener('mousedown', e => {
-        e.preventDefault(); // don't blur input
+        e.preventDefault();
         hideSuggest();
         input.value = '';
         handleCmd(s.cmd);
+        if (isTouch()) input.blur();
       });
       suggest.appendChild(item);
     });
@@ -1850,9 +1851,12 @@
           chatEl.classList.remove('visible');
           input.placeholder = "Type a command... try '/about'";
           outputEl.innerHTML = '';
+          outputEl.appendChild(scrollTopBtn);
+          scrollTopBtn.classList.remove('visible');
           outputEl.classList.remove('visible');
           rightHome.style.display = '';
           handleCmd(cmd);
+          if (isTouch()) input.blur();
         });
         chipsEl.appendChild(chip);
       });
@@ -2306,9 +2310,14 @@
     outputEl.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
+  const isTouch = () => navigator.maxTouchPoints > 0;
+
   // Nav command clicks
   document.querySelectorAll('.nav-cmd[data-cmd]').forEach(btn => {
-    btn.addEventListener('click', () => handleCmd(btn.dataset.cmd));
+    btn.addEventListener('click', () => {
+      handleCmd(btn.dataset.cmd);
+      if (isTouch()) input.blur();
+    });
   });
 
   // Keyboard support for traffic lights
