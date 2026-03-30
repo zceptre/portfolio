@@ -2323,7 +2323,7 @@
     const res = await fetch('https://n8n-zceptre.onrender.com/webhook/portfolio-chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: msg, sessionId: SESSION_ID }),
+      body: JSON.stringify({ message: msg, sessionId: SESSION_ID, today: new Date().toISOString().slice(0, 10) }),
     });
     return await res.json();
   }
