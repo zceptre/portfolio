@@ -331,7 +331,26 @@
       text-decoration: none;
       transition: color 150ms ease;
     }
-    .portrait-meta a:hover { color: #ffffff; }
+    .portrait-meta a:hover { color: #4afa7a; }
+
+    .status-dot {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #4afa7a;
+      margin-right: 5px;
+      vertical-align: middle;
+      position: relative;
+      top: -1px;
+      box-shadow: 0 0 0 0 rgba(74,250,122,0.5);
+      animation: pulse-dot 2.4s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%   { box-shadow: 0 0 0 0 rgba(74,250,122,0.45); }
+      60%  { box-shadow: 0 0 0 5px rgba(74,250,122,0); }
+      100% { box-shadow: 0 0 0 0 rgba(74,250,122,0); }
+    }
 
     .still-there {
       margin-top: auto;
@@ -400,7 +419,8 @@
       font-family: inherit;
       text-align: left;
     }
-    .nav-cmd:hover { color: rgba(255,255,255,0.92); }
+    .nav-cmd:hover { color: #4afa7a; }
+    .nav-cmd:active { color: #2ecc57; }
     .nav-cmd:focus-visible { outline: none; }
 
     .nav-hints {
@@ -1087,7 +1107,7 @@
     html[data-theme="light"] .h-sep     { background: rgba(0,0,0,0.09); }
     html[data-theme="light"] .nav-label { color: #000000; }
     html[data-theme="light"] .nav-cmd   { color: rgba(0,0,0,0.6); }
-    html[data-theme="light"] .nav-cmd:hover { color: rgba(0,0,0,0.9); }
+    html[data-theme="light"] .nav-cmd:hover { color: #1a8c3f; }
     html[data-theme="light"] .nav-hint  { color: rgba(0,0,0,0.32); }
 
     html[data-theme="light"] .o-cmd  { color: rgba(0,0,0,0.38); }
@@ -1347,9 +1367,8 @@
           </div>
 
           <div class="portrait-meta-wrap">
-            <div class="portrait-meta">
-              Automation Developer — Philippines<br>
-              <a href="mailto:morris.dev31@gmail.com">morris.dev31@gmail.com</a>
+            <div class="portrait-meta" style="text-align:center;">
+              <span class="status-dot"></span>Available for hire
             </div>
           </div>
 
