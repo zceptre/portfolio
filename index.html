@@ -989,7 +989,7 @@
       .prompt-bar { padding: 10px 18px; }
       .output-area { padding: 12px 18px 10px; }
       .tl { width: 16px; height: 16px; }
-      .traffic-lights { gap: 10px; left: 14px; }
+      .traffic-lights { position: relative; top: unset; transform: none; left: unset; gap: 10px; }
     }
 
     /* ============================================
@@ -1867,7 +1867,7 @@
     chatEl.classList.add('visible');
     chatEl.scrollTop = chatEl.scrollHeight;
     input.placeholder = 'Message AI...';
-    input.focus();
+    if (!isTouch()) input.focus();
   }
 
   function exitChat() {
@@ -2246,14 +2246,14 @@
     }
   });
 
-  // Click anywhere in terminal → focus input
+  // Click anywhere in terminal → focus input (desktop only)
   document.querySelector('.terminal').addEventListener('click', () => {
-    input.focus();
+    if (!isTouch()) input.focus();
   });
 
-  // Auto-focus on load
+  // Auto-focus on load (desktop only)
   window.addEventListener('load', () => {
-    input.focus();
+    if (!isTouch()) input.focus();
   });
 
 
