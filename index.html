@@ -1051,7 +1051,10 @@
     html[data-theme="light"] .prompt-input::placeholder { color: rgba(0,0,0,0.3); }
     html[data-theme="light"] .blink-cursor { background: #000000; }
 
-    html[data-theme="light"] .output-area::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); }
+    html[data-theme="light"] .output-area::-webkit-scrollbar { width: 4px; }
+    html[data-theme="light"] .output-area::-webkit-scrollbar-track { background: rgba(0,0,0,0.04); border-radius: 4px; }
+    html[data-theme="light"] .output-area::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.25); border-radius: 4px; }
+    html[data-theme="light"] .output-area::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.4); }
 
     html[data-theme="light"] .cmd-suggest {
       background: #EDECE6;
