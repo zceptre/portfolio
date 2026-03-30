@@ -1470,7 +1470,9 @@
       item.innerHTML = `<span class="cmd-name">${s.cmd}</span><span class="cmd-desc">${s.desc}</span>`;
       item.addEventListener('mousedown', e => {
         e.preventDefault(); // don't blur input
-        selectSuggestion(s.cmd);
+        hideSuggest();
+        input.value = '';
+        handleCmd(s.cmd);
       });
       suggest.appendChild(item);
     });
