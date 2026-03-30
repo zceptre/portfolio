@@ -655,10 +655,12 @@
       background: #1C1C1E !important;
       border-bottom-color: rgba(255,255,255,0.06) !important;
     }
+    .terminal.minimized .titlebar { background: #1C1C1E !important; border-bottom-color: rgba(255,255,255,0.06) !important; }
     .terminal.minimized .titlebar-title { color: rgba(255,255,255,0.35) !important; }
-    .terminal.minimized .input-row { background: #1C1C1E !important; }
-    .terminal.minimized #termInput { color: rgba(255,255,255,0.75) !important; caret-color: #4EC994 !important; }
-    .terminal.minimized .prompt { color: #4EC994 !important; }
+    .terminal.minimized .input-row { background: #1C1C1E !important; border-top-color: rgba(255,255,255,0.06) !important; }
+    .terminal.minimized .prompt-char { color: #4EC994 !important; }
+    .terminal.minimized .prompt-input { color: rgba(255,255,255,0.85) !important; caret-color: #ffffff !important; }
+    .terminal.minimized .prompt-input::placeholder { color: rgba(255,255,255,0.25) !important; }
 
     /* MAXIMIZED — fill viewport */
     .terminal.maximized {
