@@ -385,6 +385,7 @@
       color: rgba(255,255,255,0.32);
       padding-right: 22px;
       white-space: nowrap;
+      min-width: 80px;
     }
     .st-value {
       color: rgba(255,255,255,0.82);
@@ -978,9 +979,9 @@
         border-right: none;
         border-bottom: 1px solid rgba(255,255,255,0.09);
         padding: 16px 18px 14px;
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 14px;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
         overflow: visible;
       }
       .portrait-wrap {
@@ -991,14 +992,12 @@
         width: 90px;
         height: 105px;
       }
-      .pixel-logo-wrap { width: 90px; }
+      .pixel-logo-wrap { width: 100%; }
       .portrait-meta-wrap {
-        flex: 1;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        align-items: center;
         gap: 2px;
-        min-width: 0;
       }
       .welcome-text {
         width: 100%;
