@@ -2,7 +2,7 @@
 
 A terminal-style developer portfolio for **Son Morris Sasi** — Automation Developer based in the Philippines.
 
-Live at **[zceptre.github.io/portfolio](https://zceptre.github.io/portfolio/)**
+Live at **[mrrz.dev](https://www.mrrz.dev/)**
 
 ---
 
@@ -58,7 +58,7 @@ Live at **[zceptre.github.io/portfolio](https://zceptre.github.io/portfolio/)**
 | Fonts | JetBrains Mono, Press Start 2P |
 | AI backend | n8n (self-hosted on Render) + Groq (llama-3.3-70b) |
 | Email | Resend API |
-| Hosting | GitHub Pages |
+| Hosting | GitHub Pages + Vercel (custom domain: mrrz.dev) |
 | Resume | `resume.html` — print-to-PDF, A4, no browser headers |
 
 ---
