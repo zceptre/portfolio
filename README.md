@@ -46,7 +46,7 @@ Live at **[mrrz.dev](https://www.mrrz.dev/)**
 - Multi-step terminal form: name → email → project description
 - Fires webhook to **n8n** → sends email via **Resend API**
 - Shows success immediately (webhook fires in background)
-- Email includes visitor name, email, message, IP, country, timestamp
+- Email includes visitor name, email, message, and timestamp
 
 ---
 
