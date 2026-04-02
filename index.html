@@ -1039,6 +1039,24 @@
     .home-screen::-webkit-scrollbar-track { background: transparent; }
     .home-screen::-webkit-scrollbar-thumb { background: rgba(74,250,122,0.35); border-radius: 3px; }
 
+    /* Mobile scroll fade hint */
+    @media (max-width: 680px) {
+      .terminal-body {
+        position: relative;
+      }
+      .terminal-body::after {
+        content: '';
+        position: absolute;
+        bottom: 48px; /* above prompt bar */
+        left: 0;
+        right: 0;
+        height: 48px;
+        background: linear-gradient(to bottom, transparent, rgba(18,18,18,0.85));
+        pointer-events: none;
+        z-index: 10;
+      }
+    }
+
     /* ============================================
        LIGHT THEME
     ============================================ */
