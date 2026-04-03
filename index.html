@@ -1039,11 +1039,25 @@
     .home-screen::-webkit-scrollbar-track { background: transparent; }
     .home-screen::-webkit-scrollbar-thumb { background: rgba(74,250,122,0.35); border-radius: 3px; }
 
-    /* Mobile scroll indicator — always-visible thin track on right */
+    /* Mobile scroll hint arrow */
+    .scroll-hint {
+      display: none;
+    }
     @media (max-width: 680px) {
-      .home-screen {
-        scrollbar-width: thin;
-        scrollbar-color: rgba(74,250,122,0.5) rgba(255,255,255,0.05);
+      .scroll-hint {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 0 4px;
+        color: rgba(74,250,122,0.6);
+        font-size: 16px;
+        animation: bounce-hint 1.4s ease-in-out infinite;
+        transition: opacity 300ms ease;
+      }
+      .scroll-hint.hidden { opacity: 0; pointer-events: none; }
+      @keyframes bounce-hint {
+        0%, 100% { transform: translateY(0); }
+        50%       { transform: translateY(5px); }
       }
     }
 
@@ -1447,6 +1461,7 @@
               </div>
             </div>
 
+          <div class="scroll-hint" id="scrollHint">↓</div>
           </div><!-- /#rightHome -->
 
           <!-- Output area (shown in place of home content) -->
@@ -2303,6 +2318,16 @@
   window.addEventListener('load', () => {
     if (!isTouch()) input.focus();
   });
+
+  // Hide scroll hint on first scroll
+  const scrollHint = document.getElementById('scrollHint');
+  const homeScreen = document.querySelector('.home-screen');
+  if (scrollHint && homeScreen) {
+    homeScreen.addEventListener('scroll', () => {
+      if (homeScreen.scrollTop > 10) scrollHint.classList.add('hidden');
+      else scrollHint.classList.remove('hidden');
+    }, { passive: true });
+  }
 
 
   // ============================================
