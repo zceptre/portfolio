@@ -972,7 +972,28 @@
       }
       .home-screen {
         flex-direction: column;
-        overflow-y: auto;
+        overflow-y: scroll;
+        scrollbar-width: none;
+      }
+      .home-screen::-webkit-scrollbar { display: none; }
+      .custom-scrollbar {
+        display: block;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 3px;
+        height: 100%;
+        background: rgba(255,255,255,0.06);
+        z-index: 100;
+        pointer-events: none;
+      }
+      .custom-scrollbar-thumb {
+        position: absolute;
+        right: 0;
+        width: 3px;
+        background: rgba(74,250,122,0.55);
+        border-radius: 3px;
+        transition: opacity 150ms ease;
       }
       .col-left {
         width: 100%;
@@ -1029,6 +1050,8 @@
     ::-moz-selection { background: rgba(13,236,168,0.22); color: #fff; }
     :focus-visible { outline: 1px solid rgba(13,236,168,0.4); outline-offset: 2px; }
 
+    .custom-scrollbar { display: none; }
+
     /* Right column scrollbar */
     .col-right::-webkit-scrollbar { width: 3px; }
     .col-right::-webkit-scrollbar-track { background: transparent; }
@@ -1040,26 +1063,6 @@
     .home-screen::-webkit-scrollbar-thumb { background: rgba(74,250,122,0.35); border-radius: 3px; }
 
     /* Mobile scroll hint arrow */
-    .scroll-hint {
-      display: none;
-    }
-    @media (max-width: 680px) {
-      .scroll-hint {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 10px 0 4px;
-        color: rgba(74,250,122,0.6);
-        font-size: 16px;
-        animation: bounce-hint 1.4s ease-in-out infinite;
-        transition: opacity 300ms ease;
-      }
-      .scroll-hint.hidden { opacity: 0; pointer-events: none; }
-      @keyframes bounce-hint {
-        0%, 100% { transform: translateY(0); }
-        50%       { transform: translateY(5px); }
-      }
-    }
 
     /* ============================================
        LIGHT THEME
@@ -1380,6 +1383,7 @@
            HOME SCREEN
       ========================================== -->
       <div class="home-screen" id="homeScreen">
+        <div class="custom-scrollbar" id="customScrollbar"><div class="custom-scrollbar-thumb" id="customScrollbarThumb"></div></div>
 
         <!-- LEFT COLUMN -->
         <div class="col-left">
@@ -1461,8 +1465,7 @@
               </div>
             </div>
 
-          <div class="scroll-hint" id="scrollHint">↓</div>
-          </div><!-- /#rightHome -->
+</div><!-- /#rightHome -->
 
           <!-- Output area (shown in place of home content) -->
           <div class="output-area" id="outputArea" aria-live="polite" aria-label="Command output">
@@ -2319,15 +2322,28 @@
     if (!isTouch()) input.focus();
   });
 
+  // Custom scrollbar for mobile home-screen
+  (function() {
+    const scroller  = document.getElementById('homeScreen');
+    const track     = document.getElementById('customScrollbar');
+    const thumb     = document.getElementById('customScrollbarThumb');
+    if (!scroller || !track || !thumb) return;
+    function updateThumb() {
+      const scrollable = scroller.scrollHeight - scroller.clientHeight;
+      if (scrollable <= 0) { track.style.display = 'none'; return; }
+      track.style.display = 'block';
+      const ratio      = scroller.clientHeight / scroller.scrollHeight;
+      const thumbH     = Math.max(ratio * scroller.clientHeight, 32);
+      const thumbTop   = (scroller.scrollTop / scrollable) * (scroller.clientHeight - thumbH);
+      thumb.style.height = thumbH + 'px';
+      thumb.style.top    = thumbTop + 'px';
+    }
+    scroller.addEventListener('scroll', updateThumb, { passive: true });
+    window.addEventListener('resize', updateThumb);
+    requestAnimationFrame(() => requestAnimationFrame(updateThumb));
+  })();
+
   // Hide scroll hint on first scroll
-  const scrollHint = document.getElementById('scrollHint');
-  const homeScreen = document.querySelector('.home-screen');
-  if (scrollHint && homeScreen) {
-    homeScreen.addEventListener('scroll', () => {
-      if (homeScreen.scrollTop > 10) scrollHint.classList.add('hidden');
-      else scrollHint.classList.remove('hidden');
-    }, { passive: true });
-  }
 
 
   // ============================================
