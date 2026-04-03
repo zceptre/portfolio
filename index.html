@@ -548,6 +548,12 @@
       padding-bottom: 8px;
       border-bottom: 1px solid rgba(255,255,255,0.08);
       flex-shrink: 0;
+      position: sticky;
+      top: -16px;
+      background: #1a1a1a;
+      z-index: 2;
+      margin: -16px -24px 0;
+      padding: 16px 24px 8px;
     }
     .chat-chips {
       display: flex;
@@ -555,6 +561,12 @@
       gap: 6px;
       padding: 8px 0 4px;
       flex-shrink: 0;
+      position: sticky;
+      top: 28px;
+      background: #1a1a1a;
+      z-index: 2;
+      margin: 0 -24px;
+      padding: 8px 24px 8px;
     }
     .chat-chip {
       font-family: 'JetBrains Mono', monospace;
@@ -1167,7 +1179,9 @@
     html[data-theme="light"] .chat-header {
       color: rgba(0,0,0,0.35);
       border-bottom-color: rgba(0,0,0,0.08);
+      background: #f0efe8;
     }
+    html[data-theme="light"] .chat-chips { background: #f0efe8; }
     html[data-theme="light"] .chat-avatar { background: rgba(0,0,0,0.07); }
     html[data-theme="light"] .chat-avatar-placeholder { color: rgba(0,0,0,0.4); }
     html[data-theme="light"] .chat-msg-label { color: rgba(0,0,0,0.35); }
@@ -1887,8 +1901,15 @@
 
   function openChat() {
     chatMode = true;
+    hireFormMode = false;
+    hireFormStep = null;
+    hireFormData = {};
     rightHome.style.display = 'none';
     outputEl.classList.remove('visible');
+    outputEl.innerHTML = '';
+    outputEl.appendChild(scrollTopBtn);
+    scrollTopBtn.classList.remove('visible');
+    input.placeholder = 'Message AI...';
 
     if (!chatInitialized) {
       // First open — build header and chips
@@ -1901,15 +1922,22 @@
         chip.className = 'chat-chip';
         chip.textContent = cmd;
         chip.addEventListener('click', () => {
+          // Leave chat mode temporarily to show output, but remember to return to chat
           chatMode = false;
           chatEl.classList.remove('visible');
           input.placeholder = "Type a command... try '/about'";
           outputEl.innerHTML = '';
           outputEl.appendChild(scrollTopBtn);
           scrollTopBtn.classList.remove('visible');
-          outputEl.classList.remove('visible');
           rightHome.style.display = '';
           handleCmd(cmd);
+          // Replace back button so it returns to /chat instead of clearing everything
+          const oldBack = outputEl.querySelector('.back-btn');
+          if (oldBack) {
+            const newBack = oldBack.cloneNode(true);
+            newBack.addEventListener('click', () => { openChat(); });
+            oldBack.replaceWith(newBack);
+          }
           if (isTouch()) input.blur();
         });
         chipsEl.appendChild(chip);
