@@ -1560,6 +1560,7 @@
   const scrollTopBtn = document.getElementById('scrollTopBtn');
   let chatMode        = false;
   let chatInitialized = false;  // true once chat has been opened — preserves history
+  let launchedFromChat = false; // true when current command was launched from inside /chat
 
   // Hire form state
   let hireFormMode = false;
@@ -1922,8 +1923,8 @@
         chip.className = 'chat-chip';
         chip.textContent = cmd;
         chip.addEventListener('click', () => {
-          // Leave chat mode temporarily to show output, but remember to return to chat
           chatMode = false;
+          launchedFromChat = true;
           chatEl.classList.remove('visible');
           input.placeholder = "Type a command... try '/about'";
           outputEl.innerHTML = '';
@@ -1931,13 +1932,6 @@
           scrollTopBtn.classList.remove('visible');
           rightHome.style.display = '';
           handleCmd(cmd);
-          // Replace back button so it returns to /chat instead of clearing everything
-          const oldBack = outputEl.querySelector('.back-btn');
-          if (oldBack) {
-            const newBack = oldBack.cloneNode(true);
-            newBack.addEventListener('click', () => { openChat(); });
-            oldBack.replaceWith(newBack);
-          }
           if (isTouch()) input.blur();
         });
         chipsEl.appendChild(chip);
@@ -2037,14 +2031,13 @@
   // ============================================
   // CLEAR
   // ============================================
-  function clearTerminal() {
+  // Go back to home screen without destroying chat history
+  function goHome() {
     chatMode = false;
-    chatInitialized = false;
+    launchedFromChat = false;
     hireFormMode = false;
     hireFormStep = null;
     hireFormData = {};
-    SESSION_ID = Math.random().toString(36).slice(2);
-    chatEl.innerHTML = '';
     chatEl.classList.remove('visible');
     outputEl.innerHTML = '';
     outputEl.appendChild(scrollTopBtn);
@@ -2052,6 +2045,14 @@
     outputEl.classList.remove('visible');
     rightHome.style.display = '';
     input.placeholder = "Type a command... try '/about'";
+  }
+
+  // Full reset — clears everything including chat history and session
+  function clearTerminal() {
+    chatInitialized = false;
+    SESSION_ID = Math.random().toString(36).slice(2);
+    chatEl.innerHTML = '';
+    goHome();
   }
 
   // ============================================
@@ -2067,7 +2068,10 @@
       const backBtn = document.createElement('button');
       backBtn.className = 'back-btn';
       backBtn.innerHTML = '← back';
-      backBtn.addEventListener('click', clearTerminal);
+      backBtn.addEventListener('click', () => {
+        if (launchedFromChat) { launchedFromChat = false; openChat(); }
+        else goHome();
+      });
       outputEl.prepend(backBtn);
     }
 
@@ -2258,9 +2262,13 @@
       // Intercept known terminal commands typed inside chat
       if (CMDS[lower] || lower === '/chat') {
         chatMode = false;
+        launchedFromChat = true;
         chatEl.classList.remove('visible');
         input.placeholder = "Type a command... try '/about'";
-        clearTerminal();
+        outputEl.innerHTML = '';
+        outputEl.appendChild(scrollTopBtn);
+        scrollTopBtn.classList.remove('visible');
+        rightHome.style.display = '';
         handleCmd(trimmed);
         return;
       }
