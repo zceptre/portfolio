@@ -1583,8 +1583,9 @@
     { cmd: '/now',        desc: 'What I am working on' },
     { cmd: '/uses',       desc: 'My tools and setup' },
     { cmd: '/hire',       desc: 'Work with me' },
-    { cmd: '/resume',     desc: 'My full resume' },
-    { cmd: '/chat',       desc: 'Chat with Morris' },
+    { cmd: '/resume',      desc: 'My full resume' },
+    { cmd: '/certificate', desc: 'My certificates' },
+    { cmd: '/chat',        desc: 'Chat with Morris' },
     { cmd: '/dark',       desc: 'Switch to dark theme' },
     { cmd: '/light',      desc: 'Switch to light theme' },
     { cmd: '/help',       desc: 'List all commands' },
@@ -1738,8 +1739,9 @@
       { t: 'line', v: '/now          What I am working on' },
       { t: 'line', v: '/uses         My tools and setup' },
       { t: 'line', v: '/hire         Work with me' },
-      { t: 'line', v: '/resume       My full resume' },
-      { t: 'line', v: '/chat         Chat with Morris' },
+      { t: 'line', v: '/resume        My full resume' },
+      { t: 'line', v: '/certificate   My certificates' },
+      { t: 'line', v: '/chat          Chat with Morris' },
       { t: 'line', v: '/dark         Switch to dark theme (default)' },
       { t: 'line', v: '/light        Switch to light theme' },
       { t: 'line', v: '/clear        Clear the terminal' },
@@ -1807,6 +1809,20 @@
       { t: 'line', v: 'Version Ctrl   Git, GitHub' },
       { t: 'sep' },
       { t: 'dim',  v: 'Type /skills for full technical stack.' },
+    ],
+
+    '/certificate': () => [
+      { t: 'cmd',  v: '> /certificate' },
+      { t: 'sep' },
+      { t: 'head', v: '# certificates' },
+      { t: 'cert', v: 'Meta Certified Digital Marketing Associate    →', url: 'images/certificates/Meta Certified Digital Marketing Associate_page-0001.jpg' },
+      { t: 'cert', v: 'Visual Design Using Adobe Photoshop           →', url: 'images/certificates/Visual Design Using Adobe Photoshop_page-0001.jpg' },
+      { t: 'cert', v: 'Visual Design                                 →', url: 'images/certificates/Visual Design_page-0001.jpg' },
+      { t: 'cert', v: 'Print & Digital Media Publication (InDesign)  →', url: 'images/certificates/Print  Digital Media Publication Using Adobe InDesign_page-0001.jpg' },
+      { t: 'cert', v: 'Microsoft Excel Associate                     →', url: 'images/certificates/Excel Associate_page-0001.jpg' },
+      { t: 'cert', v: 'Microsoft PowerPoint Associate                →', url: 'images/certificates/PowerPoint Associate_page-0001.jpg' },
+      { t: 'cert', v: 'Microsoft Word Associate                      →', url: 'images/certificates/Word Associate_page-0001.jpg' },
+      { t: 'sep' },
     ],
 
     '/hire': () => {
@@ -2120,7 +2136,7 @@
           // Split on → to separate label from URL text
           const parts = item.v.split('→');
           const before = parts[0] + '→ ';
-          const linkLabel = item.url.replace(/^https?:\/\//, '');
+          const linkLabel = item.label || item.url.replace(/^https?:\/\//, '');
           el.textContent = before;
           const a = document.createElement('a');
           a.className = 'o-link';
@@ -2129,6 +2145,24 @@
           a.rel = 'noopener noreferrer';
           a.textContent = linkLabel;
           el.appendChild(a);
+          break;
+        }
+        case 'cert': {
+          el.className = 'o-line';
+          el.style.display = 'flex';
+          el.style.flexDirection = 'column';
+          el.style.gap = '8px';
+          el.style.marginBottom = '16px';
+          const certLabel = document.createElement('span');
+          certLabel.textContent = item.v.replace('→', '').trim();
+          certLabel.style.opacity = '0.7';
+          certLabel.style.fontSize = '0.85em';
+          el.appendChild(certLabel);
+          const certImg = document.createElement('img');
+          certImg.src = item.url;
+          certImg.alt = item.v.replace('→', '').trim();
+          certImg.style.cssText = 'max-width:100%;width:560px;border-radius:6px;box-shadow:0 4px 24px rgba(0,0,0,0.5);display:block;border:1px solid rgba(255,255,255,0.07);';
+          el.appendChild(certImg);
           break;
         }
         case 'dl': {
@@ -2519,6 +2553,100 @@
     }
 
     draw();
+  })();
+</script>
+
+<!-- Certificate Modal -->
+<div id="cert-modal" style="
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  background:rgba(0,0,0,0.85);
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  padding:16px;
+">
+  <div style="
+    width:100%;
+    max-width:900px;
+    max-height:92vh;
+    display:flex;
+    flex-direction:column;
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:8px;
+    overflow:hidden;
+    box-shadow:0 32px 80px rgba(0,0,0,0.7),0 0 0 1px rgba(255,255,255,0.04);
+  ">
+    <!-- Modal header -->
+    <div style="
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:10px 16px;
+      background:#1a1a1a;
+      border-bottom:1px solid rgba(255,255,255,0.06);
+      flex-shrink:0;
+    ">
+      <span id="cert-modal-title" style="font-family:monospace;font-size:13px;color:#a0a0a0;letter-spacing:0.02em;"></span>
+      <button id="cert-modal-close" style="
+        background:none;
+        border:1px solid rgba(255,255,255,0.12);
+        color:#888;
+        font-family:monospace;
+        font-size:12px;
+        padding:3px 10px;
+        border-radius:4px;
+        cursor:pointer;
+        transition:color 0.15s ease, border-color 0.15s ease;
+      " onmouseover="this.style.color='#fff';this.style.borderColor='rgba(255,255,255,0.3)'" onmouseout="this.style.color='#888';this.style.borderColor='rgba(255,255,255,0.12)'">
+        [esc] close
+      </button>
+    </div>
+    <!-- Certificate image -->
+    <div style="overflow-y:auto;background:#111;display:flex;align-items:center;justify-content:center;padding:24px;">
+      <img id="cert-modal-img" src="" alt="" style="
+        max-width:100%;
+        max-height:80vh;
+        border-radius:4px;
+        box-shadow:0 8px 40px rgba(0,0,0,0.6);
+        display:block;
+      "/>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    const modal    = document.getElementById('cert-modal');
+    const img      = document.getElementById('cert-modal-img');
+    const title    = document.getElementById('cert-modal-title');
+    const closeBtn = document.getElementById('cert-modal-close');
+
+    window.openCertModal = function(url, label) {
+      img.src = url;
+      img.alt = label;
+      title.textContent = label;
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    };
+
+    function closeCertModal() {
+      modal.style.display = 'none';
+      img.src = '';
+      document.body.style.overflow = '';
+    }
+
+    closeBtn.addEventListener('click', closeCertModal);
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) closeCertModal();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && modal.style.display === 'flex') closeCertModal();
+    });
   })();
 </script>
 
