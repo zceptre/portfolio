@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Son Morris Sasi — Automation Developer, Game Developer, QA Tester">
+  <meta name="description" content="Son Morris Sasi — AI Chatbot & Automation Specialist">
   <meta name="theme-color" content="#0C1219">
   <title>mrrs.dev — /portfolio</title>
 
@@ -389,6 +389,12 @@
     }
     .st-value {
       color: rgba(255,255,255,0.82);
+    }
+    @media (max-width: 550px) {
+      .stats-table tr { display: block; margin-bottom: 6px; }
+      .stats-table td { display: block; padding: 0; }
+      .st-label { padding-right: 0; min-width: unset; margin-bottom: 1px; font-size: 10.5px; }
+      .st-value { font-size: 12px; }
     }
 
     /* Divider */
@@ -1434,23 +1440,23 @@
                 <tbody>
                   <tr>
                     <td class="st-label">Role</td>
-                    <td class="st-value">Automation Developer · Game Dev · QA</td>
+                    <td class="st-value">AI Chatbot & Automation Specialist</td>
+                  </tr>
+                  <tr>
+                    <td class="st-label">Delivers</td>
+                    <td class="st-value">Instant responses · Lead qualification · Zero manual work</td>
+                  </tr>
+                  <tr>
+                    <td class="st-label">Chatbots</td>
+                    <td class="st-value">WhatsApp · AI agents · CRM-connected</td>
                   </tr>
                   <tr>
                     <td class="st-label">Automate</td>
-                    <td class="st-value">n8n, GHL, Supabase, OpenClaw</td>
+                    <td class="st-value">n8n · End-to-end pipelines · Zero intervention</td>
                   </tr>
                   <tr>
                     <td class="st-label">Code</td>
-                    <td class="st-value">Java, C++, JavaScript, Blueprint</td>
-                  </tr>
-                  <tr>
-                    <td class="st-label">Build</td>
-                    <td class="st-value">Games, Android Apps, Automation Pipelines</td>
-                  </tr>
-                  <tr>
-                    <td class="st-label">Test</td>
-                    <td class="st-value">QA, Bug Detection, Regression</td>
+                    <td class="st-value">JavaScript · Python · Java</td>
                   </tr>
                 </tbody>
               </table>
@@ -1458,18 +1464,26 @@
 
             <div class="h-sep"></div>
 
+            <!-- Hire CTA -->
+            <div style="margin-bottom:14px; padding:7px 10px; border:1px solid rgba(74,250,122,0.2); border-radius:6px; background:rgba(74,250,122,0.04); display:flex; align-items:center; gap:8px;">
+              <span class="status-dot" style="flex-shrink:0;"></span>
+              <span style="font-size:11px; color:rgba(255,255,255,0.6);">Open to work — type <button class="nav-cmd" data-cmd="/hire" style="display:inline; padding:0; font-size:11px; color:#4afa7a; background:none; border:none; cursor:pointer; font-family:inherit;">/hire</button> to start a project</span>
+            </div>
+
             <!-- Navigation -->
             <div class="nav-block" aria-label="Terminal navigation">
               <p class="nav-label">Navigation</p>
-              <button class="nav-cmd" data-cmd="/about">/about</button>
-              <button class="nav-cmd" data-cmd="/experience">/experience</button>
-              <button class="nav-cmd" data-cmd="/projects">/projects</button>
-              <button class="nav-cmd" data-cmd="/skills">/skills</button>
-              <button class="nav-cmd" data-cmd="/now">/now</button>
-              <button class="nav-cmd" data-cmd="/uses">/uses</button>
-              <button class="nav-cmd" data-cmd="/hire">/hire</button>
-              <button class="nav-cmd" data-cmd="/resume">/resume</button>
-              <button class="nav-cmd" data-cmd="/contact">/contact</button>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:2px 20px;">
+                <button class="nav-cmd" data-cmd="/about">/about</button>
+                <button class="nav-cmd" data-cmd="/experience">/experience</button>
+                <button class="nav-cmd" data-cmd="/projects">/projects</button>
+                <button class="nav-cmd" data-cmd="/skills">/skills</button>
+                <button class="nav-cmd" data-cmd="/now">/now</button>
+                <button class="nav-cmd" data-cmd="/uses">/uses</button>
+                <button class="nav-cmd" data-cmd="/hire">/hire</button>
+                <button class="nav-cmd" data-cmd="/resume">/resume</button>
+                <button class="nav-cmd" data-cmd="/contact">/contact</button>
+              </div>
 
               <div class="nav-hints">
                 <span class="nav-hint">... /help for all commands</span>
@@ -1657,11 +1671,15 @@
       { t: 'sep' },
       { t: 'head', v: '# about' },
       { t: 'line', v: 'Name       Son Morris Sasi' },
-      { t: 'line', v: 'Role       Automation Developer · Game Dev · QA Tester' },
+      { t: 'line', v: 'Role       AI Chatbot & Automation Specialist' },
       { t: 'line', v: 'Based      Philippines' },
       { t: 'sep' },
-      { t: 'para', v: "I build automation systems and software that actually work in production.\nCurrently working as a Automation Developer — designing and shipping\nmulti-stage n8n pipelines, AI agents, and CRM integrations for a UAE\nhealth-tech company (MeScreen)." },
-      { t: 'para', v: "Also a game developer and QA tester with hands-on experience in\nUnreal Engine 5, Android development, and regression testing.\nI care about clean systems, zero manual intervention, and code that ships." },
+      { t: 'para', v: "I build AI chatbots and automation systems that generate leads,\nqualify prospects, and run business workflows with zero manual\nintervention. Currently shipping production pipelines for a UAE\nhealth-tech company (MeScreen) using n8n, GPT-4.1-mini, and WhatsApp." },
+      { t: 'line', v: '✓  5-stage pipeline · 100+ orders/week · zero manual intervention' },
+      { t: 'line', v: '✓  WhatsApp AI bot handling full customer journey end-to-end' },
+      { t: 'line', v: '✓  Lead discovery system — automated qualification & CRM export' },
+      { t: 'sep' },
+      { t: 'para', v: "I connect the tools businesses already use — CRMs, payment systems,\nmessaging platforms — into intelligent, end-to-end automations.\nIf it can be automated, I'll automate it." },
       { t: 'sep' },
       { t: 'dim',  v: 'Type /projects to see my work. Type /skills for my stack.' },
     ],
@@ -1670,9 +1688,9 @@
       { t: 'cmd',  v: '> /projects' },
       { t: 'sep' },
       { t: 'head', v: '# projects' },
-      { t: 'line', v: '[1]  MeScreen Order Fulfilment         Automation Developer @ MeScreen (UAE)' },
-      { t: 'dim',  v: '     n8n · Supabase · GPT-4.1-mini · WhatsApp · GHL  |  2025–Present' },
-      { t: 'para', v: '     5-stage autonomous pipeline managing the full customer journey\n     from order placement to kit collection. Zero manual intervention.\n     Multi-channel notifications (WhatsApp, Email, Discord) with\n     retry logic, escalation paths, and AI agents at each stage.' },
+      { t: 'line', v: '[1]  WhatsApp AI Chatbot — Order Fulfilment   MeScreen (UAE)' },
+      { t: 'dim',  v: '     n8n · GPT-4.1-mini · WhatsApp · Supabase · GHL  |  2025–Present' },
+      { t: 'para', v: '     AI chatbot handling the full customer journey over WhatsApp —\n     from order intake to kit collection. 5-stage pipeline with\n     GPT-4.1-mini agents at each step: qualification, supplier relay,\n     confirmation, and delivery tracking. Zero manual intervention.' },
       { t: 'sep' },
       { t: 'line', v: '[2]  MeScreen B2B Accounting           Automation Developer @ MeScreen (UAE)' },
       { t: 'dim',  v: '     n8n · Supabase · Xero · Stripe · GHL · WAHA  |  2025–Present' },
@@ -1700,14 +1718,13 @@
       { t: 'cmd',  v: '> /skills' },
       { t: 'sep' },
       { t: 'head', v: '# skills' },
-      { t: 'line', v: 'Automation     n8n, AI Agents, Multi-stage Pipelines' },
+      { t: 'line', v: 'AI Chatbots    GPT-4.1-mini, Groq (llama-3.3-70b), Gemini' },
+      { t: 'line', v: '               WhatsApp Bot, AI Agents, Lead Qualification' },
+      { t: 'line', v: 'Automation     n8n, Multi-stage Pipelines, Workflow Orchestration' },
       { t: 'line', v: 'Integrations   GHL / GoHighLevel, Supabase, Xero, Stripe, WAHA' },
       { t: 'line', v: '               WhatsApp API, Discord Webhooks, OpenClaw' },
-      { t: 'line', v: 'Programming    Java, JavaScript, C++, HTML, CSS' },
-      { t: 'line', v: 'Game Dev       Unreal Engine 5, Blueprint, C++, 60fps Optimization' },
-      { t: 'line', v: 'Mobile         Android Studio, Java, SQLite' },
-      { t: 'line', v: 'QA             Bug Detection, Regression Testing, Test Reports' },
-      { t: 'line', v: 'Tools          Git, VS Code, Supabase, Render' },
+      { t: 'line', v: 'Programming    JavaScript, Python, Java, HTML, CSS' },
+      { t: 'line', v: 'Tools          Git, VS Code, Supabase, Render, Railway' },
       { t: 'sep' },
       { t: 'dim',  v: 'Type /contact to reach me.' },
     ],
@@ -1754,7 +1771,7 @@
       { t: 'cmd',  v: '> /experience' },
       { t: 'sep' },
       { t: 'head', v: '# experience' },
-      { t: 'line', v: 'Automation Developer                  MeScreen · UAE' },
+      { t: 'line', v: 'AI Chatbot & Automation Specialist    MeScreen · UAE' },
       { t: 'dim',  v: 'n8n · GHL · WAHA · Supabase · GPT-4.1-mini · Discord  |  Feb 2026 – Present' },
       { t: 'para', v: '  Designed and shipped production automation systems for a\n  UAE health-tech startup. Built end-to-end pipelines with\n  zero manual intervention — multi-stage AI agents, retry\n  logic, escalation flows, and payment routing.' },
       { t: 'sep' },
@@ -1781,12 +1798,12 @@
       { t: 'sep' },
       { t: 'line', v: 'Working on:' },
       { t: 'dim',  v: '  · MeScreen B2B automation (n8n + Xero + Stripe)' },
-      { t: 'dim',  v: '  · Expanding automation skills — AI agents, LLM pipelines' },
+      { t: 'dim',  v: '  · Building AI chatbot flows for lead generation' },
       { t: 'dim',  v: '  · This portfolio site' },
       { t: 'sep' },
       { t: 'line', v: 'Learning:' },
-      { t: 'dim',  v: '  · Advanced n8n patterns and self-hosted infra' },
-      { t: 'dim',  v: '  · Deeper JavaScript for custom workflow logic' },
+      { t: 'dim',  v: '  · Advanced AI agent patterns and LLM orchestration' },
+      { t: 'dim',  v: '  · Deeper JavaScript for custom chatbot logic' },
       { t: 'sep' },
       { t: 'dim',  v: 'Type /hire if you want to build something together.' },
     ],
@@ -1837,12 +1854,13 @@
       { t: 'head', v: '# hire me' },
       { t: 'para', v: "I'm open to freelance and full-time work.\nHere's what I can help you with:" },
       { t: 'sep' },
-      { t: 'line', v: 'Automation     n8n workflows, AI agent pipelines,' },
-      { t: 'line', v: '               CRM integrations, multi-stage systems' },
-      { t: 'line', v: 'Integrations   GHL, Supabase, Xero, Stripe, WhatsApp' },
-      { t: 'line', v: 'Game Dev       Unreal Engine 5, Blueprint, C++' },
-      { t: 'line', v: 'Mobile         Android (Java + SQLite)' },
-      { t: 'line', v: 'QA             Bug detection, regression testing' },
+      { t: 'line', v: 'AI Chatbots    WhatsApp bots, lead qualification bots,' },
+      { t: 'line', v: '               AI agents, GPT-4.1-mini, multi-turn flows' },
+      { t: 'line', v: 'Automation     n8n workflows, multi-stage pipelines,' },
+      { t: 'line', v: '               zero-touch business process automation' },
+      { t: 'line', v: 'Integrations   GHL, Supabase, Xero, Stripe, WhatsApp, WAHA' },
+      { t: 'line', v: 'Lead Gen       Instagram listener, prospect qualification,' },
+      { t: 'line', v: '               automated outreach & CRM enrichment' },
       { t: 'sep' },
       { t: 'ok',   v: 'Available now. Let\'s talk.' },
       { t: 'sep' },
@@ -1855,12 +1873,12 @@
       { t: 'cmd',  v: '> /resume' },
       { t: 'sep' },
       { t: 'head', v: '# Son Morris Sasi' },
-      { t: 'line', v: 'Automation Developer  ·  Philippines' },
+      { t: 'line', v: 'AI Chatbot & Automation Specialist  ·  Philippines' },
       { t: 'line', v: 'morris.dev31@gmail.com  ·  github.com/zceptre' },
       { t: 'sep' },
       { t: 'head', v: '## Experience' },
       { t: 'sep' },
-      { t: 'ok',   v: 'Automation Developer — MeScreen (UAE)  [Feb 2026 – Present]' },
+      { t: 'ok',   v: 'AI Chatbot & Automation Specialist — MeScreen (UAE)  [Feb 2026 – Present]' },
       { t: 'para', v: '  · Built 5-stage n8n order fulfilment pipeline:\n    WhatsApp intake → AI filtering → Supplier relay\n    → Order confirmation → Delivery tracking\n  · Automated B2B accounting: PDF/email via SMTP,\n    Xero for bank transfers, GHL + Stripe for card payments\n  · Developed Instagram Listener system (OpenClaw +\n    Playwright) for UAE health/wellness lead discovery\n  · Integrated GHL, Supabase, Stripe, WAHA, Discord\n    Webhook, GPT-4.1-mini' },
       { t: 'sep' },
       { t: 'ok',   v: 'Freelance Developer — Upwork  [2023 – 2025]' },
@@ -1957,7 +1975,7 @@
       // Greeting bubble
       const greetEl = document.createElement('div');
       greetEl.className = 'chat-msg ai';
-      greetEl.innerHTML = `<div class="chat-avatar"><img src="images/Profile.jpg" alt="Morris"></div><div class="chat-msg-inner"><div class="chat-msg-label">morris</div><div class="chat-msg-body">Hey! I'm Morris — Automation Developer from the Philippines. Ask me anything about my work, projects, or skills. Always happy to connect 👋</div></div>`;
+      greetEl.innerHTML = `<div class="chat-avatar"><img src="images/Profile.jpg" alt="Morris"></div><div class="chat-msg-inner"><div class="chat-msg-label">morris</div><div class="chat-msg-body">Hey! I'm Morris — I build AI chatbots that qualify leads and automate customer support, so businesses can respond instantly without lifting a finger. Ask me what I can build for your business 👋</div></div>`;
       chatEl.appendChild(greetEl);
 
       chatInitialized = true;
