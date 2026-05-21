@@ -2925,10 +2925,11 @@
     const COUNT  = 120;   // number of pixels
 
     // Evasion tuning
-    const EVADE_RADIUS    = 110;        // cursor influence range
+    const EVADE_RADIUS    = 140;        // cursor influence range
     const EVADE_RADIUS_SQ = EVADE_RADIUS * EVADE_RADIUS;
-    const EVADE_STRENGTH  = 2.4;        // peak push magnitude
-    const DAMPING         = 0.93;       // how fast pixels relax back
+    const EVADE_STRENGTH  = 1.1;        // peak push magnitude (softer)
+    const DAMPING         = 0.96;       // closer to 1 = longer, smoother drift back
+    const MAX_VEL         = 5;          // hard cap so quick cursor flicks don't fling pixels
 
     const mouse = { x: -9999, y: -9999, active: false };
 
@@ -2971,16 +2972,28 @@
 
       pixels.forEach(p => {
         // Cursor evasion: radial repulsion within EVADE_RADIUS
+        // Uses smoothstep so force ramps gently at the edge and the cursor
+        // center, not a hard linear cone.
         if (mouse.active) {
           const dx = p.x - mouse.x;
           const dy = p.y - mouse.y;
           const distSq = dx * dx + dy * dy;
           if (distSq < EVADE_RADIUS_SQ && distSq > 0.5) {
-            const dist  = Math.sqrt(distSq);
-            const force = (1 - dist / EVADE_RADIUS) * EVADE_STRENGTH;
+            const dist = Math.sqrt(distSq);
+            const t    = 1 - dist / EVADE_RADIUS;           // 0 at edge, 1 at center
+            const ease = t * t * (3 - 2 * t);               // smoothstep
+            const force = ease * EVADE_STRENGTH;
             p.vx += (dx / dist) * force;
             p.vy += (dy / dist) * force;
           }
+        }
+
+        // Cap velocity so flicks don't yeet pixels off-screen
+        const vsq = p.vx * p.vx + p.vy * p.vy;
+        if (vsq > MAX_VEL * MAX_VEL) {
+          const v = Math.sqrt(vsq);
+          p.vx = (p.vx / v) * MAX_VEL;
+          p.vy = (p.vy / v) * MAX_VEL;
         }
 
         // Integrate: gravity-fall + evasion velocity, then dampen
