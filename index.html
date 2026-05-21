@@ -3,15 +3,56 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Son Morris Sasi — AI Chatbot & Automation Specialist">
   <meta name="theme-color" content="#0C1219">
-  <title>mrrs.dev — /portfolio</title>
+
+  <title>Son Morris Sasi — AI Automation Developer</title>
+  <meta name="description" content="AI Automation Developer building n8n pipelines, AI chatbots, Shopify integrations, and custom CMS systems with Playwright scraping and PDF extraction. I remove manual work for international clients via Flow Pilot.">
+  <meta name="author" content="Son Morris Sasi">
+  <meta name="keywords" content="AI automation developer, n8n, Playwright, Shopify API, React, PHP, MySQL, AI chatbot, web scraping, PDF extraction, workflow automation, OpenAI, Claude, Son Morris Sasi, mrrz.dev">
+  <link rel="canonical" href="https://mrrz.dev/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="mrrz.dev">
+  <meta property="og:url" content="https://mrrz.dev/">
+  <meta property="og:title" content="Son Morris Sasi — AI Automation Developer">
+  <meta property="og:description" content="WhatsApp chatbots, AI agents, and n8n automations that qualify leads and remove manual work. Built like a terminal — open it and explore.">
+  <meta property="og:image" content="https://mrrz.dev/images/og-cover.svg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="mrrz.dev — terminal-style portfolio of Son Morris Sasi, AI Automation Developer">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Son Morris Sasi — AI Automation Developer">
+  <meta name="twitter:description" content="WhatsApp chatbots, AI agents, and n8n automations that qualify leads and remove manual work.">
+  <meta name="twitter:image" content="https://mrrz.dev/images/og-cover.svg">
+  <meta name="twitter:image:alt" content="mrrz.dev — terminal-style portfolio of Son Morris Sasi">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
 
-  <link rel="icon" href="images/Profile.jpg" type="image/jpeg">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="alternate icon" href="images/Profile.jpg" type="image/jpeg">
+  <link rel="apple-touch-icon" href="images/Profile.jpg">
+
+  <!-- Structured data: Person -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Son Morris Sasi",
+    "alternateName": "Morris Sasi",
+    "url": "https://mrrz.dev/",
+    "image": "https://mrrz.dev/images/Profile.jpg",
+    "jobTitle": "AI Automation Developer",
+    "sameAs": [
+      "https://github.com/zceptre",
+      "https://www.upwork.com/freelancers/~016110c8b7153e5e76"
+    ]
+  }
+  </script>
 
   <style>
     /* ============================================
@@ -26,11 +67,24 @@
     /* ============================================
        BASE
     ============================================ */
+    :root {
+      /* Primary face: Space Grotesk used everywhere.
+         --font-mono is aliased to Space Grotesk too so legacy refs stay valid. */
+      --font-mono: 'Space Grotesk', 'Inter', system-ui, -apple-system, sans-serif;
+      --font-display: 'Space Grotesk', 'Inter', system-ui, -apple-system, sans-serif;
+      /* Accent palette */
+      --accent-green: #4afa7a;
+      --accent-amber: #febc2e;
+      --accent-coral: #ff6b6b;
+      /* Color-tinted shadow primitives — used to layer depth without going flat-black */
+      --shadow-green-tint: rgba(20, 60, 35, 0.55);
+      --shadow-amber-tint: rgba(50, 35, 5, 0.35);
+    }
     html, body {
       width: 100%;
       height: 100%;
-      font-family: 'JetBrains Mono', 'Courier New', monospace;
-      font-size: 13px;
+      font-family: var(--font-mono);
+      font-size: 14px;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       overflow: hidden;
@@ -407,11 +461,12 @@
     /* Navigation block */
     .nav-block { display: flex; flex-direction: column; gap: 4px; }
     .nav-label {
-      font-size: 12.5px;
+      font-family: var(--font-display);
+      font-size: 14px;
       color: #ffffff;
-      font-weight: 500;
-      margin-bottom: 4px;
-      letter-spacing: 0.02em;
+      font-weight: 600;
+      margin-bottom: 6px;
+      letter-spacing: -0.01em;
     }
     .nav-cmd {
       font-size: 12.5px;
@@ -426,9 +481,55 @@
       font-family: inherit;
       text-align: left;
     }
-    .nav-cmd:hover { color: #4afa7a; }
+    .nav-cmd:hover { color: var(--accent-green); }
     .nav-cmd:active { color: #2ecc57; }
-    .nav-cmd:focus-visible { outline: none; }
+    .nav-cmd:focus-visible {
+      outline: 2px solid var(--accent-green);
+      outline-offset: 3px;
+      border-radius: 3px;
+      color: var(--accent-green);
+    }
+
+    /* Hire CTA card — themed via classes so light-mode overrides reach it */
+    .hire-cta {
+      margin-bottom: 14px;
+      padding: 9px 12px;
+      border: 1px solid rgba(74, 250, 122, 0.28);
+      border-radius: 6px;
+      background: rgba(74, 250, 122, 0.06);
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+    .hire-cta .status-dot { flex-shrink: 0; }
+    .hire-cta-text {
+      font-size: 12.5px;
+      color: rgba(255, 255, 255, 0.78);
+      line-height: 1.5;
+    }
+    .hire-cta-link {
+      display: inline;
+      padding: 0;
+      margin: 0;
+      font-size: 12.5px;
+      color: var(--accent-green);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      text-decoration-color: rgba(74, 250, 122, 0.4);
+    }
+    .hire-cta-link:hover {
+      text-decoration-color: var(--accent-green);
+    }
+    .hire-cta-link:focus-visible {
+      outline: 2px solid var(--accent-green);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
 
     .nav-hints {
       margin-top: 6px;
@@ -466,7 +567,7 @@
       position: sticky;
       bottom: 8px;
       align-self: flex-end;
-      font-family: 'JetBrains Mono', monospace;
+      font-family: var(--font-mono);
       font-size: 11px;
       color: rgba(255,255,255,0.4);
       background: rgba(30,30,32,0.85);
@@ -482,9 +583,9 @@
     .scroll-top-btn.visible { opacity: 1; pointer-events: auto; }
     .scroll-top-btn:hover { color: rgba(255,255,255,0.8); border-color: rgba(255,255,255,0.25); }
     html[data-theme="light"] .scroll-top-btn {
-      color: rgba(0,0,0,0.4);
+      color: rgba(0,0,0,0.55);
       background: rgba(240,239,234,0.9);
-      border-color: rgba(0,0,0,0.12);
+      border-color: rgba(0,0,0,0.22);
     }
     html[data-theme="light"] .scroll-top-btn:hover { color: rgba(0,0,0,0.75); border-color: rgba(0,0,0,0.25); }
 
@@ -492,7 +593,7 @@
       display: inline-flex;
       align-items: center;
       gap: 5px;
-      font-family: 'JetBrains Mono', monospace;
+      font-family: var(--font-mono);
       font-size: 11px;
       color: rgba(255,255,255,0.35);
       background: none;
@@ -506,21 +607,30 @@
       flex-shrink: 0;
     }
     .back-btn:hover { color: rgba(255,255,255,0.75); border-color: rgba(255,255,255,0.25); }
-    html[data-theme="light"] .back-btn { color: rgba(0,0,0,0.38); border-color: rgba(0,0,0,0.12); }
+    html[data-theme="light"] .back-btn { color: rgba(0,0,0,0.55); border-color: rgba(0,0,0,0.22); }
     html[data-theme="light"] .back-btn:hover { color: rgba(0,0,0,0.7); border-color: rgba(0,0,0,0.25); }
 
     .o-cmd     { font-size: 12.5px; color: rgba(255,255,255,0.38); margin-bottom: 6px; }
-    .o-head    { font-size: 13px; color: #ffffff; font-weight: 700; margin: 4px 0 2px; letter-spacing: 0.02em; }
-    .o-line    { font-size: 12.5px; color: rgba(255,255,255,0.78); white-space: pre; line-height: 1.75; }
-    .o-para    { font-size: 12.5px; color: rgba(255,255,255,0.72); white-space: pre-wrap; line-height: 1.75; }
+    .o-head    {
+      font-family: var(--font-display);
+      font-size: 17px;
+      color: #ffffff;
+      font-weight: 600;
+      margin: 6px 0 4px;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+    }
+    .o-line    { font-size: 13.5px; color: rgba(255,255,255,0.82); white-space: pre; line-height: 1.75; }
+    .o-para    { font-size: 13.5px; color: rgba(255,255,255,0.76); white-space: pre-wrap; line-height: 1.75; }
     .o-dim     { font-size: 11px; color: rgba(255,255,255,0.25); font-style: italic; margin: 2px 0; }
     .o-sep     { height: 1px; background: rgba(255,255,255,0.08); margin: 6px 0; flex-shrink: 0; }
-    .o-err     { font-size: 12.5px; color: #ff6b6b; }
+    .o-err     { font-size: 12.5px; color: var(--accent-coral); }
+    .o-warn    { font-size: 12.5px; color: var(--accent-amber); }
     .o-ok      { font-size: 12.5px; color: #ffffff; }
     .o-prompt  { font-size: 12.5px; color: #5DBA7D; font-weight: 600; margin-top: 4px; }
     .o-ai      {
-      font-size: 12.5px;
-      color: rgba(255,255,255,0.75);
+      font-size: 13.5px;
+      color: rgba(255,255,255,0.78);
       white-space: pre-wrap;
       line-height: 1.75;
       border-left: 2px solid rgba(255,255,255,0.25);
@@ -575,7 +685,7 @@
       padding: 8px 24px 8px;
     }
     .chat-chip {
-      font-family: 'JetBrains Mono', monospace;
+      font-family: var(--font-mono);
       font-size: 10.5px;
       color: rgba(255,255,255,0.5);
       background: rgba(255,255,255,0.06);
@@ -699,7 +809,7 @@
       border: none;
       outline: none;
       color: rgba(255,255,255,0.85);
-      font-family: 'JetBrains Mono', monospace;
+      font-family: var(--font-mono);
       font-size: 13px;
       caret-color: #ffffff;
       min-width: 0;
@@ -742,7 +852,7 @@
       transform: translateX(-50%);
       background: #2A2A2A;
       color: rgba(255,255,255,0.75);
-      font-family: 'JetBrains Mono', monospace;
+      font-family: var(--font-mono);
       font-size: 10px;
       white-space: nowrap;
       padding: 3px 8px;
@@ -816,16 +926,18 @@
       filter: brightness(0.95) contrast(1.08) saturate(1.1);
     }
     .peek-heading {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 14px;
-      font-weight: 700;
-      color: rgba(255,255,255,0.92);
-      margin-bottom: 8px;
+      font-family: var(--font-display);
+      font-size: 19px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      color: rgba(255,255,255,0.95);
+      margin-bottom: 10px;
       line-height: 1.4;
       letter-spacing: -0.01em;
     }
     .peek-sub {
-      font-family: 'JetBrains Mono', monospace;
+      font-family: var(--font-mono);
       font-size: 11px;
       color: rgba(255,255,255,0.4);
       line-height: 1.6;
@@ -837,7 +949,7 @@
       padding: 9px 0;
       background: rgba(255,255,255,0.9);
       color: #111;
-      font-family: 'JetBrains Mono', monospace;
+      font-family: var(--font-mono);
       font-size: 11.5px;
       font-weight: 700;
       border: none;
@@ -888,11 +1000,20 @@
       gap: 4px;
     }
     .exit-line {
-      font-family: 'JetBrains Mono', monospace;
+      font-family: var(--font-mono);
       font-size: 13px;
       line-height: 1.7;
     }
     .exit-accent { color: rgba(255,255,255,0.85); }
+    .exit-line.exit-headline {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.3;
+      color: #ffffff;
+      margin: 4px 0 2px;
+    }
     .exit-normal { color: rgba(255,255,255,0.5); }
     .exit-sep {
       height: 1px;
@@ -906,13 +1027,13 @@
       flex-wrap: wrap;
     }
     .exit-prompt {
-      font-family: 'JetBrains Mono', monospace;
+      font-family: var(--font-mono);
       font-size: 13px;
       color: rgba(255,255,255,0.4);
       margin-right: 2px;
     }
     .exit-btn {
-      font-family: 'JetBrains Mono', monospace;
+      font-family: var(--font-mono);
       font-size: 12px;
       color: rgba(255,255,255,0.7);
       background: transparent;
@@ -953,7 +1074,7 @@
     .cmd-suggest::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
     .cmd-item {
       padding: 8px 14px;
-      font-family: 'JetBrains Mono', monospace;
+      font-family: var(--font-mono);
       font-size: 12.5px;
       color: rgba(255,255,255,0.55);
       cursor: pointer;
@@ -977,6 +1098,13 @@
        MOBILE
     ============================================ */
     @media (max-width: 680px) {
+      /* Release the desktop scroll-lock on mobile — iOS needs body to scroll
+         freely when the soft keyboard opens for the prompt input */
+      html, body {
+        overflow: visible;
+        height: auto;
+        min-height: 100%;
+      }
       .desktop {
         padding: 0;
         align-items: stretch;
@@ -1024,12 +1152,12 @@
         overflow: visible;
       }
       .portrait-wrap {
-        width: 90px;
+        width: 140px;
         flex-shrink: 0;
       }
       .portrait-img {
-        width: 90px;
-        height: 105px;
+        width: 140px;
+        height: 160px;
       }
       .pixel-logo-wrap { width: 100%; }
       .portrait-meta-wrap {
@@ -1052,6 +1180,88 @@
       .output-area { padding: 12px 18px 10px; }
       .tl { width: 16px; height: 16px; }
       .traffic-lights { position: relative; top: unset; transform: none; left: unset; gap: 10px; }
+
+      /* Touch targets: 44px+ minimum (WCAG 2.5.5) */
+      .nav-cmd {
+        padding: 12px 6px;
+        font-size: 14px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+      }
+      .nav-block .nav-cmd { gap: 0; }
+      .nav-block > div[style*="grid"] {
+        gap: 4px 20px !important;
+      }
+      .chat-chip {
+        padding: 9px 14px;
+        font-size: 12px;
+        min-height: 36px;
+      }
+      .menubar-items span,
+      .menubar-right span {
+        padding: 6px 10px;
+        min-height: 28px;
+        display: inline-flex;
+        align-items: center;
+      }
+      .dock-icon {
+        width: 44px;
+        height: 44px;
+      }
+      /* Hide macOS dock on mobile — it competes with the prompt input
+         at the bottom edge and the terminal goes fullscreen anyway */
+      .macos-dock { display: none; }
+    }
+
+    /* ============================================
+       ACCESSIBILITY — keyboard focus rings
+    ============================================ */
+    /* Traffic lights — clearly focusable */
+    .tl {
+      outline: none;
+    }
+    .tl:focus-visible {
+      outline: 2px solid var(--accent-green);
+      outline-offset: 3px;
+    }
+    /* Dock icons — show a soft focus ring */
+    .dock-icon:focus-visible {
+      outline: 2px solid var(--accent-green);
+      outline-offset: 2px;
+    }
+    /* Menubar items — when keyboard-focused, surface a faint highlight */
+    .menubar-items span:focus-visible,
+    .menubar-right span:focus-visible {
+      outline: 1px solid var(--accent-green);
+      outline-offset: 2px;
+      background: rgba(74, 250, 122, 0.12);
+      border-radius: 4px;
+    }
+    /* Chat chips */
+    .chat-chip:focus-visible {
+      outline: 2px solid var(--accent-green);
+      outline-offset: 2px;
+    }
+    /* Back & scroll buttons */
+    .back-btn:focus-visible,
+    .scroll-top-btn:focus-visible {
+      outline: 2px solid var(--accent-green);
+      outline-offset: 2px;
+    }
+    /* Peek card open button */
+    .peek-btn:focus-visible {
+      outline: 2px solid var(--accent-green);
+      outline-offset: 3px;
+    }
+    /* Exit screen buttons */
+    .exit-btn:focus-visible {
+      outline: 2px solid var(--accent-green);
+      outline-offset: 3px;
+    }
+    /* Skip link / prompt-bar input — make focus visible without changing layout */
+    .prompt-input:focus-visible {
+      outline: none; /* prompt already has inset caret styling */
     }
 
     /* ============================================
@@ -1133,7 +1343,7 @@
       background: #EDECE6;
       border-bottom-color: rgba(0,0,0,0.08);
     }
-    html[data-theme="light"] .titlebar-title { color: rgba(0,0,0,0.35); }
+    html[data-theme="light"] .titlebar-title { color: rgba(0,0,0,0.5); }
     html[data-theme="light"] .tl::after {
       background: #E8E7E0;
       color: rgba(0,0,0,0.7);
@@ -1148,7 +1358,7 @@
     html[data-theme="light"] .portrait-meta { color: rgba(0,0,0,0.55); }
     html[data-theme="light"] .portrait-meta a { color: rgba(0,0,0,0.55); }
     html[data-theme="light"] .portrait-meta a:hover { color: #000000; }
-    html[data-theme="light"] .still-there { color: rgba(0,0,0,0.28); }
+    html[data-theme="light"] .still-there { color: rgba(0,0,0,0.45); }
 
     html[data-theme="light"] .st-label { color: rgba(0,0,0,0.38); }
     html[data-theme="light"] .st-value  { color: rgba(0,0,0,0.82); }
@@ -1158,11 +1368,11 @@
     html[data-theme="light"] .nav-cmd:hover { color: #1a8c3f; }
     html[data-theme="light"] .nav-hint  { color: rgba(0,0,0,0.32); }
 
-    html[data-theme="light"] .o-cmd  { color: rgba(0,0,0,0.38); }
+    html[data-theme="light"] .o-cmd  { color: rgba(0,0,0,0.5); }
     html[data-theme="light"] .o-head { color: #000000; }
     html[data-theme="light"] .o-line { color: rgba(0,0,0,0.8); }
     html[data-theme="light"] .o-para { color: rgba(0,0,0,0.72); }
-    html[data-theme="light"] .o-dim  { color: rgba(0,0,0,0.35); }
+    html[data-theme="light"] .o-dim  { color: rgba(0,0,0,0.5); }
     html[data-theme="light"] .o-sep  { background: rgba(0,0,0,0.08); }
     html[data-theme="light"] .o-ok     { color: #000000; }
     html[data-theme="light"] .o-prompt { color: #1a7a40; }
@@ -1170,6 +1380,57 @@
     html[data-theme="light"] .o-ai {
       color: rgba(0,0,0,0.72);
       border-left-color: rgba(0,0,0,0.2);
+    }
+
+    /* Hire CTA card — light theme */
+    html[data-theme="light"] .hire-cta {
+      border-color: rgba(26, 138, 63, 0.45);
+      background: rgba(26, 138, 63, 0.08);
+    }
+    html[data-theme="light"] .hire-cta-text {
+      color: rgba(0, 0, 0, 0.78);
+    }
+    html[data-theme="light"] .hire-cta-link {
+      color: #0F6B2E;
+      text-decoration-color: rgba(15, 107, 46, 0.5);
+    }
+    html[data-theme="light"] .hire-cta-link:hover {
+      color: #0a4d20;
+      text-decoration-color: #0a4d20;
+    }
+    /* Status dot also needs a darker shade on cream so it's visible */
+    html[data-theme="light"] .status-dot {
+      background: #0F6B2E;
+      box-shadow: 0 0 0 0 rgba(15, 107, 46, 0.45);
+      animation-name: pulse-dot-light;
+    }
+    @keyframes pulse-dot-light {
+      0%   { box-shadow: 0 0 0 0 rgba(15, 107, 46, 0.45); }
+      60%  { box-shadow: 0 0 0 5px rgba(15, 107, 46, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(15, 107, 46, 0); }
+    }
+    /* The pixel-logo block stays dark on both themes — its scanlines / 3D
+       shadow rely on the dark surface. But in light theme, give it a hint
+       of warmth so it doesn't feel like an alien black slab on cream. */
+    html[data-theme="light"] .pixel-logo-wrap {
+      box-shadow:
+        0 2px 0 #000,
+        0 4px 0 #000,
+        0 8px 18px rgba(40, 30, 10, 0.18);
+    }
+    /* Nav hint text on cream — bump from 0.32 black for AA contrast */
+    html[data-theme="light"] .nav-hint { color: rgba(0,0,0,0.42); }
+    /* /hire link in command output should also use the darker green */
+    html[data-theme="light"] .nav-cmd:hover,
+    html[data-theme="light"] .nav-cmd:focus-visible {
+      color: #0F6B2E;
+    }
+    html[data-theme="light"] .nav-cmd:focus-visible {
+      outline-color: #0F6B2E;
+    }
+    /* portrait scanline overlay washes the photo too much on cream */
+    html[data-theme="light"] .portrait-wrap::after {
+      opacity: 0.55;
     }
 
     html[data-theme="light"] .chat-chip {
@@ -1243,7 +1504,7 @@
       border-bottom-color: rgba(0,0,0,0.05);
     }
     html[data-theme="light"] .cmd-item .cmd-name { color: rgba(0,0,0,0.85); }
-    html[data-theme="light"] .cmd-item .cmd-desc  { color: rgba(0,0,0,0.38); }
+    html[data-theme="light"] .cmd-item .cmd-desc  { color: rgba(0,0,0,0.5); }
     html[data-theme="light"] .cmd-item:hover,
     html[data-theme="light"] .cmd-item.active { background: rgba(0,0,0,0.05); }
     html[data-theme="light"] .cmd-item.active .cmd-name { color: #000000; }
@@ -1258,6 +1519,7 @@
       border-bottom-color: rgba(0,0,0,0.06);
     }
     html[data-theme="light"] .exit-accent { color: rgba(0,0,0,0.85); }
+    html[data-theme="light"] .exit-line.exit-headline { color: rgba(0,0,0,0.92); }
     html[data-theme="light"] .exit-normal { color: rgba(0,0,0,0.5); }
     html[data-theme="light"] .exit-sep    { background: rgba(0,0,0,0.08); }
     html[data-theme="light"] .exit-prompt { color: rgba(0,0,0,0.4); }
@@ -1383,7 +1645,7 @@
     <button class="peek-btn" id="peekOpenBtn">Open Terminal</button>
   </div>
 
-  <div class="terminal" role="main" aria-label="mrrs.dev terminal portfolio">
+  <div class="terminal" role="main" aria-label="mrrz.dev terminal portfolio">
 
     <!-- ==========================================
          TITLE BAR
@@ -1394,7 +1656,7 @@
         <div class="tl tl-minimize" id="tlMinimize" data-tip="Minimize" role="button" tabindex="0" aria-label="Minimize terminal"></div>
         <div class="tl tl-maximize" id="tlMaximize" data-tip="Maximize" role="button" tabindex="0" aria-label="Maximize terminal"></div>
       </div>
-      <span class="titlebar-title">mrrs.dev — /portfolio</span>
+      <span class="titlebar-title">mrrz.dev — /portfolio</span>
     </div>
 
     <div class="terminal-body">
@@ -1418,13 +1680,6 @@
                  loading="eager">
           </div>
 
-          <div class="portrait-meta-wrap">
-            <div class="portrait-meta" style="text-align:center;">
-              <span class="status-dot"></span>Available for hire
-            </div>
-          </div>
-
-          
         </div>
 
         <!-- RIGHT COLUMN -->
@@ -1440,23 +1695,23 @@
                 <tbody>
                   <tr>
                     <td class="st-label">Role</td>
-                    <td class="st-value">AI Chatbot & Automation Specialist</td>
+                    <td class="st-value">AI Automation Developer</td>
                   </tr>
                   <tr>
                     <td class="st-label">Delivers</td>
-                    <td class="st-value">Instant responses · Lead qualification · Zero manual work</td>
-                  </tr>
-                  <tr>
-                    <td class="st-label">Chatbots</td>
-                    <td class="st-value">WhatsApp · AI agents · CRM-connected</td>
+                    <td class="st-value">AI pipelines · Custom CMS · Zero manual work</td>
                   </tr>
                   <tr>
                     <td class="st-label">Automate</td>
-                    <td class="st-value">n8n · End-to-end pipelines · Zero intervention</td>
+                    <td class="st-value">n8n · Playwright · PDF extraction · Multi-stage flows</td>
                   </tr>
                   <tr>
-                    <td class="st-label">Code</td>
-                    <td class="st-value">JavaScript · Java · HTML/CSS</td>
+                    <td class="st-label">Build</td>
+                    <td class="st-value">Shopify integrations · Admin dashboards · AI agents</td>
+                  </tr>
+                  <tr>
+                    <td class="st-label">Stack</td>
+                    <td class="st-value">React · PHP · MySQL · Railway · OpenAI · Claude</td>
                   </tr>
                 </tbody>
               </table>
@@ -1465,9 +1720,9 @@
             <div class="h-sep"></div>
 
             <!-- Hire CTA -->
-            <div style="margin-bottom:14px; padding:7px 10px; border:1px solid rgba(74,250,122,0.2); border-radius:6px; background:rgba(74,250,122,0.04); display:flex; align-items:center; gap:8px;">
-              <span class="status-dot" style="flex-shrink:0;"></span>
-              <span style="font-size:11px; color:rgba(255,255,255,0.6);">Open to work — type <button class="nav-cmd" data-cmd="/hire" style="display:inline; padding:0; font-size:11px; color:#4afa7a; background:none; border:none; cursor:pointer; font-family:inherit;">/hire</button> to start a project</span>
+            <div class="hire-cta">
+              <span class="status-dot"></span>
+              <span class="hire-cta-text">Open to work — type <button class="nav-cmd hire-cta-link" data-cmd="/hire">/hire</button> to start a project</span>
             </div>
 
             <!-- Navigation -->
@@ -1542,12 +1797,12 @@
           <div class="tl tl-minimize" style="opacity:0.4;"></div>
           <div class="tl tl-maximize" style="opacity:0.4;"></div>
         </div>
-        <span class="titlebar-title">mrrs.dev — /exit</span>
+        <span class="titlebar-title">mrrz.dev — /exit</span>
       </div>
       <div class="exit-body">
         <p class="exit-line exit-accent">$ kill -9 portfolio</p>
         <p class="exit-line exit-accent">X Process terminated.</p>
-        <p class="exit-line exit-normal">But great code never really stops.</p>
+        <p class="exit-line exit-headline">But great code never really stops.</p>
         <p class="exit-line exit-accent">Let's keep the conversation going.</p>
         <div class="exit-sep"></div>
         <div class="exit-actions">
@@ -1671,15 +1926,17 @@
       { t: 'sep' },
       { t: 'head', v: '# about' },
       { t: 'line', v: 'Name       Son Morris Sasi' },
-      { t: 'line', v: 'Role       AI Chatbot & Automation Specialist' },
-      { t: 'line', v: 'Based      Philippines' },
+      { t: 'line', v: 'Role       AI Automation Developer' },
+      { t: 'line', v: 'Employer   Flow Pilot (on-call developer)' },
+      { t: 'line', v: 'Based      Philippines · serving international clients' },
       { t: 'sep' },
-      { t: 'para', v: "I build AI chatbots and automation systems that generate leads,\nqualify prospects, and run business workflows with zero manual\nintervention. Currently shipping production pipelines for a UAE\nhealth-tech company (MeScreen) using n8n, GPT-4.1-mini, and WhatsApp." },
-      { t: 'line', v: '✓  5-stage pipeline · 100+ orders/week · zero manual intervention' },
-      { t: 'line', v: '✓  WhatsApp AI bot handling full customer journey end-to-end' },
-      { t: 'line', v: '✓  Lead discovery system — automated qualification & CRM export' },
+      { t: 'para', v: "I build AI-augmented automation systems for international clients.\nWhen a business needs a custom CMS, an n8n pipeline, an AI agent, or\na full-stack admin dashboard wired into Shopify — I'm the developer\nFlow Pilot calls. From scraping product data with Playwright to\nextracting structured fields from PDFs to syncing everything live\nthrough the Shopify API, I handle the system end-to-end." },
+      { t: 'line', v: '✓  Custom Shopify CMS for a London furniture brand (PHP · React · MySQL)' },
+      { t: 'line', v: '✓  5-stage WhatsApp AI order pipeline for a UAE health-tech client' },
+      { t: 'line', v: '✓  9-stage B2B clinic automation — quote-to-cash with branching billing' },
+      { t: 'line', v: '✓  OpenClaw AI chatbot with multi-model tool calling (GPT · Claude · DeepSeek)' },
       { t: 'sep' },
-      { t: 'para', v: "I connect the tools businesses already use — CRMs, payment systems,\nmessaging platforms — into intelligent, end-to-end automations.\nIf it can be automated, I'll automate it." },
+      { t: 'para', v: "I connect the tools businesses already use — CRMs, payment systems,\nmessaging platforms, Shopify, accounting software — into intelligent,\nend-to-end automations. If it can be automated, I'll automate it." },
       { t: 'sep' },
       { t: 'dim',  v: 'Type /projects to see my work. Type /skills for my stack.' },
     ],
@@ -1688,25 +1945,38 @@
       { t: 'cmd',  v: '> /projects' },
       { t: 'sep' },
       { t: 'head', v: '# projects' },
-      { t: 'line', v: '[1]  WhatsApp AI Chatbot — Order Fulfilment   MeScreen (UAE)' },
-      { t: 'dim',  v: '     n8n · GPT-4.1-mini · WhatsApp · Supabase · GHL  |  2025–Present' },
-      { t: 'para', v: '     AI chatbot handling the full customer journey over WhatsApp —\n     from order intake to kit collection. 5-stage pipeline with\n     GPT-4.1-mini agents at each step: qualification, supplier relay,\n     confirmation, and delivery tracking. Zero manual intervention.' },
+      { t: 'line', v: '[1]  Custom Shopify CMS                London furniture brand' },
+      { t: 'dim',  v: '     Playwright · PDF extraction · PHP · React · MySQL · Railway · Shopify API  |  2026' },
+      { t: 'para', v: '     Full-stack admin dashboard for an e-commerce furniture brand.\n     Scrapes product data with Playwright, extracts structured data\n     from supplier PDFs with AI, normalizes everything in MySQL, and\n     2-way syncs with the Shopify Admin API. Live container planning,\n     inventory management, and order tracking.' },
+      { t: 'link', v: '     View diagram →', url: 'images/portfolio/shopify-cms-architecture.svg' },
       { t: 'sep' },
-      { t: 'line', v: '[2]  MeScreen B2B Accounting           Automation Developer @ MeScreen (UAE)' },
-      { t: 'dim',  v: '     n8n · Supabase · Xero · Stripe · GHL · WAHA  |  2025–Present' },
-      { t: 'para', v: '     Full B2B order-to-cash automation — quoting, invoicing,\n     payment reconciliation, and kit dispatch across pre-paid\n     and post-paid billing paths.' },
+      { t: 'line', v: '[2]  B2C WhatsApp Order Fulfilment     UAE health-tech client' },
+      { t: 'dim',  v: '     n8n · OpenAI · WhatsApp Business API · WooCommerce · GHL  |  2026' },
+      { t: 'para', v: '     5-stage AI agent handling the full customer journey over\n     WhatsApp — from WooCommerce order intake through supplier\n     relay, dispatch, delivery confirmation, and post-purchase\n     NPS survey. Zero manual intervention end-to-end.' },
+      { t: 'link', v: '     View diagram →', url: 'images/portfolio/b2c-whatsapp-fulfilment.svg' },
       { t: 'sep' },
-      { t: 'line', v: '[3]  Instagram Listener                Automation Developer @ MeScreen (UAE)' },
-      { t: 'dim',  v: '     OpenClaw · Google Sheets · AI enrichment  |  2025–Present' },
-      { t: 'para', v: '     Network-first Instagram account discovery tool for UAE health\n     and wellness market. Automated account qualification,\n     engagement mining, and structured data export.' },
+      { t: 'line', v: '[3]  B2B Clinic Order Automation       UAE health-tech client' },
+      { t: 'dim',  v: '     n8n · OpenAI · GHL · Xero · Stripe · Supabase  |  2026' },
+      { t: 'para', v: '     9-stage quote-to-cash pipeline with branching billing logic\n     (pre-paid vs post-paid). Automated quote generation, dispatch\n     routing, invoicing via Xero, and bank-transfer reconciliation.' },
+      { t: 'link', v: '     View diagram →', url: 'images/portfolio/b2b-clinic-pipeline.svg' },
       { t: 'sep' },
-      { t: 'line', v: '[4]  Echoes of Eldrin                 Capstone' },
-      { t: 'dim',  v: '     Unreal Engine 5 · C++ · Blueprint  |  Jan – Oct 2025' },
+      { t: 'line', v: '[4]  OpenClaw AI Chatbot               Multi-model agent system' },
+      { t: 'dim',  v: '     OpenClaw · OpenAI · Claude · DeepSeek · Supabase · GHL  |  2026' },
+      { t: 'para', v: '     Agentic AI customer support with tool calling — product\n     lookups, lead capture, CRM actions, payment handoffs.\n     Multi-model routing (GPT-4, Claude, DeepSeek) plugged into\n     web chat, WhatsApp, and Slack.' },
+      { t: 'link', v: '     View diagram →', url: 'images/portfolio/openclaw-ai-chatbot.svg' },
+      { t: 'sep' },
+      { t: 'line', v: '[5]  Instagram Lead Discovery          UAE health & wellness market' },
+      { t: 'dim',  v: '     OpenClaw · n8n · OpenAI · Supabase · GHL · Discord  |  2026' },
+      { t: 'para', v: '     AI-driven lead pipeline. Listens to Instagram signals,\n     qualifies prospects with GPT, enriches data, routes to GHL\n     CRM, and pings sales in real-time via Discord webhook.' },
+      { t: 'link', v: '     View diagram →', url: 'images/portfolio/instagram-lead-discovery.svg' },
+      { t: 'sep' },
+      { t: 'line', v: '[6]  Echoes of Eldrin                  Capstone (Game Dev)' },
+      { t: 'dim',  v: '     Unreal Engine 5 · C++ · Blueprint     |  Jan – Oct 2025' },
       { t: 'para', v: '     Action RPG with combat systems, performance optimization,\n     and polished 60 FPS gameplay.' },
       { t: 'link', v: '     Watch gameplay →', url: 'https://www.youtube.com/watch?v=D39TFVbQYAE' },
       { t: 'sep' },
-      { t: 'line', v: '[5]  BTCinema                         Freelance' },
-      { t: 'dim',  v: '     Android Studio · Java · SQLite     |  Nov – Dec 2025' },
+      { t: 'line', v: '[7]  BTCinema                          Freelance (Android)' },
+      { t: 'dim',  v: '     Android Studio · Java · SQLite        |  Nov – Dec 2024' },
       { t: 'para', v: '     Movie booking app with real-time seat sync,\n     intuitive UI, and a reliable SQLite database.' },
       { t: 'link', v: '     Watch overview →', url: 'https://www.youtube.com/watch?v=YvWEu5DvwN0' },
       { t: 'sep' },
@@ -1718,13 +1988,18 @@
       { t: 'cmd',  v: '> /skills' },
       { t: 'sep' },
       { t: 'head', v: '# skills' },
-      { t: 'line', v: 'AI Chatbots    GPT-4.1-mini, Groq (llama-3.3-70b), Gemini' },
-      { t: 'line', v: '               WhatsApp Bot, AI Agents, Lead Qualification' },
-      { t: 'line', v: 'Automation     n8n, Multi-stage Pipelines, Workflow Orchestration' },
-      { t: 'line', v: 'Integrations   GHL / GoHighLevel, Supabase, Xero, Stripe, WAHA' },
-      { t: 'line', v: '               WhatsApp API, Discord Webhooks, OpenClaw' },
-      { t: 'line', v: 'Programming    JavaScript, Java, HTML, CSS' },
-      { t: 'line', v: 'Tools          Git, VS Code, Supabase, Render, Railway' },
+      { t: 'line', v: 'AI & LLMs       OpenAI (GPT-4), Claude (Anthropic), DeepSeek, Groq, Gemini' },
+      { t: 'line', v: '                AI Agents, Tool Calling, Prompt Engineering, RAG patterns' },
+      { t: 'line', v: 'Automation      n8n, Multi-stage Pipelines, Workflow Orchestration' },
+      { t: 'line', v: '                GHL / GoHighLevel, OpenClaw, Webhook Choreography' },
+      { t: 'line', v: 'Scraping & Data Playwright, PDF Extraction, Structured Data Pipelines' },
+      { t: 'line', v: 'E-commerce      Shopify Admin API, WooCommerce, Custom CMS, Stripe' },
+      { t: 'line', v: 'Backend         PHP, Node.js, REST APIs, MySQL, Supabase, Airtable' },
+      { t: 'line', v: 'Frontend        React.js, Tailwind CSS, JavaScript, HTML, CSS' },
+      { t: 'line', v: 'Messaging       WhatsApp Business API, WAHA, Slack, Discord Webhooks' },
+      { t: 'line', v: 'Accounting      Xero, Stripe, GHL payments, Invoice automation' },
+      { t: 'line', v: 'Infrastructure  Railway, Git, deployment + monitoring' },
+      { t: 'line', v: 'Other           Java, Unreal Engine 5, Android Studio, QA Testing' },
       { t: 'sep' },
       { t: 'dim',  v: 'Type /contact to reach me.' },
     ],
@@ -1771,19 +2046,27 @@
       { t: 'cmd',  v: '> /experience' },
       { t: 'sep' },
       { t: 'head', v: '# experience' },
-      { t: 'line', v: 'AI Chatbot & Automation Specialist    MeScreen · UAE' },
-      { t: 'dim',  v: 'n8n · GHL · WAHA · Supabase · GPT-4.1-mini · Discord  |  Feb 2026 – Present' },
-      { t: 'para', v: '  Designed and shipped production automation systems for a\n  UAE health-tech startup. Built end-to-end pipelines with\n  zero manual intervention — multi-stage AI agents, retry\n  logic, escalation flows, and payment routing.' },
+      { t: 'line', v: 'On-Call Developer    Flow Pilot · Philippines (remote)' },
+      { t: 'dim',  v: 'n8n · Playwright · React · PHP · MySQL · OpenAI · Shopify  |  Feb 2026 – Present' },
+      { t: 'para', v: '  On-call developer at Flow Pilot, delivering AI-augmented\n  automation systems and full-stack custom apps for\n  international clients. Multi-stage AI agents, custom CMS\n  builds, web scraping pipelines, and payment routing.' },
       { t: 'sep' },
-      { t: 'line', v: 'Key work:' },
-      { t: 'dim',  v: '  · 5-stage B2C order fulfilment (WhatsApp → AI → Supplier → Delivery)' },
-      { t: 'dim',  v: '  · B2B accounting: SMTP parsing, Xero (bank transfer), GHL + Stripe (card)' },
+      { t: 'line', v: 'Key work for clients:' },
+      { t: 'dim',  v: '  · Custom Shopify CMS for a London furniture brand' },
+      { t: 'dim',  v: '    Playwright scraping + PDF extraction + admin dashboard' },
+      { t: 'dim',  v: '    (PHP · React · MySQL · Railway · Shopify API)' },
+      { t: 'dim',  v: '  · 5-stage WhatsApp B2C order pipeline for UAE health-tech' },
+      { t: 'dim',  v: '  · 9-stage B2B clinic automation (quote-to-cash, branching billing)' },
+      { t: 'dim',  v: '  · B2B accounting: SMTP parsing, Xero, GHL + Stripe, Discord alerts' },
       { t: 'dim',  v: '  · Instagram listener & lead discovery (OpenClaw)' },
-      { t: 'dim',  v: '  · Alerts via Discord Webhook and SMTP email' },
+      { t: 'dim',  v: '  · OpenClaw AI chatbot with multi-model tool calling' },
       { t: 'sep' },
-      { t: 'line', v: 'Game Developer / QA Tester            Freelance · Philippines' },
-      { t: 'dim',  v: 'Unreal Engine 5 · Java · Android  |  2024 – 2025' },
-      { t: 'para', v: '  Built Echoes of Eldrin (UE5 action RPG) as capstone.\n  Freelance Android dev (BTCinema). QA testing across\n  mobile and game projects.' },
+      { t: 'line', v: 'Freelance QA Tester                 Upwork · Remote' },
+      { t: 'dim',  v: 'Mobile · Android · Games  |  2022 – 2025' },
+      { t: 'para', v: '  100% Job Success on Upwork — mobile app and game testing\n  for international clients. Identified bugs, performance\n  issues, and UX defects. BTCinema (Android movie booking,\n  Java + SQLite) delivered as a freelance project, Nov–Dec 2024.' },
+      { t: 'sep' },
+      { t: 'line', v: 'Echoes of Eldrin (Capstone)         Programmer' },
+      { t: 'dim',  v: 'Unreal Engine 5 · C++ · Blueprint  |  Jan – Oct 2025' },
+      { t: 'para', v: '  Built combat systems and core gameplay for an action RPG.\n  Performance-optimized 60 FPS gameplay; collaborated with\n  artists on asset integration.' },
       { t: 'sep' },
       { t: 'dim',  v: 'Type /projects for details. Type /hire to work together.' },
     ],
@@ -1792,18 +2075,20 @@
       { t: 'cmd',  v: '> /now' },
       { t: 'sep' },
       { t: 'head', v: '# now' },
-      { t: 'line', v: 'Status     Available for freelance' },
-      { t: 'line', v: 'Location   Philippines' },
+      { t: 'line', v: 'Status     On-call with Flow Pilot · open to freelance' },
+      { t: 'line', v: 'Location   Philippines (remote)' },
       { t: 'line', v: 'Date       2026' },
       { t: 'sep' },
-      { t: 'line', v: 'Working on:' },
-      { t: 'dim',  v: '  · MeScreen B2B automation (n8n + Xero + Stripe)' },
-      { t: 'dim',  v: '  · Building AI chatbot flows for lead generation' },
-      { t: 'dim',  v: '  · This portfolio site' },
+      { t: 'line', v: 'Building:' },
+      { t: 'dim',  v: '  · Custom Shopify CMS for a London furniture brand' },
+      { t: 'dim',  v: '    (Playwright scraping + PDF extraction + React admin)' },
+      { t: 'dim',  v: '  · B2B clinic order pipeline (9-stage, branching billing)' },
+      { t: 'dim',  v: '  · OpenClaw AI agents with multi-model tool calling' },
       { t: 'sep' },
       { t: 'line', v: 'Learning:' },
-      { t: 'dim',  v: '  · Advanced AI agent patterns and LLM orchestration' },
-      { t: 'dim',  v: '  · Deeper JavaScript for custom chatbot logic' },
+      { t: 'dim',  v: '  · Production-grade AI agent orchestration patterns' },
+      { t: 'dim',  v: '  · Shopify storefront customization beyond the Admin API' },
+      { t: 'dim',  v: '  · Deeper PHP + React full-stack patterns' },
       { t: 'sep' },
       { t: 'dim',  v: 'Type /hire if you want to build something together.' },
     ],
@@ -1873,33 +2158,38 @@
       { t: 'cmd',  v: '> /resume' },
       { t: 'sep' },
       { t: 'head', v: '# Son Morris Sasi' },
-      { t: 'line', v: 'AI Chatbot & Automation Specialist  ·  Philippines' },
+      { t: 'line', v: 'AI Automation Developer  ·  Philippines' },
       { t: 'line', v: 'morris.dev31@gmail.com  ·  github.com/zceptre' },
       { t: 'sep' },
       { t: 'head', v: '## Experience' },
       { t: 'sep' },
-      { t: 'ok',   v: 'AI Chatbot & Automation Specialist — MeScreen (UAE)  [Feb 2026 – Present]' },
-      { t: 'para', v: '  · Built 5-stage n8n order fulfilment pipeline:\n    WhatsApp intake → AI filtering → Supplier relay\n    → Order confirmation → Delivery tracking\n  · Automated B2B accounting: PDF/email via SMTP,\n    Xero for bank transfers, GHL + Stripe for card payments\n  · Developed Instagram Listener system (OpenClaw)\n    for UAE health/wellness lead discovery\n  · Integrated GHL, Supabase, Stripe, WAHA, Discord\n    Webhook, GPT-4.1-mini' },
+      { t: 'ok',   v: 'On-Call Developer — Flow Pilot (Philippines)  [Feb 2026 – Present]' },
+      { t: 'para', v: '  Remote on-call developer delivering n8n workflows, AI\n  integrations, and full-stack custom systems for international\n  clients.\n\n  · Custom Shopify CMS for a London furniture brand:\n    Playwright scraping + PDF extraction + admin dashboard\n    (PHP · React · MySQL · Railway · Shopify API)\n  · 5-stage WhatsApp B2C order pipeline for a UAE health-tech client\n  · 9-stage B2B clinic automation (quote-to-cash, branching billing)\n  · B2B accounting: SMTP parsing, Xero, GHL + Stripe, Discord alerts\n  · Instagram Listener (OpenClaw) for lead discovery\n  · OpenClaw AI chatbot with multi-model tool calling' },
       { t: 'sep' },
-      { t: 'ok',   v: 'Freelance Developer — Upwork  [2023 – 2025]' },
-      { t: 'para', v: '  · Android app: BTCinema (Java + SQLite)\n  · QA testing across mobile and game projects\n  · Unreal Engine 5 Blueprint scripting' },
+      { t: 'ok',   v: 'Freelance QA Tester — Upwork  [2022 – 2025]' },
+      { t: 'para', v: '  · Mobile app + game testing for international clients\n  · 100% Job Success on Upwork\n  · BTCinema (Android movie booking app, Java + SQLite, Nov–Dec 2024)\n    delivered as a freelance project' },
       { t: 'sep' },
       { t: 'head', v: '## Projects' },
       { t: 'sep' },
-      { t: 'line', v: 'MeScreen Order Fulfilment   n8n · WAHA · Xero · GPT-4.1-mini' },
-      { t: 'line', v: 'MeScreen B2B Accounting     n8n · Supabase · Xero · Slack' },
-      { t: 'line', v: 'Instagram Listener          OpenClaw · Sheets' },
+      { t: 'line', v: 'Custom Shopify CMS          Playwright · PHP · React · MySQL · Shopify API' },
+      { t: 'line', v: 'B2C WhatsApp Pipeline       n8n · OpenAI · WhatsApp · WooCommerce' },
+      { t: 'line', v: 'B2B Clinic Automation       n8n · OpenAI · Xero · Stripe · GHL' },
+      { t: 'line', v: 'OpenClaw AI Chatbot         OpenClaw · GPT-4 · Claude · DeepSeek' },
+      { t: 'line', v: 'Instagram Lead Discovery    OpenClaw · n8n · OpenAI · GHL' },
       { t: 'line', v: 'Echoes of Eldrin            UE5 · Blueprint · C++ (capstone)' },
       { t: 'line', v: 'BTCinema                    Android · Java · SQLite' },
       { t: 'sep' },
       { t: 'head', v: '## Skills' },
       { t: 'sep' },
-      { t: 'line', v: 'Automation   n8n, GHL, OpenClaw' },
-      { t: 'line', v: 'AI           GPT-4.1-mini, Groq, Gemini, LangChain' },
-      { t: 'line', v: 'Backend      Supabase, Airtable, Xero, Stripe, WAHA' },
-      { t: 'line', v: 'Dev          JavaScript, Java, C++' },
-      { t: 'line', v: 'Game Dev     Unreal Engine 5, Blueprint' },
-      { t: 'line', v: 'QA           Bug detection, regression testing' },
+      { t: 'line', v: 'AI & LLMs    OpenAI, Claude, DeepSeek, Groq, Gemini, Tool Calling' },
+      { t: 'line', v: 'Automation   n8n, GHL, OpenClaw, Workflow Orchestration' },
+      { t: 'line', v: 'Scraping     Playwright, PDF Extraction, Structured Pipelines' },
+      { t: 'line', v: 'E-commerce   Shopify API, WooCommerce, Custom CMS, Stripe' },
+      { t: 'line', v: 'Backend      PHP, Node.js, MySQL, Supabase, REST APIs' },
+      { t: 'line', v: 'Frontend     React.js, Tailwind CSS, JavaScript' },
+      { t: 'line', v: 'Messaging    WhatsApp Business API, WAHA, Slack, Discord' },
+      { t: 'line', v: 'Infrastructure  Railway, Git, monitoring & deployment' },
+      { t: 'line', v: 'Other        Java, Unreal Engine 5, Android Studio, QA Testing' },
       { t: 'sep' },
       { t: 'head', v: '## Education' },
       { t: 'sep' },

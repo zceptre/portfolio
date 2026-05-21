@@ -1,20 +1,107 @@
-# API keys / MCP config — never push these
-.mcp.json
+# =============================================================
+# CREDENTIALS & SECRETS — never push these
+# =============================================================
+# Environment files
+.env
+.env.*
+!.env.example
+!.env.sample
 
-# Claude Code internals
+# API keys / config with secrets
+.mcp.json
+secrets.*
+credentials.*
+secret.*
+credential.*
+*.secrets.json
+*.credentials.json
+
+# Tokens
+*.token
+.token
+auth_token*
+
+# Private keys & certificates
+*.key
+*.pem
+*.p12
+*.pfx
+*.crt
+*.cer
+*.der
+*.csr
+
+# SSH keys
+id_rsa
+id_rsa.*
+id_dsa
+id_dsa.*
+id_ed25519
+id_ed25519.*
+id_ecdsa
+id_ecdsa.*
+*.ppk
+
+# Cloud credentials
+.aws/
+.azure/
+.gcp/
+gcp-key*.json
+firebase-adminsdk*.json
+service-account*.json
+serviceAccountKey*.json
+
+# Misc credential files
+.netrc
+.htpasswd
+
+# =============================================================
+# CLAUDE CODE INTERNALS
+# =============================================================
 .claude/
 
-# Screenshots (local dev only)
-temporary screenshots/
-
-# Misc
-*.png
-vladburca.com_.png
-zceptre.github.io_portfolio_.png
-Experience/
-
-# Personal/private files
-CV.pdf
+# =============================================================
+# n8n WORKFLOW EXPORTS (contain embedded credentials)
+# =============================================================
 *.json
 !package.json
 !package-lock.json
+!tsconfig.json
+
+# =============================================================
+# SCREENSHOTS & LOCAL DEV ARTIFACTS
+# =============================================================
+temporary screenshots/
+images/temp/
+*.png
+vladburca.com_.png
+zceptre.github.io_portfolio_.png
+
+# =============================================================
+# PERSONAL / PRIVATE FILES
+# =============================================================
+CV.pdf
+*.moa.pdf
+*MOA*.pdf
+*Contract*.pdf
+Experience/
+Certificate/
+
+# =============================================================
+# SYSTEM JUNK
+# =============================================================
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+*~
+
+# =============================================================
+# DEPENDENCIES & BUILD ARTIFACTS
+# =============================================================
+node_modules/
+dist/
+build/
+.cache/
+.parcel-cache/

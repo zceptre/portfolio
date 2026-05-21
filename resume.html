@@ -3,25 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Son Morris Sasi — AI Automation Developer. Resume.">
   <title>Son Morris Sasi — Resume</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
+    /* ============================================================
+       ATS-FRIENDLY RESUME — Son Morris Sasi
+       - System font (Arial) — no web fonts, parses reliably
+       - Semantic HTML (h1/h2/h3, ul/li) — ATS reads heading hierarchy
+       - Single-column linear flow — no tables for content layout
+       - Plain ASCII characters — no decorative unicode
+       ============================================================ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     @page {
-      size: A4;
+      size: Letter;
       margin: 0;
     }
 
-    body {
-      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
-      font-size: 10.5pt;
-      line-height: 1.6;
-      color: #1a1a1a;
+    html, body {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 10pt;
+      line-height: 1.35;
+      color: #000;
       background: #fff;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* ── Print button ── */
+    /* ── Print/action bar (screen only) ── */
     .print-bar {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -32,195 +40,186 @@
       justify-content: space-between;
       z-index: 100;
     }
-    .print-bar span { font-size: 11px; color: #888; }
+    .print-bar span {
+      font-size: 11px;
+      color: #aaa;
+      font-family: Arial, Helvetica, sans-serif;
+    }
     .print-btn {
       background: #fff; color: #111; border: none;
-      padding: 6px 16px; font-size: 11px; font-weight: 600;
+      padding: 6px 16px; font-size: 11px; font-weight: 700;
       border-radius: 4px; cursor: pointer;
+      font-family: Arial, Helvetica, sans-serif;
     }
     .print-btn:hover { background: #e8e8e8; }
 
     @media print {
       .print-bar { display: none; }
-      .page { padding: 14mm 16mm; }
+      .page { padding: 0.4in 0.55in; }
+      a { color: #000; text-decoration: underline; }
     }
 
-    /* ── Page ── */
+    /* ── Page container ── */
     .page {
-      max-width: 186mm;
+      max-width: 7.5in;
       margin: 0 auto;
-      padding: 46px 0 0;
+      padding: 56px 0.55in 32px;
     }
 
     /* ── Header ── */
-    .header { text-align: center; margin-bottom: 10px; }
-    .header-name {
-      font-size: 22pt; font-weight: 700;
-      letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 3px;
+    header { text-align: center; margin-bottom: 2px; }
+    h1.name {
+      font-size: 17pt;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      margin-bottom: 2px;
     }
-    .header-title { font-size: 11pt; font-weight: 600; margin-bottom: 5px; }
-    .header-contact { font-size: 9.5pt; color: #333; margin-bottom: 2px; }
-    .header-contact a { color: #333; text-decoration: underline; }
-    .header-links { font-size: 9.5pt; color: #333; }
-    .header-links a { color: #333; text-decoration: underline; }
-
-    /* ── Divider ── */
-    hr { border: none; border-top: 1.5px solid #1a1a1a; margin: 9px 0; }
+    .title {
+      font-size: 11pt;
+      font-weight: 700;
+      margin-bottom: 3px;
+    }
+    .contact, .links {
+      font-size: 9.5pt;
+      color: #000;
+    }
+    .contact { margin-bottom: 1px; }
+    .contact a, .links a {
+      color: #1155cc;
+      text-decoration: underline;
+    }
 
     /* ── Section heading ── */
-    .section-title {
-      font-size: 10pt; font-weight: 700; text-align: center;
-      letter-spacing: 0.08em; text-transform: uppercase; margin: 9px 0 7px;
+    h2.section {
+      font-size: 10.5pt;
+      font-weight: 700;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin: 8px 0 2px;
+      padding-top: 4px;
+      border-top: 1pt solid #000;
+      padding-bottom: 1px;
     }
-
-    /* ── Experience entry ── */
-    .exp-header {
-      display: flex; justify-content: space-between;
-      align-items: baseline; margin-bottom: 3px;
-    }
-    .exp-role { font-weight: 700; font-size: 10.5pt; }
-    .exp-period { font-size: 9.5pt; color: #333; font-style: italic; white-space: nowrap; }
-    .exp-bullets { list-style: disc; padding-left: 18px; margin-bottom: 12px; }
-    .exp-bullets li { font-size: 10pt; margin-bottom: 3px; line-height: 1.55; }
-
-    /* ── Skills table ── */
-    .skills-table { width: 100%; border-collapse: collapse; margin-top: 7px; }
-    .skills-table td { vertical-align: top; padding: 0 8px 0 0; font-size: 10pt; width: 25%; }
-    .skills-table td:last-child { padding-right: 0; }
-    .skills-col-head { font-size: 10pt; font-weight: 700; margin-bottom: 4px; }
-    .skills-list { list-style: disc; padding-left: 14px; }
-    .skills-list li { margin-bottom: 3px; line-height: 1.55; }
 
     /* ── Summary ── */
-    .summary-text { font-size: 10.5pt; line-height: 1.6; text-align: justify; }
+    .summary { font-size: 10pt; line-height: 1.4; text-align: justify; margin-top: 3px; }
+
+    /* ── Experience entries ── */
+    .role {
+      font-size: 10pt;
+      font-weight: 700;
+      margin-top: 6px;
+      margin-bottom: 0;
+    }
+    .role em { font-style: italic; font-weight: 400; }
+    .period {
+      font-size: 9.5pt;
+      font-style: italic;
+      margin-bottom: 2px;
+    }
+    ul.bullets {
+      list-style: disc;
+      padding-left: 0.25in;
+      margin-bottom: 2px;
+    }
+    ul.bullets li {
+      font-size: 10pt;
+      line-height: 1.35;
+      margin-bottom: 1px;
+    }
 
     /* ── Education ── */
-    .edu-header { display: flex; justify-content: space-between; align-items: baseline; }
-    .edu-school { font-weight: 700; font-size: 10.5pt; }
-    .edu-period { font-size: 9.5pt; font-style: italic; color: #333; }
-    .edu-degree { font-style: italic; font-size: 9.5pt; color: #333; margin-top: 2px; }
+    .edu-school {
+      font-size: 10pt;
+      font-weight: 700;
+      margin-top: 3px;
+    }
+    .edu-degree {
+      font-size: 10pt;
+      font-style: italic;
+    }
+    .edu-period {
+      font-size: 9.5pt;
+      font-style: italic;
+    }
+
+    /* ── Skills (no tables) ──
+       Each category is a labelled paragraph so ATS reads it as
+       "Category: item, item, item" in document order. */
+    .skill-row {
+      font-size: 10pt;
+      line-height: 1.45;
+      margin: 1px 0;
+    }
+    .skill-row strong { font-weight: 700; }
   </style>
 </head>
 <body>
 
 <div class="print-bar">
-  <span>Son Morris Sasi — Resume</span>
-  <button class="print-btn" onclick="window.print()">⬇ Save as PDF</button>
+  <span>Son Morris Sasi — Resume (ATS-friendly)</span>
+  <button class="print-btn" onclick="window.print()">Save as PDF</button>
 </div>
 
-<div class="page">
+<main class="page">
 
-  <div class="header">
-    <div class="header-name">Son Morris Sasi</div>
-    <div class="header-title">AI Chatbot & Automation Specialist</div>
-    <div class="header-contact">
-      Philippines &nbsp;·&nbsp; +63-995-181-9233 &nbsp;·&nbsp;
-      <a href="mailto:morris.dev31@gmail.com">morris.dev31@gmail.com</a>
+  <header>
+    <h1 class="name">Son Morris Sasi</h1>
+    <div class="title">AI Automation Developer</div>
+    <div class="contact">
+      Philippines | +63-995-181-9233 | <a href="mailto:morris.dev31@gmail.com">morris.dev31@gmail.com</a>
     </div>
-    <div class="header-links">
-      <a href="https://github.com/zceptre">GitHub</a> &nbsp;·&nbsp;
-      <a href="https://www.upwork.com/freelancers/~016110c8b7153e5e76">Upwork</a> &nbsp;·&nbsp;
-      <a href="https://mrrz.dev">Portfolio</a>
+    <div class="links">
+      <a href="https://github.com/zceptre">github.com/zceptre</a>
+      | <a href="https://www.upwork.com/freelancers/~016110c8b7153e5e76">Upwork</a>
+      | <a href="https://mrrz.dev">mrrz.dev</a>
     </div>
-  </div>
+  </header>
 
-  <hr>
+  <h2 class="section">Summary</h2>
+  <p class="summary">AI Automation Developer with hands-on experience building WhatsApp AI bots, multi-stage n8n pipelines, and lead generation systems. Proficient in connecting OpenAI, GHL, Supabase, Xero, Stripe, and WAHA into intelligent, zero-touch business automations. Focused on helping businesses generate leads and eliminate manual work through smart chatbots and end-to-end workflow automation.</p>
 
-  <div class="section-title">Summary</div>
-  <p class="summary-text">AI Chatbot & Automation Specialist with hands-on experience building WhatsApp AI bots, multi-stage n8n pipelines, and lead generation systems. Proficient in connecting GPT-4.1-mini, GHL, Supabase, Xero, Stripe, and WAHA into intelligent, zero-touch business automations. Focused on helping businesses generate leads and eliminate manual work through smart chatbots and end-to-end workflow automation.</p>
+  <h2 class="section">Experience</h2>
 
-  <hr>
-
-  <div class="section-title">Experience</div>
-
-  <div class="exp-header">
-    <span class="exp-role">MeScreen (UAE) &mdash; <em>AI Chatbot & Automation Specialist</em></span>
-    <span class="exp-period">Feb 2026 &ndash; Present</span>
-  </div>
-  <ul class="exp-bullets">
-    <li>Built a 5-stage n8n order fulfilment pipeline: WhatsApp intake &rarr; AI filtering &rarr; Supplier relay &rarr; Order confirmation &rarr; Delivery tracking.</li>
-    <li>Automated B2B accounting: PDF/email parsing via SMTP, Xero reconciliation for bank transfers, GHL + Stripe for card payments, anomaly alerts for finance team.</li>
-    <li>Developed Instagram Listener (OpenClaw) for UAE health/wellness lead discovery.</li>
-    <li>Integrated GHL, Supabase, Stripe, WAHA, Discord Webhook, and GPT-4.1-mini across multi-stage pipelines.</li>
+  <h3 class="role">Flow Pilot (Philippines) - <em>On-Call Developer</em></h3>
+  <div class="period">Feb 2026 - Present</div>
+  <ul class="bullets">
+    <li>Remote on-call developer delivering n8n workflows, AI integrations, and full-stack custom systems for international clients including MeScreen (UAE) and FCI London.</li>
+    <li>For MeScreen (UAE): built a 5-stage n8n order fulfilment pipeline covering WhatsApp intake, AI filtering, supplier relay, order confirmation, and delivery tracking.</li>
+    <li>Automated B2B accounting: PDF and email parsing via SMTP, Xero reconciliation for bank transfers, GHL and Stripe for card payments, anomaly alerts for the finance team.</li>
+    <li>Developed Instagram Listener (OpenClaw) for UAE health and wellness lead discovery.</li>
+    <li>For FCI London (Shopify storefront): built a custom CMS with Playwright-driven product scraping, PDF-to-structured-data extraction, and Shopify API sync; admin dashboard on Railway (MySQL, PHP, React.js, Tailwind CSS).</li>
+    <li>Integrated GHL, Supabase, Stripe, WAHA, Discord Webhook, and OpenAI across multi-stage pipelines.</li>
   </ul>
 
-  <div class="exp-header">
-    <span class="exp-role">Echoes of Eldrin (Capstone) &mdash; <em>Programmer</em></span>
-    <span class="exp-period">Jan 2025 &ndash; Oct 2025</span>
-  </div>
-  <ul class="exp-bullets">
+  <h3 class="role">Echoes of Eldrin (Capstone) - <em>Programmer</em></h3>
+  <div class="period">Jan 2025 - Oct 2025</div>
+  <ul class="bullets">
     <li>Developed core gameplay systems and combat mechanics using Unreal Engine 5.</li>
     <li>Optimized and debugged game mechanics; collaborated with artists on asset integration.</li>
   </ul>
 
-  <div class="exp-header">
-    <span class="exp-role">BTCinema (Android App) &mdash; <em>Programmer &amp; Designer</em></span>
-    <span class="exp-period">Nov 2024 &ndash; Dec 2024</span>
-  </div>
-  <ul class="exp-bullets">
-    <li>Designed and developed a movie booking Android app using Java and SQLite; delivered on time.</li>
+  <h3 class="role">Freelance (Upwork) - <em>QA Tester</em></h3>
+  <div class="period">2022 - 2025</div>
+  <ul class="bullets">
+    <li>Tested mobile apps and games for international clients on Upwork; identified bugs, performance issues, and UX defects; coordinated directly with clients on remote deliverables.</li>
+    <li>BTCinema (Android movie booking app, Nov - Dec 2024): designed and developed the app in Java with SQLite; delivered on time as a freelance project.</li>
   </ul>
 
-  <div class="exp-header">
-    <span class="exp-role">Freelance &mdash; Upwork &mdash; <em>QA Tester &amp; Developer</em></span>
-    <span class="exp-period">2022 &ndash; Present</span>
-  </div>
-  <ul class="exp-bullets">
-    <li>Tested mobile apps and games; managed remote projects and client communication on Upwork.</li>
-  </ul>
+  <h2 class="section">Education</h2>
+  <div class="edu-school">Bataan Peninsula State University, Philippines</div>
+  <div class="edu-degree">Bachelor of Science in Entertainment and Multimedia Computing - Major in Game Development</div>
+  <div class="edu-period">2021 - 2026 (Expected)</div>
 
-  <hr>
+  <h2 class="section">Technical Skills</h2>
+  <p class="skill-row"><strong>Automation and Scraping:</strong> n8n, Playwright, GHL (GoHighLevel), OpenClaw</p>
+  <p class="skill-row"><strong>AI and Integrations:</strong> OpenAI, Claude (Anthropic), Groq, Gemini, Shopify API, Xero, Stripe, WAHA, Supabase, Airtable</p>
+  <p class="skill-row"><strong>Programming:</strong> JavaScript, PHP, Java, React.js, Tailwind CSS, HTML, CSS</p>
+  <p class="skill-row"><strong>Infrastructure and Tools:</strong> Railway, MySQL, Git, Unreal Engine 5, Android Studio, QA Testing</p>
 
-  <div class="section-title">Education</div>
-  <div class="edu-header">
-    <span class="edu-school">Bataan Peninsula State University, Philippines</span>
-    <span class="edu-period">2021 &ndash; 2026 (Expected)</span>
-  </div>
-  <div class="edu-degree">Bachelor of Science in Entertainment and Multimedia Computing &mdash; Major in Game Development</div>
+</main>
 
-  <hr>
-
-  <div class="section-title">Technical Skills</div>
-  <table class="skills-table">
-    <tr>
-      <td>
-        <div class="skills-col-head">Automation</div>
-        <ul class="skills-list">
-          <li>n8n</li>
-          <li>GHL (GoHighLevel)</li>
-          <li>OpenClaw</li>
-        </ul>
-      </td>
-      <td>
-        <div class="skills-col-head">AI / Integrations</div>
-        <ul class="skills-list">
-          <li>OpenAI (GPT-4.1-mini)</li>
-          <li>Claude (Anthropic)</li>
-          <li>Groq / Gemini</li>
-          <li>Xero, Stripe, WAHA</li>
-          <li>Supabase, Airtable</li>
-        </ul>
-      </td>
-      <td>
-        <div class="skills-col-head">Programming</div>
-        <ul class="skills-list">
-          <li>JavaScript</li>
-          <li>Java</li>
-          <li>HTML / CSS</li>
-        </ul>
-      </td>
-      <td>
-        <div class="skills-col-head">Other</div>
-        <ul class="skills-list">
-          <li>Unreal Engine 5</li>
-          <li>Android Studio</li>
-          <li>Git</li>
-          <li>QA Testing</li>
-        </ul>
-      </td>
-    </tr>
-  </table>
-
-</div>
 </body>
 </html>

@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F0F12"/>
+      <stop offset="100%" stop-color="#1A1B22"/>
+    </linearGradient>
+    <linearGradient id="scrapeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2EAD33"/>
+      <stop offset="100%" stop-color="#1F7A24"/>
+    </linearGradient>
+    <linearGradient id="pdfGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FF6B6B"/>
+      <stop offset="100%" stop-color="#C73E3E"/>
+    </linearGradient>
+    <linearGradient id="dbGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0064FF"/>
+      <stop offset="100%" stop-color="#003F9F"/>
+    </linearGradient>
+    <linearGradient id="apiGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#777BB4"/>
+      <stop offset="100%" stop-color="#4F5288"/>
+    </linearGradient>
+    <linearGradient id="uiGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#61DAFB"/>
+      <stop offset="100%" stop-color="#2D9CDB"/>
+    </linearGradient>
+    <linearGradient id="shopGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#95BF47"/>
+      <stop offset="100%" stop-color="#5E8E3E"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L0,12 L10,6 z" fill="rgba(255,255,255,0.55)"/>
+    </marker>
+    <filter id="cardShadow"><feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000" flood-opacity="0.5"/></filter>
+    <filter id="noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1   0 0 0 0.035 0"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="750" fill="url(#bg)"/>
+  <rect width="1200" height="750" filter="url(#noise)" opacity="0.7"/>
+
+  <text x="600" y="55" font-family="'Space Grotesk', Inter, sans-serif" font-size="28" font-weight="700" fill="#fff" text-anchor="middle" letter-spacing="-0.5">Custom Shopify CMS Architecture</text>
+  <text x="600" y="85" font-family="'Space Grotesk', sans-serif" font-size="14" fill="rgba(255,255,255,0.55)" text-anchor="middle" letter-spacing="0.5">Playwright scraping + PDF extraction → MySQL → PHP API → React admin → Shopify</text>
+
+  <!-- Section: INGESTION -->
+  <text x="200" y="135" font-family="'Space Grotesk', sans-serif" font-size="11" font-weight="700" fill="rgba(255,255,255,0.45)" text-anchor="middle" letter-spacing="3">INGESTION</text>
+
+  <g filter="url(#cardShadow)">
+    <rect x="60" y="160" width="280" height="100" rx="14" fill="#1d1e26" stroke="rgba(46,173,51,0.3)"/>
+    <rect x="60" y="160" width="280" height="32" rx="14" fill="url(#scrapeGrad)"/>
+    <rect x="60" y="178" width="280" height="14" fill="url(#scrapeGrad)"/>
+    <text x="200" y="180" font-family="'Space Grotesk', sans-serif" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">01 · WEB SCRAPING</text>
+    <text x="200" y="220" font-family="'Space Grotesk', sans-serif" font-size="15" font-weight="600" fill="#fff" text-anchor="middle">Playwright Crawlers</text>
+    <text x="200" y="240" font-family="'Space Grotesk', sans-serif" font-size="11" fill="rgba(255,255,255,0.55)" text-anchor="middle">Headless browser fleet · scheduled product</text>
+    <text x="200" y="254" font-family="'Space Grotesk', sans-serif" font-size="11" fill="rgba(255,255,255,0.55)" text-anchor="middle">discovery + price/stock refresh</text>
+  </g>
+
+  <g filter="url(#cardShadow)">
+    <rect x="60" y="280" width="280" height="100" rx="14" fill="#1d1e26" stroke="rgba(255,107,107,0.3)"/>
+    <rect x="60" y="280" width="280" height="32" rx="14" fill="url(#pdfGrad)"/>
+    <rect x="60" y="298" width="280" height="14" fill="url(#pdfGrad)"/>
+    <text x="200" y="300" font-family="'Space Grotesk', sans-serif" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">02 · PDF PIPELINE</text>
+    <text x="200" y="340" font-family="'Space Grotesk', sans-serif" font-size="15" font-weight="600" fill="#fff" text-anchor="middle">PDF Data Extraction</text>
+    <text x="200" y="360" font-family="'Space Grotesk', sans-serif" font-size="11" fill="rgba(255,255,255,0.55)" text-anchor="middle">Supplier sheets → AI-parsed JSON</text>
+    <text x="200" y="374" font-family="'Space Grotesk', sans-serif" font-size="11" fill="rgba(255,255,255,0.55)" text-anchor="middle">SKU, dimensions, pricing, materials</text>
+  </g>
+
+  <!-- Arrows to DB -->
+  <path d="M 350 210 Q 420 210 460 270" stroke="rgba(255,255,255,0.45)" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 350 330 Q 420 330 460 280" stroke="rgba(255,255,255,0.45)" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- Section: STORAGE -->
+  <text x="600" y="135" font-family="'Space Grotesk', sans-serif" font-size="11" font-weight="700" fill="rgba(255,255,255,0.45)" text-anchor="middle" letter-spacing="3">STORAGE + API</text>
+
+  <g filter="url(#cardShadow)">
+    <rect x="470" y="220" width="260" height="100" rx="14" fill="#1d1e26" stroke="rgba(0,100,255,0.3)"/>
+    <rect x="470" y="220" width="260" height="32" rx="14" fill="url(#dbGrad)"/>
+    <rect x="470" y="238" width="260" height="14" fill="url(#dbGrad)"/>
+    <text x="600" y="240" font-family="'Space Grotesk', sans-serif" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">03 · DATABASE</text>
+    <text x="600" y="280" font-family="'Space Grotesk', sans-serif" font-size="15" font-weight="600" fill="#fff" text-anchor="middle">MySQL · Railway</text>
+    <text x="600" y="300" font-family="'Space Grotesk', sans-serif" font-size="11" fill="rgba(255,255,255,0.55)" text-anchor="middle">Normalized product model</text>
+    <text x="600" y="314" font-family="'Space Grotesk', sans-serif" font-size="11" fill="rgba(255,255,255,0.55)" text-anchor="middle">+ containers, orders, swatches</text>
+  </g>
+
+  <line x1="730" y1="270" x2="780" y2="270" stroke="rgba(255,255,255,0.45)" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <g filter="url(#cardShadow)">
+    <rect x="790" y="220" width="260" height="100" rx="14" fill="#1d1e26" stroke="rgba(119,123,180,0.3)"/>
+    <rect x="790" y="220" width="260" height="32" rx="14" fill="url(#apiGrad)"/>
+    <rect x="790" y="238" width="260" height="14" fill="url(#apiGrad)"/>
+    <text x="920" y="240" font-family="'Space Grotesk', sans-serif" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">04 · BACKEND</text>
+    <text x="920" y="280" font-family="'Space Grotesk', sans-serif" font-size="15" font-weight="600" fill="#fff" text-anchor="middle">PHP REST API</text>
+    <text x="920" y="300" font-family="'Space Grotesk', sans-serif" font-size="11" fill="rgba(255,255,255,0.55)" text-anchor="middle">CRUD · auth · business logic</text>
+    <text x="920" y="314" font-family="'Space Grotesk', sans-serif" font-size="11" fill="rgba(255,255,255,0.55)" text-anchor="middle">Sync orchestration</text>
+  </g>
+
+  <!-- Section: FRONTEND -->
+  <text x="200" y="430" font-family="'Space Grotesk', sans-serif" font-size="11" font-weight="700" fill="rgba(255,255,255,0.45)" text-anchor="middle" letter-spacing="3">ADMIN INTERFACE</text>
+
+  <g filter="url(#cardShadow)">
+    <rect x="60" y="455" width="280" height="100" rx="14" fill="#1d1e26" stroke="rgba(97,218,251,0.3)"/>
+    <rect x="60" y="455" width="280" height="32" rx="14" fill="url(#uiGrad)"/>
+    <rect x="60" y="473" width="280" height="14" fill="url(#uiGrad)"/>
+    <text x="200" y="475" font-family="'Space Grotesk', sans-serif" font-size="12" font-weight="700" fill="#0A0A0A" text-anchor="middle">05 · ADMIN UI</text>
+    <text x="200" y="515" font-family="'Space Grotesk', sans-serif" font-size="15" font-weight="600" fill="#fff" text-anchor="middle">React + Tailwind</text>
+    <text x="200" y="535" font-family="'Space Grotesk', sans-serif" font-size="11" fill="rgba(255,255,255,0.55)" text-anchor="middle">Dashboard, products, orders,</text>
+    <text x="200" y="549" font-family="'Space Grotesk', sans-serif" font-size="11" fill="rgba(255,255,255,0.55)" text-anchor="middle">container planner, swatches</text>
+  </g>
+
+  <path d="M 350 505 Q 600 505 600 405" stroke="rgba(255,255,255,0.25)" stroke-width="2" stroke-dasharray="4 6" fill="none" marker-end="url(#arrow)"/>
+  <text x="475" y="495" font-family="'Space Grotesk', sans-serif" font-size="10" fill="rgba(255,255,255,0.45)">browses</text>
+
+  <!-- Section: SHOPIFY -->
+  <text x="920" y="430" font-family="'Space Grotesk', sans-serif" font-size="11" font-weight="700" fill="rgba(255,255,255,0.45)" text-anchor="middle" letter-spacing="3">PUBLISH</text>
+
+  <g filter="url(#cardShadow)">
+    <rect x="790" y="455" width="260" height="100" rx="14" fill="#1d1e26" stroke="rgba(149,191,71,0.35)"/>
+    <rect x="790" y="455" width="260" height="32" rx="14" fill="url(#shopGrad)"/>
+    <rect x="790" y="473" width="260" height="14" fill="url(#shopGrad)"/>
+    <text x="920" y="475" font-family="'Space Grotesk', sans-serif" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">06 · STOREFRONT</text>
+    <text x="920" y="515" font-family="'Space Grotesk', sans-serif" font-size="15" font-weight="600" fill="#fff" text-anchor="middle">Shopify Admin API</text>
+    <text x="920" y="535" font-family="'Space Grotesk', sans-serif" font-size="11" fill="rgba(255,255,255,0.55)" text-anchor="middle">2-way sync · products, inventory,</text>
+    <text x="920" y="549" font-family="'Space Grotesk', sans-serif" font-size="11" fill="rgba(255,255,255,0.55)" text-anchor="middle">orders → live consumer storefront</text>
+  </g>
+
+  <path d="M 920 320 Q 920 380 920 455" stroke="rgba(255,255,255,0.45)" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+
+  <text x="600" y="660" font-family="'Space Grotesk', sans-serif" font-size="12" font-weight="600" fill="rgba(255,255,255,0.6)" text-anchor="middle" letter-spacing="2">STACK</text>
+  <text x="600" y="690" font-family="'Space Grotesk', sans-serif" font-size="14" fill="rgba(255,255,255,0.85)" text-anchor="middle" letter-spacing="0.5">Playwright · PDF extraction · MySQL · PHP · React · Tailwind · Railway · Shopify Admin API</text>
+</svg>

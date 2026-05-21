@@ -1,0 +1,31 @@
+/* ============================================
+   mrrz.dev — brand tokens
+   Mirror of the :root block in index.html.
+   Import this if you ever split styles out.
+============================================ */
+:root {
+  /* Type — Space Grotesk used everywhere. --font-mono kept as alias for legacy refs. */
+  --font-mono:    'Space Grotesk', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Space Grotesk', 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Surfaces */
+  --bg-base:     #0A0A0A;
+  --bg-surface:  #141414;
+  --bg-elevated: #1E1E1E;
+  --bg-quoted:   #111111;
+
+  /* Accents */
+  --accent-green: #4afa7a;
+  --accent-amber: #febc2e;
+  --accent-coral: #ff6b6b;
+
+  /* Text */
+  --text-strong: #ffffff;
+  --text-body:   rgba(255, 255, 255, 0.82);
+  --text-dim:    rgba(255, 255, 255, 0.45);
+  --text-mute:   rgba(255, 255, 255, 0.25);
+
+  /* Color-tinted shadows */
+  --shadow-green-tint: rgba(20, 60, 35, 0.55);
+  --shadow-amber-tint: rgba(50, 35, 5, 0.35);
+}
