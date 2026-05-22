@@ -1770,6 +1770,7 @@
                 <button class="nav-cmd" data-cmd="/uses">/uses</button>
                 <button class="nav-cmd" data-cmd="/hire">/hire</button>
                 <button class="nav-cmd" data-cmd="/resume">/resume</button>
+                <button class="nav-cmd" data-cmd="/summary">/summary</button>
                 <button class="nav-cmd" data-cmd="/contact">/contact</button>
               </div>
 
@@ -1886,6 +1887,7 @@
     { cmd: '/uses',       desc: 'My tools and setup' },
     { cmd: '/hire',       desc: 'Work with me' },
     { cmd: '/resume',      desc: 'My full resume' },
+    { cmd: '/summary',     desc: 'Editorial portfolio summary (new tab)' },
     { cmd: '/certificate', desc: 'My certificates' },
     { cmd: '/chat',        desc: 'Chat with Morris' },
     { cmd: '/dark',       desc: 'Switch to dark theme' },
@@ -2065,6 +2067,7 @@
       { t: 'line', v: '/uses         My tools and setup' },
       { t: 'line', v: '/hire         Work with me' },
       { t: 'line', v: '/resume        My full resume' },
+      { t: 'line', v: '/summary       Editorial portfolio summary (new tab)' },
       { t: 'line', v: '/certificate   My certificates' },
       { t: 'line', v: '/chat          Chat with Morris' },
       { t: 'line', v: '/dark         Switch to dark theme (default)' },
@@ -2247,6 +2250,23 @@
 
     '/light': () => {
       document.documentElement.setAttribute('data-theme', 'light');
+    },
+
+    '/summary': () => {
+      // Open the editorial summary page in a new tab — different design
+      // language for visitors who want a one-page document overview.
+      window.open('summary.html', '_blank', 'noopener');
+      return [
+        { t: 'cmd', v: '> /summary' },
+        { t: 'sep' },
+        { t: 'head', v: '# summary — opened in a new tab' },
+        { t: 'para', v: 'I opened my editorial portfolio summary in a new tab. It is a clean, document-style overview of who I am, what I have built, and how to reach me — designed to be read, shared, or printed.' },
+        { t: 'sep' },
+        { t: 'dim', v: 'If your browser blocked the popup, visit:' },
+        { t: 'link', v: '  → summary.html', url: 'summary.html' },
+        { t: 'sep' },
+        { t: 'dim', v: 'Type /resume for the ATS-friendly PDF version, or /chat to talk.' },
+      ];
     },
   };
 

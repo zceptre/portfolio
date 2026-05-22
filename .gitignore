@@ -74,6 +74,7 @@ serviceAccountKey*.json
 temporary screenshots/
 images/temp/
 *.png
+!images/portfolio/*.png
 vladburca.com_.png
 zceptre.github.io_portfolio_.png
 
