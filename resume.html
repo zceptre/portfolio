@@ -8,22 +8,30 @@
   <style>
     /* ============================================================
        ATS-FRIENDLY RESUME — Son Morris Sasi
-       - System font (Arial) — no web fonts, parses reliably
+       - System font (Verdana) — no web fonts, parses reliably
        - Semantic HTML (h1/h2/h3, ul/li) — ATS reads heading hierarchy
        - Single-column linear flow — no tables for content layout
        - Plain ASCII characters — no decorative unicode
+       ------------------------------------------------------------
+       TYPE SCALE
+         Name (h1)               16pt
+         Job title / sub-heads   11pt
+         Body / normal text      10pt
+       PAGE  (single-page Letter — survives Chrome's print defaults)
+         Letter
+         Margins: 1cm top/bottom · 1.2cm left/right
        ============================================================ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     @page {
       size: Letter;
-      margin: 0;
+      margin: 0.7cm 1cm;
     }
 
     html, body {
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
       font-size: 10pt;
-      line-height: 1.35;
+      line-height: 1.2;
       color: #000;
       background: #fff;
       -webkit-font-smoothing: antialiased;
@@ -43,33 +51,37 @@
     .print-bar span {
       font-size: 11px;
       color: #aaa;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: Verdana, Geneva, sans-serif;
     }
     .print-btn {
       background: #fff; color: #111; border: none;
       padding: 6px 16px; font-size: 11px; font-weight: 700;
       border-radius: 4px; cursor: pointer;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: Verdana, Geneva, sans-serif;
     }
     .print-btn:hover { background: #e8e8e8; }
 
     @media print {
       .print-bar { display: none; }
-      .page { padding: 0.4in 0.55in; }
+      /* @page handles margins in print; .page should not double-pad */
+      .page { padding: 0; max-width: none; }
       a { color: #000; text-decoration: underline; }
     }
 
-    /* ── Page container ── */
+    /* ── Page container (screen view mirrors print margins) ── */
     .page {
-      max-width: 7.5in;
+      max-width: 8.5in;
       margin: 0 auto;
-      padding: 56px 0.55in 32px;
+      padding: 56px 1cm 1cm 1cm;
+    }
+    @media (min-width: 900px) {
+      .page { padding-top: calc(56px + 1cm); }
     }
 
     /* ── Header ── */
     header { text-align: center; margin-bottom: 2px; }
     h1.name {
-      font-size: 17pt;
+      font-size: 16pt;
       font-weight: 700;
       letter-spacing: 0.02em;
       text-transform: uppercase;
@@ -78,10 +90,10 @@
     .title {
       font-size: 11pt;
       font-weight: 700;
-      margin-bottom: 3px;
+      margin-bottom: 2px;
     }
     .contact, .links {
-      font-size: 9.5pt;
+      font-size: 10pt;
       color: #000;
     }
     .contact { margin-bottom: 1px; }
@@ -90,67 +102,103 @@
       text-decoration: underline;
     }
 
-    /* ── Section heading ── */
+    /* ── Section heading (sub-titles like SUMMARY, EXPERIENCE) ── */
     h2.section {
-      font-size: 10.5pt;
+      font-size: 11pt;
       font-weight: 700;
       text-align: center;
       text-transform: uppercase;
       letter-spacing: 0.04em;
-      margin: 8px 0 2px;
-      padding-top: 4px;
+      margin: 4px 0 1px;
+      padding-top: 2px;
       border-top: 1pt solid #000;
-      padding-bottom: 1px;
+      padding-bottom: 0;
+      page-break-after: avoid;
     }
 
     /* ── Summary ── */
-    .summary { font-size: 10pt; line-height: 1.4; text-align: justify; margin-top: 3px; }
+    .summary { font-size: 10pt; line-height: 1.25; text-align: justify; margin-top: 1px; }
 
     /* ── Experience entries ── */
     .role {
-      font-size: 10pt;
+      font-size: 11pt;
       font-weight: 700;
-      margin-top: 6px;
+      margin-top: 3px;
       margin-bottom: 0;
+      page-break-after: avoid;
     }
     .role em { font-style: italic; font-weight: 400; }
     .period {
-      font-size: 9.5pt;
+      font-size: 10pt;
       font-style: italic;
-      margin-bottom: 2px;
+      margin-bottom: 0;
+      page-break-after: avoid;
     }
     ul.bullets {
       list-style: disc;
-      padding-left: 0.25in;
-      margin-bottom: 2px;
+      padding-left: 0.2in;
+      margin-bottom: 1px;
     }
     ul.bullets li {
       font-size: 10pt;
-      line-height: 1.35;
-      margin-bottom: 1px;
+      line-height: 1.2;
+      margin-bottom: 0;
     }
 
     /* ── Education ── */
     .edu-school {
-      font-size: 10pt;
+      font-size: 11pt;
       font-weight: 700;
-      margin-top: 3px;
+      margin-top: 2px;
+      page-break-after: avoid;
     }
     .edu-degree {
       font-size: 10pt;
       font-style: italic;
     }
     .edu-period {
-      font-size: 9.5pt;
+      font-size: 10pt;
       font-style: italic;
     }
 
-    /* ── Skills (no tables) ──
-       Each category is a labelled paragraph so ATS reads it as
-       "Category: item, item, item" in document order. */
+    /* ── Skills — TABLE layout (matches CV.pdf's Word-generated table) ──
+       Word creates multi-column skill sections via tables. Tables guarantee
+       rigid column alignment that CSS grid can miss. Source order is still
+       linear (one row, 4 cells) so ATS reads it as Cell1 → Cell2 → Cell3 → Cell4.
+    */
+    .skills-table {
+      border-collapse: collapse;
+      margin-top: 2px;
+      page-break-inside: avoid;
+    }
+    .skills-table td {
+      vertical-align: top;
+      padding: 0 36px 0 0;
+      font-size: 10pt;
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+    .skills-table td:last-child { padding-right: 0; }
+    .skills-table .skill-label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 1px;
+    }
+    .skills-table ul {
+      list-style: disc;
+      list-style-position: outside;
+      padding-left: 22px;
+      margin: 0;
+    }
+    .skills-table li {
+      margin: 0;
+      padding: 0;
+      line-height: 1.2;
+    }
+    /* Single-row label paragraphs (legacy) — kept for any non-grid layout */
     .skill-row {
       font-size: 10pt;
-      line-height: 1.45;
+      line-height: 1.4;
       margin: 1px 0;
     }
     .skill-row strong { font-weight: 700; }
@@ -172,9 +220,9 @@
       Philippines | +63-995-181-9233 | <a href="mailto:morris.dev31@gmail.com">morris.dev31@gmail.com</a>
     </div>
     <div class="links">
-      <a href="https://github.com/zceptre">github.com/zceptre</a>
+      <a href="https://github.com/zceptre">GitHub</a>
       | <a href="https://www.upwork.com/freelancers/~016110c8b7153e5e76">Upwork</a>
-      | <a href="https://mrrz.dev">mrrz.dev</a>
+      | <a href="https://mrrz.dev">Portfolio</a>
     </div>
   </header>
 
@@ -211,13 +259,47 @@
   <h2 class="section">Education</h2>
   <div class="edu-school">Bataan Peninsula State University, Philippines</div>
   <div class="edu-degree">Bachelor of Science in Entertainment and Multimedia Computing - Major in Game Development</div>
-  <div class="edu-period">2021 - 2026 (Expected)</div>
+  <div class="edu-period">2021 - 2026</div>
 
   <h2 class="section">Technical Skills</h2>
-  <p class="skill-row"><strong>Automation and Scraping:</strong> n8n, Playwright, GHL (GoHighLevel), OpenClaw</p>
-  <p class="skill-row"><strong>AI and Integrations:</strong> OpenAI, Claude (Anthropic), Groq, Gemini, Shopify API, Xero, Stripe, WAHA, Supabase, Airtable</p>
-  <p class="skill-row"><strong>Programming:</strong> JavaScript, PHP, Java, React.js, Tailwind CSS, HTML, CSS</p>
-  <p class="skill-row"><strong>Infrastructure and Tools:</strong> Railway, MySQL, Git, Unreal Engine 5, Android Studio, QA Testing</p>
+  <table class="skills-table">
+    <tr>
+      <td>
+        <span class="skill-label">AI &amp; Automation:</span>
+        <ul>
+          <li>n8n, OpenClaw, GHL</li>
+          <li>OpenAI, Claude</li>
+          <li>Groq, Gemini</li>
+        </ul>
+      </td>
+      <td>
+        <span class="skill-label">Programming:</span>
+        <ul>
+          <li>JavaScript, PHP</li>
+          <li>Java</li>
+          <li>React.js, Tailwind CSS</li>
+          <li>HTML, CSS</li>
+        </ul>
+      </td>
+      <td>
+        <span class="skill-label">Database:</span>
+        <ul>
+          <li>MySQL</li>
+          <li>Supabase</li>
+          <li>SQLite</li>
+        </ul>
+      </td>
+      <td>
+        <span class="skill-label">Tools:</span>
+        <ul>
+          <li>Railway, Git</li>
+          <li>Unreal Engine 5</li>
+          <li>Android Studio</li>
+          <li>QA Testing</li>
+        </ul>
+      </td>
+    </tr>
+  </table>
 
 </main>
 
