@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#F4EFE6">
+  <meta name="theme-color" content="#0B0908">
 
   <title>Son Morris Sasi — A Portfolio in Print</title>
   <meta name="description" content="Editorial-style portfolio summary for Son Morris Sasi, AI Automation Developer. Profile, experience, projects, skills, and contact in one page.">
@@ -34,17 +34,17 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --paper:        #F4EFE6;
-      --paper-soft:   #EBE5D7;
-      --ink:          #14110D;
-      --ink-soft:     rgba(20, 17, 13, 0.72);
-      --ink-mute:     rgba(20, 17, 13, 0.5);
-      --ink-faint:    rgba(20, 17, 13, 0.28);
-      --rule:         rgba(20, 17, 13, 0.18);
-      --rule-soft:    rgba(20, 17, 13, 0.1);
-      --accent:       #6E1A20;   /* deep editorial maroon */
-      --accent-soft:  #A65A4F;
-      --accent-ink:   #2E5E33;   /* paired moss for AI/tech callouts */
+      --paper:        #0B0908;
+      --paper-soft:   #161310;
+      --ink:          #F4EFE6;
+      --ink-soft:     rgba(244, 239, 230, 0.78);
+      --ink-mute:     rgba(244, 239, 230, 0.55);
+      --ink-faint:    rgba(244, 239, 230, 0.3);
+      --rule:         rgba(244, 239, 230, 0.18);
+      --rule-soft:    rgba(244, 239, 230, 0.1);
+      --accent:       #D14755;   /* editorial maroon, lifted for dark bg */
+      --accent-soft:  #E89490;
+      --accent-ink:   #7DBE83;   /* paired moss for AI/tech callouts */
 
       --serif-display: 'Fraunces', 'Times New Roman', serif;
       --serif-body:    'Newsreader', Georgia, serif;
@@ -75,9 +75,9 @@
       inset: 0;
       pointer-events: none;
       z-index: 0;
-      opacity: 0.22;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-      mix-blend-mode: multiply;
+      opacity: 0.12;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      mix-blend-mode: screen;
     }
 
     /* ── Top navigation back to terminal ── */
@@ -89,7 +89,7 @@
       justify-content: space-between;
       align-items: center;
       z-index: 50;
-      background: linear-gradient(to bottom, var(--paper) 60%, rgba(244, 239, 230, 0));
+      background: linear-gradient(to bottom, var(--paper) 60%, rgba(11, 9, 8, 0));
       pointer-events: none;
     }
     .nav-bar > * { pointer-events: auto; }
@@ -102,7 +102,7 @@
       padding: 6px 12px;
       border: 1px solid var(--rule);
       border-radius: 3px;
-      background: rgba(244, 239, 230, 0.7);
+      background: rgba(11, 9, 8, 0.7);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       transition: color 200ms ease, border-color 200ms ease;
@@ -267,7 +267,7 @@
       position: absolute;
       inset: 0;
       pointer-events: none;
-      background: linear-gradient(to bottom, transparent 70%, rgba(20,17,13,0.18) 100%);
+      background: linear-gradient(to bottom, transparent 60%, rgba(11, 9, 8, 0.6) 100%);
     }
     .portrait-caption {
       font-family: var(--sans);
